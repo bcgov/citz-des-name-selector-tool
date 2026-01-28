@@ -37,22 +37,39 @@ $effect(() => {
   <form>
     <div class="min-h-100 flex flex-col justify-evenly border-b border-t border-gray-900/10 p-12">
 
-      <div class="flex w-full max-w-sm flex-col gap-1.5">
+      <p>
+        The First Voices program provides keyboards for enabling search, and smart
+        phone apps for Apple and Android.
+      </p>
+
+      <br>
+
+      <p>
+        Click <a href="https://www.firstvoices.com/keyboards" target="_blank">here</a> to access/download First Voices Indigenous Language Keyboards and
+        type or copy/paste your Indigenous name into the Legal Name field(s) below:
+      </p>
+
+      <br>
+
+      <div class="flex w-full rmax-w-sm flex-col gap-1.5">
         <Label for="full-name">Legal First Name:</Label>
-        <Input type="text" id="full-name" placeholder="" bind:value={fullName} />
+        <Input type="text" id="full-name" placeholder="Max. 12 Characters" bind:value={fullName} />
         <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <br>
       </div>
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
         <Label for="full-name">Legal Middle Name(s):</Label>
-        <Input type="text" id="full-name" placeholder="" bind:value={fullName} />
+        <Input type="text" id="full-name" placeholder="Max. 12 Characters" bind:value={fullName} />
         <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <br>
       </div>
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
         <Label for="full-name">Legal Last Name:</Label>
-        <Input type="text" id="full-name" placeholder="" bind:value={fullName} />
+        <Input type="text" id="full-name" placeholder="Max. 18 Characters" bind:value={fullName} />
         <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <br>
       </div>
 
     </div>
@@ -61,4 +78,7 @@ $effect(() => {
 </main>
 
 <style>
+p {
+  font-size: small;
+}
 </style>
