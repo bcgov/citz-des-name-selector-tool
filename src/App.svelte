@@ -35,7 +35,7 @@ $effect(() => {
 <main class="flex items-center justify-center min-h-screen bg-gray-100">
  
   <form>
-    <div class="min-h-100 flex flex-col justify-evenly border-b border-t border-gray-900/10 p-12">
+    <div class="min-h-100 flex flex-col justify-evenly p-12">
 
       <p>
         The First Voices program provides keyboards for enabling search, and smart
@@ -52,24 +52,67 @@ $effect(() => {
       <br>
 
       <div class="flex w-full rmax-w-sm flex-col gap-1.5">
-        <Label for="full-name">Legal First Name:</Label>
-        <Input type="text" id="full-name" placeholder="Max. 12 Characters" bind:value={fullName} />
-        <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <Label
+          class="text-sm font-bold"
+          for="first-name">
+          Legal First Name:
+        </Label>
+        <Input
+          class="text-sm"
+          type="text"
+          id="first-name"
+          placeholder="Max. 12 Characters"
+          bind:value={fullName} />
         <br>
       </div>
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
-        <Label for="full-name">Legal Middle Name(s):</Label>
-        <Input type="text" id="full-name" placeholder="Max. 12 Characters" bind:value={fullName} />
-        <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <Label
+          class="text-sm font-bold"
+          for="middle-names">
+          Legal Middle Name(s):
+        </Label>
+        <Input
+          class="text-sm"
+          type="text"
+          id="middle-names"
+          placeholder="Max. 12 Characters (Max 2 Names)"
+          bind:value={fullName} />
         <br>
       </div>
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
-        <Label for="full-name">Legal Last Name:</Label>
-        <Input type="text" id="full-name" placeholder="Max. 18 Characters" bind:value={fullName} />
-        <p class="text-muted-foreground text-sm">Enter your full name.</p>
+        <Label
+          class="text-sm font-bold"
+          for="last-name">
+          Legal Last Name:
+        </Label>
+        <Input
+          class="text-sm"
+          type="text"
+          id="last-name"
+          placeholder="Max. 18 Characters"
+          bind:value={fullName} />
         <br>
+      </div>
+
+      <div class="flex w-full max-w-sm flex-col">
+        <Label
+          class="text-sm font-bold">
+          Full Legal Name you entered
+        </Label>
+        <p>
+          (if you need to adjust anything, re-enter above)
+        </p>
+        <br>
+      </div>
+
+      <div class="flex w-full max-w-sm flex-col border-b">
+        <Label
+          class="text-base font-bold">
+          Full Legal Name
+        </Label>
+        <p>Placeholder Name</p>
       </div>
 
     </div>
