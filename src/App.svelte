@@ -35,7 +35,7 @@ $effect(() => {
 <main class="flex items-center justify-center min-h-screen bg-gray-100">
  
   <form>
-    <div class="min-h-100 flex flex-col justify-evenly p-12">
+    <div class="min-h-100 flex flex-col justify-evenly p-12 text-sm">
 
       <p>
         The First Voices program provides keyboards for enabling search, and smart
@@ -53,7 +53,7 @@ $effect(() => {
 
       <div class="flex w-full rmax-w-sm flex-col gap-1.5">
         <Label
-          class="text-sm font-bold"
+          class="font-bold"
           for="first-name">
           Legal First Name:
         </Label>
@@ -68,7 +68,7 @@ $effect(() => {
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
         <Label
-          class="text-sm font-bold"
+          class="font-bold"
           for="middle-names">
           Legal Middle Name(s):
         </Label>
@@ -83,7 +83,7 @@ $effect(() => {
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
         <Label
-          class="text-sm font-bold"
+          class="font-bold"
           for="last-name">
           Legal Last Name:
         </Label>
@@ -98,8 +98,8 @@ $effect(() => {
 
       <div class="flex w-full max-w-sm flex-col">
         <Label
-          class="text-sm font-bold">
-          Full Legal Name you entered
+          class="font-bold">
+          <i>Full Legal Name</i> you entered
         </Label>
         <p>
           (if you need to adjust anything, re-enter above)
@@ -107,7 +107,7 @@ $effect(() => {
         <br>
       </div>
 
-      <div class="flex w-full max-w-sm flex-col border-b">
+      <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label
           class="text-base font-bold">
           Full Legal Name
@@ -119,9 +119,3 @@ $effect(() => {
   </form>
 
 </main>
-
-<style>
-p {
-  font-size: small;
-}
-</style>
