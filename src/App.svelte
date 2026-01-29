@@ -1,24 +1,7 @@
 <script lang="ts">
 import './app.css';
-import svelteLogo from './assets/svelte.svg';
-import viteLogo from '/vite.svg';
-import Counter from './lib/Counter.svelte';
 import { Input } from "./lib/components/ui/input/index.js";
 import { Label } from "./lib/components/ui/label/index.js";
-
-interface IName {
-  name: string;
-  characters: number;
-}
-
-interface IFullName {
-  first: IName;
-  middle: {
-    names: string;
-    name_array: IName[];
-  };
-  last: IName;
-};
 
 let fullName = $state({
   first: {
