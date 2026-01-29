@@ -32,13 +32,30 @@ $effect(() => {
 
 </script>
 
-<main class="flex items-center justify-center min-h-screen bg-gray-100">
+<main class="flex flex-col items-center justify-center min-h-screen">
+
+  <nav class="fixed top-0 w-screen h-15 bg-red-50 content-center">
+    <ul class="h-15 pl-7 flex flex-row justify-between">
+      <li class="bg-yellow-50 flex justify-center">
+        <Label class="text-lg font-bold">
+          Step 1
+        </Label>
+      </li>
+      <li class="w-15 bg-yellow-50 flex justify-center">
+        <Label>Logo</Label>
+      </li>
+    </ul>
+  </nav>
  
-  <form>
-    <div class="min-h-100 flex flex-col justify-evenly p-12 text-sm">
+  <div class="bg-blue-50 mt-15 absolute top-0">
+  <form class="px-7">
+    <div class="text-sm">
+      <Label class="text-lg font-bold">
+        Enter your Indigenous language Name
+      </Label>
 
       <p>
-        The First Voices program provides keyboards for enabling search, and smart
+        The <b>First Voices</b> program provides keyboards for enabling search, and smart
         phone apps for Apple and Android.
       </p>
 
@@ -117,5 +134,6 @@ $effect(() => {
 
     </div>
   </form>
+  </div>
 
 </main>
