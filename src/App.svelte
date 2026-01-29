@@ -36,7 +36,7 @@ $effect(() => {
 
   <nav class="fixed top-0 w-screen h-15 bg-red-50 content-center">
     <ul class="h-15 pl-7 flex flex-row justify-between">
-      <li class="bg-yellow-50 flex justify-center">
+      <li class="bg-yellow-50 flex items-end">
         <Label class="text-lg font-bold">
           Step 1
         </Label>
