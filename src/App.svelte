@@ -53,13 +53,6 @@ $effect(() => {
         );
     }
   }
-  // if (fullName.length > 0) {
-  //   if (names <= 4) {
-  //       // console.log("Okay");
-  //   } else {
-  //       // console.log("Too many names");
-  //   }
-  // }
 
 });
 
