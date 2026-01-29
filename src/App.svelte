@@ -1,32 +1,58 @@
 <script lang="ts">
 import './app.css';
-import svelteLogo from './assets/svelte.svg';
-import viteLogo from '/vite.svg';
-import Counter from './lib/Counter.svelte';
 import { Input } from "./lib/components/ui/input/index.js";
 import { Label } from "./lib/components/ui/label/index.js";
 
-let fullName = $state("");
-
-interface Name {
-  name: string;
-  characters: number;
-};
+let fullName = $state({
+  first: {
+    name: "",
+  },
+  middle: {
+    names: "",
+  },
+  last: {
+    name: "",
+  }
+});
 
 $effect(() => {
-  let names: Name[] = [];
-  fullName.split(" ").forEach((name: string) => {
-    console.log(name);
+  let names = fullName.middle.names.split(' ');
 
-  });
+  if (fullName.first.name.length > 12)
+    console.log(
+      'Your Legal First Name exceeds the maximum allowable length for your first name'
+    );
+  else if (fullName.first.name.split(' ').length > 1)
+    console.log(
+      'The amount of Legal First Names exceeds the maximum number of names allowed'
+    );
 
-  // if (fullName.length > 0) {
-  //   if (names <= 4) {
-  //       // console.log("Okay");
-  //   } else {
-  //       // console.log("Too many names");
-  //   }
-  // }
+  if (fullName.last.name.length > 18)
+    console.log(
+      'Your Legal Last Name exceeds the maximum allowable length for your last name'
+    );
+  else if (fullName.last.name.split(' ').length > 1)
+    console.log(
+      'The amount of Legal Last Names exceeds the maximum number of names allowed'
+    );
+
+  if (fullName.middle.names.length > 0) {
+    if (names.length > 2)
+      console.log(
+        'The amount of Legal Middle Names exceeds the maximum number of names allowed'
+      );
+    else {
+      if (names[0].length > 12)
+        console.log(
+          'Your first Legal Middle Name exceeds the maximum length of a middle name'
+        );
+
+      if (names[1]?.length > 12)
+        console.log(
+          'Your second middle name exceeds the maximum length of a middle name'
+        );
+    }
+  }
 
 });
 
@@ -79,7 +105,7 @@ $effect(() => {
           type="text"
           id="first-name"
           placeholder="Max. 12 Characters"
-          bind:value={fullName} />
+          bind:value={fullName.first.name} />
         <br>
       </div>
 
@@ -94,7 +120,7 @@ $effect(() => {
           type="text"
           id="middle-names"
           placeholder="Max. 12 Characters (Max 2 Names)"
-          bind:value={fullName} />
+          bind:value={fullName.middle.names} />
         <br>
       </div>
 
@@ -109,7 +135,7 @@ $effect(() => {
           type="text"
           id="last-name"
           placeholder="Max. 18 Characters"
-          bind:value={fullName} />
+          bind:value={fullName.last.name} />
         <br>
       </div>
 
@@ -119,7 +145,7 @@ $effect(() => {
           <i>Full Legal Name</i> you entered
         </Label>
         <p>
-          (if you need to adjust anything, re-enter above)
+          <i>(if you need to adjust anything, re-enter above)</i>
         </p>
         <br>
       </div>
