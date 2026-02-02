@@ -1,9 +1,8 @@
 <script lang="ts">
 import './app.css';
-import { Input } from "./lib/components/ui/input/index.js";
 import { Label } from "./lib/components/ui/label/index.js";
 import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
-    import { Lasso } from '@lucide/svelte';
+import { Lasso } from '@lucide/svelte';
 
 let fullName = $state({
   first: {
