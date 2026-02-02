@@ -17,6 +17,18 @@ let fullName = $state({
   }
 });
 
+let altName = $state({
+  first: {
+    name: ""
+  },
+  middle: {
+    name: ""
+  },
+  last: {
+    name: ""
+  }
+})
+
 $effect(() => {
   let names = fullName.middle.name.split(' ');
 
@@ -132,6 +144,67 @@ $effect(() => {
         </Label>
         <p>Placeholder Name</p>
       </div>
+
+      <br>
+
+      <Label class="text-lg font-bold">
+        Next select an Alternate Spelling version of your name
+      </Label>
+
+      <br>
+
+      <div class="flex w-full max-w-sm flex-col">
+        <Label
+          class="font-bold">
+          Alternate Spelling
+        </Label>
+        <p>
+          Next, enter your alternate (A-Z) spelling:
+        </p>
+        <br>
+      </div>
+
+      <InputLabel
+        id="alt-first-name"
+        label="Alternate Spelling of First Name:"
+        placeholder="Max. 12 Characters"
+        bind:value={altName.first} />
+
+      <InputLabel
+        id="alt-middle-name"
+        label="Alternate Spelling of Middle Name(s):"
+        placeholder="Max. 12 Characters (Max 2 Names)"
+        bind:value={altName.middle} />
+
+      <InputLabel
+        id="alt-last-name"
+        label="Alternate Spelling of Last Name:"
+        placeholder="Max. 18 Characters"
+        bind:value={altName.last} />
+      
+      <div>
+        <!-- Block for input errors -->
+      </div>
+
+      <div class="flex w-full max-w-sm flex-col">
+        <Label
+          class="font-bold">
+          Alternate Spelling Name you entered
+        </Label>
+        <p>
+          <i>(if you need to adjust anything, re-enter above)</i>
+        </p>
+
+        <!-- <p> Input random name </p> -->
+
+        <br>
+      </div>
+
+      <p>If you are happy with the name versions you entered above,
+        please hit the ‘Next” button to see them together and take
+        a screenshot</p>
+      
+      <br>
 
     </div>
   </form>
