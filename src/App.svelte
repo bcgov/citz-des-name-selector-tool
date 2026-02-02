@@ -3,13 +3,14 @@ import './app.css';
 import { Input } from "./lib/components/ui/input/index.js";
 import { Label } from "./lib/components/ui/label/index.js";
 import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
+    import { Lasso } from '@lucide/svelte';
 
 let fullName = $state({
   first: {
     name: "",
   },
   middle: {
-    names: "",
+    name: "",
   },
   last: {
     name: "",
@@ -17,7 +18,7 @@ let fullName = $state({
 });
 
 $effect(() => {
-  let names = fullName.middle.names.split(' ');
+  let names = fullName.middle.name.split(' ');
 
   if (fullName.first.name.length > 12)
     console.log(
@@ -37,7 +38,7 @@ $effect(() => {
       'The amount of Legal Last Names exceeds the maximum number of names allowed'
     );
 
-  if (fullName.middle.names.length > 0) {
+  if (fullName.middle.name.length > 0) {
     if (names.length > 2)
       console.log(
         'The amount of Legal Middle Names exceeds the maximum number of names allowed'
@@ -97,40 +98,22 @@ $effect(() => {
 
       <InputLabel
         id="first-name"
-        label="Legal First Name"
+        label="Legal First Name:"
         placeholder="Max. 12 Characters"
         bind:value={fullName.first} />
 
-      <div class="flex w-full max-w-sm flex-col gap-1.5">
-        <Label
-          class="font-bold"
-          for="middle-names">
-          Legal Middle Name(s):
-        </Label>
-        <Input
-          class="text-sm"
-          type="text"
-          id="middle-names"
-          placeholder="Max. 12 Characters (Max 2 Names)"
-          bind:value={fullName.middle.names} />
-        <br>
-      </div>
+      <InputLabel
+        id="middle-names"
+        label="Legal Middle Name(s):"
+        placeholder="Max. 12 Characters (Max 2 Names)"
+        bind:value={fullName.middle} />
 
-      <div class="flex w-full max-w-sm flex-col gap-1.5">
-        <Label
-          class="font-bold"
-          for="last-name">
-          Legal Last Name:
-        </Label>
-        <Input
-          class="text-sm"
-          type="text"
-          id="last-name"
-          placeholder="Max. 18 Characters"
-          bind:value={fullName.last.name} />
-        <br>
-      </div>
-
+      <InputLabel
+        id="last-names"
+        label="Legal Last Name:"
+        placeholder="Max. 18 Characters"
+        bind:value={fullName.last} />
+      
       <div class="flex w-full max-w-sm flex-col">
         <Label
           class="font-bold">

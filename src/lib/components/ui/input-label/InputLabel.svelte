@@ -14,7 +14,7 @@ let {
     <div class="flex w-full rmax-w-sm flex-col gap-1.5">
         <Label
             class="font-bold"
-            for=id>
+            for={id}>
             {label}
         </Label>
         <Input
