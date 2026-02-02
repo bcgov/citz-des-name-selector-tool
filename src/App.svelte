@@ -2,6 +2,7 @@
 import './app.css';
 import { Input } from "./lib/components/ui/input/index.js";
 import { Label } from "./lib/components/ui/label/index.js";
+import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
 
 let fullName = $state({
   first: {
@@ -94,20 +95,11 @@ $effect(() => {
 
       <br>
 
-      <div class="flex w-full rmax-w-sm flex-col gap-1.5">
-        <Label
-          class="font-bold"
-          for="first-name">
-          Legal First Name:
-        </Label>
-        <Input
-          class="text-sm"
-          type="text"
-          id="first-name"
-          placeholder="Max. 12 Characters"
-          bind:value={fullName.first.name} />
-        <br>
-      </div>
+      <InputLabel
+        id="first-name"
+        label="Legal First Name"
+        placeholder="Max. 12 Characters"
+        bind:value={fullName.first} />
 
       <div class="flex w-full max-w-sm flex-col gap-1.5">
         <Label
