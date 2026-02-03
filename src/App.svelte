@@ -1,9 +1,9 @@
 <script lang="ts">
 import './app.css';
+import { Lasso } from '@lucide/svelte';
 import { Label } from "./lib/components/ui/label/index.js";
 import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
-import { Lasso } from '@lucide/svelte';
-    import Navbar from './lib/components/ui/navbar/Navbar.svelte';
+import Navbar from './lib/components/ui/navbar/Navbar.svelte';
 
 let fullName = $state({
   first: {
@@ -76,126 +76,130 @@ $effect(() => {
   <Navbar />
  
   <div class="bg-blue-50 mt-15 absolute top-0">
-  <form class="px-7">
-    <div class="text-sm">
-      <Label class="text-lg font-bold">
-        Enter your Indigenous language Name
-      </Label>
-
-      <p>
-        The <b>First Voices</b> program provides keyboards for enabling search, and smart
-        phone apps for Apple and Android.
-      </p>
-
-      <br>
-
-      <p>
-        Click <a href="https://www.firstvoices.com/keyboards" target="_blank">here</a> to access/download First Voices Indigenous Language Keyboards and
-        type or copy/paste your Indigenous name into the Legal Name field(s) below:
-      </p>
-
-      <br>
-
-      <InputLabel
-        id="first-name"
-        label="Legal First Name:"
-        placeholder="Max. 12 Characters"
-        bind:value={fullName.first} />
-
-      <InputLabel
-        id="middle-names"
-        label="Legal Middle Name(s):"
-        placeholder="Max. 12 Characters (Max 2 Names)"
-        bind:value={fullName.middle} />
-
-      <InputLabel
-        id="last-names"
-        label="Legal Last Name:"
-        placeholder="Max. 18 Characters"
-        bind:value={fullName.last} />
-      
-      <div class="flex w-full max-w-sm flex-col">
-        <Label
-          class="font-bold">
-          <i>Full Legal Name</i> you entered
+    <form class="px-7">
+      <div class="text-sm">
+        <Label class="text-lg font-bold">
+          Enter your Indigenous language Name
         </Label>
+
         <p>
-          <i>(if you need to adjust anything, re-enter above)</i>
-        </p>
-        <br>
-      </div>
-
-      <div class="flex w-full max-w-sm flex-col border-b text-base">
-        <Label
-          class="text-base font-bold">
-          Full Legal Name
-        </Label>
-        <p>Placeholder Name</p>
-      </div>
-
-      <br>
-
-      <Label class="text-lg font-bold">
-        Next select an Alternate Spelling version of your name
-      </Label>
-
-      <br>
-
-      <div class="flex w-full max-w-sm flex-col">
-        <Label
-          class="font-bold">
-          Alternate Spelling
-        </Label>
-        <p>
-          Next, enter your alternate (A-Z) spelling:
-        </p>
-        <br>
-      </div>
-
-      <InputLabel
-        id="alt-first-name"
-        label="Alternate Spelling of First Name:"
-        placeholder="Max. 12 Characters"
-        bind:value={altName.first} />
-
-      <InputLabel
-        id="alt-middle-name"
-        label="Alternate Spelling of Middle Name(s):"
-        placeholder="Max. 12 Characters (Max 2 Names)"
-        bind:value={altName.middle} />
-
-      <InputLabel
-        id="alt-last-name"
-        label="Alternate Spelling of Last Name:"
-        placeholder="Max. 18 Characters"
-        bind:value={altName.last} />
-      
-      <div>
-        <!-- Block for input errors -->
-      </div>
-
-      <div class="flex w-full max-w-sm flex-col">
-        <Label
-          class="font-bold">
-          Alternate Spelling Name you entered
-        </Label>
-        <p>
-          <i>(if you need to adjust anything, re-enter above)</i>
+          The <b>First Voices</b> program provides keyboards for enabling search, and smart
+          phone apps for Apple and Android.
         </p>
 
-        <!-- <p> Input random name </p> -->
+        <br>
+
+        <p>
+          Click <a href="https://www.firstvoices.com/keyboards" target="_blank">here</a> to access/download First Voices Indigenous Language Keyboards and
+          type or copy/paste your Indigenous name into the Legal Name field(s) below:
+        </p>
 
         <br>
+
+        <InputLabel
+          id="first-name"
+          label="Legal First Name:"
+          placeholder="Max. 12 Characters"
+          bind:value={fullName.first} />
+
+        <InputLabel
+          id="middle-names"
+          label="Legal Middle Name(s):"
+          placeholder="Max. 12 Characters (Max 2 Names)"
+          bind:value={fullName.middle} />
+
+        <InputLabel
+          id="last-names"
+          label="Legal Last Name:"
+          placeholder="Max. 18 Characters"
+          bind:value={fullName.last} />
+        
+        <div class="flex w-full max-w-sm flex-col">
+          <Label
+            class="font-bold">
+            <i>Full Legal Name</i> you entered
+          </Label>
+          <p>
+            <i>(if you need to adjust anything, re-enter above)</i>
+          </p>
+          <br>
+        </div>
+
+        <div class="flex w-full max-w-sm flex-col border-b text-base">
+          <Label
+            class="text-base font-bold">
+            Full Legal Name
+          </Label>
+          <p>Placeholder Name</p>
+        </div>
+
+        <br>
+
+        <Label class="text-lg font-bold">
+          Next select an Alternate Spelling version of your name
+        </Label>
+
+        <br>
+
+        <div class="flex w-full max-w-sm flex-col">
+          <Label
+            class="font-bold">
+            Alternate Spelling
+          </Label>
+          <p>
+            Next, enter your alternate (A-Z) spelling:
+          </p>
+          <br>
+        </div>
+
+        <InputLabel
+          id="alt-first-name"
+          label="Alternate Spelling of First Name:"
+          placeholder="Max. 12 Characters"
+          bind:value={altName.first} />
+
+        <InputLabel
+          id="alt-middle-name"
+          label="Alternate Spelling of Middle Name(s):"
+          placeholder="Max. 12 Characters (Max 2 Names)"
+          bind:value={altName.middle} />
+
+        <InputLabel
+          id="alt-last-name"
+          label="Alternate Spelling of Last Name:"
+          placeholder="Max. 18 Characters"
+          bind:value={altName.last} />
+        
+        <div>
+          <!-- Block for input errors -->
+        </div>
+
+        <div class="flex w-full max-w-sm flex-col">
+          <Label
+            class="font-bold">
+            Alternate Spelling Name you entered
+          </Label>
+          <p>
+            <i>(if you need to adjust anything, re-enter above)</i>
+          </p>
+
+          <!-- <p> Input random name </p> -->
+
+          <br>
+        </div>
+
+        <p>If you are happy with the name versions you entered above,
+          please hit the ‘Next” button to see them together and take
+          a screenshot</p>
+        
+        <br>
+
+        <footer>
+          
+        </footer>
+
       </div>
-
-      <p>If you are happy with the name versions you entered above,
-        please hit the ‘Next” button to see them together and take
-        a screenshot</p>
-      
-      <br>
-
-    </div>
-  </form>
+    </form>
   </div>
 
 </main>
