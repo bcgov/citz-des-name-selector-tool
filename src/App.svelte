@@ -4,7 +4,6 @@ import { Lasso, NotepadText } from '@lucide/svelte';
 import { Label } from "./lib/components/ui/label/index.js";
 import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
 import Navbar from './lib/components/ui/navbar/Navbar.svelte';
-import Button from './lib/components/ui/button/button.svelte';
 import Footer from './lib/components/ui/footer/Footer.svelte';
 
 let fullName = $state({
@@ -78,7 +77,8 @@ $effect(() => {
 <main class="flex flex-col items-center justify-center min-h-screen">
   <Navbar />
  
-  <form class="bg-blue-50 mt-15 absolute top-0 px-7 pb-15">
+  <form class="mt-15 absolute top-0 px-7 pb-15">
+  <!-- <form class="bg-blue-50 mt-15 absolute top-0 px-7 pb-15"> -->
 
     <div class="text-sm">
       <Label class="text-lg font-bold">
