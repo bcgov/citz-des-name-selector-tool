@@ -81,6 +81,3 @@
 		{@render children?.()}
 	</button>
 {/if}
-
-<!-- <a href="https://www.flaticon.com/free-icons/right-chevron" title="right chevron icons">Right chevron icons created by th studio - Flaticon</a> -->
- <!-- <a href="https://www.flaticon.com/free-icons/left-chevron" title="left chevron icons">Left chevron icons created by th studio - Flaticon</a> -->
