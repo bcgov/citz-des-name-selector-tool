@@ -1,8 +1,10 @@
 <script lang="ts">
 import './app.css';
+import { Lasso, NotepadText } from '@lucide/svelte';
 import { Label } from "./lib/components/ui/label/index.js";
 import InputLabel from './lib/components/ui/input-label/InputLabel.svelte';
-import { Lasso } from '@lucide/svelte';
+import Navbar from './lib/components/ui/navbar/Navbar.svelte';
+import Footer from './lib/components/ui/footer/Footer.svelte';
 
 let fullName = $state({
   first: {
@@ -30,6 +32,7 @@ let altName = $state({
 
 $effect(() => {
   let names = fullName.middle.name.split(' ');
+  // console.log(scrollY.current);
 
   if (fullName.first.name.length > 12)
     console.log(
@@ -72,26 +75,20 @@ $effect(() => {
 </script>
 
 <main class="flex flex-col items-center justify-center min-h-screen">
-
-  <nav class="fixed top-0 w-screen h-15 bg-red-50 content-center">
-    <ul class="h-15 pl-7 flex flex-row justify-between">
-      <li class="bg-yellow-50 flex items-end">
-        <Label class="text-lg font-bold">
-          Step 1
-        </Label>
-      </li>
-      <li class="w-15 bg-yellow-50 flex justify-center">
-        <Label>Logo</Label>
-      </li>
-    </ul>
-  </nav>
+  <Navbar />
  
-  <div class="bg-blue-50 mt-15 absolute top-0">
-  <form class="px-7">
+  <form class="mt-15 absolute top-0 px-7 pb-15">
+  <!-- <form class="bg-blue-50 mt-15 absolute top-0 px-7 pb-15"> -->
+
     <div class="text-sm">
       <Label class="text-lg font-bold">
         Enter your Indigenous language Name
       </Label>
+      <!-- {#if window.scrollY === 0}
+      <p>here</p>
+      {:else}
+      <p></p>
+      {/if} -->
 
       <p>
         The <b>First Voices</b> program provides keyboards for enabling search, and smart
@@ -130,9 +127,7 @@ $effect(() => {
           class="font-bold">
           <i>Full Legal Name</i> you entered
         </Label>
-        <p>
-          <i>(if you need to adjust anything, re-enter above)</i>
-        </p>
+        <i>(if you need to adjust anything, re-enter above)</i>
         <br>
       </div>
 
@@ -190,9 +185,7 @@ $effect(() => {
           class="font-bold">
           Alternate Spelling Name you entered
         </Label>
-        <p>
-          <i>(if you need to adjust anything, re-enter above)</i>
-        </p>
+        <i>(if you need to adjust anything, re-enter above)</i>
 
         <!-- <p> Input random name </p> -->
 
@@ -207,6 +200,10 @@ $effect(() => {
 
     </div>
   </form>
-  </div>
+        
+  <Footer />
 
 </main>
+
+<style>
+</style>
