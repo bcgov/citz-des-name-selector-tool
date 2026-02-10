@@ -33,6 +33,7 @@ let altName = $state({
 $effect(() => {
   let names = fullName.middle.name.split(' ');
   // console.log(scrollY.current);
+  console.log(fullName.last.name.length)
 
   if (fullName.first.name.length > 12)
     console.log(
@@ -122,21 +123,22 @@ $effect(() => {
         placeholder="Max. 18 Characters"
         bind:value={fullName.last} />
       
-      <div class="flex w-full max-w-sm flex-col">
+      <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label
-          class="font-bold">
+          class="font-bold text-base">
           <i>Full Legal Name</i> you entered
         </Label>
         <i>(if you need to adjust anything, re-enter above)</i>
         <br>
-      </div>
-
-      <div class="flex w-full max-w-sm flex-col border-b text-base">
-        <Label
-          class="text-base font-bold">
-          Full Legal Name
-        </Label>
-        <p>Placeholder Name</p>
+        <p>
+          {#if fullName.last.name.length > 0}
+            {fullName.last.name},
+          {:else}
+            {fullName.last.name}
+          {/if}
+          {fullName.first.name}
+          {fullName.middle.name}
+        </p>
       </div>
 
       <br>
@@ -180,17 +182,17 @@ $effect(() => {
         <!-- Block for input errors -->
       </div>
 
-      <div class="flex w-full max-w-sm flex-col">
+      <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label
-          class="font-bold">
+          class="font-bold text-base">
           Alternate Spelling Name you entered
         </Label>
         <i>(if you need to adjust anything, re-enter above)</i>
-
-        <!-- <p> Input random name </p> -->
-
         <br>
+        <p>Placeholder Name</p>
       </div>
+
+      <br>
 
       <p>If you are happy with the name versions you entered above,
         please hit the ‘Next” button to see them together and take
