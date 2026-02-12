@@ -5,8 +5,8 @@ import { fullName } from './shared.svelte.ts';
 
 $effect(() => {
   let names = fullName.middle.name.split(' ');
-  // console.log(scrollY.current);
 
+  let name = $derived(fullName.first.name);
   if (fullName.first.name.length > 12)
     console.log(
       'Your Legal First Name exceeds the maximum allowable length for your first name'
@@ -42,7 +42,6 @@ $effect(() => {
         );
     }
   }
-
 });
 
 </script>
