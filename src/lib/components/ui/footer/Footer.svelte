@@ -1,12 +1,10 @@
 <script lang="ts">
 import { scrollY, innerHeight } from 'svelte/reactivity/window';
-import Button from '../button/button.svelte';
-import { step } from '../../../shared.svelte.ts';
+import NavigationButton from './NavigationButton.svelte';
 
 let active: boolean = $state(true);
 
 $effect(() => {
-  console.log('Step: ', step);
   if (scrollY.current)
     if (innerHeight.current)
       if (scrollY.current < innerHeight.current - 200) {
@@ -25,12 +23,7 @@ $effect(() => {
     {#if scrollY.current !== undefined && innerHeight.current !== undefined && scrollY.current < innerHeight.current - 100}
         <p class="self-center shadow">(Scroll Down)</p>
     {:else}
-        <Button class="self-center" onclick={() => {
-                console.log('thing');
-                if (step.value === 1) step.value = 2;
-            }}>
-            Next
-        </Button>
+        <NavigationButton />
     {/if}
 </footer>
 
