@@ -20,5 +20,6 @@ export const altName = $state({
   last: {
     name: ""
   }
-})
+});
 
+export const step = $state({value: 1});

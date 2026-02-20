@@ -3,6 +3,9 @@ import { Label } from "./components/ui/label/index.js";
 import InputLabel from './components/ui/input-label/InputLabel.svelte';
 import { altName } from './shared.svelte.ts';
 
+$effect(() => {
+    
+});
 
 </script>
 

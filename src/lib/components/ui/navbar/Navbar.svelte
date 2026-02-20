@@ -1,6 +1,7 @@
 <script lang="ts">
 import Label from "../label/label.svelte";
 import { scrollY } from 'svelte/reactivity/window';
+import { step } from '../../../shared.svelte.ts';
 
 let active = $state(false);
 
@@ -25,7 +26,7 @@ $effect(() => {
     <!-- <li class="ml-7 bg-yellow-50 flex items-end"> -->
       {#if scrollY.current !== undefined && scrollY.current < 100}
       <Label class="text-lg font-bold">
-        Step 1
+          Step {step.value}
       </Label>
       {/if}
     </li>
