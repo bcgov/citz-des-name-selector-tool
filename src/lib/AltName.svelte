@@ -2,9 +2,13 @@
 import { Label } from "./components/ui/label/index.js";
 import InputLabel from './components/ui/input-label/InputLabel.svelte';
 import { altName } from './shared.svelte.ts';
+import { isASCII } from './utils.ts'
 
 $effect(() => {
   let names = altName.middle.name.split(' ');
+  console.log("first name: ", isASCII(altName.first.name));
+  console.log("first name: ", isASCII(altName.middle.name));
+  console.log("first name: ", isASCII(altName.last.name));
 
   if (altName.first.name.length > 12)
     console.log(
@@ -41,6 +45,7 @@ $effect(() => {
         );
     }
   }
+
 });
 
 </script>
