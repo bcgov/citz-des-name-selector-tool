@@ -7,8 +7,8 @@ import { isASCII } from './utils.ts'
 $effect(() => {
   let names = altName.middle.name.split(' ');
   console.log("first name: ", isASCII(altName.first.name));
-  console.log("first name: ", isASCII(altName.middle.name));
-  console.log("first name: ", isASCII(altName.last.name));
+  console.log("middle name(s): ", isASCII(altName.middle.name));
+  console.log("last name: ", isASCII(altName.last.name));
 
   if (altName.first.name.length > 12)
     console.log(

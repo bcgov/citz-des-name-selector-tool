@@ -13,5 +13,5 @@ export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
 export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?: U | null };
 
 export function isASCII(str) {
-    return /^[\x00-\x7F]*$/.test(str);
+    return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
