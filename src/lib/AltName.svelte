@@ -97,6 +97,14 @@ $effect(() => {
     </Label>
     <i>(if you need to adjust anything, re-enter above)</i>
     <br>
-    <p>Placeholder Name</p>
+    <p>
+      {#if altName.last.name.length > 0}
+        {altName.last.name},
+      {:else}
+        {altName.last.name}
+      {/if}
+      {altName.first.name}
+      {altName.middle.name}
+    </p>
   </div>
 </div>
