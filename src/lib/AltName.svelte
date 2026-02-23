@@ -4,7 +4,43 @@ import InputLabel from './components/ui/input-label/InputLabel.svelte';
 import { altName } from './shared.svelte.ts';
 
 $effect(() => {
-    
+  let names = altName.middle.name.split(' ');
+
+  if (altName.first.name.length > 12)
+    console.log(
+      'Your Legal First Name exceeds the maximum allowable length for your first name'
+    );
+  else if (altName.first.name.split(' ').length > 1)
+    console.log(
+      'The amount of Legal First Names exceeds the maximum number of names allowed'
+    );
+
+  if (altName.last.name.length > 18)
+    console.log(
+      'Your Legal Last Name exceeds the maximum allowable length for your last name'
+    );
+  else if (altName.last.name.split(' ').length > 1)
+    console.log(
+      'The amount of Legal Last Names exceeds the maximum number of names allowed'
+    );
+
+  if (altName.middle.name.length > 0) {
+    if (names.length > 2)
+      console.log(
+        'The amount of Legal Middle Names exceeds the maximum number of names allowed'
+      );
+    else {
+      if (names[0].length > 12)
+        console.log(
+          'Your first Legal Middle Name exceeds the maximum length of a middle name'
+        );
+
+      if (names[1]?.length > 12)
+        console.log(
+          'Your second middle name exceeds the maximum length of a middle name'
+        );
+    }
+  }
 });
 
 </script>
