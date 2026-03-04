@@ -2,7 +2,6 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { fullName } from './shared.svelte.ts';
-    import "@bcgov/design-tokens/css/variables.css";
 
     $effect(() => {
         let names = fullName.middle.name.split(' ');

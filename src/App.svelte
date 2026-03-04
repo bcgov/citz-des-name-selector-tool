@@ -4,6 +4,7 @@
     import Footer from './lib/components/ui/footer/Footer.svelte';
     import FullName from './lib/FullName.svelte';
     import AltName from './lib/AltName.svelte';
+    import "@bcgov/design-tokens/css/variables.css";
 </script>
 
 <main class="flex flex-col items-center justify-center min-h-screen">
