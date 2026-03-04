@@ -2,6 +2,7 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { fullName } from './shared.svelte.ts';
+    import "@bcgov/design-tokens/css/variables.css";
 
     $effect(() => {
         let names = fullName.middle.name.split(' ');
@@ -76,6 +77,54 @@
         bind:value={fullName.first}
     />
 
+    <div
+        style="
+            font: var(--typography-regular-body);
+            padding: var(--layout-padding-none);
+            color: var(--typography-color-primary);
+            border: none;
+            flex-grow: 1;
+        ">
+
+        <label
+            style="
+                font: var(--typography-regular-small-body);
+                color: var(--typography-color-primary);
+                padding: var(--layout-padding-xsmall) var(--layout-padding-none);">
+            Thing
+        </label>
+
+        <div
+            style="
+            color: var(--typography-color-primary);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--layout-margin-small);
+            background: var(--surface-color-forms-default);
+            box-sizing: border-box;
+            border: var(--layout-border-width-small) solid var(--surface-color-border-default);
+            border-radius: var(--layout-border-radius-medium);
+            padding: var(--layout-padding-small) 12px;">
+            <input
+                style="
+                    font: var(--typography-regular-body);
+                    padding: var(--layout-padding-none);
+                    color: var(--typography-color-primary);
+                    border: none;
+                    flex-grow: 1;"
+                placeholder="thing" />
+        </div>
+
+        <span
+            style="
+                font: var(--typography-regular-small-body);
+                color: var(--typography-color-secondary);
+                padding: var(--layout-padding-xsmall) var(--layout-padding-none);">
+            Other thing
+        </span>
+    </div>
+
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
@@ -107,3 +156,8 @@
         </p>
     </div>
 </div>
+
+<style>
+    input {
+    }
+</style>

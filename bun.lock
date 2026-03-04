@@ -5,6 +5,8 @@
     "": {
       "name": "vite-project",
       "dependencies": {
+        "@bcgov/bc-sans": "^2.1.0",
+        "@bcgov/design-tokens": "^3.2.0",
         "@lucide/svelte": "^0.559.0",
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.4.0",
@@ -29,6 +31,10 @@
     },
   },
   "packages": {
+    "@bcgov/bc-sans": ["@bcgov/bc-sans@2.1.0", "", {}, "sha512-1MesF4NAVpM5dywoJ68wNcBylHbPqg1dDV/FNuQm0BbspETGlPmfX8LG8rtrCjCAPhWuL2qRT/lBYDUMvFTUnw=="],
+
+    "@bcgov/design-tokens": ["@bcgov/design-tokens@3.2.0", "", {}, "sha512-2D3mPFKTpNLeIp8ER9y8oDKxXE8+rBfcvuF4yFd7uUvDm0izZNFhambUi6sN3OdkmuZoGQO7AjlMtOQzsHtxzA=="],
+
     "@esbuild/aix-ppc64": ["@esbuild/aix-ppc64@0.25.12", "", { "os": "aix", "cpu": "ppc64" }, "sha512-Hhmwd6CInZ3dwpuGTF8fJG6yoWmsToE+vYgD4nytZVxcu1ulHpUQRAB1UJ8+N1Am3Mz4+xOByoQoSZf4D+CpkA=="],
 
     "@esbuild/android-arm": ["@esbuild/android-arm@0.25.12", "", { "os": "android", "cpu": "arm" }, "sha512-VJ+sKvNA/GE7Ccacc9Cha7bpS8nyzVv0jdVgwNDaR4gDMC/2TTRc33Ip8qrNYUcpkOHUT5OZ0bUcNNVZQ9RLlg=="],

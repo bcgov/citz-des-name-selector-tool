@@ -27,6 +27,8 @@
         "vite": "^7.2.4"
     },
     "dependencies": {
+        "@bcgov/bc-sans": "^2.1.0",
+        "@bcgov/design-tokens": "^3.2.0",
         "@lucide/svelte": "^0.559.0",
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.4.0",
