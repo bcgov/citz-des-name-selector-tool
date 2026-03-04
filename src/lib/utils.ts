@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import Typography from 'typography';
+import '@bcgov/bc-sans/css/BC_Sans.css';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -19,3 +21,13 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
 export function isASCII(str) {
     return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
+
+const typography = new Typography({
+  baseFontSize: '16px',
+  baseLineHeight: 1.25,
+  headerFontFamily: ['BC Sans', 'Noto Sans', 'Verdana', 'Arial', 'sans-serif'],
+  bodyFontFamily: ['BC Sans', 'Noto Sans', 'Verdana', 'Arial', 'sans-serif'],
+  scaleRatio: 2.074,
+});
+
+export default typography;
