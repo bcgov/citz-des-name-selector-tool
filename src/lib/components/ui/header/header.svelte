@@ -1,4 +1,17 @@
 <script lang="ts">
+    //import { scrollY } from 'svelte/reactivity/window';
+    import { step } from '../../../shared.svelte.ts';
+
+    //let active = $state(false);
+
+/*    $effect(() => {
+        if (scrollY.current)
+            if (scrollY.current > 100) {
+                active = true;
+            } else {
+                active = false;
+            }
+    });*/
 </script>
 
 <header class="bcds-header">
@@ -6,7 +19,7 @@
         <a>Logo</a>
         <div class="bcds-header--line"></div>
         <div class="bcds-header--title">
-            Step
+            Step {step.value}
         </div>
     </div>
 </header>
