@@ -12,7 +12,7 @@
         <input id={id} class="bcds-TextField--input" bind:value={value.name} />
     </div>
 
-    <span class="bcds-TextField--description">
+    <span id={id} class="bcds-TextField--description">
         {placeholder}
     </span>
 </div>
