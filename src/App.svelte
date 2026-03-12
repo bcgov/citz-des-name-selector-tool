@@ -1,7 +1,7 @@
 <script lang="ts">
     import './app.css';
     import Header from './lib/components/ui/header/header.svelte';
-    import Footer from './lib/components/ui/footer/Footer.svelte';
+    // import Footer from './lib/components/ui/footer/Footer.svelte';
     import FullName from './lib/FullName.svelte';
     import AltName from './lib/AltName.svelte';
     import "@bcgov/design-tokens/css/variables.css";
@@ -53,6 +53,8 @@
 
         <div class="bcds-footer--container">
             <div class="bcds-footer--container-content">
+
+
 
                 <p class="bcds-footer--copyright">
                     {defaultCopyright}
