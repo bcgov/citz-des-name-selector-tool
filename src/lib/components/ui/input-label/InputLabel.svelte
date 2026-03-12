@@ -4,7 +4,7 @@
 
 <div id={id} class="bcds-TextField">
 
-    <label for={id} class="bcds-TextField--label">
+    <label for={`input-${id}`} class="bcds-TextField--label">
         {label}
     </label>
 
