@@ -111,6 +111,4 @@
 </div>
 
 <style>
-    input {
-    }
 </style>

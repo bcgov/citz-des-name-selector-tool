@@ -27,7 +27,7 @@
         padding: var(--layout-padding-none) var(--layout-padding-medium);
     }
 
-    button.bcds-react-aria-Button {
+    button.bcds-Button {
         border: none;
         border-radius: var(--layout-border-radius-medium);
         cursor: pointer;
