@@ -8,7 +8,7 @@
     }
 </script>
 
-<button class="self-center primary medium bcds-react-aria-Button" onclick={nextStep}>
+<button class="self-center primary medium bcds-Button" onclick={nextStep}>
     {#if step.value === 1}
         Next
     {:else}
