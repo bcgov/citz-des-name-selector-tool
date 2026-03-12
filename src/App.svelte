@@ -29,7 +29,8 @@
         <br />
     </form>
 
-    <Footer />
+    <!-- <Footer /> -->
+
 </main>
 
 <style>
