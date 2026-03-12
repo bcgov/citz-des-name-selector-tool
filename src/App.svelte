@@ -50,6 +50,16 @@
                 </p>
             </div>
         </div>
+
+        <div class="bcds-footer--container">
+            <div class="bcds-footer--container-content">
+
+                <p class="bcds-footer--copyright">
+                    {defaultCopyright}
+                </p>
+            </div>
+        </div>
+
     </footer>
 
 </main>
@@ -82,5 +92,29 @@
         font: var(--typography-regular-small-body);
         max-width: 1100px;
         width: 100%;
+    }
+
+    .bcds-footer--container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: var(--surface-color-background-light-gray);
+        padding: var(--layout-padding-xlarge);
+    }
+
+    .bcds-footer--container-content {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--layout-padding-xlarge);
+        max-width: 1100px;
+        width: 100%;
+    }
+
+    .bcds-footer--copyright {
+        color: var(--typography-color-secondary);
+        font: var(--typography-regular-body);
+        margin: var(--layout-margin-none);
     }
 </style>
