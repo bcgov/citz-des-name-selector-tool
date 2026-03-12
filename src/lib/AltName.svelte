@@ -82,6 +82,8 @@
         bind:value={altName.last}
     />
 
+    <br>
+
     <div>
         <!-- Block for input errors -->
     </div>

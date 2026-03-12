@@ -7,6 +7,11 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: 'BC Sans';
+}
+
+h1 {
+    font: var(--typography-regular-h1);
 }
 
 :root {

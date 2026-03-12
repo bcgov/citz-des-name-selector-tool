@@ -90,6 +90,8 @@
         bind:value={fullName.last}
     />
 
+    <br>
+
     <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label class="font-bold text-base">
             <i>Full Legal Name</i> you entered
@@ -107,3 +109,6 @@
         </p>
     </div>
 </div>
+
+<style>
+</style>
