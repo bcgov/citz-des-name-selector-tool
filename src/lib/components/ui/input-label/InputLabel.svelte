@@ -8,11 +8,11 @@
         {label}
     </label>
 
-    <div id={id} class="bcds-TextField--container medium">
-        <input id={id} class="bcds-TextField--input" bind:value={value.name} />
+    <div id={`container-${id}`} class="bcds-TextField--container medium">
+        <input id={`input-${id}`} class="bcds-TextField--input" bind:value={value.name} />
     </div>
 
-    <span id={id} class="bcds-TextField--description">
+    <span id={`span-${id}`} class="bcds-TextField--description">
         {placeholder}
     </span>
 </div>
