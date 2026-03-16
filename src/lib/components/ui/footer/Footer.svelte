@@ -1,6 +1,6 @@
 <script lang="ts">
     import FooterLinks from "./FooterLinks.svelte";
-    import SvgBcLogo from "../../../../assets/SvgBcLogo.svg";
+    import FooterLogo from "./FooterLogo.svelte";
 
     const defaultCopyright = `© ${new Date().getUTCFullYear()} Government of British Columbia.`;
 </script>
@@ -21,10 +21,7 @@
 
     <div class="bcds-footer--container">
         <div class="bcds-footer--container-content">
-
-            <div class="bcds-footer--logo">
-                <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
-            </div>
+            <FooterLogo />
 
             <FooterLinks
                 title="More Info"
@@ -108,20 +105,5 @@
         height: var(--layout-border-width-small);
         margin: var(--layout-margin-none);
         width: 100%;
-    }
-
-    .bcds-footer--logo {
-        display: flex;
-        flex-direction: column;
-        min-width: 324px;
-        width: 576px;
-
-        max-width: 324px;
-        gap: var(--layout-padding-medium);
-    }
-
-    .bcds-footer--logo img {
-        width: 146px;
-        min-width: 146px;
     }
 </style>
