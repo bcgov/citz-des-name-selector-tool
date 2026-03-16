@@ -1,6 +1,6 @@
 <script lang="ts">
     import FooterLinks from "./FooterLinks.svelte";
-
+    import SvgBcLogo from "../../../../assets/SvgBcLogo.svg";
 
     const defaultCopyright = `© ${new Date().getUTCFullYear()} Government of British Columbia.`;
 </script>
@@ -21,6 +21,10 @@
 
     <div class="bcds-footer--container">
         <div class="bcds-footer--container-content">
+
+            <div class="bcds-footer--logo">
+                <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
+            </div>
 
             <FooterLinks
                 title="More Info"
