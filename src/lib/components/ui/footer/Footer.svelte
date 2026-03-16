@@ -33,6 +33,9 @@
                     {label: "Copyright",link: "https://www2.gov.bc.ca/gov/content?id=1AAACC9C65754E4D89A118B875E0FBDA"},
                     {label: "Contact us",link: "https://www2.gov.bc.ca/gov/content?id=6A77C17D0CCB48F897F8598CCC019111"}
                 ]} />
+            
+            <hr>
+
             <p class="bcds-footer--copyright">
                 {defaultCopyright}
             </p>
@@ -93,5 +96,13 @@
         color: var(--typography-color-secondary);
         font: var(--typography-regular-body);
         margin: var(--layout-margin-none);
+    }
+
+    .bcds-footer hr {
+        background-color: var(--surface-color-border-dark);
+        border: var(--layout-border-width-none);
+        height: var(--layout-border-width-small);
+        margin: var(--layout-margin-none);
+        width: 100%;
     }
 </style>
