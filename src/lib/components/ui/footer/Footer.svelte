@@ -21,6 +21,7 @@
 
     <div class="bcds-footer--container">
         <div class="bcds-footer--container-content">
+
             <FooterLogo />
 
             <FooterLinks
