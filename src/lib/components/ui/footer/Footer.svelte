@@ -1,4 +1,5 @@
 <script lang="ts">
+    import FooterLinks from "./FooterLinks.svelte";
 
 
     const defaultCopyright = `© ${new Date().getUTCFullYear()} Government of British Columbia.`;
@@ -21,8 +22,17 @@
     <div class="bcds-footer--container">
         <div class="bcds-footer--container-content">
 
-
-
+            <FooterLinks
+                title="More Info"
+                links={[
+                    {label: "Home", link: "https://www2.gov.bc.ca/gov/content/home"},
+                    {label: "About gov.bc.ca",link: "https://www2.gov.bc.ca/gov/content?id=3C4F47288DFB454987435AB5EFEFBB7F"},
+                    {label: "Disclaimer",link: "https://www2.gov.bc.ca/gov/content?id=79F93E018712422FBC8E674A67A70535"},
+                    {label: "Privacy",link: "https://www2.gov.bc.ca/gov/content?id=9E890E16955E4FF4BF3B0E07B4722932"},
+                    {label: "Accessibility",link: "https://www2.gov.bc.ca/gov/content?id=E08E79740F9C41B9B0C484685CC5E412"},
+                    {label: "Copyright",link: "https://www2.gov.bc.ca/gov/content?id=1AAACC9C65754E4D89A118B875E0FBDA"},
+                    {label: "Contact us",link: "https://www2.gov.bc.ca/gov/content?id=6A77C17D0CCB48F897F8598CCC019111"}
+                ]} />
             <p class="bcds-footer--copyright">
                 {defaultCopyright}
             </p>
