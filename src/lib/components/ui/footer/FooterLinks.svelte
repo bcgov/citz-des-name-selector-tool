@@ -25,5 +25,15 @@
 </figure>
 
 <style>
+    .bcds-footer--links {
+        margin: var(--layout-margin-none);
+        min-width: 320px;
+    }
 
+    .bcds-footer--links-title {
+        display: block;
+        font: var(--typography-bold-small-body);
+        margin-bottom: var(--layout-padding-medium);
+        text-transform: uppercase;
+    }
 </style>
