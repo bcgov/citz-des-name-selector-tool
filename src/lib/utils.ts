@@ -17,6 +17,6 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
     ref?: U | null;
 };
 
-export function isASCII(str) {
+export function isASCII(str: string): boolean {
     return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
