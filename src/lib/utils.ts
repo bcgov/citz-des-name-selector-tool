@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import Typography from 'typography';
 import '@bcgov/bc-sans/css/BC_Sans.css';
 
 export function cn(...inputs: ClassValue[]) {
