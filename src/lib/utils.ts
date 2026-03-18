@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import Typography from 'typography';
 import '@bcgov/bc-sans/css/BC_Sans.css';
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,6 +17,6 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
     ref?: U | null;
 };
 
-export function isASCII(str) {
+export function isASCII(str: string): boolean {
     return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
