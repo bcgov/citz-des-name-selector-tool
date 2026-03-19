@@ -2,14 +2,17 @@
     let { id, label, placeholder, value = $bindable() } = $props();
 </script>
 
-<div id={id} class="bcds-TextField">
-
+<div {id} class="bcds-TextField">
     <label for={`input-${id}`} class="bcds-TextField--label">
         {label}
     </label>
 
     <div id={`container-${id}`} class="bcds-TextField--container medium">
-        <input id={`input-${id}`} class="bcds-TextField--input" bind:value={value.name} />
+        <input
+            id={`input-${id}`}
+            class="bcds-TextField--input"
+            bind:value={value.name}
+        />
     </div>
 
     <span id={`span-${id}`} class="bcds-TextField--description">
@@ -40,10 +43,10 @@
         gap: var(--layout-margin-small);
         background: var(--surface-color-forms-default);
         box-sizing: border-box;
-        border: var(--layout-border-width-small) solid var(--surface-color-border-default);
+        border: var(--layout-border-width-small) solid
+            var(--surface-color-border-default);
         border-radius: var(--layout-border-radius-medium);
         padding: var(--layout-padding-small) 12px;
-
     }
 
     .medium {
