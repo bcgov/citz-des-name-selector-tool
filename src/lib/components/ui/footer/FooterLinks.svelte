@@ -14,12 +14,12 @@
     {#if links}
         <ul>
             {#each links as link, index}
-                <li id={`${title.toLowerCase().replace(/\s/g,"-")}-${index}`}>
-                    <a href=link.link>
+                <li id={`${title.toLowerCase().replace(/\s/g, '-')}-${index}`}>
+                    <a href="link.link">
                         {link.label}
                     </a>
                 </li>
-            {/each}    
+            {/each}
         </ul>
     {/if}
 </figure>

@@ -90,7 +90,7 @@
         bind:value={fullName.last}
     />
 
-    <br>
+    <br />
 
     <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label class="font-bold text-base">

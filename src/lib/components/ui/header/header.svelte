@@ -4,7 +4,7 @@
 
     //let active = $state(false);
 
-/*    $effect(() => {
+    /*    $effect(() => {
         if (scrollY.current)
             if (scrollY.current > 100) {
                 active = true;
