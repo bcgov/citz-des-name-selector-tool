@@ -78,6 +78,12 @@
         color: var(--icons-color-primary-invert);
     }
 
+    .bcds-Button.secondary {
+        background-color: var(--surface-color-secondary-button-default);
+        border: 1px solid var(--surface-color-border-dark);
+        color: var(--typography-color-primary);
+    }
+
     .bcds-Button.medium {
         min-height: 40px;
         padding: var(--layout-padding-none) var(--layout-padding-medium);
