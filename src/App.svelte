@@ -5,6 +5,20 @@
     import FullName from './lib/FullName.svelte';
     import AltName from './lib/AltName.svelte';
     import '@bcgov/design-tokens/css/variables.css';
+
+    import { step } from '$lib/shared.svelte';
+
+    function previousStep() {
+        if (step.value > 1) {
+            step.value = step.value - 1;
+        }
+    }
+
+    function nextStep() {
+        if (step.value < 2) {
+            step.value = step.value + 1;
+        }
+    }
 </script>
 
 <main class="flex flex-col items-center justify-center min-h-screen">
@@ -30,10 +44,42 @@
     </form>
 
     <!-- Button Container for Back, Next and Done button -->
-    <div></div>
+    <div style="width: 100%; margin-bottom: 20px; display: flex; justify-content: space-evenly;">
+        {#if step.value > 1}
+            <button
+                class="bcds-Button secondary medium"
+                onclick={previousStep}>
+                Back
+            </button>
+        {/if}
+        <button
+            class="bcds-Button primary medium"
+            onclick={nextStep}>
+            Next
+        </button>
+    </div>
 
     <Footer />
 </main>
 
 <style>
+    .bcds-Button {
+        border: none;
+        border-radius: var(--layout-border-radius-medium);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--layout-padding-small);
+        font: var(--typography-regular-body);
+    }
+
+    .bcds-Button.primary {
+        background: var(--surface-color-primary-button-default);
+        color: var(--icons-color-primary-invert);
+    }
+
+    .bcds-Button.medium {
+        min-height: 40px;
+        padding: var(--layout-padding-none) var(--layout-padding-medium);
+    }
 </style>
