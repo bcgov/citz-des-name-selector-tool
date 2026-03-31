@@ -7,6 +7,20 @@
     import '@bcgov/design-tokens/css/variables.css';
 
     import { step } from '$lib/shared.svelte';
+    import { Ellipsis } from '@lucide/svelte';
+
+    $effect(function () {
+        if (step.value < 2) {
+            const el = document.getElementById('primary-button');
+            el?.classList.add('primary');
+            el?.classList.remove('disabled');
+        }
+        if (step.value === 2) {
+            const el = document.getElementById('primary-button');
+            el?.classList.remove('primary');
+            el?.classList.add('disabled');
+        }
+    });
 
     function previousStep() {
         if (step.value > 1) {
@@ -53,6 +67,7 @@
             </button>
         {/if}
         <button
+            id="primary-button"
             class="bcds-Button primary medium"
             onclick={nextStep}>
             Next
@@ -82,6 +97,11 @@
         background-color: var(--surface-color-secondary-button-default);
         border: 1px solid var(--surface-color-border-dark);
         color: var(--typography-color-primary);
+    }
+
+    .bcds-Button.disabled {
+        background-color: var(--surface-color-primary-danger-button-disabled);
+        color: var(--typography-color-disabled);
     }
 
     .bcds-Button.medium {
