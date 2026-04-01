@@ -5,6 +5,7 @@
     import FullName from './lib/FullName.svelte';
     import AltName from './lib/AltName.svelte';
     import '@bcgov/design-tokens/css/variables.css';
+    import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
 </script>
 
 <main class="flex flex-col items-center justify-center min-h-screen">
@@ -29,8 +30,7 @@
         <br />
     </form>
 
-    <!-- Button Container for Back, Next and Done button -->
-    <div></div>
+    <Navigation />
 
     <Footer />
 </main>
