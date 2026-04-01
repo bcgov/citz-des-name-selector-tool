@@ -16,7 +16,9 @@
 
 <header class="bcds-header">
     <div class="bcds-header--container">
-        <a>Logo</a>
+        <div>
+            <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
+        </div>
         <div class="bcds-header--line"></div>
         <div class="bcds-header--title">
             Step {step.value}
@@ -59,5 +61,10 @@
         flex-grow: 1;
         font: var(--typography-bold-h4);
         color: var(--typography-color-primary);
+    }
+
+    .bcds-header img {
+        min-width: 129px;
+        width: 129px;
     }
 </style>
