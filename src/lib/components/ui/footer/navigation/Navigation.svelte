@@ -25,21 +25,21 @@
             step.value = step.value + 1;
         }
     }
-
 </script>
 
-<div style="width: 100%; margin-bottom: 20px; display: flex; justify-content: space-evenly;">
+<div
+    style="width: 100%; margin-bottom: 20px; display: flex; justify-content: space-evenly;"
+>
     {#if step.value > 1}
-        <button
-            class="bcds-Button secondary medium"
-            onclick={previousStep}>
+        <button class="bcds-Button secondary medium" onclick={previousStep}>
             Back
         </button>
     {/if}
     <button
         id="primary-button"
         class="bcds-Button primary medium"
-        onclick={nextStep}>
+        onclick={nextStep}
+    >
         Next
     </button>
 </div>
