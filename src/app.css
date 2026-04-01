@@ -129,3 +129,34 @@ h1 {
         @apply bg-background text-foreground;
     }
 }
+
+.bcds-Button {
+    border: none;
+    border-radius: var(--layout-border-radius-medium);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--layout-padding-small);
+    font: var(--typography-regular-body);
+}
+
+.bcds-Button.primary {
+    background: var(--surface-color-primary-button-default);
+    color: var(--icons-color-primary-invert);
+}
+
+.bcds-Button.secondary {
+    background-color: var(--surface-color-secondary-button-default);
+    border: 1px solid var(--surface-color-border-dark);
+    color: var(--typography-color-primary);
+}
+
+.bcds-Button.disabled {
+    background-color: var(--surface-color-primary-danger-button-disabled);
+    color: var(--typography-color-disabled);
+}
+
+.bcds-Button.medium {
+    min-height: 40px;
+    padding: var(--layout-padding-none) var(--layout-padding-medium);
+}
