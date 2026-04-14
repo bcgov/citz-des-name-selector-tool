@@ -13,7 +13,6 @@
     <Header />
 
     <form class="top-0 px-7 pb-15">
-
         {#if step.value === 1}
             <FullName />
         {/if}
@@ -28,7 +27,6 @@
             If you are happy with the name versions you entered above, please
             hit the ‘Next” button to see them together and take a screenshot
         </p>
-
     </form>
 
     <Navigation />

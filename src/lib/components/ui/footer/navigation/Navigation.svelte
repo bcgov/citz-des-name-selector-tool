@@ -12,7 +12,7 @@
             el?.classList.remove('primary');
             el?.classList.add('disabled');
         }
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     });
 
     function previousStep() {
