@@ -28,9 +28,7 @@
     }
 </script>
 
-<div
-    style="width: 100%; margin-bottom: 20px; display: flex; justify-content: space-evenly;"
->
+<div class="bcds-Navigation">
     {#if step.value > 1}
         <button class="bcds-Button secondary medium" onclick={previousStep}>
             Back
@@ -44,3 +42,12 @@
         Next
     </button>
 </div>
+
+<style>
+    .bcds-Navigation {
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
