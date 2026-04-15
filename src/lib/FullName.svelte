@@ -2,14 +2,20 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { fullName } from './shared.svelte.ts';
+    import { isGreaterThanMinLength, isLessThanOrEqualToMaxLength } from './utils.ts';
 
     $effect(() => {
         let names = fullName.middle.name.split(' ');
 
         let name = $derived(fullName.first.name);
-        if (fullName.first.name.length > 12)
+        // if (fullName.first.name.length > 12)
+        if (!isLessThanOrEqualToMaxLength(fullName.first.name, 12))
             console.log(
                 'Your Legal First Name exceeds the maximum allowable length for your first name'
+            );
+        else if (!isGreaterThanMinLength(fullName.first.name))
+            console.log(
+                'Your Legal First Name is less than the minimum allowable length for your first name'
             );
         else if (fullName.first.name.split(' ').length > 1)
             console.log(
