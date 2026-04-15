@@ -57,5 +57,5 @@ export function isLessThanOrEqualToMaxNames(
     str: string,
     maxNames: number
 ) {
-    return str.split(' ').length > maxNames;
+    return str.split(' ').length <= maxNames;
 }
