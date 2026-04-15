@@ -1,6 +1,6 @@
 export const rules = {
     // TODO: Are there rules for "legal name" or are these rules all for "alternate name"?
-    legalName: {
+    alternateName: {
         first: {
             length: {
                 maximumPerName: 12,
