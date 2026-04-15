@@ -17,7 +17,13 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
     ref?: U | null;
 };
 
-export function isASCII(str: string): boolean {
+/**
+ * 
+ * @param str Target string to be tested
+ */
+export function isASCII(
+    str: string
+): boolean {
     return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
 
@@ -30,4 +36,16 @@ export function isLessThanOrEqualToMaxLength(
     maxLength: number
 ): boolean {
     return str.length <= maxLength;
+}
+
+/**
+ * 
+ * @param str Target string to be tested.
+ * @param maxNames Maximum names of the field being validated.
+ */
+export function isLessThanOrEqualToMaxNames(
+    str: string,
+    maxNames: number
+) {
+    return str.split(' ').length > maxNames;
 }
