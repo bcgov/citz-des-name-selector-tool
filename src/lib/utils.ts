@@ -20,3 +20,14 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
 export function isASCII(str: string): boolean {
     return /^(?!['-])[\x00-\x7F]*(?<!['-])$/.test(str);
 }
+
+/**
+ * @param str Target string to be tested.
+ * @param maxLength Maximum character length of the field being validated.
+ */
+export function isLessThanOrEqualToMaxLength(
+    str: string,
+    maxLength: number
+): boolean {
+    return str.length <= maxLength;
+}

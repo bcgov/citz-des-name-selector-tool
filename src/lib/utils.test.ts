@@ -1,6 +1,6 @@
 import { describe, expect, suite, test } from 'vitest';
 
-import { isASCII } from './utils';
+import { isASCII, isLessThanOrEqualToMaxLength } from './utils';
 
 suite('isASCII()', () => {
     describe('boolean tests for ASCII validity', () => {
@@ -65,5 +65,17 @@ suite('isASCII()', () => {
                 expect(isASCII(str)).toBe(true);
             }
         );
+    });
+});
+
+suite('isLessThanOrEqualToMaxLength', () => {
+    test('returns true for strings with length less than or equal to the max length', () => {
+        expect(isLessThanOrEqualToMaxLength('', 2)).toBeTruthy();
+        expect(isLessThanOrEqualToMaxLength('a', 2)).toBeTruthy();
+        expect(isLessThanOrEqualToMaxLength('ab', 2)).toBeTruthy();
+    });
+
+    test('returns false for strings with length greater than the max length', () => {
+        expect(isLessThanOrEqualToMaxLength('abc', 2)).toBeFalsy();
     });
 });
