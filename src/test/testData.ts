@@ -16,6 +16,7 @@ interface TestPersonNameData {
     alternateLastName: string;
 }
 
+// All alternate names fields pass ASCII, pass length.
 // From: PAFNW Anihšināpēmowin
 //       https://www.firstvoices.com/pafnw-anihsinapemowin/
 export const passesLengthValidation: TestPersonNameData = {
@@ -33,6 +34,7 @@ export const passesLengthValidation: TestPersonNameData = {
     alternateLastName: 'Whoisheretoday', // Length: 14
 };
 
+// All alternate name fields pass ASCII, fail length.
 // From: Dakelh / Southern Carrier
 //       https://www.firstvoices.com/dakelh-southern-carrier
 export const failsLengthValidation: TestPersonNameData = {
@@ -48,4 +50,22 @@ export const failsLengthValidation: TestPersonNameData = {
     alternateFirstName: 'hurryupandletusgohome', // Length: 21
     alternateMiddleName: 'peeltheorangesforme', // Length: 19
     alternateLastName: 'wherearebothofyougoing', // Length: 22
+};
+
+// All alternate name fields fail ASCII, pass length
+// From: Nadleh-Stella Whut’enne
+//       https://www.firstvoices.com/nadleh-stella-whutenne
+export const failsAsciiValidation: TestPersonNameData = {
+    // https://www.firstvoices.com/nadleh-stella-whutenne/words/a4e8abef-c675-47da-bfda-7a9ff584daab
+    legalFirstName: 'behoonji',
+
+    // https://www.firstvoices.com/nadleh-stella-whutenne/phrases/de0ab07f-af34-47d4-8a6e-c205ecaaac4a
+    legalMiddleName: 'nyah',
+
+    // https://www.firstvoices.com/nadleh-stella-whutenne/words/39007efb-f0a7-4906-9856-7842b3f86d73
+    legalLastName: 'detnik na’nanguz',
+
+    alternateFirstName: 'Њbehoonji', // Length: 9
+    alternateMiddleName: 'Њnyah', // Length: 5
+    alternateLastName: 'detnik na’nanguz', // Length: 16
 };
