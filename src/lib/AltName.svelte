@@ -28,29 +28,53 @@
             console.log(rules.alternateName.first.count.errorText);
 
         // Last Name Check
-        if (isLessThanOrEqualToMaxLength(altName.last.name, 18))
+        if (isLessThanOrEqualToMaxLength(
+            altName.last.name,
+            rules.alternateName.last.length.maximum
+            )
+        )
             console.log(
                 'Your Legal Last Name exceeds the maximum allowable length for your last name'
             );
-        else if (isLessThanOrEqualToMaxNames(altName.last.name, 1))
+        else if (
+            isLessThanOrEqualToMaxNames(
+                altName.last.name, 
+                rules.alternateName.last.count.maximum
+            )
+        )
             console.log(
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
 
         // Middle Name Check
         if (isGreaterThanMinLength(altName.middle.name)) {
-            if (isLessThanOrEqualToMaxNames(altName.middle.name, 2))
+            if (
+                isLessThanOrEqualToMaxNames(
+                    altName.middle.name,
+                    rules.alternateName.middle.count.maximum
+                )
+            )
                 console.log(
                     'The amount of Legal Middle Names exceeds the maximum number of names allowed'
                 );
             else {
                 let names = altName.middle.name.split(' ');
-                if (isLessThanOrEqualToMaxLength(names[0], 12))
+                if (
+                    isLessThanOrEqualToMaxLength(
+                        names[0],
+                        rules.alternateName.middle.length[0].maximum
+                    )
+                )
                     console.log(
                         'Your first Legal Middle Name exceeds the maximum length of a middle name'
                     );
 
-                if (names[1] && isLessThanOrEqualToMaxLength(names[1], 12))
+                if (
+                    names[1] &&
+                    isLessThanOrEqualToMaxLength(
+                        names[1],rules.alternateName.middle.count.maximum
+                    )
+                )
                     console.log(
                         'Your second middle name exceeds the maximum length of a middle name'
                     );
