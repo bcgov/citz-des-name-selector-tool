@@ -5,7 +5,6 @@
     import { isGreaterThanMinLength, isLessThanOrEqualToMaxLength, isLessThanOrEqualToMaxNames } from './utils.ts';
 
     $effect(() => {
-        let names = fullName.middle.name.split(' ');
 
         // First Name Checks
         if (!isLessThanOrEqualToMaxLength(fullName.first.name, 12))
@@ -35,22 +34,23 @@
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
 
-        if (fullName.middle.name.length > 0) {
-            if (names.length > 2)
-                console.log(
-                    'The amount of Legal Middle Names exceeds the maximum number of names allowed'
-                );
-            else {
-                if (names[0].length > 12)
-                    console.log(
-                        'Your first Legal Middle Name exceeds the maximum length of a middle name'
-                    );
+        
+        if (!isLessThanOrEqualToMaxNames(fullName.middle.name, 2))
+            console.log(
+                'The amount of Legal Middle Names exceeds the maximum number of names allowed'
+            );
 
-                if (names[1]?.length > 12)
-                    console.log(
-                        'Your second middle name exceeds the maximum length of a middle name'
-                    );
-            }
+        if (isGreaterThanMinLength(fullName.middle.name)) {
+            let names = fullName.middle.name.split(' ');
+            if (!isLessThanOrEqualToMaxLength(names[0], 12))
+                console.log(
+                    'Your first Legal Middle Name exceeds the maximum length of a middle name'
+                );
+
+            if (names[1] && !isLessThanOrEqualToMaxLength(names[1], 12))
+                console.log(
+                    'Your second middle name exceeds the maximum length of a middle name'
+                );
         }
     });
 </script>
