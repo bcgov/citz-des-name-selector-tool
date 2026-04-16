@@ -2,44 +2,43 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { altName } from './shared.svelte.ts';
-    import { isASCII } from './utils.ts';
+    import { isASCII, isGreaterThanMinLength, isLessThanOrEqualToMaxLength, isLessThanOrEqualToMaxNames } from './utils.ts';
 
     $effect(() => {
-        let names = altName.middle.name.split(' ');
-        console.log('first name: ', isASCII(altName.first.name));
-        console.log('middle name(s): ', isASCII(altName.middle.name));
-        console.log('last name: ', isASCII(altName.last.name));
-
-        if (altName.first.name.length > 12)
+        // First Name Check
+        if (isLessThanOrEqualToMaxLength(altName.first.name, 12))
             console.log(
                 'Your Legal First Name exceeds the maximum allowable length for your first name'
             );
-        else if (altName.first.name.split(' ').length > 1)
+        else if (isLessThanOrEqualToMaxNames(altName.first.name, 1))
             console.log(
                 'The amount of Legal First Names exceeds the maximum number of names allowed'
             );
 
-        if (altName.last.name.length > 18)
+        // Last Name Check
+        if (isLessThanOrEqualToMaxLength(altName.last.name, 18))
             console.log(
                 'Your Legal Last Name exceeds the maximum allowable length for your last name'
             );
-        else if (altName.last.name.split(' ').length > 1)
+        else if (isLessThanOrEqualToMaxNames(altName.last.name, 1))
             console.log(
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
 
-        if (altName.middle.name.length > 0) {
-            if (names.length > 2)
+        // Middle Name Check
+        if (isGreaterThanMinLength(altName.middle.name)) {
+            if (isLessThanOrEqualToMaxNames(altName.middle.name, 2))
                 console.log(
                     'The amount of Legal Middle Names exceeds the maximum number of names allowed'
                 );
             else {
-                if (names[0].length > 12)
+                let names = altName.middle.name.split(' ');
+                if (isLessThanOrEqualToMaxLength(names[0],12))
                     console.log(
                         'Your first Legal Middle Name exceeds the maximum length of a middle name'
                     );
 
-                if (names[1]?.length > 12)
+                if (names[1] && isLessThanOrEqualToMaxLength(names[1], 12))
                     console.log(
                         'Your second middle name exceeds the maximum length of a middle name'
                     );
