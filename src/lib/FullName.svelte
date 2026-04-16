@@ -7,10 +7,16 @@
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
     } from './utils.ts';
+    import { rules } from './rules-configuration.ts';
 
     $effect(() => {
         // First Name Checks
-        if (!isLessThanOrEqualToMaxLength(fullName.first.name, 12))
+        if (
+            !isLessThanOrEqualToMaxLength(
+                fullName.first.name,
+                rules.legalName.first.length.maximumPerName
+            )
+        )
             console.log(
                 'Your Legal First Name exceeds the maximum allowable length for your first name'
             );
@@ -18,13 +24,23 @@
             console.log(
                 'Your Legal First Name is less than the minimum allowable length for your first name'
             );
-        else if (!isLessThanOrEqualToMaxNames(fullName.first.name, 1))
+        else if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.first.name,
+                rules.legalName.first.count.maximum
+            )
+        )
             console.log(
                 'The amount of Legal First Names exceeds the maximum number of names allowed'
             );
 
         // Last Name Checks
-        if (!isLessThanOrEqualToMaxLength(fullName.last.name, 18))
+        if (
+            !isLessThanOrEqualToMaxLength(
+                fullName.last.name,
+                rules.legalName.last.length.maximum
+            )
+        )
             console.log(
                 'Your Legal Last Name exceeds the maximum allowable length for your last name'
             );
@@ -32,24 +48,46 @@
             console.log(
                 'Your Legal Last Name is less than the minimum allowable length for your first name'
             );
-        else if (!isLessThanOrEqualToMaxNames(fullName.last.name, 1))
+        else if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.last.name,
+                rules.legalName.last.count.maximum
+            )
+        )
             console.log(
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
 
-        if (!isLessThanOrEqualToMaxNames(fullName.middle.name, 2))
+        // Middle
+        if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.middle.name,
+                rules.legalName.middle.count.maximum
+            )
+        )
             console.log(
                 'The amount of Legal Middle Names exceeds the maximum number of names allowed'
             );
 
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
-            if (!isLessThanOrEqualToMaxLength(names[0], 12))
+            if (
+                !isLessThanOrEqualToMaxLength(
+                    names[0],
+                    rules.legalName.middle.length[0].maximum
+                )
+            )
                 console.log(
                     'Your first Legal Middle Name exceeds the maximum length of a middle name'
                 );
 
-            if (names[1] && !isLessThanOrEqualToMaxLength(names[1], 12))
+            if (
+                names[1] &&
+                !isLessThanOrEqualToMaxLength(
+                    names[1],
+                    rules.legalName.middle.length[1].maximum
+                )
+            )
                 console.log(
                     'Your second middle name exceeds the maximum length of a middle name'
                 );
@@ -79,21 +117,21 @@
     <InputLabel
         id="first-name"
         label="Legal First Name:"
-        placeholder="Max. 12 Characters"
+        placeholder={`Max. ${rules.legalName.first.length.maximumPerName} Characters`}
         bind:value={fullName.first}
     />
 
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
-        placeholder="Max. 12 Characters (Max 2 Names)"
+        placeholder={`Max. ${rules.legalName.middle.length[0].maximum} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
         bind:value={fullName.middle}
     />
 
     <InputLabel
         id="last-names"
         label="Legal Last Name:"
-        placeholder="Max. 18 Characters"
+        placeholder={`Max. ${rules.legalName.last.length.maximum} Characters`}
         bind:value={fullName.last}
     />
 
