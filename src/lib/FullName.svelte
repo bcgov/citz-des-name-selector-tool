@@ -17,10 +17,9 @@
                 rules.legalName.first.length.maximumPerName
             )
         )
-            console.log(
-                'Your Legal First Name exceeds the maximum allowable length for your first name'
-            );
+            console.log(rules.legalName.first.length.errorText);
         else if (!isGreaterThanMinLength(fullName.first.name))
+            // TODO: Codify this rule in rules-configuration.ts
             console.log(
                 'Your Legal First Name is less than the minimum allowable length for your first name'
             );
@@ -30,9 +29,7 @@
                 rules.legalName.first.count.maximum
             )
         )
-            console.log(
-                'The amount of Legal First Names exceeds the maximum number of names allowed'
-            );
+            console.log(rules.legalName.first.count.errorText);
 
         // Last Name Checks
         if (
@@ -41,10 +38,9 @@
                 rules.legalName.last.length.maximum
             )
         )
-            console.log(
-                'Your Legal Last Name exceeds the maximum allowable length for your last name'
-            );
+            console.log(rules.legalName.last.length.errorText);
         if (!isGreaterThanMinLength(fullName.last.name))
+            // TODO: Codify this rule in rules-configuration.ts
             console.log(
                 'Your Legal Last Name is less than the minimum allowable length for your first name'
             );
@@ -54,9 +50,7 @@
                 rules.legalName.last.count.maximum
             )
         )
-            console.log(
-                'The amount of Legal Last Names exceeds the maximum number of names allowed'
-            );
+            console.log(rules.legalName.last.count.errorText);
 
         // Middle
         if (
@@ -65,9 +59,7 @@
                 rules.legalName.middle.count.maximum
             )
         )
-            console.log(
-                'The amount of Legal Middle Names exceeds the maximum number of names allowed'
-            );
+            console.log(rules.legalName.middle.count.errorText);
 
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
@@ -77,9 +69,7 @@
                     rules.legalName.middle.length[0].maximum
                 )
             )
-                console.log(
-                    'Your first Legal Middle Name exceeds the maximum length of a middle name'
-                );
+                console.log(rules.legalName.middle.length[0].errorText);
 
             if (
                 names[1] &&
@@ -88,9 +78,7 @@
                     rules.legalName.middle.length[1].maximum
                 )
             )
-                console.log(
-                    'Your second middle name exceeds the maximum length of a middle name'
-                );
+                console.log(rules.legalName.middle.length[1].errorText);
         }
     });
 </script>
