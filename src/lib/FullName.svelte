@@ -57,11 +57,6 @@
 
 <div class="text-sm">
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
-    <!-- {#if window.scrollY === 0}
-  <p>here</p>
-  {:else}
-  <p></p>
-  {/if} -->
 
     <p>
         The <b>First Voices</b> program provides keyboards for enabling search, and
