@@ -3,7 +3,6 @@
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { altName } from './shared.svelte.ts';
     import {
-        isASCII,
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
@@ -13,14 +12,19 @@
     $effect(() => {
         // First Name Check
         if (
-            isLessThanOrEqualToMaxLength(
+            !isLessThanOrEqualToMaxLength(
                 altName.first.name,
                 rules.alternateName.first.length.maximumPerName
             )
         )
             console.log(rules.alternateName.first.length.errorText);
+        else if (!isGreaterThanMinLength(altName.first.name))
+            // TODO: Codify this rule in rules-configuration.ts
+            console.log(
+                'Your Alternative First Name is less than the minimum allowable length for your first name'
+            );
         else if (
-            isLessThanOrEqualToMaxNames(
+            !isLessThanOrEqualToMaxNames(
                 altName.first.name,
                 rules.alternateName.first.count.maximum
             )
