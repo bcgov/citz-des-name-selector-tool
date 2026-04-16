@@ -2,10 +2,13 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { fullName } from './shared.svelte.ts';
-    import { isGreaterThanMinLength, isLessThanOrEqualToMaxLength, isLessThanOrEqualToMaxNames } from './utils.ts';
+    import {
+        isGreaterThanMinLength,
+        isLessThanOrEqualToMaxLength,
+        isLessThanOrEqualToMaxNames,
+    } from './utils.ts';
 
     $effect(() => {
-
         // First Name Checks
         if (!isLessThanOrEqualToMaxLength(fullName.first.name, 12))
             console.log(
@@ -34,7 +37,6 @@
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
 
-        
         if (!isLessThanOrEqualToMaxNames(fullName.middle.name, 2))
             console.log(
                 'The amount of Legal Middle Names exceeds the maximum number of names allowed'

@@ -2,7 +2,12 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { altName } from './shared.svelte.ts';
-    import { isASCII, isGreaterThanMinLength, isLessThanOrEqualToMaxLength, isLessThanOrEqualToMaxNames } from './utils.ts';
+    import {
+        isASCII,
+        isGreaterThanMinLength,
+        isLessThanOrEqualToMaxLength,
+        isLessThanOrEqualToMaxNames,
+    } from './utils.ts';
 
     $effect(() => {
         // First Name Check
@@ -33,7 +38,7 @@
                 );
             else {
                 let names = altName.middle.name.split(' ');
-                if (isLessThanOrEqualToMaxLength(names[0],12))
+                if (isLessThanOrEqualToMaxLength(names[0], 12))
                     console.log(
                         'Your first Legal Middle Name exceeds the maximum length of a middle name'
                     );
