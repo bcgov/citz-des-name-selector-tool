@@ -28,9 +28,10 @@
             console.log(rules.alternateName.first.count.errorText);
 
         // Last Name Check
-        if (isLessThanOrEqualToMaxLength(
-            altName.last.name,
-            rules.alternateName.last.length.maximum
+        if (
+            isLessThanOrEqualToMaxLength(
+                altName.last.name,
+                rules.alternateName.last.length.maximum
             )
         )
             console.log(
@@ -38,7 +39,7 @@
             );
         else if (
             isLessThanOrEqualToMaxNames(
-                altName.last.name, 
+                altName.last.name,
                 rules.alternateName.last.count.maximum
             )
         )
@@ -72,7 +73,8 @@
                 if (
                     names[1] &&
                     isLessThanOrEqualToMaxLength(
-                        names[1],rules.alternateName.middle.count.maximum
+                        names[1],
+                        rules.alternateName.middle.count.maximum
                     )
                 )
                     console.log(
