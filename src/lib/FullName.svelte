@@ -7,8 +7,7 @@
     $effect(() => {
         let names = fullName.middle.name.split(' ');
 
-        let name = $derived(fullName.first.name);
-        // if (fullName.first.name.length > 12)
+        // First Name Checks
         if (!isLessThanOrEqualToMaxLength(fullName.first.name, 12))
             console.log(
                 'Your Legal First Name exceeds the maximum allowable length for your first name'
@@ -17,17 +16,21 @@
             console.log(
                 'Your Legal First Name is less than the minimum allowable length for your first name'
             );
-        // else if (fullName.first.name.split(' ').length > 1)
         else if (!isLessThanOrEqualToMaxNames(fullName.first.name, 1))
             console.log(
                 'The amount of Legal First Names exceeds the maximum number of names allowed'
             );
 
-        if (fullName.last.name.length > 18)
+        // Last Name Checks
+        if (!isLessThanOrEqualToMaxLength(fullName.last.name, 18))
             console.log(
                 'Your Legal Last Name exceeds the maximum allowable length for your last name'
             );
-        else if (fullName.last.name.split(' ').length > 1)
+        if (!isGreaterThanMinLength(fullName.last.name))
+            console.log(
+                'Your Legal Last Name is less than the minimum allowable length for your first name'
+            );
+        else if (!isLessThanOrEqualToMaxNames(fullName.last.name, 1))
             console.log(
                 'The amount of Legal Last Names exceeds the maximum number of names allowed'
             );
