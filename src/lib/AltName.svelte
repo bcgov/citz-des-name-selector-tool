@@ -8,17 +8,24 @@
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
     } from './utils.ts';
+    import { rules } from './rules-configuration.ts';
 
     $effect(() => {
         // First Name Check
-        if (isLessThanOrEqualToMaxLength(altName.first.name, 12))
-            console.log(
-                'Your Legal First Name exceeds the maximum allowable length for your first name'
-            );
-        else if (isLessThanOrEqualToMaxNames(altName.first.name, 1))
-            console.log(
-                'The amount of Legal First Names exceeds the maximum number of names allowed'
-            );
+        if (
+            isLessThanOrEqualToMaxLength(
+                altName.first.name,
+                rules.alternateName.first.length.maximumPerName
+            )
+        )
+            console.log(rules.alternateName.first.length.errorText);
+        else if (
+            isLessThanOrEqualToMaxNames(
+                altName.first.name,
+                rules.alternateName.first.count.maximum
+            )
+        )
+            console.log(rules.alternateName.first.count.errorText);
 
         // Last Name Check
         if (isLessThanOrEqualToMaxLength(altName.last.name, 18))
