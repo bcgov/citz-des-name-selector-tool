@@ -33,6 +33,10 @@
             margin: var(--layout-margin-large) 0;
         }
 
+        img {
+            width: 100%;
+        }
+
         h1 {
             font-size: 24px;
             font-weight: 700;
