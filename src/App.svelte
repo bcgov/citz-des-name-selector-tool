@@ -12,7 +12,7 @@
 <main class="flex flex-col items-center justify-center min-h-screen">
     <Header />
 
-    <form class="top-0 px-7 pb-15">
+    <form class="grow top-0 px-7 pb-15">
         {#if step.value === 1}
             <FullName />
         {/if}
