@@ -10,6 +10,7 @@
     import { rules } from './rules-configuration.ts';
 
     $effect(() => {
+        console.log('========= FIRST NAME =========');
         // First Name Check
         if (!isLessThanOrEqualToMaxLength(
                 altName.first.name,
@@ -25,6 +26,7 @@
             ))
             console.log(rules.alternateName.first.count.errorText);
 
+        console.log('========= LAST NAME =========');
         // Last Name Check
         if (isLessThanOrEqualToMaxLength(
                 altName.last.name,
@@ -37,6 +39,7 @@
             ))
             console.log(rules.alternateName.last.count.errorText);
 
+        console.log('========= MIDDLE NAME =========');
         // Middle Name Check
         if (isGreaterThanMinLength(altName.middle.name)) {
             if (isLessThanOrEqualToMaxNames(

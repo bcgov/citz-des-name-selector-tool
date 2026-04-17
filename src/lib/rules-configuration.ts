@@ -130,12 +130,12 @@ export const rules = {
                 maximum: {
                     value: 18,
                     errorText: 
-                        'Your second Alternate Middle Name exceeds the maximum allowable length for your first name',
+                        'Your Alternate Last Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
                     value: 0,
                     errorText: 
-                        'Your second Alternate Middle Name is less than the minimum allowable length for your first name'
+                        'Your Alternate Last Name is less than the minimum allowable length for your first name'
                 }
             },
             count: {
