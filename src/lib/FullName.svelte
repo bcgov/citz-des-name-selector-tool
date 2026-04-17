@@ -14,10 +14,10 @@
         if (
             !isLessThanOrEqualToMaxLength(
                 fullName.first.name,
-                rules.legalName.first.length.maximumPerName
+                rules.legalName.first.length.maximum.value
             )
         )
-            console.log(rules.legalName.first.length.errorText);
+            console.log(rules.legalName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(fullName.first.name))
             // TODO: Codify this rule in rules-configuration.ts
             console.log(
@@ -35,10 +35,10 @@
         if (
             !isLessThanOrEqualToMaxLength(
                 fullName.last.name,
-                rules.legalName.last.length.maximum
+                rules.legalName.last.length.maximum.value
             )
         )
-            console.log(rules.legalName.last.length.errorText);
+            console.log(rules.legalName.last.length.maximum.errorText);
         if (!isGreaterThanMinLength(fullName.last.name))
             // TODO: Codify this rule in rules-configuration.ts
             console.log(
@@ -66,19 +66,19 @@
             if (
                 !isLessThanOrEqualToMaxLength(
                     names[0],
-                    rules.legalName.middle.length[0].maximum
+                    rules.legalName.middle.length[0].maximum.value
                 )
             )
-                console.log(rules.legalName.middle.length[0].errorText);
+                console.log(rules.legalName.middle.length[0].maximum.errorText);
 
             if (
                 names[1] &&
                 !isLessThanOrEqualToMaxLength(
                     names[1],
-                    rules.legalName.middle.length[1].maximum
+                    rules.legalName.middle.length[1].maximum.value
                 )
             )
-                console.log(rules.legalName.middle.length[1].errorText);
+                console.log(rules.legalName.middle.length[1].maximum.errorText);
         }
     });
 </script>
@@ -105,21 +105,21 @@
     <InputLabel
         id="first-name"
         label="Legal First Name:"
-        placeholder={`Max. ${rules.legalName.first.length.maximumPerName} Characters`}
+        placeholder={`Max. ${rules.legalName.first.length.maximum.value} Characters`}
         bind:value={fullName.first}
     />
 
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
-        placeholder={`Max. ${rules.legalName.middle.length[0].maximum} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
+        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
         bind:value={fullName.middle}
     />
 
     <InputLabel
         id="last-names"
         label="Legal Last Name:"
-        placeholder={`Max. ${rules.legalName.last.length.maximum} Characters`}
+        placeholder={`Max. ${rules.legalName.last.length.maximum.value} Characters`}
         bind:value={fullName.last}
     />
 
