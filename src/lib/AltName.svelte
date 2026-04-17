@@ -26,19 +26,6 @@
             ))
             console.log(rules.alternateName.first.count.errorText);
 
-        console.log('========= LAST NAME =========');
-        // Last Name Check
-        if (isLessThanOrEqualToMaxLength(
-                altName.last.name,
-                rules.alternateName.last.length.maximum.value
-            ))
-            console.log(rules.alternateName.last.length.maximum.errorText);
-        else if (isLessThanOrEqualToMaxNames(
-                altName.last.name,
-                rules.alternateName.last.count.maximum
-            ))
-            console.log(rules.alternateName.last.count.errorText);
-
         console.log('========= MIDDLE NAME =========');
         // Middle Name Check
         if (isGreaterThanMinLength(altName.middle.name)) {
@@ -65,6 +52,19 @@
                     console.log(rules.alternateName.middle.length[1].maximum.errorText);
             }
         }
+
+        console.log('========= LAST NAME =========');
+        // Last Name Check
+        if (isLessThanOrEqualToMaxLength(
+                altName.last.name,
+                rules.alternateName.last.length.maximum.value
+            ))
+            console.log(rules.alternateName.last.length.maximum.errorText);
+        else if (isLessThanOrEqualToMaxNames(
+                altName.last.name,
+                rules.alternateName.last.count.maximum
+            ))
+            console.log(rules.alternateName.last.count.errorText);
     });
 </script>
 

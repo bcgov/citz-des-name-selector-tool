@@ -10,6 +10,7 @@
     import { rules } from './rules-configuration.ts';
 
     $effect(() => {
+        console.log('========= FIRST NAME =========');
         // First Name Checks
         if (!isLessThanOrEqualToMaxLength(
                 fullName.first.name,
@@ -25,21 +26,7 @@
             ))
             console.log(rules.legalName.first.count.errorText);
 
-        // Last Name Checks
-        if (!isLessThanOrEqualToMaxLength(
-                fullName.last.name,
-                rules.legalName.last.length.maximum.value
-            ))
-            console.log(rules.legalName.last.length.maximum.errorText);
-        if (!isGreaterThanMinLength(fullName.last.name))
-            // TODO: Codify this rule in rules-configuration.ts
-            console.log(rules.legalName.last.length.minimum.errorText);
-        else if (!isLessThanOrEqualToMaxNames(
-                fullName.last.name,
-                rules.legalName.last.count.maximum
-            ))
-            console.log(rules.legalName.last.count.errorText);
-
+        console.log('========= MIDDLE NAME =========');
         // Middle
         if (!isLessThanOrEqualToMaxNames(
                 fullName.middle.name,
@@ -63,6 +50,23 @@
             )
                 console.log(rules.legalName.middle.length[1].maximum.errorText);
         }
+
+        console.log('========= LAST NAME =========');
+        // Last Name Checks
+        if (!isLessThanOrEqualToMaxLength(
+                fullName.last.name,
+                rules.legalName.last.length.maximum.value
+            ))
+            console.log(rules.legalName.last.length.maximum.errorText);
+        if (!isGreaterThanMinLength(fullName.last.name))
+            // TODO: Codify this rule in rules-configuration.ts
+            console.log(rules.legalName.last.length.minimum.errorText);
+        else if (!isLessThanOrEqualToMaxNames(
+                fullName.last.name,
+                rules.legalName.last.count.maximum
+            ))
+            console.log(rules.legalName.last.count.errorText);
+
     });
 </script>
 
