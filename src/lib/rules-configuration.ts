@@ -1,11 +1,17 @@
 export const rules = {
-    // TODO: Are there rules for "legal name" or are these rules all for "alternate name"?
-    alternateName: {
+    legalName: {
         first: {
             length: {
-                maximumPerName: 12,
-                errorText:
-                    'Your Legal First Name exceeds the maximum allowable length for your first name',
+                maximum: {
+                    value: 50,
+                    errorText:
+                        'Your Legal First Name exceeds the maximum allowable length for your first name',
+                },
+                minimum: {
+                    value: 0,
+                    errorText:
+                        'Your Legal First Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,
@@ -16,14 +22,28 @@ export const rules = {
         middle: {
             length: {
                 0: {
-                    maximum: 12,
-                    errorText:
-                        'Your first Legal Middle Name exceeds the maximum length of a middle name',
+                    maximum: {
+                        value: 50,
+                        errorText:
+                            'Your first Legal Middle Name exceeds the maximum allowable length for your first name',
+                    },
+                    minimum: {
+                        value: 0,
+                        errorText:
+                            'Your first Legal Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
                 1: {
-                    maximum: 12,
-                    errorText:
-                        'Your second middle name exceeds the maximum length of a middle name',
+                    maximum: {
+                        value: 50,
+                        errorText:
+                            'Your second Legal Middle Name exceeds the maximum allowable length for your first name',
+                    },
+                    minimum: {
+                        value: 0,
+                        errorText:
+                            'Your second Legal Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
             },
             count: {
@@ -34,14 +54,94 @@ export const rules = {
         },
         last: {
             length: {
-                maximum: 18,
-                errorText:
-                    'Your Legal Last Name exceeds the maximum allowable length for your last name',
+                maximum: {
+                    value: 50,
+                    errorText:
+                        'Your Legal Last Name exceeds the maximum allowable length for your first name',
+                },
+                minimum: {
+                    value: 0,
+                    errorText:
+                        'Your Legal Last Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,
                 errorText:
                     'The amount of Legal Last Names exceeds the maximum number of names allowed',
+            },
+        },
+    },
+    alternateName: {
+        first: {
+            length: {
+                maximum: {
+                    value: 12,
+                    errorText:
+                        'Your Alternate First Name exceeds the maximum allowable length for your first name',
+                },
+                minimum: {
+                    value: 0,
+                    errorText:
+                        'Your Alternate First Name is less than the minimum allowable length for your first name',
+                },
+            },
+            count: {
+                maximum: 1,
+                errorText:
+                    'The amount of Alternate First Names exceeds the maximum number of names allowed',
+            },
+        },
+        middle: {
+            length: {
+                0: {
+                    maximum: {
+                        value: 12,
+                        errorText:
+                            'Your first Alternate Middle Name exceeds the maximum allowable length for your first name',
+                    },
+                    minimum: {
+                        value: 0,
+                        errorText:
+                            'Your first Alternate Middle Name is less than the minimum allowable length for your first name',
+                    },
+                },
+                1: {
+                    maximum: {
+                        value: 12,
+                        errorText:
+                            'Your second Alternate Middle Name exceeds the maximum allowable length for your first name',
+                    },
+                    minimum: {
+                        value: 0,
+                        errorText:
+                            'Your second Alternate Middle Name is less than the minimum allowable length for your first name',
+                    },
+                },
+            },
+            count: {
+                maximum: 2,
+                errorText:
+                    'The amount of Alternate Middle Names exceeds the maximum number of names allowed',
+            },
+        },
+        last: {
+            length: {
+                maximum: {
+                    value: 18,
+                    errorText:
+                        'Your Alternate Last Name exceeds the maximum allowable length for your first name',
+                },
+                minimum: {
+                    value: 0,
+                    errorText:
+                        'Your Alternate Last Name is less than the minimum allowable length for your first name',
+                },
+            },
+            count: {
+                maximum: 1,
+                errorText:
+                    'The amount of Alternate Last Names exceeds the maximum number of names allowed',
             },
         },
     },

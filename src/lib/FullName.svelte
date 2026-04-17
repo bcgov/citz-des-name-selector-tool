@@ -2,56 +2,88 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { fullName } from './shared.svelte.ts';
+    import {
+        isGreaterThanMinLength,
+        isLessThanOrEqualToMaxLength,
+        isLessThanOrEqualToMaxNames,
+    } from './utils.ts';
+    import { rules } from './rules-configuration.ts';
 
     $effect(() => {
-        let names = fullName.middle.name.split(' ');
+        console.log('========= FIRST NAME =========');
+        // First Name Checks
+        if (
+            !isLessThanOrEqualToMaxLength(
+                fullName.first.name,
+                rules.legalName.first.length.maximum.value
+            )
+        )
+            console.log(rules.legalName.first.length.maximum.errorText);
+        else if (!isGreaterThanMinLength(fullName.first.name))
+            // TODO: Codify this rule in rules-configuration.ts
+            console.log(rules.legalName.first.length.minimum.errorText);
+        else if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.first.name,
+                rules.legalName.first.count.maximum
+            )
+        )
+            console.log(rules.legalName.first.count.errorText);
 
-        let name = $derived(fullName.first.name);
-        if (fullName.first.name.length > 12)
-            console.log(
-                'Your Legal First Name exceeds the maximum allowable length for your first name'
-            );
-        else if (fullName.first.name.split(' ').length > 1)
-            console.log(
-                'The amount of Legal First Names exceeds the maximum number of names allowed'
-            );
+        console.log('========= MIDDLE NAME =========');
+        // Middle
+        if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.middle.name,
+                rules.legalName.middle.count.maximum
+            )
+        )
+            console.log(rules.legalName.middle.count.errorText);
 
-        if (fullName.last.name.length > 18)
-            console.log(
-                'Your Legal Last Name exceeds the maximum allowable length for your last name'
-            );
-        else if (fullName.last.name.split(' ').length > 1)
-            console.log(
-                'The amount of Legal Last Names exceeds the maximum number of names allowed'
-            );
+        if (isGreaterThanMinLength(fullName.middle.name)) {
+            let names = fullName.middle.name.split(' ');
+            if (
+                !isLessThanOrEqualToMaxLength(
+                    names[0],
+                    rules.legalName.middle.length[0].maximum.value
+                )
+            )
+                console.log(rules.legalName.middle.length[0].maximum.errorText);
 
-        if (fullName.middle.name.length > 0) {
-            if (names.length > 2)
-                console.log(
-                    'The amount of Legal Middle Names exceeds the maximum number of names allowed'
-                );
-            else {
-                if (names[0].length > 12)
-                    console.log(
-                        'Your first Legal Middle Name exceeds the maximum length of a middle name'
-                    );
-
-                if (names[1]?.length > 12)
-                    console.log(
-                        'Your second middle name exceeds the maximum length of a middle name'
-                    );
-            }
+            if (
+                names[1] &&
+                !isLessThanOrEqualToMaxLength(
+                    names[1],
+                    rules.legalName.middle.length[1].maximum.value
+                )
+            )
+                console.log(rules.legalName.middle.length[1].maximum.errorText);
         }
+
+        console.log('========= LAST NAME =========');
+        // Last Name Checks
+        if (
+            !isLessThanOrEqualToMaxLength(
+                fullName.last.name,
+                rules.legalName.last.length.maximum.value
+            )
+        )
+            console.log(rules.legalName.last.length.maximum.errorText);
+        if (!isGreaterThanMinLength(fullName.last.name))
+            // TODO: Codify this rule in rules-configuration.ts
+            console.log(rules.legalName.last.length.minimum.errorText);
+        else if (
+            !isLessThanOrEqualToMaxNames(
+                fullName.last.name,
+                rules.legalName.last.count.maximum
+            )
+        )
+            console.log(rules.legalName.last.count.errorText);
     });
 </script>
 
 <div class="text-sm">
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
-    <!-- {#if window.scrollY === 0}
-  <p>here</p>
-  {:else}
-  <p></p>
-  {/if} -->
 
     <p>
         The <b>First Voices</b> program provides keyboards for enabling search, and
@@ -72,21 +104,21 @@
     <InputLabel
         id="first-name"
         label="Legal First Name:"
-        placeholder="Max. 12 Characters"
+        placeholder={`Max. ${rules.legalName.first.length.maximum.value} Characters`}
         bind:value={fullName.first}
     />
 
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
-        placeholder="Max. 12 Characters (Max 2 Names)"
+        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
         bind:value={fullName.middle}
     />
 
     <InputLabel
         id="last-names"
         label="Legal Last Name:"
-        placeholder="Max. 18 Characters"
+        placeholder={`Max. ${rules.legalName.last.length.maximum.value} Characters`}
         bind:value={fullName.last}
     />
 

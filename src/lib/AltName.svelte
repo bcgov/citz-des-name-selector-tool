@@ -2,49 +2,85 @@
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { altName } from './shared.svelte.ts';
-    import { isASCII } from './utils.ts';
+    import {
+        isGreaterThanMinLength,
+        isLessThanOrEqualToMaxLength,
+        isLessThanOrEqualToMaxNames,
+    } from './utils.ts';
+    import { rules } from './rules-configuration.ts';
 
     $effect(() => {
-        let names = altName.middle.name.split(' ');
-        console.log('first name: ', isASCII(altName.first.name));
-        console.log('middle name(s): ', isASCII(altName.middle.name));
-        console.log('last name: ', isASCII(altName.last.name));
+        console.log('========= FIRST NAME =========');
+        // First Name Check
+        if (
+            !isLessThanOrEqualToMaxLength(
+                altName.first.name,
+                rules.alternateName.first.length.maximum.value
+            )
+        )
+            console.log(rules.alternateName.first.length.maximum.errorText);
+        else if (!isGreaterThanMinLength(altName.first.name))
+            // TODO: Codify this rule in rules-configuration.ts
+            console.log(rules.alternateName.first.length.minimum.errorText);
+        else if (
+            !isLessThanOrEqualToMaxNames(
+                altName.first.name,
+                rules.alternateName.first.count.maximum
+            )
+        )
+            console.log(rules.alternateName.first.count.errorText);
 
-        if (altName.first.name.length > 12)
-            console.log(
-                'Your Legal First Name exceeds the maximum allowable length for your first name'
-            );
-        else if (altName.first.name.split(' ').length > 1)
-            console.log(
-                'The amount of Legal First Names exceeds the maximum number of names allowed'
-            );
-
-        if (altName.last.name.length > 18)
-            console.log(
-                'Your Legal Last Name exceeds the maximum allowable length for your last name'
-            );
-        else if (altName.last.name.split(' ').length > 1)
-            console.log(
-                'The amount of Legal Last Names exceeds the maximum number of names allowed'
-            );
-
-        if (altName.middle.name.length > 0) {
-            if (names.length > 2)
-                console.log(
-                    'The amount of Legal Middle Names exceeds the maximum number of names allowed'
-                );
+        console.log('========= MIDDLE NAME =========');
+        // Middle Name Check
+        if (isGreaterThanMinLength(altName.middle.name)) {
+            if (
+                isLessThanOrEqualToMaxNames(
+                    altName.middle.name,
+                    rules.alternateName.middle.count.maximum
+                )
+            )
+                console.log(rules.alternateName.middle.count.errorText);
             else {
-                if (names[0].length > 12)
+                let names = altName.middle.name.split(' ');
+                if (
+                    isLessThanOrEqualToMaxLength(
+                        names[0],
+                        rules.alternateName.middle.length[0].maximum.value
+                    )
+                )
                     console.log(
-                        'Your first Legal Middle Name exceeds the maximum length of a middle name'
+                        rules.alternateName.middle.length[0].maximum.errorText
                     );
 
-                if (names[1]?.length > 12)
+                if (
+                    names[1] &&
+                    isLessThanOrEqualToMaxLength(
+                        names[1],
+                        rules.alternateName.middle.length[1].maximum.value
+                    )
+                )
                     console.log(
-                        'Your second middle name exceeds the maximum length of a middle name'
+                        rules.alternateName.middle.length[1].maximum.errorText
                     );
             }
         }
+
+        console.log('========= LAST NAME =========');
+        // Last Name Check
+        if (
+            isLessThanOrEqualToMaxLength(
+                altName.last.name,
+                rules.alternateName.last.length.maximum.value
+            )
+        )
+            console.log(rules.alternateName.last.length.maximum.errorText);
+        else if (
+            isLessThanOrEqualToMaxNames(
+                altName.last.name,
+                rules.alternateName.last.count.maximum
+            )
+        )
+            console.log(rules.alternateName.last.count.errorText);
     });
 </script>
 
