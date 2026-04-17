@@ -11,68 +11,51 @@
 
     $effect(() => {
         // First Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
+        if (!isLessThanOrEqualToMaxLength(
                 fullName.first.name,
                 rules.legalName.first.length.maximum.value
-            )
-        )
+            ))
             console.log(rules.legalName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(fullName.first.name))
             // TODO: Codify this rule in rules-configuration.ts
-            console.log(
-                'Your Legal First Name is less than the minimum allowable length for your first name'
-            );
-        else if (
-            !isLessThanOrEqualToMaxNames(
+            console.log(rules.legalName.first.length.minimum.errorText);
+        else if (!isLessThanOrEqualToMaxNames(
                 fullName.first.name,
                 rules.legalName.first.count.maximum
-            )
-        )
+            ))
             console.log(rules.legalName.first.count.errorText);
 
         // Last Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
+        if (!isLessThanOrEqualToMaxLength(
                 fullName.last.name,
                 rules.legalName.last.length.maximum.value
-            )
-        )
+            ))
             console.log(rules.legalName.last.length.maximum.errorText);
         if (!isGreaterThanMinLength(fullName.last.name))
             // TODO: Codify this rule in rules-configuration.ts
-            console.log(
-                'Your Legal Last Name is less than the minimum allowable length for your first name'
-            );
-        else if (
-            !isLessThanOrEqualToMaxNames(
+            console.log(rules.legalName.last.length.minimum.errorText);
+        else if (!isLessThanOrEqualToMaxNames(
                 fullName.last.name,
                 rules.legalName.last.count.maximum
-            )
-        )
+            ))
             console.log(rules.legalName.last.count.errorText);
 
         // Middle
-        if (
-            !isLessThanOrEqualToMaxNames(
+        if (!isLessThanOrEqualToMaxNames(
                 fullName.middle.name,
                 rules.legalName.middle.count.maximum
-            )
-        )
+            ))
             console.log(rules.legalName.middle.count.errorText);
 
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
-            if (
-                !isLessThanOrEqualToMaxLength(
+            if (!isLessThanOrEqualToMaxLength(
                     names[0],
                     rules.legalName.middle.length[0].maximum.value
-                )
-            )
+                ))
                 console.log(rules.legalName.middle.length[0].maximum.errorText);
 
-            if (
-                names[1] &&
+            if (names[1] &&
                 !isLessThanOrEqualToMaxLength(
                     names[1],
                     rules.legalName.middle.length[1].maximum.value
