@@ -4,14 +4,14 @@ export const rules = {
             length: {
                 maximum: {
                     value: 50,
-                    errorText: 
+                    errorText:
                         'Your Legal First Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
                     value: 0,
-                    errorText: 
-                        'Your Legal First Name is less than the minimum allowable length for your first name'
-                }
+                    errorText:
+                        'Your Legal First Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,
@@ -24,26 +24,26 @@ export const rules = {
                 0: {
                     maximum: {
                         value: 50,
-                        errorText: 
+                        errorText:
                             'Your first Legal Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
                         value: 0,
-                        errorText: 
-                            'Your first Legal Middle Name is less than the minimum allowable length for your first name'
-                    }
+                        errorText:
+                            'Your first Legal Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
                 1: {
                     maximum: {
                         value: 50,
-                        errorText: 
+                        errorText:
                             'Your second Legal Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
                         value: 0,
-                        errorText: 
-                            'Your second Legal Middle Name is less than the minimum allowable length for your first name'
-                    }
+                        errorText:
+                            'Your second Legal Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
             },
             count: {
@@ -56,14 +56,14 @@ export const rules = {
             length: {
                 maximum: {
                     value: 50,
-                    errorText: 
+                    errorText:
                         'Your Legal Last Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
                     value: 0,
-                    errorText: 
-                        'Your Legal Last Name is less than the minimum allowable length for your first name'
-                }
+                    errorText:
+                        'Your Legal Last Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,
@@ -77,14 +77,14 @@ export const rules = {
             length: {
                 maximum: {
                     value: 12,
-                    errorText: 
+                    errorText:
                         'Your Alternate First Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
                     value: 0,
-                    errorText: 
-                        'Your Alternate First Name is less than the minimum allowable length for your first name'
-                }
+                    errorText:
+                        'Your Alternate First Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,
@@ -97,26 +97,26 @@ export const rules = {
                 0: {
                     maximum: {
                         value: 12,
-                        errorText: 
+                        errorText:
                             'Your first Alternate Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
                         value: 0,
-                        errorText: 
-                            'Your first Alternate Middle Name is less than the minimum allowable length for your first name'
-                    }
+                        errorText:
+                            'Your first Alternate Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
                 1: {
                     maximum: {
                         value: 12,
-                        errorText: 
+                        errorText:
                             'Your second Alternate Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
                         value: 0,
-                        errorText: 
-                            'Your second Alternate Middle Name is less than the minimum allowable length for your first name'
-                    }
+                        errorText:
+                            'Your second Alternate Middle Name is less than the minimum allowable length for your first name',
+                    },
                 },
             },
             count: {
@@ -129,14 +129,14 @@ export const rules = {
             length: {
                 maximum: {
                     value: 18,
-                    errorText: 
+                    errorText:
                         'Your Alternate Last Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
                     value: 0,
-                    errorText: 
-                        'Your Alternate Last Name is less than the minimum allowable length for your first name'
-                }
+                    errorText:
+                        'Your Alternate Last Name is less than the minimum allowable length for your first name',
+                },
             },
             count: {
                 maximum: 1,

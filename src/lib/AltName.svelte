@@ -12,35 +12,45 @@
     $effect(() => {
         console.log('========= FIRST NAME =========');
         // First Name Check
-        if (!isLessThanOrEqualToMaxLength(
+        if (
+            !isLessThanOrEqualToMaxLength(
                 altName.first.name,
                 rules.alternateName.first.length.maximum.value
-            ))
+            )
+        )
             console.log(rules.alternateName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(altName.first.name))
             // TODO: Codify this rule in rules-configuration.ts
             console.log(rules.alternateName.first.length.minimum.errorText);
-        else if (!isLessThanOrEqualToMaxNames(
+        else if (
+            !isLessThanOrEqualToMaxNames(
                 altName.first.name,
                 rules.alternateName.first.count.maximum
-            ))
+            )
+        )
             console.log(rules.alternateName.first.count.errorText);
 
         console.log('========= MIDDLE NAME =========');
         // Middle Name Check
         if (isGreaterThanMinLength(altName.middle.name)) {
-            if (isLessThanOrEqualToMaxNames(
+            if (
+                isLessThanOrEqualToMaxNames(
                     altName.middle.name,
                     rules.alternateName.middle.count.maximum
-                ))
+                )
+            )
                 console.log(rules.alternateName.middle.count.errorText);
             else {
                 let names = altName.middle.name.split(' ');
-                if (isLessThanOrEqualToMaxLength(
+                if (
+                    isLessThanOrEqualToMaxLength(
                         names[0],
                         rules.alternateName.middle.length[0].maximum.value
-                    ))
-                    console.log(rules.alternateName.middle.length[0].maximum.errorText);
+                    )
+                )
+                    console.log(
+                        rules.alternateName.middle.length[0].maximum.errorText
+                    );
 
                 if (
                     names[1] &&
@@ -49,21 +59,27 @@
                         rules.alternateName.middle.length[1].maximum.value
                     )
                 )
-                    console.log(rules.alternateName.middle.length[1].maximum.errorText);
+                    console.log(
+                        rules.alternateName.middle.length[1].maximum.errorText
+                    );
             }
         }
 
         console.log('========= LAST NAME =========');
         // Last Name Check
-        if (isLessThanOrEqualToMaxLength(
+        if (
+            isLessThanOrEqualToMaxLength(
                 altName.last.name,
                 rules.alternateName.last.length.maximum.value
-            ))
+            )
+        )
             console.log(rules.alternateName.last.length.maximum.errorText);
-        else if (isLessThanOrEqualToMaxNames(
+        else if (
+            isLessThanOrEqualToMaxNames(
                 altName.last.name,
                 rules.alternateName.last.count.maximum
-            ))
+            )
+        )
             console.log(rules.alternateName.last.count.errorText);
     });
 </script>
