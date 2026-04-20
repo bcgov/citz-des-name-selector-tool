@@ -20,7 +20,6 @@
         )
             console.log(rules.alternateName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(altName.first.name))
-            // TODO: Codify this rule in rules-configuration.ts
             console.log(rules.alternateName.first.length.minimum.errorText);
         else if (
             !isLessThanOrEqualToMaxNames(

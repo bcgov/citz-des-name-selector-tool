@@ -20,7 +20,6 @@
         )
             console.log(rules.legalName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(fullName.first.name))
-            // TODO: Codify this rule in rules-configuration.ts
             console.log(rules.legalName.first.length.minimum.errorText);
         else if (
             !isLessThanOrEqualToMaxNames(
@@ -70,7 +69,6 @@
         )
             console.log(rules.legalName.last.length.maximum.errorText);
         if (!isGreaterThanMinLength(fullName.last.name))
-            // TODO: Codify this rule in rules-configuration.ts
             console.log(rules.legalName.last.length.minimum.errorText);
         else if (
             !isLessThanOrEqualToMaxNames(
