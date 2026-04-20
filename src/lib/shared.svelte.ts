@@ -22,4 +22,4 @@ export const altName = $state({
     },
 });
 
-export const step = $state({ value: 1 });
+export const step = $state({ value: 0, max: 4 });
