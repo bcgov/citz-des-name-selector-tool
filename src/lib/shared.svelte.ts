@@ -23,3 +23,5 @@ export const altName = $state({
 });
 
 export const step = $state({ value: 0, max: 4 });
+
+export const errors = $state([]);
