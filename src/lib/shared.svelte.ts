@@ -1,6 +1,7 @@
-type ErrorMessage= {
+export type ErrorRule = {
     id: number;
-    message: string;
+    errorText: string;
+    value: number;
 }
 
 export const fullName = $state({
@@ -31,24 +32,26 @@ export const step = $state({ value: 0, max: 4 });
 
 // export const errors = $state({ value: [] });
 class Errors {
-    value: ErrorMessage[] = $state([])
+    value: Omit<ErrorRule, "value">[] = $state([])
 
-    get () {
-        return this.value;
-    }
-
-    push(error: ErrorMessage) {
-        this.value.push(error)
-        this.value = this.value.sort((a, b) => a.id - b.id);
+    push(error: Omit<ErrorRule, "value">) {
+        try {
+            let tempArray = this.value;
+            tempArray.push(error);
+            this.value = tempArray.sort((a, b) => a.id - b.id);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     splice(index: number) {
+        let tempArray = this.value;
         if (index === this.value.length || this.value.length === 1) {
-            this.value.pop();
+            tempArray.pop();
         } else {
-            this.value.splice(index, 1);
+            tempArray.splice(index, 1);
         }
-        this.value = this.value.sort((a, b) => a.id - b.id);
+        this.value = tempArray.sort((a, b) => a.id - b.id);
     }
 }
 

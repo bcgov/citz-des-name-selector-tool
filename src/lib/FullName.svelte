@@ -11,7 +11,7 @@
     import { rules } from './rules-configuration.ts';
 
     $effect(function () {
-        $inspect(errors.value);
+        $inspect.trace();
         checkErrorForMinLength(
             fullName.first.name,
             rules.legalName.first.length.minimum
