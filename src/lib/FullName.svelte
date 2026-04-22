@@ -3,6 +3,7 @@
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { errors, fullName } from './shared.svelte.ts';
     import {
+    checkErrorForMinLength,
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
@@ -11,51 +12,15 @@
 
     $effect(function () {
         $inspect(errors.value);
-        if (isGreaterThanMinLength(
+        checkErrorForMinLength(
             fullName.first.name,
-            rules.legalName.first.length.minimum.value
-        )) {
-            console.log('here');
-            let tempArray = errors.value;
-            let index = -1;
+            rules.legalName.first.length.minimum
+        );
 
-            tempArray.forEach((error, i: number) => {
-                if (error.id === rules.legalName.first.length.minimum.id) {
-                    console.log('FOUND ERROR to remove');
-                    index = i;
-                }
-            });
-
-            if (index > -1) {
-                if (tempArray.length === 1) {
-                    tempArray.pop()
-                } else {
-                    errors.set(tempArray.splice(index, 1));
-                }
-
-            }
-        } else {
-            console.log('error');
-            let tempArray = errors.value;
-            let index = -1;
-
-            tempArray.forEach((error) => {
-                if (error.id === rules.legalName.first.length.minimum.id) {
-                    console.log('FOUND ERROR');
-                    index = error.id;
-                }
-            });
-
-            if (index === -1) {
-                console.log('PUSHING ERROR');
-                tempArray.push({
-                    id: rules.legalName.first.length.minimum.id,
-                    message: rules.legalName.first.length.minimum.errorText
-                });
-                errors.set(tempArray);
-            }
-
-        }
+        checkErrorForMinLength(
+            fullName.last.name,
+            rules.legalName.last.length.minimum
+        );
     });
 
     // $effect(() => {

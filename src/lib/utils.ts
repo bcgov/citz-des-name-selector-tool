@@ -54,64 +54,50 @@ export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
     return str.split(' ').length <= maxNames;
 }
 
-export function fullNameValidationCheck () {
+export function checkErrorForMinLength (
+    name: string,
+    rule: { id: number, value: number, errorText: string}
+) {
     if (isGreaterThanMinLength(
-            fullName.first.name,
-            rules.legalName.first.length.minimum.value
+        name,
+        rule.value
     )) {
-        console.log('is Greater than min length');
-    
-        let index = -1;    
-        
-        errors.value.forEach((error, i: number) => {
-            if (rules.legalName.first.length.minimum.id === error.id) {
-                console.log('found ID');
+        console.log('here');
+        let tempArray = errors.value;
+        let index = -1;
+
+        tempArray.forEach((error, i: number) => {
+            if (error.id === rule.id) {
+                console.log('FOUND ERROR to remove');
                 index = i;
             }
         });
 
         if (index > -1) {
-            console.log('removing error');
-            let tempArray = errors.value.splice(index, 1);
-            $inspect(tempArray);
-
-            tempArray.sort((a, b) => a.id - b.id);
-
-            errors.set(tempArray);
+            if (tempArray.length === 1)
+                tempArray.pop()
+            else
+                errors.set(tempArray.splice(index, 1));
         }
-
-    }
-    if (!isGreaterThanMinLength(
-        fullName.first.name,
-        rules.legalName.first.length.minimum.value
-    )) {
-        console.log('is NOT Greater than min length');
+    } else {
+        console.log('error');
+        let tempArray = errors.value;
         let index = -1;
 
-        errors.value.forEach((error, i: number) => {
-            if (rules.legalName.first.length.minimum.id === error.id) {
-                console.log('found ID', error);
-                index = i;
+        tempArray.forEach((error) => {
+            if (error.id === rule.id) {
+                console.log('FOUND ERROR');
+                index = error.id;
             }
         });
 
         if (index === -1) {
-            console.log('Adding error');
-            let tempArray = errors.value;
-            $inspect(tempArray);
-
+            console.log('PUSHING ERROR');
             tempArray.push({
-                id: rules.legalName.first.length.minimum.id,
-                message: rules.legalName.first.length.minimum.errorText
+                id: rule.id,
+                message: rule.errorText
             });
-
             errors.set(tempArray);
-            // let tempArray = $derived(errors.value.splice(index, 1));
-
-            // tempArray.sort((a, b) => a.id - b.id);
-
-            // errors.set(tempArray);
         }
-            
     }
 }

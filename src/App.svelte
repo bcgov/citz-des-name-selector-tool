@@ -16,7 +16,7 @@
     <Header />
 
     <form class="grow top-0 px-7 pb-15">
-        <!-- {#if step.value === 0}
+        {#if step.value === 0}
             <Welcome />
         {/if}
 
@@ -26,13 +26,13 @@
 
         {#if step.value === 2}
             <Considerations />
-        {/if} -->
+        {/if}
 
-        {#if step.value === 0}
+        {#if step.value === 3}
             <FullName />
         {/if}
 
-        {#if step.value === 1}
+        {#if step.value === 4}
             <AltName />
         {/if}
 
