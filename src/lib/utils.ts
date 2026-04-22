@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
+import { errors, fullName } from './shared.svelte';
+import { rules } from './rules-configuration';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -50,4 +52,66 @@ export function isLessThanOrEqualToMaxLength(
  */
 export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
     return str.split(' ').length <= maxNames;
+}
+
+export function fullNameValidationCheck () {
+    if (isGreaterThanMinLength(
+            fullName.first.name,
+            rules.legalName.first.length.minimum.value
+    )) {
+        console.log('is Greater than min length');
+    
+        let index = -1;    
+        
+        errors.value.forEach((error, i: number) => {
+            if (rules.legalName.first.length.minimum.id === error.id) {
+                console.log('found ID');
+                index = i;
+            }
+        });
+
+        if (index > -1) {
+            console.log('removing error');
+            let tempArray = errors.value.splice(index, 1);
+            $inspect(tempArray);
+
+            tempArray.sort((a, b) => a.id - b.id);
+
+            errors.set(tempArray);
+        }
+
+    }
+    if (!isGreaterThanMinLength(
+        fullName.first.name,
+        rules.legalName.first.length.minimum.value
+    )) {
+        console.log('is NOT Greater than min length');
+        let index = -1;
+
+        errors.value.forEach((error, i: number) => {
+            if (rules.legalName.first.length.minimum.id === error.id) {
+                console.log('found ID', error);
+                index = i;
+            }
+        });
+
+        if (index === -1) {
+            console.log('Adding error');
+            let tempArray = errors.value;
+            $inspect(tempArray);
+
+            tempArray.push({
+                id: rules.legalName.first.length.minimum.id,
+                message: rules.legalName.first.length.minimum.errorText
+            });
+
+            errors.set(tempArray);
+            // let tempArray = $derived(errors.value.splice(index, 1));
+
+            // tempArray.sort((a, b) => a.id - b.id);
+
+            // errors.set(tempArray);
+        }
+            
+    }
 }

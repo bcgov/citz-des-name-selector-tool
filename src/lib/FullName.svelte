@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { fullName } from './shared.svelte.ts';
+    import { errors, fullName } from './shared.svelte.ts';
     import {
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
@@ -9,75 +9,126 @@
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
-    $effect(() => {
-        console.log('========= FIRST NAME =========');
-        // First Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
-                fullName.first.name,
-                rules.legalName.first.length.maximum.value
-            )
-        )
-            console.log(rules.legalName.first.length.maximum.errorText);
-        else if (!isGreaterThanMinLength(fullName.first.name))
-            console.log(rules.legalName.first.length.minimum.errorText);
-        else if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.first.name,
-                rules.legalName.first.count.maximum
-            )
-        )
-            console.log(rules.legalName.first.count.errorText);
+    $effect(function () {
+        $inspect(errors.value);
+        if (isGreaterThanMinLength(
+            fullName.first.name,
+            rules.legalName.first.length.minimum.value
+        )) {
+            console.log('here');
+            let tempArray = errors.value;
+            let index = -1;
 
-        console.log('========= MIDDLE NAME =========');
-        // Middle
-        if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.middle.name,
-                rules.legalName.middle.count.maximum
-            )
-        )
-            console.log(rules.legalName.middle.count.errorText);
+            tempArray.forEach((error, i: number) => {
+                if (error.id === rules.legalName.first.length.minimum.id) {
+                    console.log('FOUND ERROR to remove');
+                    index = i;
+                }
+            });
 
-        if (isGreaterThanMinLength(fullName.middle.name)) {
-            let names = fullName.middle.name.split(' ');
-            if (
-                !isLessThanOrEqualToMaxLength(
-                    names[0],
-                    rules.legalName.middle.length[0].maximum.value
-                )
-            )
-                console.log(rules.legalName.middle.length[0].maximum.errorText);
+            if (index > -1) {
+                if (tempArray.length === 1) {
+                    tempArray.pop()
+                } else {
+                    errors.set(tempArray.splice(index, 1));
+                }
 
-            if (
-                names[1] &&
-                !isLessThanOrEqualToMaxLength(
-                    names[1],
-                    rules.legalName.middle.length[1].maximum.value
-                )
-            )
-                console.log(rules.legalName.middle.length[1].maximum.errorText);
+            }
+        } else {
+            console.log('error');
+            let tempArray = errors.value;
+            let index = -1;
+
+            tempArray.forEach((error) => {
+                if (error.id === rules.legalName.first.length.minimum.id) {
+                    console.log('FOUND ERROR');
+                    index = error.id;
+                }
+            });
+
+            if (index === -1) {
+                console.log('PUSHING ERROR');
+                tempArray.push({
+                    id: rules.legalName.first.length.minimum.id,
+                    message: rules.legalName.first.length.minimum.errorText
+                });
+                errors.set(tempArray);
+            }
+
         }
-
-        console.log('========= LAST NAME =========');
-        // Last Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
-                fullName.last.name,
-                rules.legalName.last.length.maximum.value
-            )
-        )
-            console.log(rules.legalName.last.length.maximum.errorText);
-        if (!isGreaterThanMinLength(fullName.last.name))
-            console.log(rules.legalName.last.length.minimum.errorText);
-        else if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.last.name,
-                rules.legalName.last.count.maximum
-            )
-        )
-            console.log(rules.legalName.last.count.errorText);
     });
+
+    // $effect(() => {
+    //     console.log('========= FIRST NAME =========');
+    //     $inspect(errors.value);
+        // // First Name Checks
+        // if (
+        //     !isLessThanOrEqualToMaxLength(
+        //         fullName.first.name,
+        //         rules.legalName.first.length.maximum.value
+        //     )
+        // )
+        //     console.log(rules.legalName.first.length.maximum.errorText);
+        // else if (!isGreaterThanMinLength(fullName.first.name))
+        //     console.log(rules.legalName.first.length.minimum.errorText);
+        // else if (
+        //     !isLessThanOrEqualToMaxNames(
+        //         fullName.first.name,
+        //         rules.legalName.first.count.maximum
+        //     )
+        // )
+        //     console.log(rules.legalName.first.count.errorText);
+
+        // console.log('========= MIDDLE NAME =========');
+        // // Middle
+        // if (
+        //     !isLessThanOrEqualToMaxNames(
+        //         fullName.middle.name,
+        //         rules.legalName.middle.count.maximum
+        //     )
+        // )
+        //     console.log(rules.legalName.middle.count.errorText);
+
+        // if (isGreaterThanMinLength(fullName.middle.name)) {
+        //     let names = fullName.middle.name.split(' ');
+        //     if (
+        //         !isLessThanOrEqualToMaxLength(
+        //             names[0],
+        //             rules.legalName.middle.length[0].maximum.value
+        //         )
+        //     )
+        //         console.log(rules.legalName.middle.length[0].maximum.errorText);
+
+        //     if (
+        //         names[1] &&
+        //         !isLessThanOrEqualToMaxLength(
+        //             names[1],
+        //             rules.legalName.middle.length[1].maximum.value
+        //         )
+        //     )
+        //         console.log(rules.legalName.middle.length[1].maximum.errorText);
+        // }
+
+        // console.log('========= LAST NAME =========');
+        // // Last Name Checks
+        // if (
+        //     !isLessThanOrEqualToMaxLength(
+        //         fullName.last.name,
+        //         rules.legalName.last.length.maximum.value
+        //     )
+        // )
+        //     console.log(rules.legalName.last.length.maximum.errorText);
+        // if (!isGreaterThanMinLength(fullName.last.name))
+        //     console.log(rules.legalName.last.length.minimum.errorText);
+        // else if (
+        //     !isLessThanOrEqualToMaxNames(
+        //         fullName.last.name,
+        //         rules.legalName.last.count.maximum
+        //     )
+        // )
+        //     console.log(rules.legalName.last.count.errorText);
+    // });
+
 </script>
 
 <div class="text-sm">
