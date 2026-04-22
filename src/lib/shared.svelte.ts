@@ -37,8 +37,18 @@ class Errors {
         return this.value;
     }
 
-    set(errors: ErrorMessage[]) {
-        this.value = errors
+    push(error: ErrorMessage) {
+        this.value.push(error)
+        this.value = this.value.sort((a, b) => a.id - b.id);
+    }
+
+    splice(index: number) {
+        if (index === this.value.length || this.value.length === 1) {
+            this.value.pop();
+        } else {
+            this.value.splice(index, 1);
+        }
+        this.value = this.value.sort((a, b) => a.id - b.id);
     }
 }
 

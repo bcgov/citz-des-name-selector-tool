@@ -63,10 +63,9 @@ export function checkErrorForMinLength (
         rule.value
     )) {
         console.log('here');
-        let tempArray = errors.value;
         let index = -1;
 
-        tempArray.forEach((error, i: number) => {
+        errors.value.forEach((error, i: number) => {
             if (error.id === rule.id) {
                 console.log('FOUND ERROR to remove');
                 index = i;
@@ -74,17 +73,13 @@ export function checkErrorForMinLength (
         });
 
         if (index > -1) {
-            if (tempArray.length === 1)
-                tempArray.pop()
-            else
-                errors.set(tempArray.splice(index, 1));
+            errors.splice(index);
         }
     } else {
         console.log('error');
-        let tempArray = errors.value;
         let index = -1;
 
-        tempArray.forEach((error) => {
+        errors.value.forEach((error) => {
             if (error.id === rule.id) {
                 console.log('FOUND ERROR');
                 index = error.id;
@@ -93,11 +88,10 @@ export function checkErrorForMinLength (
 
         if (index === -1) {
             console.log('PUSHING ERROR');
-            tempArray.push({
+            errors.push({
                 id: rule.id,
                 message: rule.errorText
             });
-            errors.set(tempArray);
         }
     }
 }
