@@ -96,7 +96,7 @@
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
-        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
+        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         bind:value={fullName.middle}
     />
 

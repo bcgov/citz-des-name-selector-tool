@@ -24,7 +24,7 @@
         else if (
             !isLessThanOrEqualToMaxNames(
                 altName.first.name,
-                rules.alternateName.first.count.maximum
+                rules.alternateName.first.count.value
             )
         )
             console.log(rules.alternateName.first.count.errorText);
@@ -35,7 +35,7 @@
             if (
                 isLessThanOrEqualToMaxNames(
                     altName.middle.name,
-                    rules.alternateName.middle.count.maximum
+                    rules.alternateName.middle.count.value
                 )
             )
                 console.log(rules.alternateName.middle.count.errorText);
@@ -76,7 +76,7 @@
         else if (
             isLessThanOrEqualToMaxNames(
                 altName.last.name,
-                rules.alternateName.last.count.maximum
+                rules.alternateName.last.count.value
             )
         )
             console.log(rules.alternateName.last.count.errorText);
