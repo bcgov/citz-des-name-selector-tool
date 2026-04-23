@@ -28,7 +28,7 @@ describe('Case: failsAsciiValidation', () => {
 
     it('Count of alternate middle names is less than or equal to max number of middle names', () => {
         expect(
-            middleNames.length <= rules.alternateName.middle.count.maximum
+            middleNames.length <= rules.alternateName.middle.count.value
         ).toBeTruthy();
     });
 

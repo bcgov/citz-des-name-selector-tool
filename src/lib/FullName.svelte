@@ -1,84 +1,63 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { fullName } from './shared.svelte.ts';
+    import { errors, fullName } from './shared.svelte.ts';
     import {
+        checkErrorForMaxLength,
+        checkErrorForMaxNames,
+        checkErrorForMinLength,
         isGreaterThanMinLength,
-        isLessThanOrEqualToMaxLength,
-        isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
-    $effect(() => {
-        console.log('========= FIRST NAME =========');
-        // First Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
-                fullName.first.name,
-                rules.legalName.first.length.maximum.value
-            )
-        )
-            console.log(rules.legalName.first.length.maximum.errorText);
-        else if (!isGreaterThanMinLength(fullName.first.name))
-            // TODO: Codify this rule in rules-configuration.ts
-            console.log(rules.legalName.first.length.minimum.errorText);
-        else if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.first.name,
-                rules.legalName.first.count.maximum
-            )
-        )
-            console.log(rules.legalName.first.count.errorText);
+    $effect(function () {
+        $inspect(errors.value);
 
-        console.log('========= MIDDLE NAME =========');
-        // Middle
-        if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.middle.name,
-                rules.legalName.middle.count.maximum
-            )
-        )
-            console.log(rules.legalName.middle.count.errorText);
+        // First name
+        checkErrorForMinLength(
+            fullName.first.name,
+            rules.legalName.first.length.minimum
+        );
 
+        checkErrorForMaxLength(
+            fullName.first.name,
+            rules.legalName.first.length.maximum
+        );
+
+        checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
+
+        // Middle name
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
-            if (
-                !isLessThanOrEqualToMaxLength(
-                    names[0],
-                    rules.legalName.middle.length[0].maximum.value
-                )
-            )
-                console.log(rules.legalName.middle.length[0].maximum.errorText);
+            checkErrorForMaxLength(
+                names[0],
+                rules.legalName.middle.length[0].maximum
+            );
 
-            if (
-                names[1] &&
-                !isLessThanOrEqualToMaxLength(
+            if (names[1])
+                checkErrorForMaxLength(
                     names[1],
-                    rules.legalName.middle.length[1].maximum.value
-                )
-            )
-                console.log(rules.legalName.middle.length[1].maximum.errorText);
+                    rules.legalName.middle.length[1].maximum
+                );
         }
 
-        console.log('========= LAST NAME =========');
-        // Last Name Checks
-        if (
-            !isLessThanOrEqualToMaxLength(
-                fullName.last.name,
-                rules.legalName.last.length.maximum.value
-            )
-        )
-            console.log(rules.legalName.last.length.maximum.errorText);
-        if (!isGreaterThanMinLength(fullName.last.name))
-            // TODO: Codify this rule in rules-configuration.ts
-            console.log(rules.legalName.last.length.minimum.errorText);
-        else if (
-            !isLessThanOrEqualToMaxNames(
-                fullName.last.name,
-                rules.legalName.last.count.maximum
-            )
-        )
-            console.log(rules.legalName.last.count.errorText);
+        checkErrorForMaxNames(
+            fullName.middle.name,
+            rules.legalName.middle.count
+        );
+
+        // Last name
+        checkErrorForMinLength(
+            fullName.last.name,
+            rules.legalName.last.length.minimum
+        );
+
+        checkErrorForMaxLength(
+            fullName.last.name,
+            rules.legalName.last.length.maximum
+        );
+
+        checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
     });
 </script>
 
@@ -111,7 +90,7 @@
     <InputLabel
         id="middle-names"
         label="Legal Middle Name(s):"
-        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.maximum} Names)`}
+        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         bind:value={fullName.middle}
     />
 

@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
+import { errors, fullName, type ErrorRule } from './shared.svelte';
+import { rules } from './rules-configuration';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -50,4 +52,70 @@ export function isLessThanOrEqualToMaxLength(
  */
 export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
     return str.split(' ').length <= maxNames;
+}
+
+export function checkErrorForMinLength(name: string, rule: ErrorRule) {
+    let index = -1;
+
+    if (isGreaterThanMinLength(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index > -1) errors.splice(index);
+    } else {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>) => {
+            if (error.id === rule.id) index = error.id;
+        });
+
+        if (index === -1)
+            errors.push({
+                id: rule.id,
+                errorText: rule.errorText,
+            });
+    }
+}
+
+export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
+    let index = -1;
+
+    if (isLessThanOrEqualToMaxLength(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index > -1) errors.splice(index);
+    } else {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index === -1)
+            errors.push({
+                id: rule.id,
+                errorText: rule.errorText,
+            });
+    }
+}
+
+export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
+    let index = -1;
+
+    if (isLessThanOrEqualToMaxNames(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index > -1) errors.splice(index);
+    } else {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index === -1)
+            errors.push({
+                id: rule.id,
+                errorText: rule.errorText,
+            });
+    }
 }

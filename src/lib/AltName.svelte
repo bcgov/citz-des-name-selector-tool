@@ -20,12 +20,11 @@
         )
             console.log(rules.alternateName.first.length.maximum.errorText);
         else if (!isGreaterThanMinLength(altName.first.name))
-            // TODO: Codify this rule in rules-configuration.ts
             console.log(rules.alternateName.first.length.minimum.errorText);
         else if (
             !isLessThanOrEqualToMaxNames(
                 altName.first.name,
-                rules.alternateName.first.count.maximum
+                rules.alternateName.first.count.value
             )
         )
             console.log(rules.alternateName.first.count.errorText);
@@ -36,7 +35,7 @@
             if (
                 isLessThanOrEqualToMaxNames(
                     altName.middle.name,
-                    rules.alternateName.middle.count.maximum
+                    rules.alternateName.middle.count.value
                 )
             )
                 console.log(rules.alternateName.middle.count.errorText);
@@ -77,7 +76,7 @@
         else if (
             isLessThanOrEqualToMaxNames(
                 altName.last.name,
-                rules.alternateName.last.count.maximum
+                rules.alternateName.last.count.value
             )
         )
             console.log(rules.alternateName.last.count.errorText);
