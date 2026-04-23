@@ -17,7 +17,7 @@ export const rules = {
             },
             count: {
                 id: 103,
-                maximum: 1,
+                value: 1,
                 errorText:
                     'The amount of Legal First Names exceeds the maximum number of names allowed',
             },
@@ -55,7 +55,7 @@ export const rules = {
             },
             count: {
                 id: 108,
-                maximum: 2,
+                value: 2,
                 errorText:
                     'The amount of Legal Middle Names exceeds the maximum number of names allowed',
             },
@@ -77,7 +77,7 @@ export const rules = {
             },
             count: {
                 id: 111,
-                maximum: 1,
+                value: 1,
                 errorText:
                     'The amount of Legal Last Names exceeds the maximum number of names allowed',
             },
@@ -101,7 +101,7 @@ export const rules = {
             },
             count: {
                 id: 203,
-                maximum: 1,
+                value: 1,
                 errorText:
                     'The amount of Alternate First Names exceeds the maximum number of names allowed',
             },
@@ -139,7 +139,7 @@ export const rules = {
             },
             count: {
                 id: 208,
-                maximum: 2,
+                value: 2,
                 errorText:
                     'The amount of Alternate Middle Names exceeds the maximum number of names allowed',
             },
@@ -161,7 +161,7 @@ export const rules = {
             },
             count: {
                 id: 211,
-                maximum: 1,
+                value: 1,
                 errorText:
                     'The amount of Alternate Last Names exceeds the maximum number of names allowed',
             },

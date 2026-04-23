@@ -1,18 +1,18 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName, type ErrorRule } from './shared.svelte.ts';
+    import { errors, fullName } from './shared.svelte.ts';
     import {
-    checkErrorForMaxLength,
-    checkErrorForMinLength,
+        checkErrorForMaxLength,
+        checkErrorForMaxNames,
+        checkErrorForMinLength,
         isGreaterThanMinLength,
-        isLessThanOrEqualToMaxLength,
-        isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
     $effect(function () {
         $inspect(errors.value);
+
         // First name
         checkErrorForMinLength(
             fullName.first.name,
@@ -24,12 +24,12 @@
             rules.legalName.first.length.maximum
         );
 
-        // Last name
-        checkErrorForMinLength(
-            fullName.last.name,
-            rules.legalName.last.length.minimum
+        checkErrorForMaxNames(
+            fullName.first.name,
+            rules.legalName.first.count
         );
 
+        // Middle name
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
             checkErrorForMaxLength(
@@ -44,62 +44,27 @@
                 );
         }
 
+        checkErrorForMaxNames(
+            fullName.middle.name,
+            rules.legalName.middle.count
+        );
+
+        // Last name
+        checkErrorForMinLength(
+            fullName.last.name,
+            rules.legalName.last.length.minimum
+        );
+
         checkErrorForMaxLength(
             fullName.last.name,
             rules.legalName.last.length.maximum
         );
+
+        checkErrorForMaxNames(
+            fullName.last.name,
+            rules.legalName.last.count
+        );
     });
-
-    // $effect(() => {
-    //     console.log('========= FIRST NAME =========');
-        // else if (
-        //     !isLessThanOrEqualToMaxNames(
-        //         fullName.first.name,
-        //         rules.legalName.first.count.maximum
-        //     )
-        // )
-        //     console.log(rules.legalName.first.count.errorText);
-
-        // console.log('========= MIDDLE NAME =========');
-        // // Middle
-        // if (
-        //     !isLessThanOrEqualToMaxNames(
-        //         fullName.middle.name,
-        //         rules.legalName.middle.count.maximum
-        //     )
-        // )
-        //     console.log(rules.legalName.middle.count.errorText);
-
-        // if (isGreaterThanMinLength(fullName.middle.name)) {
-        //     let names = fullName.middle.name.split(' ');
-        //     if (
-        //         !isLessThanOrEqualToMaxLength(
-        //             names[0],
-        //             rules.legalName.middle.length[0].maximum.value
-        //         )
-        //     )
-        //         console.log(rules.legalName.middle.length[0].maximum.errorText);
-
-        //     if (
-        //         names[1] &&
-        //         !isLessThanOrEqualToMaxLength(
-        //             names[1],
-        //             rules.legalName.middle.length[1].maximum.value
-        //         )
-        //     )
-        //         console.log(rules.legalName.middle.length[1].maximum.errorText);
-        // }
-
-        // console.log('========= LAST NAME =========');
-        // else if (
-        //     !isLessThanOrEqualToMaxNames(
-        //         fullName.last.name,
-        //         rules.legalName.last.count.maximum
-        //     )
-        // )
-        //     console.log(rules.legalName.last.count.errorText);
-    // });
-
 </script>
 
 <div class="text-sm">
