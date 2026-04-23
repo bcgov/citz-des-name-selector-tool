@@ -35,13 +35,9 @@ class Errors {
     value: Omit<ErrorRule, "value">[] = $state([])
 
     push(error: Omit<ErrorRule, "value">) {
-        try {
-            let tempArray = this.value;
-            tempArray.push(error);
-            this.value = tempArray.sort((a, b) => a.id - b.id);
-        } catch (error) {
-            console.log(error);
-        }
+        let tempArray = this.value;
+        tempArray.push(error);
+        this.value = tempArray.sort((a, b) => a.id - b.id);
     }
 
     splice(index: number) {

@@ -1,8 +1,9 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName } from './shared.svelte.ts';
+    import { errors, fullName, type ErrorRule } from './shared.svelte.ts';
     import {
+    checkErrorForMaxLength,
     checkErrorForMinLength,
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
@@ -11,31 +12,46 @@
     import { rules } from './rules-configuration.ts';
 
     $effect(function () {
-        $inspect.trace();
+        $inspect(errors.value);
+        // First name
         checkErrorForMinLength(
             fullName.first.name,
             rules.legalName.first.length.minimum
         );
 
+        checkErrorForMaxLength(
+            fullName.first.name,
+            rules.legalName.first.length.maximum
+        );
+
+        // Last name
         checkErrorForMinLength(
             fullName.last.name,
             rules.legalName.last.length.minimum
+        );
+
+        if (isGreaterThanMinLength(fullName.middle.name)) {
+            let names = fullName.middle.name.split(' ');
+            checkErrorForMaxLength(
+                names[0],
+                rules.legalName.middle.length[0].maximum
+            );
+
+            if (names[1])
+                checkErrorForMaxLength(
+                    names[1],
+                    rules.legalName.middle.length[1].maximum
+                );
+        }
+
+        checkErrorForMaxLength(
+            fullName.last.name,
+            rules.legalName.last.length.maximum
         );
     });
 
     // $effect(() => {
     //     console.log('========= FIRST NAME =========');
-    //     $inspect(errors.value);
-        // // First Name Checks
-        // if (
-        //     !isLessThanOrEqualToMaxLength(
-        //         fullName.first.name,
-        //         rules.legalName.first.length.maximum.value
-        //     )
-        // )
-        //     console.log(rules.legalName.first.length.maximum.errorText);
-        // else if (!isGreaterThanMinLength(fullName.first.name))
-        //     console.log(rules.legalName.first.length.minimum.errorText);
         // else if (
         //     !isLessThanOrEqualToMaxNames(
         //         fullName.first.name,
@@ -75,16 +91,6 @@
         // }
 
         // console.log('========= LAST NAME =========');
-        // // Last Name Checks
-        // if (
-        //     !isLessThanOrEqualToMaxLength(
-        //         fullName.last.name,
-        //         rules.legalName.last.length.maximum.value
-        //     )
-        // )
-        //     console.log(rules.legalName.last.length.maximum.errorText);
-        // if (!isGreaterThanMinLength(fullName.last.name))
-        //     console.log(rules.legalName.last.length.minimum.errorText);
         // else if (
         //     !isLessThanOrEqualToMaxNames(
         //         fullName.last.name,

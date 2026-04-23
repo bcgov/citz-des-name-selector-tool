@@ -95,15 +95,23 @@ export function checkErrorForMaxLength (
         name,
         rule.value
     )) {
-
         errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
             if (error.id === rule.id)
-                index = -1
+                index = i;
         });
 
         if (index > -1)
             errors.splice(index);
     } else {
-        errors.value.forEach
+        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
+            if (error.id === rule.id)
+                index = i;
+        });
+
+        if (index === -1)
+            errors.push({
+                id: rule.id,
+                errorText: rule.errorText
+            });
     }
 }
