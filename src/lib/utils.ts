@@ -54,95 +54,68 @@ export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
     return str.split(' ').length <= maxNames;
 }
 
-export function checkErrorForMinLength (
-    name: string,
-    rule: ErrorRule
-) {
+export function checkErrorForMinLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isGreaterThanMinLength(
-        name,
-        rule.value
-    )) {
-        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-            if (error.id === rule.id)
-                index = i;
+    if (isGreaterThanMinLength(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
         });
 
-        if (index > -1)
-            errors.splice(index);
+        if (index > -1) errors.splice(index);
     } else {
-        errors.value.forEach((error: Omit<ErrorRule, "value">) => {
-            if (error.id === rule.id)
-                index = error.id;
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>) => {
+            if (error.id === rule.id) index = error.id;
         });
 
         if (index === -1)
             errors.push({
                 id: rule.id,
-                errorText: rule.errorText
+                errorText: rule.errorText,
             });
     }
 }
 
-export function checkErrorForMaxLength (
-    name: string,
-    rule: ErrorRule
-) {
+export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isLessThanOrEqualToMaxLength(
-        name,
-        rule.value
-    )) {
-        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-            if (error.id === rule.id)
-                index = i;
+    if (isLessThanOrEqualToMaxLength(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
         });
 
-        if (index > -1)
-            errors.splice(index);
+        if (index > -1) errors.splice(index);
     } else {
-        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-            if (error.id === rule.id)
-                index = i;
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
         });
 
         if (index === -1)
             errors.push({
                 id: rule.id,
-                errorText: rule.errorText
+                errorText: rule.errorText,
             });
     }
 }
 
-export function checkErrorForMaxNames (
-    name: string,
-    rule: ErrorRule
-) {
-        let index = -1;
+export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
+    let index = -1;
 
-        if (isLessThanOrEqualToMaxNames(
-            name,
-            rule.value
-        )) {
-            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-                if (error.id === rule.id)
-                    index = i;
+    if (isLessThanOrEqualToMaxNames(name, rule.value)) {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index > -1) errors.splice(index);
+    } else {
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
+        if (index === -1)
+            errors.push({
+                id: rule.id,
+                errorText: rule.errorText,
             });
-
-            if (index > -1)
-                errors.splice(index);
-        } else {
-            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-                if (error.id === rule.id)
-                    index = i;
-            });
-
-            if (index === -1)
-                errors.push({
-                    id: rule.id,
-                    errorText: rule.errorText
-                });
-        }
+    }
 }

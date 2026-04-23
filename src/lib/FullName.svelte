@@ -24,10 +24,7 @@
             rules.legalName.first.length.maximum
         );
 
-        checkErrorForMaxNames(
-            fullName.first.name,
-            rules.legalName.first.count
-        );
+        checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
 
         // Middle name
         if (isGreaterThanMinLength(fullName.middle.name)) {
@@ -60,10 +57,7 @@
             rules.legalName.last.length.maximum
         );
 
-        checkErrorForMaxNames(
-            fullName.last.name,
-            rules.legalName.last.count
-        );
+        checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
     });
 </script>
 

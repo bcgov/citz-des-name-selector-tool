@@ -2,7 +2,7 @@ export type ErrorRule = {
     id: number;
     errorText: string;
     value: number;
-}
+};
 
 export const fullName = $state({
     first: {
@@ -32,9 +32,9 @@ export const step = $state({ value: 0, max: 4 });
 
 // export const errors = $state({ value: [] });
 class Errors {
-    value: Omit<ErrorRule, "value">[] = $state([])
+    value: Omit<ErrorRule, 'value'>[] = $state([]);
 
-    push(error: Omit<ErrorRule, "value">) {
+    push(error: Omit<ErrorRule, 'value'>) {
         let tempArray = this.value;
         tempArray.push(error);
         this.value = tempArray.sort((a, b) => a.id - b.id);
