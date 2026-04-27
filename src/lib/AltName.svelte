@@ -70,6 +70,8 @@
 </script>
 
 <div>
+    <h1>Step 2: Enter an Alternate Spelling</h1>
+
     <Label class="text-lg font-bold">
         Next select an Alternate Spelling version of your name
     </Label>

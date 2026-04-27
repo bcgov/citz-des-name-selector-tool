@@ -47,15 +47,7 @@
 
 <style>
     .page-considerations {
-        max-width: 1100px;
-
         > * {
-            margin: var(--layout-margin-large) 0;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
             margin: var(--layout-margin-large) 0;
         }
 
