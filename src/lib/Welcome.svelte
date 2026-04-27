@@ -45,16 +45,8 @@
 
 <style>
     .page-welcome {
-        max-width: 1100px;
-
         > * {
             margin: var(--layout-margin-medium) 0;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: var(--layout-margin-large) 0;
         }
     }
 
