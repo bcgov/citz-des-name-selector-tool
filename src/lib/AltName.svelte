@@ -35,35 +35,43 @@
             rules.alternateName.first.ascii
         );
 
-        // // Middle Name Check
-        // if (isGreaterThanMinLength(altName.middle.name)) {
-        //     let names = altName.middle.name.split(' ');
+        // Middle Name Check
+        if (isGreaterThanMinLength(altName.middle.name)) {
+            let names = altName.middle.name.split(' ');
 
-        //     checkErrorForMaxLength(
-        //         names[0],
-        //         rules.alternateName.middle.length[0].maximum
-        //     );
+            checkErrorForMaxLength(
+                names[0],
+                rules.alternateName.middle.length[0].maximum
+            );
 
-        //     if (names[1])
-        //         checkErrorForMaxLength(
-        //             names[1],
-        //             rules.alternateName.middle.length[1].maximum
-        //         );
-        // }
+            if (names[1])
+                checkErrorForMaxLength(
+                    names[1],
+                    rules.alternateName.middle.length[1].maximum
+                );
+        }
+        checkErrorForASCII(
+            altName.first.name,
+            rules.alternateName.middle.ascii
+        );
 
-        // // Last Name Check
-        // checkErrorForMinLength(
-        //     altName.last.name,
-        //     rules.alternateName.last.length.minimum
-        // );
-        // checkErrorForMaxLength(
-        //     altName.last.name,
-        //     rules.alternateName.last.length.maximum
-        // );
-        // checkErrorForMaxNames(
-        //     altName.last.name,
-        //     rules.alternateName.last.count
-        // );
+        // Last Name Check
+        checkErrorForMinLength(
+            altName.last.name,
+            rules.alternateName.last.length.minimum
+        );
+        checkErrorForMaxLength(
+            altName.last.name,
+            rules.alternateName.last.length.maximum
+        );
+        checkErrorForMaxNames(
+            altName.last.name,
+            rules.alternateName.last.count
+        );
+        checkErrorForASCII(
+            altName.last.name,
+            rules.alternateName.last.ascii
+        );
     });
 </script>
 
