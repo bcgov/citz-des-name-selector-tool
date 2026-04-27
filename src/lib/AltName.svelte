@@ -3,6 +3,7 @@
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
     import { altName, errors, type ErrorRule } from './shared.svelte.ts';
     import {
+    checkErrorForASCII,
     checkErrorForMaxLength,
     checkErrorForMaxNames,
     checkErrorForMinLength,
@@ -29,28 +30,10 @@
             altName.first.name,
             rules.alternateName.first.count
         );
-
-        let index = -1;
-
-        if (isASCII(altName.first.name)) {
-            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-                if (error.id === rules.alternateName.first.ascii.id)
-                    index = i;
-            })
-            
-            if (index > -1) errors.splice(index);
-        } else {
-            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-                if (error.id === rules.alternateName.first.ascii.id)
-                    index = i;
-            });
-
-            if (index === -1)
-                errors.push({
-                    id: rules.alternateName.first.ascii.id,
-                    errorText: rules.alternateName.first.ascii.errorText
-                });
-        }
+        checkErrorForASCII(
+            altName.first.name,
+            rules.alternateName.first.ascii
+        );
 
         // // Middle Name Check
         // if (isGreaterThanMinLength(altName.middle.name)) {
