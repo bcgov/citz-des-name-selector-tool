@@ -20,9 +20,7 @@
             <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
         </div>
         <div class="bcds-header--line"></div>
-        <div class="bcds-header--title">
-            Step {step.value}
-        </div>
+        <div class="bcds-header--title">Name Selector Tool</div>
     </div>
 </header>
 
