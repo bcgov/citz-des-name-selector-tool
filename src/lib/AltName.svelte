@@ -1,85 +1,71 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { altName } from './shared.svelte.ts';
+    import { altName, errors, type ErrorRule } from './shared.svelte.ts';
     import {
+        checkErrorForASCII,
+        checkErrorForMaxLength,
+        checkErrorForMaxNames,
+        checkErrorForMinLength,
+        isASCII,
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
-    $effect(() => {
-        console.log('========= FIRST NAME =========');
-        // First Name Check
-        if (
-            !isLessThanOrEqualToMaxLength(
-                altName.first.name,
-                rules.alternateName.first.length.maximum.value
-            )
-        )
-            console.log(rules.alternateName.first.length.maximum.errorText);
-        else if (!isGreaterThanMinLength(altName.first.name))
-            console.log(rules.alternateName.first.length.minimum.errorText);
-        else if (
-            !isLessThanOrEqualToMaxNames(
-                altName.first.name,
-                rules.alternateName.first.count.value
-            )
-        )
-            console.log(rules.alternateName.first.count.errorText);
+    $effect(function () {
+        $inspect(errors.value);
 
-        console.log('========= MIDDLE NAME =========');
+        // First Name Check
+        checkErrorForMinLength(
+            altName.first.name,
+            rules.alternateName.first.length.minimum
+        );
+        checkErrorForMaxLength(
+            altName.first.name,
+            rules.alternateName.first.length.maximum
+        );
+        checkErrorForMaxNames(
+            altName.first.name,
+            rules.alternateName.first.count
+        );
+        checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
+
         // Middle Name Check
         if (isGreaterThanMinLength(altName.middle.name)) {
-            if (
-                isLessThanOrEqualToMaxNames(
-                    altName.middle.name,
-                    rules.alternateName.middle.count.value
-                )
-            )
-                console.log(rules.alternateName.middle.count.errorText);
-            else {
-                let names = altName.middle.name.split(' ');
-                if (
-                    isLessThanOrEqualToMaxLength(
-                        names[0],
-                        rules.alternateName.middle.length[0].maximum.value
-                    )
-                )
-                    console.log(
-                        rules.alternateName.middle.length[0].maximum.errorText
-                    );
+            let names = altName.middle.name.split(' ');
 
-                if (
-                    names[1] &&
-                    isLessThanOrEqualToMaxLength(
-                        names[1],
-                        rules.alternateName.middle.length[1].maximum.value
-                    )
-                )
-                    console.log(
-                        rules.alternateName.middle.length[1].maximum.errorText
-                    );
-            }
+            checkErrorForMaxLength(
+                names[0],
+                rules.alternateName.middle.length[0].maximum
+            );
+
+            if (names[1])
+                checkErrorForMaxLength(
+                    names[1],
+                    rules.alternateName.middle.length[1].maximum
+                );
         }
+        checkErrorForASCII(
+            altName.first.name,
+            rules.alternateName.middle.ascii
+        );
 
-        console.log('========= LAST NAME =========');
         // Last Name Check
-        if (
-            isLessThanOrEqualToMaxLength(
-                altName.last.name,
-                rules.alternateName.last.length.maximum.value
-            )
-        )
-            console.log(rules.alternateName.last.length.maximum.errorText);
-        else if (
-            isLessThanOrEqualToMaxNames(
-                altName.last.name,
-                rules.alternateName.last.count.value
-            )
-        )
-            console.log(rules.alternateName.last.count.errorText);
+        checkErrorForMinLength(
+            altName.last.name,
+            rules.alternateName.last.length.minimum
+        );
+        checkErrorForMaxLength(
+            altName.last.name,
+            rules.alternateName.last.length.maximum
+        );
+        checkErrorForMaxNames(
+            altName.last.name,
+            rules.alternateName.last.count
+        );
+        checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
     });
 </script>
 
