@@ -1,18 +1,21 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { altName } from './shared.svelte.ts';
+    import { altName, errors, type ErrorRule } from './shared.svelte.ts';
     import {
     checkErrorForMaxLength,
     checkErrorForMaxNames,
     checkErrorForMinLength,
+        isASCII,
         isGreaterThanMinLength,
         isLessThanOrEqualToMaxLength,
         isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
-    $effect(() => {
+    $effect(function () {
+        $inspect(errors.value);
+
         // First Name Check
         checkErrorForMinLength(
             altName.first.name,
@@ -20,42 +23,64 @@
         );
         checkErrorForMaxLength(
             altName.first.name,
-            rules.alternateName.first.length.minimum
+            rules.alternateName.first.length.maximum
         );
         checkErrorForMaxNames(
             altName.first.name,
             rules.alternateName.first.count
         );
 
-        // Middle Name Check
-        if (isGreaterThanMinLength(altName.middle.name)) {
-            let names = altName.middle.name.split(' ');
+        let index = -1;
 
-            checkErrorForMaxLength(
-                names[0],
-                rules.alternateName.middle.length[0].maximum
-            );
+        if (isASCII(altName.first.name)) {
+            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
+                if (error.id === rules.alternateName.first.ascii.id)
+                    index = i;
+            })
+            
+            if (index > -1) errors.splice(index);
+        } else {
+            errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
+                if (error.id === rules.alternateName.first.ascii.id)
+                    index = i;
+            });
 
-            if (names[1])
-                checkErrorForMaxLength(
-                    names[1],
-                    rules.alternateName.middle.length[1].maximum
-                );
+            if (index === -1)
+                errors.push({
+                    id: rules.alternateName.first.ascii.id,
+                    errorText: rules.alternateName.first.ascii.errorText
+                });
         }
 
-        // Last Name Check
-        checkErrorForMinLength(
-            altName.last.name,
-            rules.alternateName.last.length.minimum
-        );
-        checkErrorForMaxLength(
-            altName.last.name,
-            rules.alternateName.last.length.maximum
-        );
-        checkErrorForMaxNames(
-            altName.last.name,
-            rules.alternateName.last.count
-        );
+        // // Middle Name Check
+        // if (isGreaterThanMinLength(altName.middle.name)) {
+        //     let names = altName.middle.name.split(' ');
+
+        //     checkErrorForMaxLength(
+        //         names[0],
+        //         rules.alternateName.middle.length[0].maximum
+        //     );
+
+        //     if (names[1])
+        //         checkErrorForMaxLength(
+        //             names[1],
+        //             rules.alternateName.middle.length[1].maximum
+        //         );
+        // }
+
+        // // Last Name Check
+        // checkErrorForMinLength(
+        //     altName.last.name,
+        //     rules.alternateName.last.length.minimum
+        // );
+        // checkErrorForMaxLength(
+        //     altName.last.name,
+        //     rules.alternateName.last.length.maximum
+        // );
+        // checkErrorForMaxNames(
+        //     altName.last.name,
+        //     rules.alternateName.last.count
+        // );
     });
 </script>
 
