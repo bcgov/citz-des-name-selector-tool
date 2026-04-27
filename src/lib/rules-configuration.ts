@@ -97,7 +97,7 @@ export const rules = {
                     value: 0,
                     errorText:
                         'Your Alternate First Name is less than the minimum allowable length for your first name',
-                },
+                }
             },
             count: {
                 id: 203,
@@ -105,18 +105,23 @@ export const rules = {
                 errorText:
                     'The amount of Alternate First Names exceeds the maximum number of names allowed',
             },
+            ascii: {
+                id: 204,
+                value: 1,
+                errorText: "This field contains unsupported characters."
+            }
         },
         middle: {
             length: {
                 0: {
                     maximum: {
-                        id: 204,
+                        id: 205,
                         value: 12,
                         errorText:
                             'Your first Alternate Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
-                        id: 205,
+                        id: 206,
                         value: 0,
                         errorText:
                             'Your first Alternate Middle Name is less than the minimum allowable length for your first name',
@@ -124,13 +129,13 @@ export const rules = {
                 },
                 1: {
                     maximum: {
-                        id: 206,
+                        id: 207,
                         value: 12,
                         errorText:
                             'Your second Alternate Middle Name exceeds the maximum allowable length for your first name',
                     },
                     minimum: {
-                        id: 207,
+                        id: 208,
                         value: 0,
                         errorText:
                             'Your second Alternate Middle Name is less than the minimum allowable length for your first name',
@@ -138,33 +143,43 @@ export const rules = {
                 },
             },
             count: {
-                id: 208,
+                id: 209,
                 value: 2,
                 errorText:
                     'The amount of Alternate Middle Names exceeds the maximum number of names allowed',
             },
+            ascii: {
+                id: 210,
+                value: 1,
+                errorText: "This field contains unsupported characters."
+            }
         },
         last: {
             length: {
                 maximum: {
-                    id: 209,
+                    id: 211,
                     value: 18,
                     errorText:
                         'Your Alternate Last Name exceeds the maximum allowable length for your first name',
                 },
                 minimum: {
-                    id: 210,
+                    id: 212,
                     value: 0,
                     errorText:
                         'Your Alternate Last Name is less than the minimum allowable length for your first name',
                 },
             },
             count: {
-                id: 211,
+                id: 213,
                 value: 1,
                 errorText:
                     'The amount of Alternate Last Names exceeds the maximum number of names allowed',
             },
+            ascii: {
+                id: 214,
+                value: 1,
+                errorText: "This field contains unsupported characters."
+            }
         },
     },
 };
