@@ -28,7 +28,7 @@ export const altName = $state({
     },
 });
 
-export const step = $state({ value: 0, max: 4 });
+export const step = $state({ value: 0, max: 5 });
 
 // export const errors = $state({ value: [] });
 class Errors {
