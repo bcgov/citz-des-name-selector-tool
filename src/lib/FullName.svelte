@@ -62,6 +62,8 @@
 </script>
 
 <div class="text-sm">
+    <h1>Step 1: First enter your Legal Name</h1>
+
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
 
     <p>
