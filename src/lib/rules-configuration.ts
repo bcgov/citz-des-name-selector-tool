@@ -97,7 +97,7 @@ export const rules = {
                     value: 0,
                     errorText:
                         'Your Alternate First Name is less than the minimum allowable length for your first name',
-                }
+                },
             },
             count: {
                 id: 203,
@@ -108,8 +108,8 @@ export const rules = {
             ascii: {
                 id: 204,
                 value: 1,
-                errorText: "Your first name contains unsupported characters."
-            }
+                errorText: 'Your first name contains unsupported characters.',
+            },
         },
         middle: {
             length: {
@@ -151,8 +151,8 @@ export const rules = {
             ascii: {
                 id: 210,
                 value: 1,
-                errorText: "Your middle name contains unsupported characters."
-            }
+                errorText: 'Your middle name contains unsupported characters.',
+            },
         },
         last: {
             length: {
@@ -178,8 +178,8 @@ export const rules = {
             ascii: {
                 id: 214,
                 value: 1,
-                errorText: "Your last name contains unsupported characters."
-            }
+                errorText: 'Your last name contains unsupported characters.',
+            },
         },
     },
 };

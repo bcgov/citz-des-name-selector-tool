@@ -124,22 +124,20 @@ export function checkErrorForASCII(name: string, rule: ErrorRule) {
     let index = -1;
 
     if (isASCII(name)) {
-        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-            if (error.id === rule.id)
-                index = i;
-        })
-        
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
+        });
+
         if (index > -1) errors.splice(index);
     } else {
-        errors.value.forEach((error: Omit<ErrorRule, "value">, i: number) => {
-            if (error.id === rule.id)
-                index = i;
+        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            if (error.id === rule.id) index = i;
         });
 
         if (index === -1)
             errors.push({
                 id: rule.id,
-                errorText: rule.errorText
+                errorText: rule.errorText,
             });
     }
 }
