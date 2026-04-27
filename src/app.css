@@ -197,6 +197,7 @@ h6 {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     margin: var(--layout-margin-large) 0;
 }
