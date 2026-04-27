@@ -108,7 +108,7 @@ export const rules = {
             ascii: {
                 id: 204,
                 value: 1,
-                errorText: "This field contains unsupported characters."
+                errorText: "Your first name contains unsupported characters."
             }
         },
         middle: {
@@ -151,7 +151,7 @@ export const rules = {
             ascii: {
                 id: 210,
                 value: 1,
-                errorText: "This field contains unsupported characters."
+                errorText: "Your middle name contains unsupported characters."
             }
         },
         last: {
@@ -178,7 +178,7 @@ export const rules = {
             ascii: {
                 id: 214,
                 value: 1,
-                errorText: "This field contains unsupported characters."
+                errorText: "Your last name contains unsupported characters."
             }
         },
     },
