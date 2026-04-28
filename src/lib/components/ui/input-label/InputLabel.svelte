@@ -18,27 +18,39 @@
     </div>
 
     {#if errors.find(rules.length[0].minimum.id) !== undefined}
-        {errors.find(rules.length[0].minimum.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.length[0].minimum.id)?.errorText}
+        </p>
     {/if}
 
     {#if errors.find(rules.length[0].maximum.id) !== undefined}
-        {errors.find(rules.length[0].maximum.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.length[0].maximum.id)?.errorText}
+        </p>
     {/if}
 
     {#if rules.length[1] && errors.find(rules.length[1].minimum.id) !== undefined}
-        {errors.find(rules.length[1].minimum.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.length[1].minimum.id)?.errorText}
+        </p>
     {/if}
 
     {#if rules.length[1] && errors.find(rules.length[1].maximum.id) !== undefined}
-        {errors.find(rules.length[1].maximum.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.length[1].maximum.id)?.errorText}
+        </p>
     {/if}
 
     {#if errors.find(rules.count.id)}
-        {errors.find(rules.count.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.count.id)?.errorText}
+        </p>
     {/if}
 
     {#if rules.ascii && errors.find(rules.ascii.id) !== undefined}
-        {errors.find(rules.count.id)?.errorText}
+        <p class="bcds-TextField--warning">
+            {errors.find(rules.count.id)?.errorText}
+        </p>
     {/if}
 
     <span id={`span-${id}`} class="bcds-TextField--description">
@@ -92,5 +104,10 @@
         font: var(--typography-regular-small-body);
         color: var(--typography-color-secondary);
         padding: var(--layout-padding-xsmall) var(--layout-padding-none);
+    }
+
+    .bcds-TextField--warning {
+        font: var(--typography-regular-small-body);
+        background-color: #F8BB47;
     }
 </style>

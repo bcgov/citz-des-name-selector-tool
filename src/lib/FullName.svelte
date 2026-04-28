@@ -102,7 +102,7 @@
         id="last-names"
         label="Legal Last Name:"
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
-        rules={rules.legalName.middle}
+        rules={rules.legalName.last}
         bind:value={fullName.last}
     />
 
