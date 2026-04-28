@@ -1,5 +1,7 @@
 <script lang="ts">
-    let { id, label, placeholder, value = $bindable() } = $props();
+    import { errors } from '$lib/shared.svelte';
+
+    let { id, label, placeholder, rules, value = $bindable() } = $props();
 </script>
 
 <div {id} class="bcds-TextField">
@@ -14,6 +16,42 @@
             bind:value={value.name}
         />
     </div>
+
+    {#if errors.hasError(rules.length[0].minimum.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.length[0].minimum.id)}
+        </p>
+    {/if}
+
+    {#if errors.hasError(rules.length[0].maximum.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.length[0].minimum.id)}
+        </p>
+    {/if}
+
+    {#if rules.length[1] && errors.hasError(rules.length[1].minimum.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.length[1].minimum.id)}
+        </p>
+    {/if}
+
+    {#if rules.length[1] && errors.hasError(rules.length[1].maximum.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.length[1].maximum.id)}
+        </p>
+    {/if}
+
+    {#if errors.hasError(rules.count.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.count.id)}
+        </p>
+    {/if}
+
+    {#if rules.ascii && errors.hasError(rules.ascii.id)}
+        <p class="bcds-TextField--warning">
+            {errors.getMessage(rules.count.id)}
+        </p>
+    {/if}
 
     <span id={`span-${id}`} class="bcds-TextField--description">
         {placeholder}
@@ -66,5 +104,10 @@
         font: var(--typography-regular-small-body);
         color: var(--typography-color-secondary);
         padding: var(--layout-padding-xsmall) var(--layout-padding-none);
+    }
+
+    .bcds-TextField--warning {
+        font: var(--typography-regular-small-body);
+        background-color: #f8bb47;
     }
 </style>

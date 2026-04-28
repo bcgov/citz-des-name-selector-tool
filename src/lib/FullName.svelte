@@ -16,12 +16,12 @@
         // First name
         checkErrorForMinLength(
             fullName.first.name,
-            rules.legalName.first.length.minimum
+            rules.legalName.first.length[0].minimum
         );
 
         checkErrorForMaxLength(
             fullName.first.name,
-            rules.legalName.first.length.maximum
+            rules.legalName.first.length[0].maximum
         );
 
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
@@ -49,12 +49,12 @@
         // Last name
         checkErrorForMinLength(
             fullName.last.name,
-            rules.legalName.last.length.minimum
+            rules.legalName.last.length[0].minimum
         );
 
         checkErrorForMaxLength(
             fullName.last.name,
-            rules.legalName.last.length.maximum
+            rules.legalName.last.length[0].maximum
         );
 
         checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
@@ -85,7 +85,8 @@
     <InputLabel
         id="first-name"
         label="Legal First Name:"
-        placeholder={`Max. ${rules.legalName.first.length.maximum.value} Characters`}
+        placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
+        rules={rules.legalName.first}
         bind:value={fullName.first}
     />
 
@@ -93,13 +94,15 @@
         id="middle-names"
         label="Legal Middle Name(s):"
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
+        rules={rules.legalName.middle}
         bind:value={fullName.middle}
     />
 
     <InputLabel
         id="last-names"
         label="Legal Last Name:"
-        placeholder={`Max. ${rules.legalName.last.length.maximum.value} Characters`}
+        placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
+        rules={rules.legalName.last}
         bind:value={fullName.last}
     />
 

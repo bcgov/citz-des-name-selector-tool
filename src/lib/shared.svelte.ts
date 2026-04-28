@@ -30,14 +30,13 @@ export const altName = $state({
 
 export const step = $state({ value: 0, max: 5 });
 
-// export const errors = $state({ value: [] });
 class Errors {
     value: Omit<ErrorRule, 'value'>[] = $state([]);
 
     push(error: Omit<ErrorRule, 'value'>) {
         let tempArray = this.value;
         tempArray.push(error);
-        this.value = tempArray.sort((a, b) => a.id - b.id);
+        this.value = tempArray;
     }
 
     splice(index: number) {
@@ -47,7 +46,15 @@ class Errors {
         } else {
             tempArray.splice(index, 1);
         }
-        this.value = tempArray.sort((a, b) => a.id - b.id);
+        this.value = tempArray;
+    }
+
+    hasError(id: number) {
+        return errors.value.find((error) => error.id === id) !== undefined;
+    }
+
+    getMessage(id: number) {
+        return errors.value.find((error) => error.id === id)?.errorText;
     }
 }
 

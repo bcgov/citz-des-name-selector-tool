@@ -1,8 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
-import { errors, fullName, type ErrorRule } from './shared.svelte';
-import { rules } from './rules-configuration';
+import { errors, type ErrorRule } from './shared.svelte';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));

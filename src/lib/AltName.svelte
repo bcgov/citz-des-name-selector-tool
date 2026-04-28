@@ -7,10 +7,7 @@
         checkErrorForMaxLength,
         checkErrorForMaxNames,
         checkErrorForMinLength,
-        isASCII,
         isGreaterThanMinLength,
-        isLessThanOrEqualToMaxLength,
-        isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
@@ -20,11 +17,11 @@
         // First Name Check
         checkErrorForMinLength(
             altName.first.name,
-            rules.alternateName.first.length.minimum
+            rules.alternateName.first.length[0].minimum
         );
         checkErrorForMaxLength(
             altName.first.name,
-            rules.alternateName.first.length.maximum
+            rules.alternateName.first.length[0].maximum
         );
         checkErrorForMaxNames(
             altName.first.name,
@@ -55,11 +52,11 @@
         // Last Name Check
         checkErrorForMinLength(
             altName.last.name,
-            rules.alternateName.last.length.minimum
+            rules.alternateName.last.length[0].minimum
         );
         checkErrorForMaxLength(
             altName.last.name,
-            rules.alternateName.last.length.maximum
+            rules.alternateName.last.length[0].maximum
         );
         checkErrorForMaxNames(
             altName.last.name,
@@ -88,6 +85,7 @@
         id="alt-first-name"
         label="Alternate Spelling of First Name:"
         placeholder="Max. 12 Characters"
+        rules={rules.alternateName.first}
         bind:value={altName.first}
     />
 
@@ -95,6 +93,7 @@
         id="alt-middle-name"
         label="Alternate Spelling of Middle Name(s):"
         placeholder="Max. 12 Characters (Max 2 Names)"
+        rules={rules.alternateName.middle}
         bind:value={altName.middle}
     />
 
@@ -102,6 +101,7 @@
         id="alt-last-name"
         label="Alternate Spelling of Last Name:"
         placeholder="Max. 18 Characters"
+        rules={rules.alternateName.last}
         bind:value={altName.last}
     />
 
