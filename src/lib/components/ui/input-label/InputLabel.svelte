@@ -1,5 +1,7 @@
 <script lang="ts">
-    let { id, label, placeholder, value = $bindable() } = $props();
+    import { errors } from "$lib/shared.svelte";
+
+    let { id, label, placeholder, rules, value = $bindable() } = $props();
 </script>
 
 <div {id} class="bcds-TextField">
@@ -14,6 +16,30 @@
             bind:value={value.name}
         />
     </div>
+
+    {#if errors.find(rules.length[0].minimum.id) !== undefined}
+        {errors.find(rules.length[0].minimum.id)?.errorText}
+    {/if}
+
+    {#if errors.find(rules.length[0].maximum.id) !== undefined}
+        {errors.find(rules.length[0].maximum.id)?.errorText}
+    {/if}
+
+    {#if rules.length[1] && errors.find(rules.length[1].minimum.id) !== undefined}
+        {errors.find(rules.length[1].minimum.id)?.errorText}
+    {/if}
+
+    {#if rules.length[1] && errors.find(rules.length[1].maximum.id) !== undefined}
+        {errors.find(rules.length[1].maximum.id)?.errorText}
+    {/if}
+
+    {#if errors.find(rules.count.id)}
+        {errors.find(rules.count.id)?.errorText}
+    {/if}
+
+    {#if rules.ascii && errors.find(rules.ascii.id) !== undefined}
+        {errors.find(rules.count.id)?.errorText}
+    {/if}
 
     <span id={`span-${id}`} class="bcds-TextField--description">
         {placeholder}

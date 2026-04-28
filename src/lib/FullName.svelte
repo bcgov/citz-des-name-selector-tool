@@ -12,7 +12,6 @@
 
     $effect(function () {
         $inspect(errors.value);
-        $inspect(errors.find(102));
 
         // First name
         checkErrorForMinLength(
@@ -87,6 +86,7 @@
         id="first-name"
         label="Legal First Name:"
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
+        rules={rules.legalName.first}
         bind:value={fullName.first}
     />
 
@@ -94,6 +94,7 @@
         id="middle-names"
         label="Legal Middle Name(s):"
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
+        rules={rules.legalName.middle}
         bind:value={fullName.middle}
     />
 
@@ -101,6 +102,7 @@
         id="last-names"
         label="Legal Last Name:"
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
+        rules={rules.legalName.middle}
         bind:value={fullName.last}
     />
 
