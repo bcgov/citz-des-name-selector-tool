@@ -17,39 +17,39 @@
         />
     </div>
 
-    {#if errors.find(rules.length[0].minimum.id) !== undefined}
+    {#if errors.hasError(rules.length[0].minimum.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.length[0].minimum.id)?.errorText}
+            {errors.getMessage(rules.length[0].minimum.id)}
         </p>
     {/if}
 
-    {#if errors.find(rules.length[0].maximum.id) !== undefined}
+    {#if errors.hasError(rules.length[0].maximum.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.length[0].maximum.id)?.errorText}
+            {errors.getMessage(rules.length[0].minimum.id)}
         </p>
     {/if}
 
-    {#if rules.length[1] && errors.find(rules.length[1].minimum.id) !== undefined}
+    {#if rules.length[1] && errors.hasError(rules.length[1].minimum.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.length[1].minimum.id)?.errorText}
+            {errors.getMessage(rules.length[1].minimum.id)}
         </p>
     {/if}
 
-    {#if rules.length[1] && errors.find(rules.length[1].maximum.id) !== undefined}
+    {#if rules.length[1] && errors.hasError(rules.length[1].maximum.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.length[1].maximum.id)?.errorText}
+            {errors.getMessage(rules.length[1].maximum.id)}
         </p>
     {/if}
 
-    {#if errors.find(rules.count.id)}
+    {#if errors.hasError(rules.count.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.count.id)?.errorText}
+            {errors.getMessage(rules.count.id)}
         </p>
     {/if}
 
-    {#if rules.ascii && errors.find(rules.ascii.id) !== undefined}
+    {#if rules.ascii && errors.hasError(rules.ascii.id)}
         <p class="bcds-TextField--warning">
-            {errors.find(rules.count.id)?.errorText}
+            {errors.getMessage(rules.count.id)}
         </p>
     {/if}
 

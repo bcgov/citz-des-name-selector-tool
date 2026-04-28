@@ -49,8 +49,12 @@ class Errors {
         this.value = tempArray;
     }
 
-    find(id: number) {
-        return errors.value.find((error: Omit<ErrorRule, "value">, i) => error.id === id);
+    hasError(id: number) {
+        return errors.value.find(error => error.id === id) !== undefined;
+    }
+
+    getMessage(id: number) {
+        return errors.value.find(error => error.id === id)?.errorText;
     }
 }
 
