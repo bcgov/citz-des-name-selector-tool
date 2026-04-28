@@ -15,7 +15,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateFirstName,
-                rules.alternateName.first.length.maximum.value
+                rules.alternateName.first.length[0].maximum.value
             )
         ).toBeTruthy();
     });
@@ -37,7 +37,7 @@ describe('Case: failsAsciiValidation', () => {
             expect(
                 isLessThanOrEqualToMaxLength(
                     middleName,
-                    rules.alternateName.first.length.maximum.value
+                    rules.alternateName.first.length[0].maximum.value
                 )
             ).toBeTruthy();
         });
@@ -51,7 +51,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateLastName,
-                rules.alternateName.last.length.maximum.value
+                rules.alternateName.last.length[0].maximum.value
             )
         ).toBeTruthy();
     });
