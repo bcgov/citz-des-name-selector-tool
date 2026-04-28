@@ -1,6 +1,7 @@
 <script lang="ts">
     //import { scrollY } from 'svelte/reactivity/window';
     import { step } from '../../../shared.svelte.ts';
+    import SvgBcLogo from '../../../../assets/SvgBcLogo.svg';
 
     //let active = $state(false);
 
@@ -17,7 +18,7 @@
 <header class="bcds-header">
     <div class="bcds-header--container">
         <div>
-            <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
+            <img src={SvgBcLogo} alt="bcgov-logo-footer" />
         </div>
         <div class="bcds-header--line"></div>
         <div class="bcds-header--title">Name Selector Tool</div>

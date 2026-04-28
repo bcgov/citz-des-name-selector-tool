@@ -1,8 +1,9 @@
 <script lang="ts">
+    import SvgBcLogo from '../../../../assets/SvgBcLogo.svg';
 </script>
 
 <div class="bcds-footer--logo">
-    <img src="./src/assets/SvgBcLogo.svg" alt="bcgov-logo-footer" />
+    <img src={SvgBcLogo} alt="bcgov-logo-footer" />
 
     <p>
         We can help in over 220 languages and through other accessible options.{' '}
