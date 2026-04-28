@@ -12,16 +12,17 @@
 
     $effect(function () {
         $inspect(errors.value);
+        $inspect(errors.find(102));
 
         // First name
         checkErrorForMinLength(
             fullName.first.name,
-            rules.legalName.first.length.minimum
+            rules.legalName.first.length[0].minimum
         );
 
         checkErrorForMaxLength(
             fullName.first.name,
-            rules.legalName.first.length.maximum
+            rules.legalName.first.length[0].maximum
         );
 
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
@@ -49,12 +50,12 @@
         // Last name
         checkErrorForMinLength(
             fullName.last.name,
-            rules.legalName.last.length.minimum
+            rules.legalName.last.length[0].minimum
         );
 
         checkErrorForMaxLength(
             fullName.last.name,
-            rules.legalName.last.length.maximum
+            rules.legalName.last.length[0].maximum
         );
 
         checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
@@ -85,7 +86,7 @@
     <InputLabel
         id="first-name"
         label="Legal First Name:"
-        placeholder={`Max. ${rules.legalName.first.length.maximum.value} Characters`}
+        placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         bind:value={fullName.first}
     />
 
@@ -99,7 +100,7 @@
     <InputLabel
         id="last-names"
         label="Legal Last Name:"
-        placeholder={`Max. ${rules.legalName.last.length.maximum.value} Characters`}
+        placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         bind:value={fullName.last}
     />
 

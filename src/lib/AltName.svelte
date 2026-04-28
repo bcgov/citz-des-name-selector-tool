@@ -7,10 +7,7 @@
         checkErrorForMaxLength,
         checkErrorForMaxNames,
         checkErrorForMinLength,
-        isASCII,
         isGreaterThanMinLength,
-        isLessThanOrEqualToMaxLength,
-        isLessThanOrEqualToMaxNames,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
 
@@ -20,11 +17,11 @@
         // First Name Check
         checkErrorForMinLength(
             altName.first.name,
-            rules.alternateName.first.length.minimum
+            rules.alternateName.first.length[0].minimum
         );
         checkErrorForMaxLength(
             altName.first.name,
-            rules.alternateName.first.length.maximum
+            rules.alternateName.first.length[0].maximum
         );
         checkErrorForMaxNames(
             altName.first.name,
@@ -55,11 +52,11 @@
         // Last Name Check
         checkErrorForMinLength(
             altName.last.name,
-            rules.alternateName.last.length.minimum
+            rules.alternateName.last.length[0].minimum
         );
         checkErrorForMaxLength(
             altName.last.name,
-            rules.alternateName.last.length.maximum
+            rules.alternateName.last.length[0].maximum
         );
         checkErrorForMaxNames(
             altName.last.name,
