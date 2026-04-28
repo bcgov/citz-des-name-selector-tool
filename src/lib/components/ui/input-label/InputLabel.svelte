@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { errors } from "$lib/shared.svelte";
+    import { errors } from '$lib/shared.svelte';
 
     let { id, label, placeholder, rules, value = $bindable() } = $props();
 </script>
@@ -108,6 +108,6 @@
 
     .bcds-TextField--warning {
         font: var(--typography-regular-small-body);
-        background-color: #F8BB47;
+        background-color: #f8bb47;
     }
 </style>

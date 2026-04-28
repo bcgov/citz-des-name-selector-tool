@@ -12,16 +12,14 @@ export const rules = {
                     minimum: {
                         id: 102,
                         value: 0,
-                        errorText:
-                            'This is a required field',
-                    }
-                }
+                        errorText: 'This is a required field',
+                    },
+                },
             },
             count: {
                 id: 103,
                 value: 1,
-                errorText:
-                    'Up to 1 name for this field',
+                errorText: 'Up to 1 name for this field',
             },
         },
         middle: {
@@ -58,8 +56,7 @@ export const rules = {
             count: {
                 id: 108,
                 value: 2,
-                errorText:
-                    'Up to 2 names only in this field',
+                errorText: 'Up to 2 names only in this field',
             },
         },
         last: {
@@ -74,16 +71,14 @@ export const rules = {
                     minimum: {
                         id: 110,
                         value: 0,
-                        errorText:
-                            'This is a required field',
+                        errorText: 'This is a required field',
                     },
-                }
+                },
             },
             count: {
                 id: 111,
                 value: 1,
-                errorText:
-                    'Up to 1 name for this field',
+                errorText: 'Up to 1 name for this field',
             },
         },
     },
@@ -100,16 +95,14 @@ export const rules = {
                     minimum: {
                         id: 202,
                         value: 0,
-                        errorText:
-                            'This is a required field',
+                        errorText: 'This is a required field',
                     },
-                }
+                },
             },
             count: {
                 id: 203,
                 value: 1,
-                errorText:
-                    'Up to 1 name for this field',
+                errorText: 'Up to 1 name for this field',
             },
             ascii: {
                 id: 204,
@@ -151,8 +144,7 @@ export const rules = {
             count: {
                 id: 209,
                 value: 2,
-                errorText:
-                    'Up to 2 names only in this field',
+                errorText: 'Up to 2 names only in this field',
             },
             ascii: {
                 id: 210,
@@ -172,16 +164,14 @@ export const rules = {
                     minimum: {
                         id: 212,
                         value: 0,
-                        errorText:
-                            'This is a required field',
+                        errorText: 'This is a required field',
                     },
-                }
+                },
             },
             count: {
                 id: 213,
                 value: 1,
-                errorText:
-                    'Up to 1 name for this field',
+                errorText: 'Up to 1 name for this field',
             },
             ascii: {
                 id: 214,
