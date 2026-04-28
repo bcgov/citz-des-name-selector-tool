@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 FROM base AS install
 RUN mkdir -p /temp/dev
-COPY package.json bun.lock /temp/dev/
+COPY package.json bun.lock bunfig.toml /temp/dev/
 # Install dependencies and devDependencies into a temp directory to cache them
 # and speed up future builds.
 RUN cd /temp/dev && bun install --frozen-lockfile
