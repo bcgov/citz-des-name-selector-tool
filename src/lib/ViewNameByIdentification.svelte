@@ -54,9 +54,9 @@
                 id="social-insurance-number"
                 value="social-insurance-number"
             />
-            <label for="social-insurance-number"
-                >Social Insurance Number (SIN)</label
-            >
+            <label for="social-insurance-number">
+                Social Insurance Number (SIN)
+            </label>
         </div>
         <div>
             <input
