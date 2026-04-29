@@ -78,7 +78,7 @@
     <h2>Alternate Spelling</h2>
     <p class="name-display">
         <!-- TODO: Replace with dynamically generated name -->
-        Legal Name entry displayed here
+        Alternate Spelling entry displayed here
     </p>
 
     <p>
