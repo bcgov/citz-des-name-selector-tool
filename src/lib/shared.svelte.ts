@@ -61,7 +61,7 @@ class Errors {
         return this.value.length === 0;
     }
 
-    hasErrors () {
+    hasErrors() {
         return this.value.length > 0;
     }
 }

@@ -130,7 +130,6 @@
         {:else if errors.hasErrors()}
             <Alert message="Alert: Please adjust highlighted field above" />
         {/if}
-
     </div>
 </div>
 
