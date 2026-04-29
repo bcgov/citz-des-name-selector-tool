@@ -8,6 +8,7 @@
     import FullName from './lib/FullName.svelte';
     import AltName from './lib/AltName.svelte';
     import ViewName from '$lib/ViewName.svelte';
+    import ViewNameByIdentification from '$lib/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
     import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
     import { step } from '$lib/shared.svelte';
@@ -39,6 +40,10 @@
 
         {#if step.value === 5}
             <ViewName />
+        {/if}
+
+        {#if step.value === 6}
+            <ViewNameByIdentification />
         {/if}
 
         <br />
