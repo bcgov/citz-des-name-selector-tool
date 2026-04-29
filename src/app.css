@@ -165,6 +165,17 @@ h1 {
     padding: var(--layout-padding-none) var(--layout-padding-medium);
 }
 
+.bcds-TextField--warning {
+    font: var(--typography-regular-small-body);
+    background-color: #f8bb47;
+}
+
+.bcds-TextField--success {
+    font: var(--typography-regular-small-body);
+    background-color: #42814A;
+    color: #ECEAE8;
+}
+
 form {
     width: 100%;
     max-width: 1100px;

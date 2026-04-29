@@ -123,6 +123,17 @@
             {fullName.first.name}
             {fullName.middle.name}
         </p>
+
+        {#if errors.hasZeroErrors()}
+            <p class="bcds-TextField--success">
+                Everything looks great!
+            </p>
+        {:else if errors.hasErrors()}
+            <p class="bcds-TextField--warning">
+                Alert: Please adjust highlighted field above
+            </p>
+        {/if}
+
     </div>
 </div>
 

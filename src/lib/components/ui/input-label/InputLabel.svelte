@@ -105,9 +105,4 @@
         color: var(--typography-color-secondary);
         padding: var(--layout-padding-xsmall) var(--layout-padding-none);
     }
-
-    .bcds-TextField--warning {
-        font: var(--typography-regular-small-body);
-        background-color: #f8bb47;
-    }
 </style>
