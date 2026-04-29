@@ -36,7 +36,7 @@
                 id="bcid-drivers-licence"
                 value="bcid-drivers-licence"
             />
-            <label for="bcid-drivers-licence">BC Services Card</label>
+            <label for="bcid-drivers-licence">BCID/BC Drivers Licence</label>
         </div>
         <div>
             <input
