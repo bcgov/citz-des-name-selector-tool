@@ -165,13 +165,22 @@ h1 {
     padding: var(--layout-padding-none) var(--layout-padding-medium);
 }
 
-.bcds-TextField--warning {
+.bcds-TextField--alert {
     font: var(--typography-regular-small-body);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.bcds-TextField--alert img {
+    height: 26px;
+}
+
+.bcds-TextField--warning {
     background-color: #f8bb47;
 }
 
 .bcds-TextField--success {
-    font: var(--typography-regular-small-body);
     background-color: #42814A;
     color: #ECEAE8;
 }
