@@ -1,5 +1,6 @@
 <script lang="ts">
     import { errors } from '$lib/shared.svelte';
+    import Alert from '../alert/alert.svelte';
 
     let { id, label, placeholder, rules, value = $bindable() } = $props();
 </script>
@@ -18,39 +19,27 @@
     </div>
 
     {#if errors.hasError(rules.length[0].minimum.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.length[0].minimum.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.length[0].minimum.id)} />
     {/if}
 
     {#if errors.hasError(rules.length[0].maximum.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.length[0].minimum.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.length[0].minimum.id)} />
     {/if}
 
     {#if rules.length[1] && errors.hasError(rules.length[1].minimum.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.length[1].minimum.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.length[1].minimum.id)} />
     {/if}
 
     {#if rules.length[1] && errors.hasError(rules.length[1].maximum.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.length[1].maximum.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.length[1].maximum.id)} />
     {/if}
 
     {#if errors.hasError(rules.count.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.count.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.count.id)} />
     {/if}
 
     {#if rules.ascii && errors.hasError(rules.ascii.id)}
-        <p class="bcds-TextField--warning">
-            {errors.getMessage(rules.count.id)}
-        </p>
+        <Alert message={errors.getMessage(rules.count.id)} />
     {/if}
 
     <span id={`span-${id}`} class="bcds-TextField--description">

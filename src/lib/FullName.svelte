@@ -9,6 +9,7 @@
         isGreaterThanMinLength,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
+    import Alert from './components/ui/alert/alert.svelte';
 
     $effect(function () {
         $inspect(errors.value);
@@ -125,13 +126,9 @@
         </p>
 
         {#if errors.hasZeroErrors()}
-            <p class="bcds-TextField--success">
-                Everything looks great!
-            </p>
+            <Alert message="Everything looks great!" success={true} />
         {:else if errors.hasErrors()}
-            <p class="bcds-TextField--warning">
-                Alert: Please adjust highlighted field above
-            </p>
+            <Alert message="Alert: Please adjust highlighted field above" />
         {/if}
 
     </div>
