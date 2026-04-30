@@ -165,6 +165,26 @@ h1 {
     padding: var(--layout-padding-none) var(--layout-padding-medium);
 }
 
+.bcds-TextField--alert {
+    font: var(--typography-regular-small-body);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.bcds-TextField--alert img {
+    height: 26px;
+}
+
+.bcds-TextField--warning {
+    background-color: #f8bb47;
+}
+
+.bcds-TextField--success {
+    background-color: #42814a;
+    color: #eceae8;
+}
+
 form {
     width: 100%;
     max-width: 1100px;

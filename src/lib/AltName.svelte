@@ -10,6 +10,7 @@
         isGreaterThanMinLength,
     } from './utils.ts';
     import { rules } from './rules-configuration.ts';
+    import Alert from './components/ui/alert/alert.svelte';
 
     $effect(function () {
         $inspect(errors.value);
@@ -126,6 +127,12 @@
             {altName.first.name}
             {altName.middle.name}
         </p>
+
+        {#if errors.hasZeroErrors()}
+            <Alert message="Everything looks great!" success={true} />
+        {:else if errors.hasErrors()}
+            <Alert message="Alert: Please adjust highlighted field above" />
+        {/if}
     </div>
 
     <p>

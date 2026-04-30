@@ -50,11 +50,19 @@ class Errors {
     }
 
     hasError(id: number) {
-        return errors.value.find((error) => error.id === id) !== undefined;
+        return this.value.find((error) => error.id === id) !== undefined;
     }
 
     getMessage(id: number) {
-        return errors.value.find((error) => error.id === id)?.errorText;
+        return this.value.find((error) => error.id === id)?.errorText;
+    }
+
+    hasZeroErrors() {
+        return this.value.length === 0;
+    }
+
+    hasErrors() {
+        return this.value.length > 0;
     }
 }
 
