@@ -13,8 +13,6 @@
     import Alert from './components/ui/alert/alert.svelte';
 
     $effect(function () {
-        $inspect(errors.value);
-
         // First Name Check
         checkErrorForMinLength(
             altName.first.name,
@@ -107,10 +105,6 @@
     />
 
     <br />
-
-    <div>
-        <!-- Block for input errors -->
-    </div>
 
     <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label class="font-bold text-base">
