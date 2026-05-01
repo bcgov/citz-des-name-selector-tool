@@ -37,7 +37,7 @@
     {/if}
 
     {#if errors.hasError(rules.length[0].maximum.id)}
-        <Alert message={errors.getMessage(rules.length[0].minimum.id)} />
+        <Alert message={errors.getMessage(rules.length[0].maximum.id)} />
     {/if}
 
     {#if rules.length[1] && errors.hasError(rules.length[1].minimum.id)}
