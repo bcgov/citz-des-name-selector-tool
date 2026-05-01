@@ -41,6 +41,10 @@
                     rules.alternateName.middle.length[1].maximum
                 );
         }
+        checkErrorForMaxNames(
+            altName.middle.name,
+            rules.alternateName.middle.count
+        );
         checkErrorForASCII(
             altName.middle.name,
             rules.alternateName.middle.ascii
