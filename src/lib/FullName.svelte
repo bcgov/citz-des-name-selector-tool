@@ -21,7 +21,7 @@
             rules.legalName.first.length[0].maximum
         );
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
-    }
+    };
 
     const checkMiddleName = () => {
         if (isGreaterThanMinLength(fullName.middle.name)) {
@@ -40,7 +40,7 @@
             fullName.middle.name,
             rules.legalName.middle.count
         );
-    }
+    };
 
     const checkLastName = () => {
         checkErrorForMinLength(
@@ -52,7 +52,7 @@
             rules.legalName.last.length[0].maximum
         );
         checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
-    }
+    };
 </script>
 
 <div class="text-sm">

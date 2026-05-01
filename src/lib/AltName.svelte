@@ -26,7 +26,7 @@
             rules.alternateName.first.count
         );
         checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
-    }
+    };
 
     const checkMiddleName = () => {
         if (isGreaterThanMinLength(altName.middle.name)) {
@@ -45,7 +45,7 @@
             altName.middle.name,
             rules.alternateName.middle.ascii
         );
-    }
+    };
 
     const checkLastName = () => {
         checkErrorForMinLength(
@@ -61,7 +61,7 @@
             rules.alternateName.last.count
         );
         checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
-    }
+    };
 </script>
 
 <div>
