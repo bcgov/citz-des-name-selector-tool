@@ -42,7 +42,7 @@
                 );
         }
         checkErrorForASCII(
-            altName.first.name,
+            altName.middle.name,
             rules.alternateName.middle.ascii
         );
     }
