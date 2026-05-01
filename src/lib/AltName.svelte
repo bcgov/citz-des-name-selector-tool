@@ -62,10 +62,6 @@
         );
         checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
     }
-    
-    checkFirstName();
-    checkMiddleName();
-    checkLastName();
 </script>
 
 <div>

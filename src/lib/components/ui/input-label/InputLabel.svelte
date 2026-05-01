@@ -11,6 +11,11 @@
         onInput
     } = $props();
 
+    /**
+     * Purpose to run once on open so we can get the initial errors.
+     */
+    const runOnce = () => onInput();
+    runOnce();
 </script>
 
 <div {id} class="bcds-TextField">

@@ -53,10 +53,6 @@
         );
         checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
     }
-
-    checkFirstName();
-    checkMiddleName();
-    checkLastName()
 </script>
 
 <div class="text-sm">
