@@ -2,13 +2,7 @@
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
 
-    let {
-        id,
-        label,
-        placeholder,
-        rules,
-        value = $bindable(),
-    } = $props();
+    let { id, label, placeholder, rules, value = $bindable() } = $props();
 </script>
 
 <div {id} class="bcds-TextField">
