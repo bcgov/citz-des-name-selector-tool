@@ -62,6 +62,12 @@
         );
         checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
     };
+
+    $effect(() => {
+        checkFirstName();
+        checkMiddleName();
+        checkLastName();
+    });
 </script>
 
 <div>
@@ -85,7 +91,6 @@
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
         bind:value={altName.first}
-        onInput={checkFirstName}
     />
 
     <InputLabel
@@ -94,7 +99,6 @@
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
         bind:value={altName.middle}
-        onInput={checkMiddleName}
     />
 
     <InputLabel
@@ -103,7 +107,6 @@
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
         bind:value={altName.last}
-        onInput={checkLastName}
     />
 
     <br />

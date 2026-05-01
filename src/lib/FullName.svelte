@@ -53,6 +53,12 @@
         );
         checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
     };
+
+    $effect(() => {
+        checkFirstName();
+        checkMiddleName();
+        checkLastName();
+    });
 </script>
 
 <div class="text-sm">
@@ -82,7 +88,6 @@
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
         bind:value={fullName.first}
-        onInput={checkFirstName}
     />
 
     <InputLabel
@@ -91,7 +96,6 @@
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
         bind:value={fullName.middle}
-        onInput={checkMiddleName}
     />
 
     <InputLabel
@@ -100,7 +104,6 @@
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
         bind:value={fullName.last}
-        onInput={checkLastName}
     />
 
     <br />
