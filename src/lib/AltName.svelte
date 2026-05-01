@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Label } from './components/ui/label/index.js';
     import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { altName, errors, type ErrorRule } from './shared.svelte.ts';
+    import { altName, errors } from './shared.svelte.ts';
     import {
         checkErrorForASCII,
         checkErrorForMaxLength,
@@ -12,10 +12,7 @@
     import { rules } from './rules-configuration.ts';
     import Alert from './components/ui/alert/alert.svelte';
 
-    $effect(function () {
-        $inspect(errors.value);
-
-        // First Name Check
+    const checkFirstName = () => {
         checkErrorForMinLength(
             altName.first.name,
             rules.alternateName.first.length[0].minimum
@@ -29,16 +26,15 @@
             rules.alternateName.first.count
         );
         checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
+    };
 
-        // Middle Name Check
+    const checkMiddleName = () => {
         if (isGreaterThanMinLength(altName.middle.name)) {
             let names = altName.middle.name.split(' ');
-
             checkErrorForMaxLength(
                 names[0],
                 rules.alternateName.middle.length[0].maximum
             );
-
             if (names[1])
                 checkErrorForMaxLength(
                     names[1],
@@ -46,11 +42,12 @@
                 );
         }
         checkErrorForASCII(
-            altName.first.name,
+            altName.middle.name,
             rules.alternateName.middle.ascii
         );
+    };
 
-        // Last Name Check
+    const checkLastName = () => {
         checkErrorForMinLength(
             altName.last.name,
             rules.alternateName.last.length[0].minimum
@@ -64,7 +61,7 @@
             rules.alternateName.last.count
         );
         checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
-    });
+    };
 </script>
 
 <div>
@@ -88,6 +85,7 @@
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
         bind:value={altName.first}
+        onInput={checkFirstName}
     />
 
     <InputLabel
@@ -96,6 +94,7 @@
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
         bind:value={altName.middle}
+        onInput={checkMiddleName}
     />
 
     <InputLabel
@@ -104,13 +103,10 @@
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
         bind:value={altName.last}
+        onInput={checkLastName}
     />
 
     <br />
-
-    <div>
-        <!-- Block for input errors -->
-    </div>
 
     <div class="flex w-full max-w-sm flex-col border-b text-base">
         <Label class="font-bold text-base">

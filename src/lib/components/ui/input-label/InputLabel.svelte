@@ -2,7 +2,20 @@
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
 
-    let { id, label, placeholder, rules, value = $bindable() } = $props();
+    let {
+        id,
+        label,
+        placeholder,
+        rules,
+        value = $bindable(),
+        onInput,
+    } = $props();
+
+    /**
+     * Purpose to run once on open so we can get the initial errors.
+     */
+    const runOnce = () => onInput();
+    runOnce();
 </script>
 
 <div {id} class="bcds-TextField">
@@ -15,6 +28,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             bind:value={value.name}
+            oninput={onInput}
         />
     </div>
 
@@ -23,7 +37,7 @@
     {/if}
 
     {#if errors.hasError(rules.length[0].maximum.id)}
-        <Alert message={errors.getMessage(rules.length[0].minimum.id)} />
+        <Alert message={errors.getMessage(rules.length[0].maximum.id)} />
     {/if}
 
     {#if rules.length[1] && errors.hasError(rules.length[1].minimum.id)}
