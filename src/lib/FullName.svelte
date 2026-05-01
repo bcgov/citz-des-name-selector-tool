@@ -11,7 +11,7 @@
     import { rules } from './rules-configuration.ts';
     import Alert from './components/ui/alert/alert.svelte';
 
-    function checkFirstName() {
+    const checkFirstName = () => {
         checkErrorForMinLength(
             fullName.first.name,
             rules.legalName.first.length[0].minimum
@@ -23,7 +23,7 @@
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
     }
 
-    function checkMiddleName() {
+    const checkMiddleName = () => {
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
             checkErrorForMaxLength(
@@ -42,7 +42,7 @@
         );
     }
 
-    function checkLastName() {
+    const checkLastName = () => {
         checkErrorForMinLength(
             fullName.last.name,
             rules.legalName.last.length[0].minimum
@@ -82,7 +82,7 @@
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
         bind:value={fullName.first}
-        onInput={() => checkFirstName()}
+        onInput={checkFirstName}
     />
 
     <InputLabel
@@ -91,7 +91,7 @@
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
         bind:value={fullName.middle}
-        onInput={() => checkMiddleName()}
+        onInput={checkMiddleName}
     />
 
     <InputLabel
@@ -100,7 +100,7 @@
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
         bind:value={fullName.last}
-        onInput={() => checkLastName()}
+        onInput={checkLastName}
     />
 
     <br />

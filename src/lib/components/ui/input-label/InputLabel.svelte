@@ -28,7 +28,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             bind:value={value.name}
-            oninput={() => onInput()}
+            oninput={onInput}
         />
     </div>
 
