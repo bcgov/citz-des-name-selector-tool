@@ -8,7 +8,7 @@
         placeholder,
         rules,
         value = $bindable(),
-        onInput
+        onInput,
     } = $props();
 
     /**

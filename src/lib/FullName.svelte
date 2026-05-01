@@ -11,7 +11,7 @@
     import { rules } from './rules-configuration.ts';
     import Alert from './components/ui/alert/alert.svelte';
 
-    function checkFirstName () {
+    function checkFirstName() {
         checkErrorForMinLength(
             fullName.first.name,
             rules.legalName.first.length[0].minimum
@@ -23,7 +23,7 @@
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
     }
 
-    function checkMiddleName () {
+    function checkMiddleName() {
         if (isGreaterThanMinLength(fullName.middle.name)) {
             let names = fullName.middle.name.split(' ');
             checkErrorForMaxLength(
