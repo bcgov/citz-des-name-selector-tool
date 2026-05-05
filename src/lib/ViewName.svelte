@@ -7,7 +7,7 @@
     <p class="note">
         <strong>Note:</strong> Feel free to screenshot this page to share with your
         community language teachers, family and to discuss next steps with the Vital
-        Statistic Name Support Team
+        Statistics Name Support Team
     </p>
 
     <h2>Full legal name you entered</h2>
