@@ -12,8 +12,8 @@
 
     <h2>Full legal name you entered</h2>
     <p>
-        (if you need to adjust anything, hit the &lsquo;Back&rsquo; button
-        below)
+        &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
+        below&rpar;
     </p>
     <p class="name-display">
         <!-- TODO: Replace with dynamically generated name -->
@@ -22,8 +22,8 @@
 
     <h2>Alternate Spelling you entered</h2>
     <p>
-        (if you need to adjust anything, hit the &lsquo;Back&rsquo; button
-        below)
+        &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
+        below&rpar;
     </p>
     <p class="name-display">
         <!-- TODO: Replace with dynamically generated name -->

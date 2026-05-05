@@ -85,7 +85,7 @@
 
     <div class="flex w-full max-w-sm flex-col">
         <Label class="font-bold">Alternate Spelling</Label>
-        <p>Next, enter your alternate (A-Z) spelling:</p>
+        <p>Next, enter your alternate &lpar;A-Z&rpar; spelling:</p>
         <br />
     </div>
 
@@ -119,7 +119,7 @@
         <Label class="font-bold text-base">
             Alternate Spelling Name you entered
         </Label>
-        <i>(if you need to adjust anything, re-enter above)</i>
+        <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
             {#if altName.last.name.length > 0}

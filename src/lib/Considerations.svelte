@@ -10,13 +10,13 @@
 
     <ul>
         <li>
-            <strong>First name:</strong> # characters, no spaces (optional)
+            <strong>First name:</strong> # characters, no spaces &lpar;optional&rpar;
         </li>
         <li>
-            <strong>Middle name:</strong> # characters, max 2 names (optional)
+            <strong>Middle name:</strong> # characters, max 2 names &lpar;optional&rpar;
         </li>
         <li>
-            <strong>Last name:</strong> # characters (required)
+            <strong>Last name:</strong> # characters &lpar;required&rpar;
         </li>
     </ul>
 
@@ -30,8 +30,8 @@
     <ul>
         <li>The letters A-Z</li>
         <li>
-            Single quotes (apostrophes), except at the beginning or end of the
-            field.
+            Single quotes &lpar;apostrophes&rpar;, except at the beginning or
+            end of the field.
         </li>
         <li>Hyphens, except at the beginning or end of the field</li>
     </ul>
@@ -39,9 +39,9 @@
     <h2>Mononyms and Polynyms</h2>
 
     <p>
-        Enter a mononym or polynym in the required Last Name fields (Note: you
-        may see a period &ldquo;.&rdquo; in the first name field in downstream
-        systems or ID.)
+        Enter a mononym or polynym in the required Last Name fields &lpar;Note:
+        you may see a period &ldquo;.&rdquo; in the first name field in
+        downstream systems or ID.&rpar;
     </p>
 </div>
 

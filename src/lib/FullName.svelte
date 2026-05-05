@@ -77,7 +77,7 @@
         Click <a href="https://www.firstvoices.com/keyboards" target="_blank"
             >here</a
         > to access/download First Voices Indigenous Language Keyboards and type or
-        copy/paste your Indigenous name into the Legal Name field(s) below:
+        copy/paste your Indigenous name into the Legal Name field&lpar;s&rpar; below:
     </p>
 
     <br />
@@ -112,7 +112,7 @@
         <Label class="font-bold text-base">
             <i>Full Legal Name</i> you entered
         </Label>
-        <i>(if you need to adjust anything, re-enter above)</i>
+        <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
             {#if fullName.last.name.length > 0}
