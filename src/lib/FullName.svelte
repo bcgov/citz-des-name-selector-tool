@@ -74,8 +74,10 @@
     <br />
 
     <p>
-        Click <a href="https://www.firstvoices.com/keyboards" target="_blank"
-            >here</a
+        Click <a
+            href="https://www.firstvoices.com/keyboards"
+            target="_blank"
+            rel="noopener">here</a
         > to access/download First Voices Indigenous Language Keyboards and type or
         copy/paste your Indigenous name into the Legal Name field&lpar;s&rpar; below:
     </p>
