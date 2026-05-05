@@ -55,7 +55,7 @@
                 value="social-insurance-number"
             />
             <label for="social-insurance-number">
-                Social Insurance Number (SIN)
+                Social Insurance Number &lpar;SIN&rpar;
             </label>
         </div>
         <div>
