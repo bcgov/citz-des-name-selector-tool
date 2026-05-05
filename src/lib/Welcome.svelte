@@ -27,18 +27,14 @@
     </div>
 
     <p>
-        This digital tool to designed to assist you (in coordination with your
-        family and your Nation’s language experts) in determining the
-        appropriate alternate spelling to accompany your legal name for systems
-        that are not yet updated to hold the proper Indigenous language
+        This digital tool assists First Nations, Inuit and Métis people
+        who&apos;ve registered a name in an Indigenous language in determining
+        an alternate spelling to their name. This alternate spelling will be
+        used for systems that can&apos;t yet store Indigenous language
         characters.
     </p>
 
-    <p>
-        NOTE: No data will be stored in this application and you will be able to
-        save a copy of your whole legal name and alternate spelling you choose
-        to share with your family, community members, and the Name Support Team.
-    </p>
+    <p>Note: No data will be stored in this application.</p>
 
     <p>When you are ready, lets get started together!</p>
 </div>

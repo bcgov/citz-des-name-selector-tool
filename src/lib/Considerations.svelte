@@ -4,8 +4,8 @@
     <h2>Field length for ‘name’ fields</h2>
     <p>
         To make sure the spelling works in systems with the strictest character
-        limits and shows up fully in later identification, we recommend the
-        following field length limits:
+        limits and shows up fully in later identification, the following field
+        length and character limits are required.
     </p>
 
     <ul>
@@ -39,9 +39,9 @@
     <h2>Mononyms and Polynyms</h2>
 
     <p>
-        Please enter a mononym or polynym in the required Last Name fields
-        (Note: you may see a period “.” in the first name field in downstream
-        systems or ID.)
+        Enter a mononym or polynym in the required Last Name fields (Note: you
+        may see a period “.” in the first name field in downstream systems or
+        ID.)
     </p>
 </div>
 
