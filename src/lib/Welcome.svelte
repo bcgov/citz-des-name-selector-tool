@@ -6,7 +6,7 @@
             <figure>
                 <img src="/tyrone-elliott-oars.png" alt="" />
                 <figcaption>
-                    Artwork by Tuwuxuwul’t-hw // Tyrone Elliott
+                    Artwork by Tuwuxuwul&rsquo;t-hw // Tyrone Elliott
                 </figcaption>
             </figure>
         </div>

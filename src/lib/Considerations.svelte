@@ -1,7 +1,7 @@
 <div class="page-considerations">
     <h1>Current Considerations</h1>
 
-    <h2>Field length for ‘name’ fields</h2>
+    <h2>Field length for &lsquo;name&rsquo; fields</h2>
     <p>
         To make sure the spelling works in systems with the strictest character
         limits and shows up fully in later identification, the following field
@@ -20,7 +20,7 @@
         </li>
     </ul>
 
-    <h2>Current supported characters for ‘name’ fields</h2>
+    <h2>Current supported characters for &lsquo;name&rsquo; fields</h2>
 
     <p>
         The supported characters for names field spellings here align with the
@@ -40,8 +40,8 @@
 
     <p>
         Enter a mononym or polynym in the required Last Name fields (Note: you
-        may see a period “.” in the first name field in downstream systems or
-        ID.)
+        may see a period &ldquo;.&rdquo; in the first name field in downstream
+        systems or ID.)
     </p>
 </div>
 

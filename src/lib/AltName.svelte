@@ -140,6 +140,6 @@
 
     <p>
         If you are happy with the name versions you entered above, please hit
-        the ‘Next” button to see them together and take a screenshot
+        the &ldquo;Next&rdquo; button to see them together and take a screenshot
     </p>
 </div>
