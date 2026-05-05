@@ -1,12 +1,13 @@
 <div class="page-considerations">
     <h1>Current Considerations</h1>
 
-    <h2>Field length for &lsquo;name&rsquo; fields</h2>
     <p>
         To make sure the spelling works in systems with the strictest character
         limits and shows up fully in later identification, the following field
         length and character limits are required.
     </p>
+
+    <h2>Name length limits</h2>
 
     <ul>
         <li>
@@ -20,12 +21,7 @@
         </li>
     </ul>
 
-    <h2>Current supported characters for &lsquo;name&rsquo; fields</h2>
-
-    <p>
-        The supported characters for names field spellings here align with the
-        restrictions for characters accepted by partner systems:
-    </p>
+    <h2>Supported characters</h2>
 
     <ul>
         <li>The letters A-Z</li>
@@ -53,6 +49,12 @@
 
         h2 {
             font-weight: 700;
+        }
+
+        ul {
+            li {
+                margin: var(--layout-margin-small) 0;
+            }
         }
     }
 </style>
