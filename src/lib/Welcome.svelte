@@ -36,7 +36,7 @@
 
     <p>Note: No data will be stored in this application.</p>
 
-    <p>When you are ready, lets get started together!</p>
+    <p>When you are ready, let&apos;s get started together!</p>
 </div>
 
 <style>
