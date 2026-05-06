@@ -24,18 +24,16 @@
     };
 
     const checkMiddleName = () => {
-        if (isGreaterThanMinLength(fullName.middle.name)) {
-            let names = fullName.middle.name.split(' ');
+        let names = fullName.middle.name.split(' ');
+        checkErrorForMaxLength(
+            names[0],
+            rules.legalName.middle.length[0].maximum
+        );
+        if (names[1])
             checkErrorForMaxLength(
-                names[0],
-                rules.legalName.middle.length[0].maximum
+                names[1],
+                rules.legalName.middle.length[1].maximum
             );
-            if (names[1])
-                checkErrorForMaxLength(
-                    names[1],
-                    rules.legalName.middle.length[1].maximum
-                );
-        }
         checkErrorForMaxNames(
             fullName.middle.name,
             rules.legalName.middle.count
