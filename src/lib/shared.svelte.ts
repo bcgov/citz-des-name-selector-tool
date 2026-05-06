@@ -16,6 +16,10 @@ export const fullName = $state({
     },
 });
 
+export function fullNameToString() {
+    return `${fullName.first.name} ${fullName.middle.name} ${fullName.last.name}`;
+}
+
 export const altName = $state({
     first: {
         name: '',
@@ -27,6 +31,10 @@ export const altName = $state({
         name: '',
     },
 });
+
+export function AltNameToString() {
+    return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
+}
 
 export const step = $state({ value: 0, max: 6 });
 
