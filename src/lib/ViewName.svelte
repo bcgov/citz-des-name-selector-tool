@@ -1,3 +1,7 @@
+<script>
+    import { AltNameToString, fullNameToString } from "./shared.svelte";
+
+</script>
 <div class="page-view-name">
     <h1>
         Step 3: View your Whole Legal Full Name and the Alternate Spelling
@@ -17,7 +21,7 @@
     </p>
     <p class="name-display">
         <!-- TODO: Replace with dynamically generated name -->
-        Legal Name entry displayed here
+        {fullNameToString()}
     </p>
 
     <h2>Alternate Spelling you entered</h2>
@@ -27,7 +31,7 @@
     </p>
     <p class="name-display">
         <!-- TODO: Replace with dynamically generated name -->
-        Alternate Spelling entry displayed here
+        {AltNameToString()}
     </p>
 </div>
 
