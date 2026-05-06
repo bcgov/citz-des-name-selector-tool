@@ -20,7 +20,6 @@
         below&rpar;
     </p>
     <p class="name-display">
-        <!-- TODO: Replace with dynamically generated name -->
         {fullNameToString()}
     </p>
 
@@ -30,7 +29,6 @@
         below&rpar;
     </p>
     <p class="name-display">
-        <!-- TODO: Replace with dynamically generated name -->
         {AltNameToString()}
     </p>
 </div>
