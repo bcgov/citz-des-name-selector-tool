@@ -1,7 +1,7 @@
 <script>
-    import { AltNameToString, fullNameToString } from "./shared.svelte";
-
+    import { AltNameToString, fullNameToString } from './shared.svelte';
 </script>
+
 <div class="page-view-name">
     <h1>
         Step 3: View your Whole Legal Full Name and the Alternate Spelling
