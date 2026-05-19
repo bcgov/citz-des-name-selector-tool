@@ -2,19 +2,6 @@
     import { altName, errors, fullName, step } from '$lib/shared.svelte';
 
     $effect(function () {
-        // If we are before the last step, the next button is enabled.
-        if (step.value < step.max) {
-            const el = document.getElementById('primary-button');
-            el?.classList.add('primary');
-            el?.classList.remove('disabled');
-        }
-        // If we're at the last step, the next button is disabled.
-        if (step.value === step.max) {
-            const el = document.getElementById('primary-button');
-            el?.classList.remove('primary');
-            el?.classList.add('disabled');
-        }
-        window.scrollTo(0, 0);
     });
 
     function previousStep() {
@@ -24,6 +11,8 @@
     }
 
     function nextStep() {
+        const element = document.getElementById('primary-button');
+
         if (step.value < step.max) {
             step.value = step.value + 1;
         }
@@ -34,6 +23,16 @@
             altName.last.name = fullName.last.name;
             altName.initialized = true;
         }
+
+        // If we are before the last step, the next button is enabled.
+        if (step.value < step.max)
+            element?.classList.replace('disabled', 'primary');
+
+        // If we're at the last step, the next button is disabled.
+        if (step.value === step.max)
+            element?.classList.replace('primary', 'disabled');
+
+        window.scrollTo(0, 0);
     }
 </script>
 
@@ -58,9 +57,5 @@
         margin-bottom: 20px;
         display: flex;
         justify-content: space-evenly;
-    }
-    .bcds-Disabled {
-        background-color: var(--surface-color-primary-danger-button-disabled);
-        color: var(--typography-color-disabled); 
     }
 </style>
