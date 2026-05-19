@@ -1,5 +1,11 @@
 <script lang="ts">
-    import { altName, errors, fullName, isDisabled, step } from '$lib/shared.svelte';
+    import {
+        altName,
+        errors,
+        fullName,
+        isDisabled,
+        step,
+    } from '$lib/shared.svelte';
 
     function disabledToggle() {
         const element = document.getElementById('primary-button');
