@@ -4,6 +4,8 @@ export type ErrorRule = {
     value: number;
 };
 
+export const isDisabled = $state({ value: false });
+
 export const fullName = $state({
     first: {
         name: '',
