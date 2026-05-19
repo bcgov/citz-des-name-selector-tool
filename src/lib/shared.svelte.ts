@@ -30,7 +30,7 @@ export const altName = $state({
     last: {
         name: '',
     },
-    initialized: false
+    initialized: false,
 });
 
 export function AltNameToString() {
