@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { step } from '$lib/shared.svelte';
+    import { altName, fullName, step } from '$lib/shared.svelte';
 
     $effect(function () {
         // If we are before the last step, the next button is enabled.
@@ -26,6 +26,13 @@
     function nextStep() {
         if (step.value < step.max) {
             step.value = step.value + 1;
+        }
+
+        if (!altName.initialized && step.value === 4) {
+            altName.first.name = fullName.first.name;
+            altName.middle.name = fullName.middle.name;
+            altName.last.name = fullName.last.name;
+            altName.initialized = true;
         }
     }
 </script>
