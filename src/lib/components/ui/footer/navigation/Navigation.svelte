@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { altName, fullName, step } from '$lib/shared.svelte';
+    import { altName, errors, fullName, step } from '$lib/shared.svelte';
 
     $effect(function () {
         // If we are before the last step, the next button is enabled.
@@ -58,5 +58,9 @@
         margin-bottom: 20px;
         display: flex;
         justify-content: space-evenly;
+    }
+    .bcds-Disabled {
+        background-color: var(--surface-color-primary-danger-button-disabled);
+        color: var(--typography-color-disabled); 
     }
 </style>
