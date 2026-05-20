@@ -1,26 +1,34 @@
 <script lang="ts">
-    import { altName, fullName, step } from '$lib/shared.svelte';
+    import {
+        altName,
+        errors,
+        fullName,
+        isDisabled,
+        step,
+    } from '$lib/shared.svelte';
 
-    $effect(function () {
+    function disabledToggle() {
+        const element = document.getElementById('primary-button');
         // If we are before the last step, the next button is enabled.
         if (step.value < step.max) {
-            const el = document.getElementById('primary-button');
-            el?.classList.add('primary');
-            el?.classList.remove('disabled');
+            element?.classList.replace('disabled', 'primary');
+            isDisabled.value = false;
         }
+
         // If we're at the last step, the next button is disabled.
         if (step.value === step.max) {
-            const el = document.getElementById('primary-button');
-            el?.classList.remove('primary');
-            el?.classList.add('disabled');
+            element?.classList.replace('primary', 'disabled');
+            isDisabled.value = true;
         }
-        window.scrollTo(0, 0);
-    });
+    }
 
     function previousStep() {
         if (step.value > 0) {
             step.value = step.value - 1;
         }
+
+        disabledToggle();
+        window.scrollTo(0, 0);
     }
 
     function nextStep() {
@@ -34,6 +42,9 @@
             altName.last.name = fullName.last.name;
             altName.initialized = true;
         }
+
+        disabledToggle();
+        window.scrollTo(0, 0);
     }
 </script>
 
@@ -47,6 +58,7 @@
         id="primary-button"
         class="bcds-Button primary medium"
         onclick={nextStep}
+        disabled={isDisabled.value}
     >
         Next
     </button>
