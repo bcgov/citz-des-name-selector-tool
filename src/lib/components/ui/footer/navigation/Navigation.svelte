@@ -54,14 +54,16 @@
             Back
         </button>
     {/if}
-    <button
-        id="primary-button"
-        class="bcds-Button primary medium"
-        onclick={nextStep}
-        disabled={isDisabled.value}
-    >
-        Next
-    </button>
+    {#if step.value < 5}
+        <button
+            id="primary-button"
+            class="bcds-Button primary medium"
+            onclick={nextStep}
+            disabled={isDisabled.value}
+        >
+            Next
+        </button>
+    {/if}
 </div>
 
 <style>
