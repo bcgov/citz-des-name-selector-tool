@@ -22,6 +22,7 @@
         <input
             id={`input-${id}`}
             class="bcds-TextField--input"
+            required={isRequired}
             bind:value={value.name}
         />
     </div>
