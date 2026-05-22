@@ -62,6 +62,7 @@
         color: var(--typography-color-primary);
         border: none;
         flex-grow: 1;
+        margin-bottom: var(--layout-margin-large);
     }
 
     .bcds-TextField--label {
