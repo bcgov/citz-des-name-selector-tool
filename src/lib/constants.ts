@@ -1,0 +1,1 @@
+export const STEP_MAX = 5;
