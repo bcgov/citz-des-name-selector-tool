@@ -8,5 +8,5 @@ export const STEP = {
     LEGAL_NAME: 3,
     ALTERNATIVE_NAME: 4,
     VIEW_NAMES: 5,
-    VIEW_IDENTIFICATIONS: 6
+    VIEW_IDENTIFICATIONS: 6,
 } as const;
