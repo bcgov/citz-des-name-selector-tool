@@ -2,12 +2,20 @@
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
 
-    let { id, label, placeholder, rules, value = $bindable() } = $props();
+    let {
+        id,
+        label,
+        placeholder,
+        rules,
+        isRequired = true,
+        value = $bindable(),
+    } = $props();
 </script>
 
 <div {id} class="bcds-TextField">
     <label for={`input-${id}`} class="bcds-TextField--label">
         {label}
+        <span class="required">{isRequired ? '* required' : '(optional)'}</span>
     </label>
 
     <div id={`container-${id}`} class="bcds-TextField--container medium">
@@ -58,8 +66,13 @@
 
     .bcds-TextField--label {
         font: var(--typography-regular-small-body);
+        font-weight: 700;
         color: var(--typography-color-primary);
         padding: var(--layout-padding-xsmall) var(--layout-padding-none);
+
+        .required {
+            font-weight: 400;
+        }
     }
 
     .bcds-TextField--container {
