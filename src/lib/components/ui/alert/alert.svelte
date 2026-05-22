@@ -8,17 +8,9 @@
     class={`bcds-TextField--alert ${success ? 'bcds-TextField--success' : 'bcds-TextField--warning'}`}
 >
     {#if success}
-        <CircleCheck
-            height="20px"
-            width="20px"
-            fill="var(--support-surface-color-info)"
-        />
+        <CircleCheck height="20px" width="20px" fill="currentColor" />
     {:else}
-        <TriangleExclamation
-            height="20px"
-            width="20px"
-            fill="var(--typography-color-primary)"
-        />
+        <TriangleExclamation height="20px" width="20px" fill="currentColor" />
     {/if}
     <p>{message}</p>
 </div>
