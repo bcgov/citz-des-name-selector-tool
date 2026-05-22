@@ -1,6 +1,6 @@
 <script lang="ts">
-    import CircleCheck from '../../../../assets/CircleCheck.svg';
-    import TriangleExclamation from '../../../../assets/TriangleExclamation.svg';
+    import CircleCheck from '../../../../assets/CircleCheck.svelte';
+    import TriangleExclamation from '../../../../assets/TriangleExclamation.svelte';
     let { message, success = false } = $props();
 </script>
 
@@ -8,9 +8,19 @@
     class={`bcds-TextField--alert ${success ? 'bcds-TextField--success' : 'bcds-TextField--warning'}`}
 >
     {#if success}
-        <img src={CircleCheck} alt="circle-check-icon" />
+        <CircleCheck
+            alt="circle-check-icon"
+            height="20px"
+            width="20px"
+            fill="var(--support-surface-color-info)"
+        />
     {:else}
-        <img src={TriangleExclamation} alt="warning-icon" />
+        <TriangleExclamation
+            alt="warning-icon"
+            height="20px"
+            width="20px"
+            fill="var(--typography-color-primary)"
+        />
     {/if}
     <p>{message}</p>
 </div>
