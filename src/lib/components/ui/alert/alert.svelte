@@ -9,14 +9,12 @@
 >
     {#if success}
         <CircleCheck
-            alt="circle-check-icon"
             height="20px"
             width="20px"
             fill="var(--support-surface-color-info)"
         />
     {:else}
         <TriangleExclamation
-            alt="warning-icon"
             height="20px"
             width="20px"
             fill="var(--typography-color-primary)"
