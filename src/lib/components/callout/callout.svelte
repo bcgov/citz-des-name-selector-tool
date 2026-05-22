@@ -1,9 +1,17 @@
 <script lang="ts">
-    export let backgroundColor: 'lightBlue' | 'lightGold' = 'lightBlue';
+    import type { Snippet } from 'svelte';
+
+    let {
+        backgroundColor = 'lightBlue',
+        children,
+    }: {
+        backgroundColor?: 'lightBlue' | 'lightGold';
+        children?: Snippet;
+    } = $props();
 </script>
 
 <div class={`bcds-Callout ${backgroundColor}`}>
-    <slot />
+    {@render children?.()}
 </div>
 
 <style>
