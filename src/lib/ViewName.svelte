@@ -58,7 +58,7 @@
 
                 <p>
                     <strong>Questions or need help?</strong> Click the button below
-                    to contact the Name Support Team to discuss options and /or next
+                    to contact the Name Support Team to discuss options and/or next
                     steps.
                 </p>
 
