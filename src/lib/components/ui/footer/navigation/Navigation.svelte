@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { STEP_MAX } from '$lib/constants';
     import {
         altName,
         errors,
@@ -54,14 +55,16 @@
             Back
         </button>
     {/if}
-    <button
-        id="primary-button"
-        class="bcds-Button primary medium"
-        onclick={nextStep}
-        disabled={isDisabled.value}
-    >
-        Next
-    </button>
+    {#if step.value < STEP_MAX}
+        <button
+            id="primary-button"
+            class="bcds-Button primary medium"
+            onclick={nextStep}
+            disabled={isDisabled.value}
+        >
+            Next
+        </button>
+    {/if}
 </div>
 
 <style>
