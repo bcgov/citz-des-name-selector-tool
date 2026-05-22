@@ -1,5 +1,9 @@
 <script>
+    import Callout from './components/callout/callout.svelte';
     import { AltNameToString, fullNameToString } from './shared.svelte';
+    import TriangleExclamation from '../assets/TriangleExclamation.svelte';
+
+    const isTruncationWarningShown = false;
 </script>
 
 <div class="page-view-name">
@@ -31,6 +35,39 @@
     <p class="name-display">
         {AltNameToString()}
     </p>
+
+    {#if isTruncationWarningShown}
+        <Callout backgroundColor="lightGold">
+            <div class="callout-truncations">
+                <div class="flex row">
+                    <TriangleExclamation height="20px" width="20px" />
+                    <p>
+                        Your legal name may not be printed as above on certain
+                        ID cards due to space limitations
+                    </p>
+                </div>
+                <p>
+                    <em>
+                        Review the messages below to understand how your legal
+                        name may be printed:
+                    </em>
+                </p>
+
+                <!-- TODO: List of truncations goes here. -->
+                <ul><li>Truncation example</li></ul>
+
+                <p>
+                    <strong>Questions or need help?</strong> Click the button below
+                    to contact the Name Support Team to discuss options and /or next
+                    steps.
+                </p>
+
+                <button class="bcds-Button primary medium">
+                    Contact the Name Support Team
+                </button>
+            </div>
+        </Callout>
+    {/if}
 </div>
 
 <style>
@@ -56,6 +93,24 @@
             font-weight: 700;
             line-height: 1.6875rem;
             margin: var(--layout-margin-xlarge) 0;
+        }
+
+        .callout-truncations {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            gap: var(--layout-padding-xlarge);
+
+            .flex.row {
+                display: flex;
+                flex-direction: row;
+                gap: var(--layout-padding-small);
+            }
+
+            ul {
+                list-style-type: disc;
+                padding-left: 1rem;
+            }
         }
     }
 </style>
