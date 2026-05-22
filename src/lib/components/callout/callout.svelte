@@ -1,4 +1,8 @@
-<div class="bcds-Callout">
+<script lang="ts">
+    export let backgroundColor: 'lightBlue' | 'lightGold' = 'lightBlue';
+</script>
+
+<div class={`bcds-Callout ${backgroundColor}`}>
     <slot />
 </div>
 
@@ -13,5 +17,13 @@
             var(--layout-border-radius-none) var(--layout-border-radius-none)
             var(--layout-border-radius-medium);
         margin-bottom: var(--layout-margin-xxlarge);
+    }
+
+    .bcds-Callout.lightBlue {
+        background-color: var(--theme-blue-10);
+    }
+
+    .bcds-Callout.lightGold {
+        background-color: var(--theme-gold-10);
     }
 </style>
