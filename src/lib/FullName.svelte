@@ -96,6 +96,7 @@
         label="Legal First Name:"
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
+        isRequired
         bind:value={fullName.first}
     />
 
@@ -104,6 +105,7 @@
         label="Legal Middle Name(s):"
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
+        isRequired={false}
         bind:value={fullName.middle}
     />
 
@@ -112,6 +114,7 @@
         label="Legal Last Name:"
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
+        isRequired
         bind:value={fullName.last}
     />
 

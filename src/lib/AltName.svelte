@@ -101,6 +101,7 @@
         label="Alternate Spelling of First Name:"
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
+        isRequired
         bind:value={altName.first}
     />
 
@@ -109,6 +110,7 @@
         label="Alternate Spelling of Middle Name(s):"
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
+        isRequired={false}
         bind:value={altName.middle}
     />
 
@@ -117,6 +119,7 @@
         label="Alternate Spelling of Last Name:"
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
+        isRequired
         bind:value={altName.last}
     />
 
