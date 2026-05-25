@@ -48,7 +48,7 @@
     {/if}
 
     {#if rules.ascii && errors.hasError(rules.ascii.id)}
-        <Alert message={errors.getMessage(rules.count.id)} />
+        <Alert message={errors.getMessage(rules.ascii.id)} />
     {/if}
 
     <span id={`span-${id}`} class="bcds-TextField--description">
