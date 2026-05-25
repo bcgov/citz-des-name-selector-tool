@@ -1,9 +1,14 @@
 <script>
     import Callout from './components/callout/callout.svelte';
-    import { AltNameToString, fullNameToString } from './shared.svelte';
+    import { AltNameToString, errors, fullName, fullNameToString } from './shared.svelte';
     import TriangleExclamation from '../assets/TriangleExclamation.svelte';
+    import { checkErrorForMaxLength } from './utils';
+    import { rules } from './rules-configuration';
 
     const isTruncationWarningShown = false;
+
+    checkErrorForMaxLength(fullName.first.name, rules.truncationRules.first.length[0].maximum);
+    checkErrorForMaxLength(fullName.last.name, rules.truncationRules.last.length[0].maximum);
 </script>
 
 <div class="page-view-name">
@@ -36,7 +41,7 @@
         {AltNameToString()}
     </p>
 
-    {#if isTruncationWarningShown}
+    {#if errors.hasErrors()}
         <Callout backgroundColor="lightGold">
             <div class="callout-truncations">
                 <div class="flex row">
@@ -54,7 +59,14 @@
                 </p>
 
                 <!-- TODO: List of truncations goes here. -->
-                <ul><li>Truncation example</li></ul>
+                <ul>
+                    {#if errors.hasError(301)}
+                        <li>{errors.getMessage(rules.truncationRules.first.length[0].maximum.id)}</li>
+                    {/if}
+                    {#if errors.hasError(321)}
+                        <li>{errors.getMessage(rules.truncationRules.last.length[0].maximum.id)}</li>
+                    {/if}
+                </ul>
 
                 <p>
                     <strong>Questions or need help?</strong> Click the button below
