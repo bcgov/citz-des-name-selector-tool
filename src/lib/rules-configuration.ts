@@ -159,7 +159,7 @@ export const rules = {
                         id: 211,
                         value: 18,
                         errorText:
-                            'You have exceeded the max # of 12 characters',
+                            'You have exceeded the max # of 18 characters',
                     },
                     minimum: {
                         id: 212,
