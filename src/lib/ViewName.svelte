@@ -5,9 +5,8 @@
     import { checkErrorForMaxLength } from './utils';
     import { rules } from './rules-configuration';
 
-    const isTruncationWarningShown = false;
-
     checkErrorForMaxLength(fullName.first.name, rules.truncationRules.first.length[0].maximum);
+    checkErrorForMaxLength(fullName.middle.name, rules.truncationRules.middle.length[0].maximum);
     checkErrorForMaxLength(fullName.last.name, rules.truncationRules.last.length[0].maximum);
 </script>
 
@@ -58,12 +57,14 @@
                     </em>
                 </p>
 
-                <!-- TODO: List of truncations goes here. -->
                 <ul>
-                    {#if errors.hasError(301)}
+                    {#if errors.hasError(rules.truncationRules.first.length[0].maximum.id)}
                         <li>{errors.getMessage(rules.truncationRules.first.length[0].maximum.id)}</li>
                     {/if}
-                    {#if errors.hasError(321)}
+                    {#if errors.hasError(rules.truncationRules.middle.length[0].maximum.id)}
+                        <li>{errors.getMessage(rules.truncationRules.middle.length[0].maximum.id)}</li>
+                    {/if}
+                    {#if errors.hasError(rules.truncationRules.last.length[0].maximum.id)}
                         <li>{errors.getMessage(rules.truncationRules.last.length[0].maximum.id)}</li>
                     {/if}
                 </ul>
