@@ -180,4 +180,51 @@ export const rules = {
             },
         },
     },
+    truncationRules: {
+        first: {
+            length: {
+                0: {
+                    maximum: {
+                        id: 301,
+                        value: 15,
+                        errorText: "Your legal first name may be truncated on your BC ID, BC Services Card, BC Driver’s License."
+                    }
+                }
+            }
+        },        
+        middle: {
+            length: {
+                0: {
+                    maximum: {
+                        id: 311,
+                        value: 15,
+                        errorText: "Your legal middle name(s) may be truncated on your BC ID, BC Services Card, BC Driver’s License."
+                    }
+                },
+                1: {
+                    maximum: {
+                        id: 312,
+                        value: 15,
+                        errorText: "Your legal middle name(s) may be truncated on your BC ID, BC Services Card, BC Driver’s License."
+                    }
+                }
+            }
+        },
+        last: {
+            length: {
+                0: {
+                    maximum: {
+                        id: 321,
+                        value: 35,
+                        errorText: "Your legal last name may be truncated on your BC ID, BC Services Card, BC Driver’s License."
+                    }
+                }
+            },
+            mononym: {
+                id: 322,
+                value: 0,
+                errorText: "Your name may be printed in both the first and last name fields on your birth certificate, BC ID, BC Services Card, BC Driver’s License."
+            }
+        }
+    }
 };
