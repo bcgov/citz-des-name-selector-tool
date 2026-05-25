@@ -1,13 +1,27 @@
 <script>
     import Callout from './components/callout/callout.svelte';
-    import { AltNameToString, errors, fullName, fullNameToString } from './shared.svelte';
+    import {
+        AltNameToString,
+        errors,
+        fullName,
+        fullNameToString,
+    } from './shared.svelte';
     import TriangleExclamation from '../assets/TriangleExclamation.svelte';
     import { checkErrorForMaxLength } from './utils';
     import { rules } from './rules-configuration';
 
-    checkErrorForMaxLength(fullName.first.name, rules.truncationRules.first.length[0].maximum);
-    checkErrorForMaxLength(fullName.middle.name, rules.truncationRules.middle.length[0].maximum);
-    checkErrorForMaxLength(fullName.last.name, rules.truncationRules.last.length[0].maximum);
+    checkErrorForMaxLength(
+        fullName.first.name,
+        rules.truncationRules.first.length[0].maximum
+    );
+    checkErrorForMaxLength(
+        fullName.middle.name,
+        rules.truncationRules.middle.length[0].maximum
+    );
+    checkErrorForMaxLength(
+        fullName.last.name,
+        rules.truncationRules.last.length[0].maximum
+    );
 </script>
 
 <div class="page-view-name">
@@ -59,13 +73,26 @@
 
                 <ul>
                     {#if errors.hasError(rules.truncationRules.first.length[0].maximum.id)}
-                        <li>{errors.getMessage(rules.truncationRules.first.length[0].maximum.id)}</li>
+                        <li>
+                            {errors.getMessage(
+                                rules.truncationRules.first.length[0].maximum.id
+                            )}
+                        </li>
                     {/if}
                     {#if errors.hasError(rules.truncationRules.middle.length[0].maximum.id)}
-                        <li>{errors.getMessage(rules.truncationRules.middle.length[0].maximum.id)}</li>
+                        <li>
+                            {errors.getMessage(
+                                rules.truncationRules.middle.length[0].maximum
+                                    .id
+                            )}
+                        </li>
                     {/if}
                     {#if errors.hasError(rules.truncationRules.last.length[0].maximum.id)}
-                        <li>{errors.getMessage(rules.truncationRules.last.length[0].maximum.id)}</li>
+                        <li>
+                            {errors.getMessage(
+                                rules.truncationRules.last.length[0].maximum.id
+                            )}
+                        </li>
                     {/if}
                 </ul>
 
