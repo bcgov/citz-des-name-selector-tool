@@ -11,7 +11,6 @@
 
     function removeStep3Errors() {
         if (step.value < STEP.VIEW_NAMES) {
-            console.log('here');
             if (errors.hasError(rules.truncationRules.first.length[0].maximum.id))
                 errors.splice(rules.truncationRules.first.length[0].maximum.id);
             if (errors.hasError(rules.truncationRules.middle.length[0].maximum.id))
