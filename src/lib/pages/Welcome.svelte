@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Callout from './components/callout/callout.svelte';
+    import Callout from '../components/callout/callout.svelte';
 </script>
 
 <div class="page-welcome">

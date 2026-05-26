@@ -1,14 +1,14 @@
 <script>
-    import Callout from './components/callout/callout.svelte';
+    import Callout from '../components/callout/callout.svelte';
     import {
         AltNameToString,
         errors,
         fullName,
         fullNameToString,
-    } from './shared.svelte';
-    import TriangleExclamation from '../assets/TriangleExclamation.svelte';
-    import { checkErrorForMaxLength } from './utils';
-    import { rules } from './rules-configuration';
+    } from '../shared.svelte';
+    import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
+    import { checkErrorForMaxLength } from '../utils';
+    import { rules } from '../rules-configuration';
 
     checkErrorForMaxLength(
         fullName.first.name,
