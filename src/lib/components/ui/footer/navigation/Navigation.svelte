@@ -11,11 +11,23 @@
 
     function removeStep3Errors() {
         if (step.value < STEP.VIEW_NAMES) {
-            if (errors.hasError(rules.truncationRules.first.length[0].maximum.id))
+            if (
+                errors.hasError(
+                    rules.truncationRules.first.length[0].maximum.id
+                )
+            )
                 errors.splice(rules.truncationRules.first.length[0].maximum.id);
-            if (errors.hasError(rules.truncationRules.middle.length[0].maximum.id))
-                errors.splice(rules.truncationRules.middle.length[0].maximum.id);
-            if (errors.hasError(rules.truncationRules.last.length[0].maximum.id))
+            if (
+                errors.hasError(
+                    rules.truncationRules.middle.length[0].maximum.id
+                )
+            )
+                errors.splice(
+                    rules.truncationRules.middle.length[0].maximum.id
+                );
+            if (
+                errors.hasError(rules.truncationRules.last.length[0].maximum.id)
+            )
                 errors.splice(rules.truncationRules.last.length[0].maximum.id);
         }
     }
