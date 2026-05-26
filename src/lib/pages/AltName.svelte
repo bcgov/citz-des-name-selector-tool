@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { Label } from './components/ui/label/index.js';
-    import InputLabel from './components/ui/input-label/InputLabel.svelte';
-    import { altName, errors, isDisabled } from './shared.svelte.ts';
+    import { Label } from '../components/ui/label/index.js';
+    import InputLabel from '../components/ui/input-label/InputLabel.svelte';
+    import { altName, errors, isDisabled } from '../shared.svelte.ts';
     import {
         checkErrorForASCII,
         checkErrorForMaxLength,
         checkErrorForMaxNames,
         checkErrorForMinLength,
         isGreaterThanMinLength,
-    } from './utils.ts';
-    import { rules } from './rules-configuration.ts';
-    import Alert from './components/ui/alert/alert.svelte';
+    } from '../utils.ts';
+    import { rules } from '../rules-configuration.ts';
+    import Alert from '../components/ui/alert/alert.svelte';
 
     const checkFirstName = () => {
         checkErrorForMinLength(

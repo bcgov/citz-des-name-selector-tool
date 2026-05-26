@@ -1,14 +1,14 @@
 <script lang="ts">
     import './app.css';
-    import Header from './lib/components/ui/header/header.svelte';
-    import Footer from './lib/components/ui/footer/Footer.svelte';
-    import Welcome from '$lib/Welcome.svelte';
-    import Background from '$lib/Background.svelte';
-    import Considerations from '$lib/Considerations.svelte';
-    import FullName from './lib/FullName.svelte';
-    import AltName from './lib/AltName.svelte';
-    import ViewName from '$lib/ViewName.svelte';
-    import ViewNameByIdentification from '$lib/ViewNameByIdentification.svelte';
+    import Header from '$lib/components/ui/header/header.svelte';
+    import Footer from '$lib/components/ui/footer/Footer.svelte';
+    import Welcome from '$lib/pages/Welcome.svelte';
+    import Background from '$lib/pages/Background.svelte';
+    import Considerations from '$lib/pages/Considerations.svelte';
+    import FullName from '$lib/pages/FullName.svelte';
+    import AltName from '$lib/pages/AltName.svelte';
+    import ViewName from '$lib/pages/ViewName.svelte';
+    import ViewNameByIdentification from '$lib/pages/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
     import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
     import { step } from '$lib/shared.svelte';
