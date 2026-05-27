@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { STEP_MAX } from '$lib/constants';
+    import { STEP, STEP_MAX } from '$lib/constants';
+    import { rules } from '$lib/rules-configuration';
     import {
         altName,
         errors,
@@ -7,6 +8,29 @@
         isDisabled,
         step,
     } from '$lib/shared.svelte';
+
+    function removeStep3Errors() {
+        if (step.value < STEP.VIEW_NAMES) {
+            if (
+                errors.hasError(
+                    rules.truncationRules.first.length[0].maximum.id
+                )
+            )
+                errors.splice(rules.truncationRules.first.length[0].maximum.id);
+            if (
+                errors.hasError(
+                    rules.truncationRules.middle.length[0].maximum.id
+                )
+            )
+                errors.splice(
+                    rules.truncationRules.middle.length[0].maximum.id
+                );
+            if (
+                errors.hasError(rules.truncationRules.last.length[0].maximum.id)
+            )
+                errors.splice(rules.truncationRules.last.length[0].maximum.id);
+        }
+    }
 
     function disabledToggle() {
         const element = document.getElementById('primary-button');
@@ -29,6 +53,7 @@
         }
 
         disabledToggle();
+        removeStep3Errors();
         window.scrollTo(0, 0);
     }
 
