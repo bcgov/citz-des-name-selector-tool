@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: f343b4-dev
+    name: name-selector-tool
+    annotations:
+        image.openshift.io/triggers: >-
+            [{"from":{"kind":"ImageStreamTag","name":"name-selector-tool:dev","namespace":"f343b4-tools"},"fieldPath":"spec.template.spec.containers[?(@.name==\"container\")].image","paused":false}]
+spec:
+    selector:
+        matchLabels:
+            app: name-selector-tool
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: name-selector-tool
+        spec:
+            containers:
+                - name: container
+                  image: >-
+                      image-registry.openshift-image-registry.svc:5000/f343b4-tools/name-selector-tool@sha256:82dd462bf983d7f0ef80bca7c5c2d24ec4c9d18077d43d3457a63a5050dc1198
+                  ports:
+                      - containerPort: 8080
+                        protocol: TCP
+                  env: []
+            imagePullSecrets: []
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 1
+            maxUnavailable: 50%
+    paused: false

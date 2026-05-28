@@ -1,0 +1,19 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+    name: name-selector-tool
+    namespace: f343b4-dev
+spec:
+    path: /
+    to:
+        name: name-selector-tool
+        weight: 100
+        kind: Service
+    host: ''
+    tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+    port:
+        targetPort: 8080
+    alternateBackends: []
