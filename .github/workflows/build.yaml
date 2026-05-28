@@ -57,7 +57,7 @@ jobs:
                       echo "Unknown branch: ${{ github.ref }}. Exiting...";
                       exit 1;
                   fi;
-                  shell: bash
+              shell: bash
 
             - name: Tag and push Docker image
               run: |
