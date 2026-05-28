@@ -2,33 +2,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: f343b4-prod
-  name: name-selector-tool
-  annotations:
-    image.openshift.io/triggers: >-
-      [{"from":{"kind":"ImageStreamTag","name":"name-selector-tool:prod","namespace":"f343b4-tools"},"fieldPath":"spec.template.spec.containers[?(@.name==\"container\")].image","paused":false}]
+    namespace: f343b4-prod
+    name: name-selector-tool
+    annotations:
+        image.openshift.io/triggers: >-
+            [{"from":{"kind":"ImageStreamTag","name":"name-selector-tool:prod","namespace":"f343b4-tools"},"fieldPath":"spec.template.spec.containers[?(@.name==\"container\")].image","paused":false}]
 spec:
-  selector:
-    matchLabels:
-      app: name-selector-tool
-  replicas: 3
-  template:
-    metadata:
-      labels:
-        app: name-selector-tool
-    spec:
-      containers:
-        - name: container
-          image: >-
-            image-registry.openshift-image-registry.svc:5000/f343b4-tools/name-selector-tool@sha256:a098324e14305e5d23bbba7f244a1eff44b30d09edaf8ab14de9cad183aa4f6d
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          env: []
-      imagePullSecrets: []
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 50%
-  paused: false
+    selector:
+        matchLabels:
+            app: name-selector-tool
+    replicas: 3
+    template:
+        metadata:
+            labels:
+                app: name-selector-tool
+        spec:
+            containers:
+                - name: container
+                  image: >-
+                      image-registry.openshift-image-registry.svc:5000/f343b4-tools/name-selector-tool@sha256:a098324e14305e5d23bbba7f244a1eff44b30d09edaf8ab14de9cad183aa4f6d
+                  ports:
+                      - containerPort: 8080
+                        protocol: TCP
+                  env: []
+            imagePullSecrets: []
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 1
+            maxUnavailable: 50%
+    paused: false

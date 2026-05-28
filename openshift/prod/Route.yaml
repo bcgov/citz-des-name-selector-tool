@@ -2,15 +2,15 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: name-selector-tool
-  namespace: f343b4-prod
-spec:
-  path: /
-  to:
     name: name-selector-tool
-    weight: 100
-    kind: Service
-  host: ""
-  port:
-    targetPort: 8080
-  alternateBackends: []
+    namespace: f343b4-prod
+spec:
+    path: /
+    to:
+        name: name-selector-tool
+        weight: 100
+        kind: Service
+    host: ''
+    port:
+        targetPort: 8080
+    alternateBackends: []

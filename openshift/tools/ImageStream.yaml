@@ -2,5 +2,5 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: name-selector-tool
-  namespace: f343b4-tools
+    name: name-selector-tool
+    namespace: f343b4-tools
