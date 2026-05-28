@@ -4,7 +4,7 @@ permissions:
 
 on:
     push:
-        branches: [dev]
+        branches: [dev, test, main]
     workflow_dispatch:
 
 # Cancel any currently running builds to save GitHub Actions hours.
@@ -19,10 +19,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v6
+              uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
             - name: Set up Docker Buildx
-              uses: docker/setup-buildx-action@v3
+              uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
               with:
                   driver-opts: network=host
 
@@ -30,7 +30,7 @@ jobs:
               run: docker build . -t name-selector-tool:latest --build-arg GITHUB_SHA=${{ github.sha }}
 
             - name: Login to OpenShift Silver image registry
-              uses: docker/login-action@v3
+              uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
               with:
                   registry: image-registry.apps.silver.devops.gov.bc.ca
                   # This refers to the serviceaccount name alone, not the fully qualified
@@ -40,7 +40,26 @@ jobs:
                   username: ${{ secrets.OPENSHIFT_SILVER_SERVICEACCOUNT_USERNAME }}
                   password: ${{ secrets.OPENSHIFT_SILVER_SERVICEACCOUNT_TOKEN }}
 
+            # PRs to `dev` branch get deployed to `dev` environment in OpenShift
+            # PRs to `test` get deployed to `test`
+            # PRs to `main` get deployed to `prod`
+            - name: Determine environment tag
+              id: env-tag
+              run: |
+                  echo "Evaluating branch: ${{ github.ref }}";
+                  if [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
+                      echo "tag=dev" >> $GITHUB_ENV;
+                  elif [[ "${{ github.ref }}" == "refs/heads/test" ]]; then
+                      echo "tag=test" >> $GITHUB_ENV;
+                  elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                      echo "tag=prod" >> $GITHUB_ENV;
+                  else
+                      echo "Unknown branch: ${{ github.ref }}. Exiting...";
+                      exit 1;
+                  fi;
+              shell: bash
+
             - name: Tag and push Docker image
               run: |
-                  docker tag name-selector-tool:latest image-registry.apps.silver.devops.gov.bc.ca/${{ secrets.OPENSHIFT_SILVER_LICENSE_PLATE }}-tools/name-selector-tool:develop
+                  docker tag name-selector-tool:latest image-registry.apps.silver.devops.gov.bc.ca/${{ secrets.OPENSHIFT_SILVER_LICENSE_PLATE }}-tools/name-selector-tool:${{ env.tag }}
                   docker push image-registry.apps.silver.devops.gov.bc.ca/${{ secrets.OPENSHIFT_SILVER_LICENSE_PLATE }}-tools/name-selector-tool --all-tags
