@@ -11,7 +11,7 @@
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
 
-    const checkFirstName = () => {
+    function checkFirstName() {
         checkErrorForMinLength(
             fullName.first.name,
             rules.legalName.first.length[0].minimum
@@ -23,7 +23,7 @@
         checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
     };
 
-    const checkMiddleName = () => {
+    function checkMiddleName() {
         let names = fullName.middle.name.split(' ');
         checkErrorForMaxLength(
             names[0],
@@ -40,7 +40,7 @@
         );
     };
 
-    const checkLastName = () => {
+    function checkLastName() {
         checkErrorForMinLength(
             fullName.last.name,
             rules.legalName.last.length[0].minimum
@@ -53,10 +53,6 @@
     };
 
     $effect(() => {
-        checkFirstName();
-        checkMiddleName();
-        checkLastName();
-
         const element = document.getElementById('primary-button');
         if (errors.hasErrors()) {
             element?.classList.replace('primary', 'disabled');
@@ -96,6 +92,7 @@
         label="Legal First Name:"
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
+        handleBlur={checkFirstName}
         isRequired
         bind:value={fullName.first}
     />
@@ -105,6 +102,7 @@
         label="Legal Middle Name(s):"
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
+        handleBlur={checkMiddleName}
         isRequired={false}
         bind:value={fullName.middle}
     />
@@ -114,6 +112,7 @@
         label="Legal Last Name:"
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
+        handleBlur={checkLastName}
         isRequired
         bind:value={fullName.last}
     />
