@@ -7,9 +7,11 @@
         label,
         placeholder,
         rules,
+        handleBlur = () => console.log(id, 'blur'),
         isRequired = true,
         value = $bindable(),
     } = $props();
+
 </script>
 
 <div {id} class="bcds-TextField">
@@ -23,6 +25,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
+            onblur={handleBlur}
             bind:value={value.name}
         />
     </div>
