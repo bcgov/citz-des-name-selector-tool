@@ -2,12 +2,14 @@
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
 
+    // some
+
     let {
         id,
         label,
         placeholder,
         rules,
-        handleBlur = () => console.log(id, 'blur'),
+        handleBlur = function() {console.log(id, 'blur')},
         isRequired = true,
         value = $bindable(),
     } = $props();
