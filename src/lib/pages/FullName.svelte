@@ -10,18 +10,7 @@
     } from '../utils.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
-
-    function checkFirstName() {
-        checkErrorForMinLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].maximum
-        );
-        checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
-    };
+    import { checkFirstName } from './utils/check-names.ts';
 
     function checkMiddleName() {
         let names = fullName.middle.name.split(' ');
@@ -92,7 +81,7 @@
         label="Legal First Name:"
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
-        handleBlur={checkFirstName}
+        handleBlur={() => checkFirstName(fullName.first.name, rules.legalName.first)}
         isRequired
         bind:value={fullName.first}
     />
