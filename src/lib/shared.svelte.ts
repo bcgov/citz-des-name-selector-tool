@@ -16,6 +16,7 @@ export const fullName = $state({
     last: {
         name: '',
     },
+    initialized: false
 });
 
 export function fullNameToString() {

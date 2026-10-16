@@ -89,9 +89,9 @@
             {fullName.middle.name}
         </p>
 
-        {#if errors.hasZeroErrors()}
+        {#if errors.hasZeroErrors() && fullName.initialized === true}
             <Alert message="Everything looks great!" success={true} />
-        {:else if errors.hasErrors()}
+        {:else if errors.hasErrors() && fullName.initialized === true}
             <Alert message="Alert: Please adjust highlighted field above" />
         {/if}
     </div>

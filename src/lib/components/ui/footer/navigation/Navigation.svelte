@@ -45,6 +45,9 @@
             element?.classList.replace('primary', 'disabled');
             isDisabled.value = true;
         }
+
+        if (!fullName.initialized && step.value === 3)
+            element?.classList.replace('primary', 'disabled');
     }
 
     function previousStep() {
