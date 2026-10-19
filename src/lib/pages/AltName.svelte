@@ -71,8 +71,7 @@
         checkLastName();
 
         const element = document.getElementById('primary-button');
-        if (errors.hasErrors())
-            element?.classList.replace('primary', 'disabled');
+        if (errors.hasErrors()) element?.classList.replace('primary', 'disabled');
         else element?.classList.replace('disabled', 'primary');
     });
 </script>
@@ -92,7 +91,7 @@
         <br />
     </div>
 
-    <InputLabel
+    <!-- <InputLabel
         id="alt-first-name"
         label="Alternate Spelling of First Name:"
         placeholder="Max. 12 Characters"
@@ -118,7 +117,7 @@
         isRequired
         bind:value={altName.last}
     />
-
+ -->
     <br />
 
     <div class="flex w-full max-w-sm flex-col border-b text-base">
