@@ -9,12 +9,14 @@ export const isDisabled = $state({ value: false });
 export const fullName = $state({
     first: {
         name: '',
+        initialized: false
     },
     middle: {
         name: '',
     },
     last: {
         name: '',
+        initialized: false
     },
     initialized: false
 });
