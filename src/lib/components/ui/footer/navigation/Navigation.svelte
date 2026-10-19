@@ -1,12 +1,7 @@
 <script lang="ts">
     import { STEP, STEP_MAX } from '$lib/constants';
     import { rules } from '$lib/rules-configuration';
-    import {
-        altName,
-        errors,
-        fullName,
-        step,
-    } from '$lib/shared.svelte';
+    import { altName, errors, fullName, step } from '$lib/shared.svelte';
 
     function removeStep3Errors() {
         if (step.value < STEP.VIEW_NAMES) {

@@ -18,7 +18,7 @@ export const fullName = $state({
     },
     namesInitialized() {
         return this.first.initialized && this.last.initialized;
-    }
+    },
 });
 
 export function fullNameToString() {
