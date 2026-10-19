@@ -48,12 +48,10 @@
                 element?.classList.replace('disabled', 'primary');
                 isDisabled.value = false;
         }
-
     }
 
     function previousStep() {
-        if (step.value > 0)
-            step.value = step.value - 1;
+        if (step.value > 0) step.value = step.value - 1;
 
         disabledToggle();
         removeStep3Errors();
