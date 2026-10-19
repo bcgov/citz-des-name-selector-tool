@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName, isDisabled } from '../shared.svelte.ts';
+    import { errors, fullName } from '../shared.svelte.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';

@@ -4,8 +4,6 @@ export type ErrorRule = {
     value: number;
 };
 
-export const isDisabled = $state({ value: false });
-
 export const fullName = $state({
     first: {
         name: '',
@@ -18,7 +16,9 @@ export const fullName = $state({
         name: '',
         initialized: false,
     },
-    initialized: false,
+    namesInitialized() {
+        return this.first.initialized && this.last.initialized;
+    }
 });
 
 export function fullNameToString() {

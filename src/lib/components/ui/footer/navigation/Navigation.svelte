@@ -5,7 +5,6 @@
         altName,
         errors,
         fullName,
-        isDisabled,
         step,
     } from '$lib/shared.svelte';
 
@@ -38,7 +37,6 @@
         switch (step.value) {
             case STEP_MAX:
                 element?.classList.replace('primary', 'disabled');
-                isDisabled.value = true;
                 break;
             case STEP.LEGAL_NAME:
                 if (!fullName.first.initialized || !fullName.last.initialized)
@@ -46,7 +44,6 @@
                 break;
             default:
                 element?.classList.replace('disabled', 'primary');
-                isDisabled.value = false;
         }
     }
 
@@ -77,6 +74,9 @@
         disabledToggle();
         window.scrollTo(0, 0);
     }
+    function isDisabled() {
+        return errors.hasErrors() && !fullName.namesInitialized();
+    }
 </script>
 
 <div class="bcds-Navigation">
@@ -90,7 +90,7 @@
             id="primary-button"
             class="bcds-Button primary medium"
             onclick={nextStep}
-            disabled={isDisabled.value}
+            disabled={isDisabled()}
         >
             Next
         </button>
