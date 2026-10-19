@@ -1,9 +1,6 @@
 <script lang="ts">
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
-
-    // some
-
     let {
         id,
         label,
@@ -26,7 +23,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
-            onblur={() => handleBlur(value.name, rules)}
+            onblur={() => handleBlur(value, rules)}
             bind:value={value.name}
         />
     </div>

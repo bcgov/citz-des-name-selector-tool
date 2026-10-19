@@ -34,26 +34,26 @@
 
     function disabledToggle() {
         const element = document.getElementById('primary-button');
-        // If we are before the last step, the next button is enabled.
-        if (step.value < step.max) {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
+
+        switch (step.value) {
+            case STEP_MAX:
+                element?.classList.replace('primary', 'disabled');
+                isDisabled.value = true;
+                break;
+            case STEP.LEGAL_NAME:
+                if (!fullName.first.initialized || !fullName.last.initialized)
+                    element?.classList.replace('primary', 'disabled');
+                break;
+            default:
+                element?.classList.replace('disabled', 'primary');
+                isDisabled.value = false;
         }
 
-        // If we're at the last step, the next button is disabled.
-        if (step.value === step.max) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        }
-
-        if (!fullName.initialized && step.value === 3)
-            element?.classList.replace('primary', 'disabled');
     }
 
     function previousStep() {
-        if (step.value > 0) {
+        if (step.value > 0)
             step.value = step.value - 1;
-        }
 
         disabledToggle();
         removeStep3Errors();
@@ -61,15 +61,19 @@
     }
 
     function nextStep() {
-        if (step.value < step.max) {
-            step.value = step.value + 1;
-        }
-
-        if (!altName.initialized && step.value === 4) {
-            altName.first.name = fullName.first.name;
-            altName.middle.name = fullName.middle.name;
-            altName.last.name = fullName.last.name;
-            altName.initialized = true;
+        switch (step.value) {
+            case STEP_MAX:
+                break;
+            case STEP.ALTERNATIVE_NAME:
+                if (!altName.initialized) {
+                    altName.first.name = fullName.first.name;
+                    altName.middle.name = fullName.middle.name;
+                    altName.last.name = fullName.last.name;
+                    altName.initialized = true;
+                }
+                break;
+            default:
+                step.value = step.value + 1;
         }
 
         disabledToggle();

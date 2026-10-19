@@ -6,30 +6,34 @@ import {
 } from '$lib/utils.ts';
 
 function checkErrors() {
-  const element = document.getElementById('primary-button');
-  if (errors.hasErrors())
-      element?.classList.replace('primary', 'disabled');
-  else
-      element?.classList.replace('disabled', 'primary');
+    const element = document.getElementById('primary-button');
+    if (errors.hasErrors())
+        element?.classList.replace('primary', 'disabled');
+    else if (!fullName.first.initialized || !fullName.last.initialized) {
+        element?.classList.replace('primary', 'disabled');
+        return;
+    }
+    element?.classList.replace('disabled', 'primary');
 }
 
-function checkName(name: string, rules: any) {
-  checkErrorForMinLength(
-    name,
-    rules.length[0].minimum
-  );
-  checkErrorForMaxLength(
-    name,
-    rules.length[0].maximum
-  );
-  checkErrorForMaxNames(name, rules.count);
+function checkName(value: { name: string, initialized: boolean }, rules: any) {
+    checkErrorForMinLength(
+        value.name,
+        rules.length[0].minimum
+    );
+    checkErrorForMaxLength(
+        value.name,
+        rules.length[0].maximum
+    );
 
-  if (!fullName.initialized) fullName.initialized = true;
-  checkErrors();
+    if (!value.initialized) value.initialized = true;
+
+    checkErrorForMaxNames(value.name, rules.count);
+    checkErrors();
 };
 
-function checkMiddleName(name: string, rules: any) {
-    let names = name.split(' ');
+function checkMiddleName(value: { name: string, initialized: boolean }, rules: any) {
+    let names = value.name.split(' ');
     checkErrorForMaxLength(
         names[0],
         rules.length[0].maximum
@@ -40,11 +44,11 @@ function checkMiddleName(name: string, rules: any) {
             rules.length[1].maximum
         );
     checkErrorForMaxNames(
-        name,
+        value.name,
         rules.count
     );
 
-    if (!fullName.initialized) fullName.initialized = true;
+    if (!value.initialized) value.initialized = true;
     checkErrors();
 };
 

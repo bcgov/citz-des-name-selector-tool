@@ -42,7 +42,7 @@ export function AltNameToString() {
     return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
 }
 
-export const step = $state({ value: 0, max: 6 });
+export const step = $state({ value: 2 });
 
 class Errors {
     value: Omit<ErrorRule, 'value'>[] = $state([]);

@@ -1,21 +1,10 @@
 <script lang="ts">
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName, isDisabled, step } from '../shared.svelte.ts';
+    import { errors, fullName, isDisabled } from '../shared.svelte.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
-
-    $effect(() => {
-        const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        } else {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
-    });
 </script>
 
 <div class="text-sm">
