@@ -2,79 +2,16 @@
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
     import { altName, errors } from '../shared.svelte.ts';
-    import {
-        checkErrorForASCII,
-        checkErrorForMaxLength,
-        checkErrorForMaxNames,
-        checkErrorForMinLength,
-        isGreaterThanMinLength,
-    } from '../utils.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
+    import { checkName } from './utils/check-names.ts';
 
-    const checkFirstName = () => {
-        checkErrorForMinLength(
-            altName.first.name,
-            rules.alternateName.first.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            altName.first.name,
-            rules.alternateName.first.length[0].maximum
-        );
-        checkErrorForMaxNames(
-            altName.first.name,
-            rules.alternateName.first.count
-        );
-        checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
-    };
-
-    const checkMiddleName = () => {
-        let names = altName.middle.name.split(' ');
-        checkErrorForMaxLength(
-            names[0],
-            rules.alternateName.middle.length[0].maximum
-        );
-        if (names[1])
-            checkErrorForMaxLength(
-                names[1],
-                rules.alternateName.middle.length[1].maximum
-            );
-        checkErrorForMaxNames(
-            altName.middle.name,
-            rules.alternateName.middle.count
-        );
-        checkErrorForASCII(
-            altName.middle.name,
-            rules.alternateName.middle.ascii
-        );
-    };
-
-    const checkLastName = () => {
-        checkErrorForMinLength(
-            altName.last.name,
-            rules.alternateName.last.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            altName.last.name,
-            rules.alternateName.last.length[0].maximum
-        );
-        checkErrorForMaxNames(
-            altName.last.name,
-            rules.alternateName.last.count
-        );
-        checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
-    };
-
-    $effect(() => {
-        checkFirstName();
-        checkMiddleName();
-        checkLastName();
-
-        const element = document.getElementById('primary-button');
-        if (errors.hasErrors())
-            element?.classList.replace('primary', 'disabled');
-        else element?.classList.replace('disabled', 'primary');
-    });
+    // $effect(() => {
+    //     const element = document.getElementById('primary-button');
+    //     if (errors.hasErrors())
+    //         element?.classList.replace('primary', 'disabled');
+    //     else element?.classList.replace('disabled', 'primary');
+    // });
 </script>
 
 <div>
@@ -99,6 +36,7 @@
         rules={rules.alternateName.first}
         isRequired
         checkASCII={true}
+        handleBlur={checkName}
         bind:value={altName.first}
     />
 
@@ -109,6 +47,7 @@
         rules={rules.alternateName.middle}
         isRequired={false}
         checkASCII={true}
+        handleBlur={checkName}
         bind:value={altName.middle}
     />
 
@@ -119,6 +58,7 @@
         rules={rules.alternateName.last}
         isRequired
         checkASCII={true}
+        handleBlur={checkName}
         bind:value={altName.last}
     />
 
