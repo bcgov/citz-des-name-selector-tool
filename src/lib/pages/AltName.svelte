@@ -71,7 +71,8 @@
         checkLastName();
 
         const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) element?.classList.replace('primary', 'disabled');
+        if (errors.hasErrors())
+            element?.classList.replace('primary', 'disabled');
         else element?.classList.replace('disabled', 'primary');
     });
 </script>
