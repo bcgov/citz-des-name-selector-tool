@@ -59,12 +59,27 @@
                 break;
         }
 
-        checkErrorForMaxLength(altName.first.name, rules.alternateName.first.length[0].maximum);
+        checkErrorForMaxLength(
+            altName.first.name,
+            rules.alternateName.first.length[0].maximum
+        );
         checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
-        checkErrorForMaxLength(altName.middle.name, rules.alternateName.middle.length[0].maximum);
-        checkErrorForMaxLength(altName.middle.name, rules.alternateName.middle.length[1].maximum);
-        checkErrorForASCII(altName.middle.name, rules.alternateName.first.ascii);
-        checkErrorForMaxLength(altName.last.name, rules.alternateName.last.length[0].maximum);
+        checkErrorForMaxLength(
+            altName.middle.name,
+            rules.alternateName.middle.length[0].maximum
+        );
+        checkErrorForMaxLength(
+            altName.middle.name,
+            rules.alternateName.middle.length[1].maximum
+        );
+        checkErrorForASCII(
+            altName.middle.name,
+            rules.alternateName.first.ascii
+        );
+        checkErrorForMaxLength(
+            altName.last.name,
+            rules.alternateName.last.length[0].maximum
+        );
         checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
         disabledToggle();
         window.scrollTo(0, 0);
@@ -72,11 +87,10 @@
 
     function isDisabled() {
         return (
-            step.isStep(STEP.LEGAL_NAME)
-            && !fullName.namesInitialized()
-            || errors.hasErrors()
-        )
-        || ( step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors() );
+            (step.isStep(STEP.LEGAL_NAME) && !fullName.namesInitialized()) ||
+            errors.hasErrors() ||
+            (step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors())
+        );
     }
 </script>
 
