@@ -7,8 +7,10 @@ import {
 
 function checkErrors() {
     const element = document.getElementById('primary-button');
-    if (errors.hasErrors()) element?.classList.replace('primary', 'disabled');
-    else if (!fullName.first.initialized || !fullName.last.initialized) {
+    if (errors.hasErrors()) {
+        element?.classList.replace('primary', 'disabled');
+        return;
+    } else if (!fullName.first.initialized || !fullName.last.initialized) {
         element?.classList.replace('primary', 'disabled');
         return;
     }
