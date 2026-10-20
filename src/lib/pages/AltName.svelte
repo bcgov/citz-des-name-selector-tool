@@ -98,6 +98,7 @@
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
         isRequired
+        checkASCII={true}
         bind:value={altName.first}
     />
 
@@ -107,6 +108,7 @@
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
         isRequired={false}
+        checkASCII={true}
         bind:value={altName.middle}
     />
 
@@ -116,6 +118,7 @@
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
         isRequired
+        checkASCII={true}
         bind:value={altName.last}
     />
 

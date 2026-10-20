@@ -8,6 +8,7 @@
         rules,
         handleBlur = console.log(`${id} name`),
         isRequired = true,
+        checkASCII = false,
         value = $bindable(),
     } = $props();
 </script>
@@ -23,7 +24,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
-            onblur={() => handleBlur(value, rules)}
+            onblur={() => handleBlur(value, rules, checkASCII)}
             bind:value={value.name}
         />
     </div>
