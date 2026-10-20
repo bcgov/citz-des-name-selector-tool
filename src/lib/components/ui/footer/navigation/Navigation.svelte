@@ -75,7 +75,7 @@
                 );
                 checkErrorForASCII(
                     altName.middle.name,
-                    rules.alternateName.first.ascii
+                    rules.alternateName.middle.ascii
                 );
                 checkErrorForMaxLength(
                     altName.last.name,
