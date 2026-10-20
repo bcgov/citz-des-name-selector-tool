@@ -51,6 +51,7 @@
     }
 
     function nextStep() {
+        step.value = step.value + 1;
         switch (step.value) {
             case STEP_MAX:
                 break;
@@ -62,8 +63,6 @@
                     altName.initialized = true;
                 }
                 break;
-            default:
-                step.value = step.value + 1;
         }
 
         disabledToggle();

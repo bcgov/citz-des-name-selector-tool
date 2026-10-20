@@ -6,7 +6,7 @@
         label,
         placeholder,
         rules,
-        handleBlur,
+        handleBlur = console.log(`${id} name`),
         isRequired = true,
         value = $bindable(),
     } = $props();
