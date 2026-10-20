@@ -70,8 +70,12 @@
         window.scrollTo(0, 0);
     }
     function isDisabled() {
-        return (step.value === STEP.LEGAL_NAME || step.value === STEP.ALTERNATIVE_NAME)
-            && errors.hasErrors() && !fullName.namesInitialized();
+        return (
+            (step.value === STEP.LEGAL_NAME ||
+                step.value === STEP.ALTERNATIVE_NAME) &&
+            errors.hasErrors() &&
+            !fullName.namesInitialized()
+        );
     }
 </script>
 
