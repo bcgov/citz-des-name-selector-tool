@@ -1,71 +1,10 @@
 <script lang="ts">
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName, isDisabled, step } from '../shared.svelte.ts';
-    import {
-        checkErrorForMaxLength,
-        checkErrorForMaxNames,
-        checkErrorForMinLength,
-        isGreaterThanMinLength,
-    } from '../utils.ts';
+    import { errors, fullName } from '../shared.svelte.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
-
-    const checkFirstName = () => {
-        checkErrorForMinLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].maximum
-        );
-        checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
-    };
-
-    const checkMiddleName = () => {
-        let names = fullName.middle.name.split(' ');
-        checkErrorForMaxLength(
-            names[0],
-            rules.legalName.middle.length[0].maximum
-        );
-        if (names[1])
-            checkErrorForMaxLength(
-                names[1],
-                rules.legalName.middle.length[1].maximum
-            );
-        checkErrorForMaxNames(
-            fullName.middle.name,
-            rules.legalName.middle.count
-        );
-    };
-
-    const checkLastName = () => {
-        checkErrorForMinLength(
-            fullName.last.name,
-            rules.legalName.last.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            fullName.last.name,
-            rules.legalName.last.length[0].maximum
-        );
-        checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
-    };
-
-    $effect(() => {
-        checkFirstName();
-        checkMiddleName();
-        checkLastName();
-
-        const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        } else {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
-    });
+    import { checkMiddleName, checkName } from './utils';
 </script>
 
 <div class="text-sm">
@@ -96,6 +35,7 @@
         label="Legal First Name:"
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
+        handleBlur={checkName}
         isRequired
         bind:value={fullName.first}
     />
@@ -105,6 +45,7 @@
         label="Legal Middle Name(s):"
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
+        handleBlur={checkMiddleName}
         isRequired={false}
         bind:value={fullName.middle}
     />
@@ -114,6 +55,7 @@
         label="Legal Last Name:"
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
+        handleBlur={checkName}
         isRequired
         bind:value={fullName.last}
     />
@@ -136,7 +78,7 @@
             {fullName.middle.name}
         </p>
 
-        {#if errors.hasZeroErrors()}
+        {#if errors.hasZeroErrors() && fullName.first.initialized === true && fullName.last.initialized}
             <Alert message="Everything looks great!" success={true} />
         {:else if errors.hasErrors()}
             <Alert message="Alert: Please adjust highlighted field above" />

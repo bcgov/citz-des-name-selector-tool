@@ -1,13 +1,7 @@
 <script lang="ts">
     import { STEP, STEP_MAX } from '$lib/constants';
     import { rules } from '$lib/rules-configuration';
-    import {
-        altName,
-        errors,
-        fullName,
-        isDisabled,
-        step,
-    } from '$lib/shared.svelte';
+    import { altName, errors, fullName, step } from '$lib/shared.svelte';
 
     function removeStep3Errors() {
         if (step.value < STEP.VIEW_NAMES) {
@@ -34,23 +28,22 @@
 
     function disabledToggle() {
         const element = document.getElementById('primary-button');
-        // If we are before the last step, the next button is enabled.
-        if (step.value < step.max) {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
 
-        // If we're at the last step, the next button is disabled.
-        if (step.value === step.max) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
+        switch (step.value) {
+            case STEP_MAX:
+                element?.classList.replace('primary', 'disabled');
+                break;
+            case STEP.LEGAL_NAME:
+                if (!fullName.first.initialized || !fullName.last.initialized)
+                    element?.classList.replace('primary', 'disabled');
+                break;
+            default:
+                element?.classList.replace('disabled', 'primary');
         }
     }
 
     function previousStep() {
-        if (step.value > 0) {
-            step.value = step.value - 1;
-        }
+        if (step.value > 0) step.value = step.value - 1;
 
         disabledToggle();
         removeStep3Errors();
@@ -58,19 +51,30 @@
     }
 
     function nextStep() {
-        if (step.value < step.max) {
-            step.value = step.value + 1;
-        }
-
-        if (!altName.initialized && step.value === 4) {
-            altName.first.name = fullName.first.name;
-            altName.middle.name = fullName.middle.name;
-            altName.last.name = fullName.last.name;
-            altName.initialized = true;
+        step.value = step.value + 1;
+        switch (step.value) {
+            case STEP_MAX:
+                break;
+            case STEP.ALTERNATIVE_NAME:
+                if (!altName.initialized) {
+                    altName.first.name = fullName.first.name;
+                    altName.middle.name = fullName.middle.name;
+                    altName.last.name = fullName.last.name;
+                    altName.initialized = true;
+                }
+                break;
         }
 
         disabledToggle();
         window.scrollTo(0, 0);
+    }
+    function isDisabled() {
+        return (
+            (step.value === STEP.LEGAL_NAME ||
+                step.value === STEP.ALTERNATIVE_NAME) &&
+            errors.hasErrors() &&
+            !fullName.namesInitialized()
+        );
     }
 </script>
 
@@ -85,7 +89,7 @@
             id="primary-button"
             class="bcds-Button primary medium"
             onclick={nextStep}
-            disabled={isDisabled.value}
+            disabled={isDisabled()}
         >
             Next
         </button>

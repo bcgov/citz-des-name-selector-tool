@@ -1,12 +1,12 @@
 <script lang="ts">
     import { errors } from '$lib/shared.svelte';
     import Alert from '../alert/alert.svelte';
-
     let {
         id,
         label,
         placeholder,
         rules,
+        handleBlur = console.log(`${id} name`),
         isRequired = true,
         value = $bindable(),
     } = $props();
@@ -23,6 +23,7 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
+            onblur={() => handleBlur(value, rules)}
             bind:value={value.name}
         />
     </div>

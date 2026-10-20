@@ -4,17 +4,20 @@ export type ErrorRule = {
     value: number;
 };
 
-export const isDisabled = $state({ value: false });
-
 export const fullName = $state({
     first: {
         name: '',
+        initialized: false,
     },
     middle: {
         name: '',
     },
     last: {
         name: '',
+        initialized: false,
+    },
+    namesInitialized() {
+        return this.first.initialized && this.last.initialized;
     },
 });
 
@@ -39,7 +42,7 @@ export function AltNameToString() {
     return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
 }
 
-export const step = $state({ value: 0, max: 6 });
+export const step = $state({ value: 0 });
 
 class Errors {
     value: Omit<ErrorRule, 'value'>[] = $state([]);

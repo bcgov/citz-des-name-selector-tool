@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { altName, errors, isDisabled } from '../shared.svelte.ts';
+    import { altName, errors } from '../shared.svelte.ts';
     import {
         checkErrorForASCII,
         checkErrorForMaxLength,
@@ -71,13 +71,9 @@
         checkLastName();
 
         const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) {
+        if (errors.hasErrors())
             element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        } else {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
+        else element?.classList.replace('disabled', 'primary');
     });
 </script>
 
