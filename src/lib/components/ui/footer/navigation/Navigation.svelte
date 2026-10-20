@@ -56,6 +56,7 @@
                     altName.last.name = fullName.last.name;
                     altName.initialized = true;
                 }
+                const middleNames = altName.middle.name.split(' ');
                 checkErrorForMaxLength(
                     altName.first.name,
                     rules.alternateName.first.length[0].maximum
@@ -65,11 +66,11 @@
                     rules.alternateName.first.ascii
                 );
                 checkErrorForMaxLength(
-                    altName.middle.name,
+                    middleNames[0],
                     rules.alternateName.middle.length[0].maximum
                 );
                 checkErrorForMaxLength(
-                    altName.middle.name,
+                    middleNames[1],
                     rules.alternateName.middle.length[1].maximum
                 );
                 checkErrorForASCII(
