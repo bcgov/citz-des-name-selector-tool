@@ -37,6 +37,10 @@
                 if (!fullName.first.initialized || !fullName.last.initialized)
                     element?.classList.replace('primary', 'disabled');
                 break;
+            case STEP.ALTERNATIVE_NAME:
+                if (!altName.first.initialized || !altName.last.initialized)
+                    element?.classList.replace('primary', 'disabled');
+                break;
             default:
                 element?.classList.replace('disabled', 'primary');
         }

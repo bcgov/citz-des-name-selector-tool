@@ -28,12 +28,14 @@ export function fullNameToString() {
 export const altName = $state({
     first: {
         name: '',
+        initialized: false
     },
     middle: {
         name: '',
     },
     last: {
         name: '',
+        initialized: false
     },
     initialized: false,
 });
