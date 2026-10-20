@@ -2,6 +2,7 @@
     import { STEP, STEP_MAX } from '$lib/constants';
     import { rules } from '$lib/rules-configuration';
     import { altName, errors, fullName, step } from '$lib/shared.svelte';
+    import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
 
     function removeStep3Errors() {
         if (step.value < STEP.VIEW_NAMES) {
@@ -28,22 +29,11 @@
 
     function disabledToggle() {
         const element = document.getElementById('primary-button');
-
-        switch (step.value) {
-            case STEP_MAX:
-                element?.classList.replace('primary', 'disabled');
-                break;
-            case STEP.LEGAL_NAME:
-                if (!fullName.first.initialized || !fullName.last.initialized)
-                    element?.classList.replace('primary', 'disabled');
-                break;
-            case STEP.ALTERNATIVE_NAME:
-                if (!altName.first.initialized || !altName.last.initialized)
-                    element?.classList.replace('primary', 'disabled');
-                break;
-            default:
-                element?.classList.replace('disabled', 'primary');
+        if (isDisabled()) {
+            element?.classList.replace('primary', 'disabled');
+            return;
         }
+        element?.classList.replace('disabled', 'primary');
     }
 
     function previousStep() {
@@ -69,16 +59,24 @@
                 break;
         }
 
+        checkErrorForMaxLength(altName.first.name, rules.alternateName.first.length[0].maximum);
+        checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
+        checkErrorForMaxLength(altName.middle.name, rules.alternateName.middle.length[0].maximum);
+        checkErrorForMaxLength(altName.middle.name, rules.alternateName.middle.length[1].maximum);
+        checkErrorForASCII(altName.middle.name, rules.alternateName.first.ascii);
+        checkErrorForMaxLength(altName.last.name, rules.alternateName.last.length[0].maximum);
+        checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
         disabledToggle();
         window.scrollTo(0, 0);
     }
+
     function isDisabled() {
         return (
-            (step.value === STEP.LEGAL_NAME ||
-                step.value === STEP.ALTERNATIVE_NAME) &&
-            errors.hasErrors() &&
-            !fullName.namesInitialized()
-        );
+            step.isStep(STEP.LEGAL_NAME)
+            && !fullName.namesInitialized()
+            || errors.hasErrors()
+        )
+        || ( step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors() );
     }
 </script>
 

@@ -1,3 +1,5 @@
+import { STEP } from "./constants";
+
 export type ErrorRule = {
     id: number;
     errorText: string;
@@ -27,15 +29,13 @@ export function fullNameToString() {
 
 export const altName = $state({
     first: {
-        name: '',
-        initialized: false
+        name: ''
     },
     middle: {
         name: '',
     },
     last: {
-        name: '',
-        initialized: false
+        name: ''
     },
     initialized: false,
 });
@@ -44,7 +44,12 @@ export function AltNameToString() {
     return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
 }
 
-export const step = $state({ value: 0 });
+export const step = $state({
+    value: 0,
+    isStep(step: number) {
+        return this.value === step
+    }
+});
 
 class Errors {
     value: Omit<ErrorRule, 'value'>[] = $state([]);
