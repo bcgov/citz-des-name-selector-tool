@@ -5,13 +5,6 @@
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils/check-names.ts';
-
-    // $effect(() => {
-    //     const element = document.getElementById('primary-button');
-    //     if (errors.hasErrors())
-    //         element?.classList.replace('primary', 'disabled');
-    //     else element?.classList.replace('disabled', 'primary');
-    // });
 </script>
 
 <div>

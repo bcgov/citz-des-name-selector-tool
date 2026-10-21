@@ -1,27 +1,15 @@
-import { altName, errors, fullName, step } from "$lib/shared.svelte";
-import { STEP, STEP_MAX } from "$lib/constants";
-import { rules } from "$lib/rules-configuration";
-import { checkErrorForASCII, checkErrorForMaxLength } from "$lib/utils";
+import { altName, errors, fullName, step } from '$lib/shared.svelte';
+import { STEP, STEP_MAX } from '$lib/constants';
+import { rules } from '$lib/rules-configuration';
+import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
 
 function removeStep3Errors() {
     if (step.value < STEP.VIEW_NAMES) {
-        if (
-            errors.hasError(
-                rules.truncationRules.first.length[0].maximum.id
-            )
-        )
+        if (errors.hasError(rules.truncationRules.first.length[0].maximum.id))
             errors.splice(rules.truncationRules.first.length[0].maximum.id);
-        if (
-            errors.hasError(
-                rules.truncationRules.middle.length[0].maximum.id
-            )
-        )
-            errors.splice(
-                rules.truncationRules.middle.length[0].maximum.id
-            );
-        if (
-            errors.hasError(rules.truncationRules.last.length[0].maximum.id)
-        )
+        if (errors.hasError(rules.truncationRules.middle.length[0].maximum.id))
+            errors.splice(rules.truncationRules.middle.length[0].maximum.id);
+        if (errors.hasError(rules.truncationRules.last.length[0].maximum.id))
             errors.splice(rules.truncationRules.last.length[0].maximum.id);
     }
 }
@@ -32,10 +20,7 @@ function initialAltNameCheck() {
         altName.first.name,
         rules.alternateName.first.length[0].maximum
     );
-    checkErrorForASCII(
-        altName.first.name,
-        rules.alternateName.first.ascii
-    );
+    checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
     checkErrorForMaxLength(
         middleNames[0],
         rules.alternateName.middle.length[0].maximum
@@ -44,18 +29,12 @@ function initialAltNameCheck() {
         middleNames[1],
         rules.alternateName.middle.length[1].maximum
     );
-    checkErrorForASCII(
-        altName.middle.name,
-        rules.alternateName.middle.ascii
-    );
+    checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
     checkErrorForMaxLength(
         altName.last.name,
         rules.alternateName.last.length[0].maximum
     );
-    checkErrorForASCII(
-        altName.last.name,
-        rules.alternateName.last.ascii
-    );
+    checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
 }
 
 function isDisabled() {
@@ -103,8 +82,4 @@ function nextStep() {
     window.scrollTo(0, 0);
 }
 
-export {
-    isDisabled,
-    previousStep,
-    nextStep
-};
+export { isDisabled, previousStep, nextStep };

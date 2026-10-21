@@ -2,7 +2,6 @@
     import { STEP_MAX } from '$lib/constants';
     import { step } from '$lib/shared.svelte';
     import { nextStep, previousStep, isDisabled } from './utils';
-
 </script>
 
 <div class="bcds-Navigation">
