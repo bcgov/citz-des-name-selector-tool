@@ -4,7 +4,7 @@
     import { altName, errors } from '../shared.svelte.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
-    import { checkName } from './utils/check-names.ts';
+    import { checkMiddleName, checkName } from './utils/check-names.ts';
 
     // $effect(() => {
     //     const element = document.getElementById('primary-button');
@@ -47,7 +47,7 @@
         rules={rules.alternateName.middle}
         isRequired={false}
         checkASCII={true}
-        handleBlur={checkName}
+        handleBlur={checkMiddleName}
         bind:value={altName.middle}
     />
 
