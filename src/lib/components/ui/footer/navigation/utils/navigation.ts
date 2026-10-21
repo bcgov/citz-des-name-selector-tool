@@ -25,10 +25,11 @@ function initialAltNameCheck() {
         middleNames[0],
         rules.alternateName.middle.length[0].maximum
     );
-    checkErrorForMaxLength(
-        middleNames[1],
-        rules.alternateName.middle.length[1].maximum
-    );
+    if (middleNames[1])
+        checkErrorForMaxLength(
+            middleNames[1],
+            rules.alternateName.middle.length[1].maximum
+        );
     checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
     checkErrorForMaxLength(
         altName.last.name,
