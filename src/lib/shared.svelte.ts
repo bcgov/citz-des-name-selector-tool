@@ -70,6 +70,16 @@ class Errors {
         this.value = tempArray;
     }
 
+    spliceByID(id: number) {
+        let index = -1;
+
+        this.value.forEach((error, i) => {
+            if (error.id === id) index = i;
+        });
+
+        this.splice(index);
+    }
+
     hasError(id: number) {
         return this.value.find((error) => error.id === id) !== undefined;
     }
