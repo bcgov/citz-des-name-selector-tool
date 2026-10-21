@@ -29,7 +29,7 @@
         rules={rules.alternateName.first}
         isRequired
         checkASCII={true}
-        handleBlur={checkName}
+        handler={checkName}
         bind:value={altName.first}
     />
 
@@ -40,7 +40,7 @@
         rules={rules.alternateName.middle}
         isRequired={false}
         checkASCII={true}
-        handleBlur={checkMiddleName}
+        handler={checkMiddleName}
         bind:value={altName.middle}
     />
 
@@ -51,7 +51,7 @@
         rules={rules.alternateName.last}
         isRequired
         checkASCII={true}
-        handleBlur={checkName}
+        handler={checkName}
         bind:value={altName.last}
     />
 
