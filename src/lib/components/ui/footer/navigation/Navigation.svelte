@@ -55,36 +55,36 @@
                     altName.middle.name = fullName.middle.name;
                     altName.last.name = fullName.last.name;
                     altName.initialized = true;
+                    const middleNames = altName.middle.name.split(' ');
+                    checkErrorForMaxLength(
+                        altName.first.name,
+                        rules.alternateName.first.length[0].maximum
+                    );
+                    checkErrorForASCII(
+                        altName.first.name,
+                        rules.alternateName.first.ascii
+                    );
+                    checkErrorForMaxLength(
+                        middleNames[0],
+                        rules.alternateName.middle.length[0].maximum
+                    );
+                    checkErrorForMaxLength(
+                        middleNames[1],
+                        rules.alternateName.middle.length[1].maximum
+                    );
+                    checkErrorForASCII(
+                        altName.middle.name,
+                        rules.alternateName.middle.ascii
+                    );
+                    checkErrorForMaxLength(
+                        altName.last.name,
+                        rules.alternateName.last.length[0].maximum
+                    );
+                    checkErrorForASCII(
+                        altName.last.name,
+                        rules.alternateName.last.ascii
+                    );
                 }
-                const middleNames = altName.middle.name.split(' ');
-                checkErrorForMaxLength(
-                    altName.first.name,
-                    rules.alternateName.first.length[0].maximum
-                );
-                checkErrorForASCII(
-                    altName.first.name,
-                    rules.alternateName.first.ascii
-                );
-                checkErrorForMaxLength(
-                    middleNames[0],
-                    rules.alternateName.middle.length[0].maximum
-                );
-                checkErrorForMaxLength(
-                    middleNames[1],
-                    rules.alternateName.middle.length[1].maximum
-                );
-                checkErrorForASCII(
-                    altName.middle.name,
-                    rules.alternateName.middle.ascii
-                );
-                checkErrorForMaxLength(
-                    altName.last.name,
-                    rules.alternateName.last.length[0].maximum
-                );
-                checkErrorForASCII(
-                    altName.last.name,
-                    rules.alternateName.last.ascii
-                );
                 break;
         }
 
