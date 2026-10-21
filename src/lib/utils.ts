@@ -56,7 +56,7 @@ export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
 export function checkErrorForMinLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isGreaterThanMinLength(name, rule.value)) errors.spliceByID(rule.id)
+    if (isGreaterThanMinLength(name, rule.value)) errors.spliceByID(rule.id);
     else {
         errors.value.forEach((error: Omit<ErrorRule, 'value'>) => {
             if (error.id === rule.id) index = error.id;
@@ -73,7 +73,8 @@ export function checkErrorForMinLength(name: string, rule: ErrorRule) {
 export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isLessThanOrEqualToMaxLength(name, rule.value)) errors.spliceByID(rule.id);
+    if (isLessThanOrEqualToMaxLength(name, rule.value))
+        errors.spliceByID(rule.id);
     else {
         errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
@@ -90,7 +91,8 @@ export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
 export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isLessThanOrEqualToMaxNames(name, rule.value)) errors.spliceByID(rule.id);
+    if (isLessThanOrEqualToMaxNames(name, rule.value))
+        errors.spliceByID(rule.id);
     else {
         errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
@@ -107,7 +109,7 @@ export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
 export function checkErrorForASCII(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isASCII(name)) errors.splice(rule.id)
+    if (isASCII(name)) errors.splice(rule.id);
     else {
         errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;

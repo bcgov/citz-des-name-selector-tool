@@ -10,13 +10,13 @@ function removeAltErrors() {
     errors.spliceByID(rules.alternateName.middle.ascii.id);
     errors.spliceByID(rules.alternateName.last.ascii.id);
     // Max Length Check
-    errors.spliceByID(rules.alternateName.first.length[0].maximum.id)
-    errors.spliceByID(rules.alternateName.middle.length[0].maximum.id)
-    errors.spliceByID(rules.alternateName.middle.length[1].maximum.id)
-    errors.spliceByID(rules.alternateName.last.length[0].maximum.id)
+    errors.spliceByID(rules.alternateName.first.length[0].maximum.id);
+    errors.spliceByID(rules.alternateName.middle.length[0].maximum.id);
+    errors.spliceByID(rules.alternateName.middle.length[1].maximum.id);
+    errors.spliceByID(rules.alternateName.last.length[0].maximum.id);
     // Min Length Check
-    errors.spliceByID(rules.alternateName.first.length[0].maximum.id)
-    errors.spliceByID(rules.alternateName.last.length[0].maximum.id)
+    errors.spliceByID(rules.alternateName.first.length[0].maximum.id);
+    errors.spliceByID(rules.alternateName.last.length[0].maximum.id);
 }
 
 function removeStep3Errors() {
