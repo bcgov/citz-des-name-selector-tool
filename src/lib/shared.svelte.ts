@@ -77,7 +77,7 @@ class Errors {
             if (error.id === id) index = i;
         });
 
-        this.splice(index);
+        if (index > -1) errors.splice(index);
     }
 
     hasError(id: number) {

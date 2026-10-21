@@ -3,14 +3,27 @@ import { STEP, STEP_MAX } from '$lib/constants';
 import { rules } from '$lib/rules-configuration';
 import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
 
+function removeAltErrors() {
+    console.log('here');
+    // ASCII Check
+    errors.spliceByID(rules.alternateName.first.ascii.id);
+    errors.spliceByID(rules.alternateName.middle.ascii.id);
+    errors.spliceByID(rules.alternateName.last.ascii.id);
+    // Max Length Check
+    errors.spliceByID(rules.alternateName.first.length[0].maximum.id)
+    errors.spliceByID(rules.alternateName.middle.length[0].maximum.id)
+    errors.spliceByID(rules.alternateName.middle.length[1].maximum.id)
+    errors.spliceByID(rules.alternateName.last.length[0].maximum.id)
+    // Min Length Check
+    errors.spliceByID(rules.alternateName.first.length[0].maximum.id)
+    errors.spliceByID(rules.alternateName.last.length[0].maximum.id)
+}
+
 function removeStep3Errors() {
     if (step.value < STEP.VIEW_NAMES) {
-        if (errors.hasError(rules.truncationRules.first.length[0].maximum.id))
-            errors.splice(rules.truncationRules.first.length[0].maximum.id);
-        if (errors.hasError(rules.truncationRules.middle.length[0].maximum.id))
-            errors.splice(rules.truncationRules.middle.length[0].maximum.id);
-        if (errors.hasError(rules.truncationRules.last.length[0].maximum.id))
-            errors.splice(rules.truncationRules.last.length[0].maximum.id);
+        errors.spliceByID(rules.truncationRules.first.length[0].maximum.id);
+        errors.spliceByID(rules.truncationRules.middle.length[0].maximum.id);
+        errors.spliceByID(rules.truncationRules.last.length[0].maximum.id);
     }
 }
 
@@ -58,6 +71,12 @@ function disabledToggle() {
 function previousStep() {
     if (step.value > 0) step.value = step.value - 1;
 
+    switch (step.value) {
+        case STEP.LEGAL_NAME:
+            removeAltErrors();
+            break;
+    }
+
     disabledToggle();
     removeStep3Errors();
     window.scrollTo(0, 0);
@@ -74,8 +93,8 @@ function nextStep() {
                 altName.middle.name = fullName.middle.name;
                 altName.last.name = fullName.last.name;
                 altName.initialized = true;
-                initialAltNameCheck();
             }
+            initialAltNameCheck();
             break;
     }
 
