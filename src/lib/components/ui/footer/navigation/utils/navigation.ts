@@ -33,7 +33,6 @@ function initialAltNameCheck() {
         altName.first.name,
         rules.alternateName.first.length[0].maximum
     );
-    checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
     checkErrorForMaxLength(
         middleNames[0],
         rules.alternateName.middle.length[0].maximum
@@ -43,11 +42,13 @@ function initialAltNameCheck() {
             middleNames[1],
             rules.alternateName.middle.length[1].maximum
         );
-    checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
     checkErrorForMaxLength(
         altName.last.name,
         rules.alternateName.last.length[0].maximum
     );
+    // ASCII check
+    checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
+    checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
     checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
 }
 

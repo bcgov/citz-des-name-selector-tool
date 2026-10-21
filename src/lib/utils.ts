@@ -107,11 +107,13 @@ export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
 }
 
 export function checkErrorForASCII(name: string, rule: ErrorRule) {
-    let index = -1;
+    if (isASCII(name)) {
+        errors.spliceByID(rule.id);
+    } else {
+        let index = -1;
 
-    if (isASCII(name)) errors.splice(rule.id);
-    else {
         errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+            console.log(error);
             if (error.id === rule.id) index = i;
         });
 

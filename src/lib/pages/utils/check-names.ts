@@ -30,7 +30,7 @@ function checkName(
 
     checkErrorForMaxNames(value.name, rules.count);
 
-    if (ascii) checkErrorForASCII(value.name, rules);
+    if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
     checkErrors();
 }
