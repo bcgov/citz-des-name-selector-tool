@@ -1,10 +1,4 @@
-import { STEP } from './constants';
-
-export type ErrorRule = {
-    id: number;
-    errorText: string;
-    value: number;
-};
+import { type ErrorRule } from './types';
 
 export const fullName = $state({
     first: {
@@ -52,48 +46,62 @@ export const step = $state({
 });
 
 class Errors {
-    value: Omit<ErrorRule, 'value'>[] = $state([]);
+    #list: Omit<ErrorRule, 'value'>[] = $state([]);
 
-    push(error: Omit<ErrorRule, 'value'>) {
-        let tempArray = this.value;
-        tempArray.push(error);
-        this.value = tempArray;
+    get list() {
+        return this.#list;
     }
 
-    splice(index: number) {
-        let tempArray = this.value;
-        if (index === this.value.length || this.value.length === 1) {
+    set list(array: Omit<ErrorRule, 'value'>[]) {
+        this.#list = array;
+    }
+
+    get length() {
+        return this.#list.length;
+    }
+
+    push(error: Omit<ErrorRule, 'value'>) {
+        let tempArray = this.list;
+        tempArray.push(error);
+        this.list = tempArray;
+    }
+
+    #splice(index: number) {
+        let tempArray = this.list;
+        if (index === this.length || this.length === 1) {
             tempArray.pop();
         } else {
             tempArray.splice(index, 1);
         }
-        this.value = tempArray;
+        this.list = tempArray;
     }
 
     spliceByID(id: number) {
         let index = -1;
 
-        this.value.forEach((error, i) => {
+        this.list.forEach((error: ErrorRule, i: number) => {
             if (error.id === id) index = i;
         });
 
-        if (index > -1) errors.splice(index);
+        if (index > -1) this.#splice(index);
     }
 
     hasError(id: number) {
-        return this.value.find((error) => error.id === id) !== undefined;
+        return (
+            this.list.find((error: ErrorRule) => error.id === id) !== undefined
+        );
     }
 
     getMessage(id: number) {
-        return this.value.find((error) => error.id === id)?.errorText;
+        return this.list.find((error: ErrorRule) => error.id === id)?.errorText;
     }
 
     hasZeroErrors() {
-        return this.value.length === 0;
+        return this.list.length === 0;
     }
 
     hasErrors() {
-        return this.value.length > 0;
+        return this.list.length > 0;
     }
 }
 
