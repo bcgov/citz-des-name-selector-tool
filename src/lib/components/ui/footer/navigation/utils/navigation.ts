@@ -68,7 +68,7 @@ function disabledToggle() {
 }
 
 function previousStep() {
-    if (step.value > 0) step.value = step.value + 1;
+    if (step.value > 0) step.value = step.value - 1;
 
     switch (step.value) {
         case STEP.LEGAL_NAME:

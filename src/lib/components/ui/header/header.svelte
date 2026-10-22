@@ -1,18 +1,5 @@
 <script lang="ts">
-    //import { scrollY } from 'svelte/reactivity/window';
-    import { step } from '../../../shared.svelte.ts';
     import SvgBcLogo from '../../../../assets/SvgBcLogo.svg';
-
-    //let active = $state(false);
-
-    /*    $effect(() => {
-        if (scrollY.current)
-            if (scrollY.current > 100) {
-                active = true;
-            } else {
-                active = false;
-            }
-    });*/
 </script>
 
 <header class="bcds-header">
