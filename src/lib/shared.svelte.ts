@@ -1,3 +1,5 @@
+import { STEP } from './constants';
+
 export type ErrorRule = {
     id: number;
     errorText: string;
@@ -42,7 +44,12 @@ export function AltNameToString() {
     return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
 }
 
-export const step = $state({ value: 0 });
+export const step = $state({
+    value: 0,
+    isStep(step: number) {
+        return this.value === step;
+    },
+});
 
 class Errors {
     value: Omit<ErrorRule, 'value'>[] = $state([]);
@@ -61,6 +68,16 @@ class Errors {
             tempArray.splice(index, 1);
         }
         this.value = tempArray;
+    }
+
+    spliceByID(id: number) {
+        let index = -1;
+
+        this.value.forEach((error, i) => {
+            if (error.id === id) index = i;
+        });
+
+        if (index > -1) errors.splice(index);
     }
 
     hasError(id: number) {

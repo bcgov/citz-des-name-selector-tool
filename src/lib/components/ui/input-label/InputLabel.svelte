@@ -6,8 +6,9 @@
         label,
         placeholder,
         rules,
-        handleBlur = console.log(`${id} name`),
+        handler = console.log(`${id} name`),
         isRequired = true,
+        checkASCII = false,
         value = $bindable(),
     } = $props();
 </script>
@@ -23,7 +24,10 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
-            onblur={() => handleBlur(value, rules)}
+            onblur={() => handler(value, rules, checkASCII)}
+            onkeyupcapture={() => handler(value, rules, checkASCII)}
+            oncutcapture={() => handler(value, rules, checkASCII)}
+            onpastecapture={() => handler(value, rules, checkASCII)}
             bind:value={value.name}
         />
     </div>
