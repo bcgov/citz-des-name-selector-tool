@@ -1,4 +1,4 @@
-import { type ErrorRule } from "./types";
+import { type ErrorRule } from './types';
 
 export const fullName = $state({
     first: {
@@ -87,7 +87,9 @@ class Errors {
     }
 
     hasError(id: number) {
-        return this.list.find((error: ErrorRule) => error.id === id) !== undefined;
+        return (
+            this.list.find((error: ErrorRule) => error.id === id) !== undefined
+        );
     }
 
     getMessage(id: number) {

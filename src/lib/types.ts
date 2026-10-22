@@ -13,9 +13,6 @@ type ErrorRulesList = {
     };
     count: ErrorRule;
     ascii: ErrorRule;
-}
+};
 
-export {
-    type ErrorRule,
-    type ErrorRulesList
-}
+export { type ErrorRule, type ErrorRulesList };
