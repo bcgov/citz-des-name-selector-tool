@@ -1,5 +1,3 @@
-import { STEP } from './constants';
-
 export type ErrorRule = {
     id: number;
     errorText: string;
