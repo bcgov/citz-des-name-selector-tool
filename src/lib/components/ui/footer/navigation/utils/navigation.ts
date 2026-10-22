@@ -15,8 +15,8 @@ function removeAltErrors() {
     errors.spliceByID(rules.alternateName.middle.length[1].maximum.id);
     errors.spliceByID(rules.alternateName.last.length[0].maximum.id);
     // Min Length Check
-    errors.spliceByID(rules.alternateName.first.length[0].maximum.id);
-    errors.spliceByID(rules.alternateName.last.length[0].maximum.id);
+    errors.spliceByID(rules.alternateName.first.length[0].minimum.id);
+    errors.spliceByID(rules.alternateName.last.length[0].minimum.id);
 }
 
 function removeStep3Errors() {
@@ -54,8 +54,8 @@ function initialAltNameCheck() {
 
 function isDisabled() {
     return (
-        (step.isStep(STEP.LEGAL_NAME) && !fullName.namesInitialized()) ||
-        errors.hasErrors() ||
+        (step.isStep(STEP.LEGAL_NAME) &&
+            (!fullName.namesInitialized() || errors.hasErrors())) ||
         (step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors())
     );
 }
