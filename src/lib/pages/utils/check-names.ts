@@ -1,4 +1,5 @@
 import { errors, fullName } from '$lib/shared.svelte';
+import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
     checkErrorForMinLength,
@@ -20,7 +21,7 @@ function checkErrors() {
 
 function checkName(
     value: { name: string; initialized: boolean },
-    rules: any,
+    rules: ErrorRulesList,
     ascii: boolean
 ) {
     checkErrorForMinLength(value.name, rules.length[0].minimum);
@@ -37,14 +38,14 @@ function checkName(
 
 function checkMiddleName(
     value: { name: string; initialized: boolean },
-    rules: any,
+    rules: ErrorRulesList,
     ascii: boolean
 ) {
     let names = value.name.split(' ');
     checkErrorForMaxLength(names[0], rules.length[0].maximum);
     if (names[1]) checkErrorForMaxLength(names[1], rules.length[1].maximum);
 
-    if (ascii) checkErrorForASCII(value.name, rules);
+    if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
     checkErrorForMaxNames(value.name, rules.count);
 

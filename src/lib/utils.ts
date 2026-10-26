@@ -1,7 +1,8 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
-import { errors, type ErrorRule } from './shared.svelte';
+import { errors } from './shared.svelte';
+import { type ErrorRule } from '$lib/types';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -58,7 +59,7 @@ export function checkErrorForMinLength(name: string, rule: ErrorRule) {
 
     if (isGreaterThanMinLength(name, rule.value)) errors.spliceByID(rule.id);
     else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>) => {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>) => {
             if (error.id === rule.id) index = error.id;
         });
 
@@ -76,7 +77,7 @@ export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
     if (isLessThanOrEqualToMaxLength(name, rule.value))
         errors.spliceByID(rule.id);
     else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 
@@ -94,7 +95,7 @@ export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
     if (isLessThanOrEqualToMaxNames(name, rule.value))
         errors.spliceByID(rule.id);
     else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 
@@ -112,8 +113,7 @@ export function checkErrorForASCII(name: string, rule: ErrorRule) {
     } else {
         let index = -1;
 
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
-            console.log(error);
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 

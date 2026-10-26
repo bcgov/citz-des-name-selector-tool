@@ -4,7 +4,6 @@ import { rules } from '$lib/rules-configuration';
 import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
 
 function removeAltErrors() {
-    console.log('here');
     // ASCII Check
     errors.spliceByID(rules.alternateName.first.ascii.id);
     errors.spliceByID(rules.alternateName.middle.ascii.id);
@@ -19,7 +18,7 @@ function removeAltErrors() {
     errors.spliceByID(rules.alternateName.last.length[0].minimum.id);
 }
 
-function removeStep3Errors() {
+function removeTruncationErrors() {
     if (step.value < STEP.VIEW_NAMES) {
         errors.spliceByID(rules.truncationRules.first.length[0].maximum.id);
         errors.spliceByID(rules.truncationRules.middle.length[0].maximum.id);
@@ -46,7 +45,6 @@ function initialAltNameCheck() {
         altName.last.name,
         rules.alternateName.last.length[0].maximum
     );
-    // ASCII check
     checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
     checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
     checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
@@ -76,10 +74,12 @@ function previousStep() {
         case STEP.LEGAL_NAME:
             removeAltErrors();
             break;
+        case STEP.ALTERNATIVE_NAME:
+            removeTruncationErrors();
+            break;
     }
 
     disabledToggle();
-    removeStep3Errors();
     window.scrollTo(0, 0);
 }
 
