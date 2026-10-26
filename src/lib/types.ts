@@ -6,11 +6,7 @@ type ErrorRule = {
 
 type ErrorRulesList = {
     length: {
-        0: {
-            maximum: ErrorRule;
-            minimum: ErrorRule;
-        };
-        1: {
+        [index: number]: {
             maximum: ErrorRule;
             minimum: ErrorRule;
         };
