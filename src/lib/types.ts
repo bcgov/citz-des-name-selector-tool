@@ -10,6 +10,10 @@ type ErrorRulesList = {
             maximum: ErrorRule;
             minimum: ErrorRule;
         };
+        1: {
+            maximum: ErrorRule;
+            minimum: ErrorRule;
+        };
     };
     count: ErrorRule;
     ascii: ErrorRule;
