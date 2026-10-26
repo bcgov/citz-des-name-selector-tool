@@ -64,13 +64,9 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {#if altName.last.name.length > 0}
-                {altName.last.name},
-            {:else}
-                {altName.last.name}
-            {/if}
             {altName.first.name}
             {altName.middle.name}
+            {altName.last.name},
         </p>
 
         {#if errors.hasZeroErrors()}
