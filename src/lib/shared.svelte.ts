@@ -88,12 +88,16 @@ class Errors {
 
     hasError(id: number) {
         return (
-            this.list.find((error: Omit<ErrorRule, 'value'>) => error.id === id) !== undefined
+            this.list.find(
+                (error: Omit<ErrorRule, 'value'>) => error.id === id
+            ) !== undefined
         );
     }
 
     getMessage(id: number) {
-        return this.list.find((error: Omit<ErrorRule, 'value'>) => error.id === id)?.errorText;
+        return this.list.find(
+            (error: Omit<ErrorRule, 'value'>) => error.id === id
+        )?.errorText;
     }
 
     hasZeroErrors() {
