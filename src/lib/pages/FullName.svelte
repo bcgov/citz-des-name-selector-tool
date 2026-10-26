@@ -69,13 +69,9 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {#if fullName.last.name.length > 0}
-                {fullName.last.name},
-            {:else}
-                {fullName.last.name}
-            {/if}
             {fullName.first.name}
             {fullName.middle.name}
+            {fullName.last.name}
         </p>
 
         {#if errors.hasZeroErrors() && fullName.first.initialized === true && fullName.last.initialized}
