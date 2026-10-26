@@ -66,7 +66,7 @@
         <p>
             {altName.first.name}
             {altName.middle.name}
-            {altName.last.name},
+            {altName.last.name}
         </p>
 
         {#if errors.hasZeroErrors()}
