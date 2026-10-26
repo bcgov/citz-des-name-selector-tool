@@ -79,7 +79,7 @@ class Errors {
     spliceByID(id: number) {
         let index = -1;
 
-        this.list.forEach((error: ErrorRule, i: number) => {
+        this.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === id) index = i;
         });
 
@@ -88,12 +88,12 @@ class Errors {
 
     hasError(id: number) {
         return (
-            this.list.find((error: ErrorRule) => error.id === id) !== undefined
+            this.list.find((error: Omit<ErrorRule, 'value'>) => error.id === id) !== undefined
         );
     }
 
     getMessage(id: number) {
-        return this.list.find((error: ErrorRule) => error.id === id)?.errorText;
+        return this.list.find((error: Omit<ErrorRule, 'value'>) => error.id === id)?.errorText;
     }
 
     hasZeroErrors() {
