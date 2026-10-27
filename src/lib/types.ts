@@ -15,4 +15,21 @@ type ErrorRulesList = {
     ascii: ErrorRule;
 };
 
-export { type ErrorRule, type ErrorRulesList };
+const PolynymPrefixes = {
+    VAN: 'van',
+    VON: 'von',
+    DER: 'der',
+    DE: 'de',
+    DA: 'da',
+    DI: 'di',
+    LA: 'la',
+    LE: 'le',
+    BIN: 'bin',
+    IBN: 'ibn',
+    AL: 'al',
+    EL: 'el',
+} as const;
+
+type PolynymPrefixes = (typeof PolynymPrefixes)[keyof typeof PolynymPrefixes];
+
+export { type ErrorRule, type ErrorRulesList, type PolynymPrefixes };
