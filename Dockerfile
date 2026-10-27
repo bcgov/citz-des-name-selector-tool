@@ -19,7 +19,7 @@ ENV NODE_ENV=production
 RUN bun run build
 
 # Serve static application artifacts with nginx-unprivileged.
-FROM nginxinc/nginx-unprivileged:alpine3.22 AS serve
+FROM nginx/nginx-unprivileged:alpine AS serve
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 8080
