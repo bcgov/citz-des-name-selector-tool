@@ -1,5 +1,6 @@
 # Install dependencies and build the application with Bun.
-FROM oven/bun:1.3.5 AS base
+ARG BUN_VERSION
+FROM oven/bun:${BUN_VERSION} AS base
 WORKDIR /usr/src/app
 
 FROM base AS install
