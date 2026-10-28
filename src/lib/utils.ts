@@ -162,7 +162,7 @@ export function splitPersonName(fullName: string): [string, string, string] {
     }
 
     let first = parts[0];
-    let middle = i >= 1 ? ' '.concat(parts.slice(1, i + 1).join(' ')) : '';
-    let last = ' '.concat(lastParts.join(' '));
+    let middle = i >= 1 ? parts.slice(1, i + 1).join(' ') : '';
+    let last = lastParts.join(' ');
     return [first, middle, last];
 }
