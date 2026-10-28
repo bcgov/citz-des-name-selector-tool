@@ -156,7 +156,7 @@ export function splitPersonName(fullName: string): [string, string, string] {
     let lastParts: string[] = [parts[parts.length - 1]];
 
     let i = parts.length - 2;
-    while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
+    while (i >= 0 && parts[i].toLowerCase() in POLYNYM_PREFIXES) {
         lastParts.unshift(parts[i]);
         i--;
     }
