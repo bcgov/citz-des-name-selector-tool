@@ -153,7 +153,7 @@ export function splitPersonName(fullName: string): [string, string, string] {
             return [parts[0], '', parts[1]];
     }
 
-    let lastParts: string[] = [parts.reverse()[0]];
+    let lastParts: string[] = [parts[parts.length - 1]];
 
     let i = parts.length - 2;
     while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
