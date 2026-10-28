@@ -10,3 +10,18 @@ export const STEP = {
     VIEW_NAMES: 5,
     VIEW_IDENTIFICATIONS: 6,
 } as const;
+
+export const POLYNYM_PREFIXES = new Set<string>([
+    'van',
+    'von',
+    'der',
+    'de',
+    'da',
+    'di',
+    'la',
+    'le',
+    'bin',
+    'ibn',
+    'al',
+    'el',
+]);
