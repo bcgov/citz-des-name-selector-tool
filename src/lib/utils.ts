@@ -139,11 +139,11 @@ export function checkErrorForASCII(name: string, rule: ErrorRule) {
  * that is applying PNDS
  */
 export function splitPersonName(fullName: string): [string, string, string] {
-    if (!fullName) return ['','',''];
+    if (!fullName) return ['', '', ''];
 
     let parts: string[] = fullName.split(' ');
 
-    switch(parts.length) {
+    switch (parts.length) {
         case 1:
             let mononym = parts[0];
             let first = '.';
@@ -156,15 +156,13 @@ export function splitPersonName(fullName: string): [string, string, string] {
     let lastParts: string[] = [parts.reverse()[0]];
 
     let i = parts.length - 2;
-    while(i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
+    while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
         lastParts.unshift(parts[i]);
         i--;
     }
 
     let first = parts[0];
-    let middle = (i >= 1) ?
-        ' '.concat(parts.slice(1, i+1).join(' ')) :
-        '';
+    let middle = i >= 1 ? ' '.concat(parts.slice(1, i + 1).join(' ')) : '';
     let last = ' '.concat(lastParts.join(' '));
     return [first, middle, last];
 }
