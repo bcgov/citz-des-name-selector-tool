@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
 import { errors } from './shared.svelte';
 import { type ErrorRule } from '$lib/types';
+import { POLYNYM_PREFIXES } from '$lib/constants';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -123,4 +124,63 @@ export function checkErrorForASCII(name: string, rule: ErrorRule) {
                 errorText: rule.errorText,
             });
     }
+}
+
+/**
+ * Splits a full name according to rules aligned with the Person Name Data
+ * Standard.
+ *
+ * Behaviour:
+ * - Mononyms are placed in Last Name; First Name gets '.' if required.
+ * - Polynym-aware splitting for multi-word names.
+ *
+ * @param {string} fullName - a string of someones full legal name
+ * @return {[string, string, string]} - returns a tuple of the fullName string
+ * that is applying PNDS
+ */
+export function splitPersonName(fullName: string): [string, string, string] {
+    if (!fullName) return ['', '', ''];
+
+    let parts: string[] = fullName.split(' ');
+
+    switch (parts.length) {
+        case 1:
+            let mononym = parts[0];
+            let first = '.';
+
+            return [first, '', mononym];
+        case 2:
+            return [parts[0], '', parts[1]];
+    }
+
+    let lastParts: string[] = [parts[parts.length - 1]];
+
+    let i = parts.length - 2;
+    while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
+        lastParts.unshift(parts[i]);
+        i--;
+    }
+
+    //
+    /* Alternative if  put the first prefix as the first name. Look at following
+     * GH issue for any updates
+     * https://github.com/bcgov/inclusive-names-service/issues/19
+     */
+    // let first = parts[0]
+
+    // let index = lastParts.indexOf(parts[0]);
+    // switch (index) {
+    //     case -1:
+    //         break;
+    //     case lastParts.length:
+    //         lastParts.pop();
+    //         break;
+    //     default:
+    //         lastParts.splice(index, 1);
+    // }
+
+    let first = i < 0 ? '.' : parts[0];
+    let middle = i >= 1 ? parts.slice(1, i + 1).join(' ') : '';
+    let last = lastParts.join(' ');
+    return [first, middle, last];
 }
