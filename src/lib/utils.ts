@@ -179,7 +179,7 @@ export function splitPersonName(fullName: string): [string, string, string] {
     //         lastParts.splice(index, 1);
     // }
 
-    let first = lastParts.includes(parts[0]) ? '.' : parts[0];
+    let first = i < 0 ? '.' : parts[0];
     let middle = i >= 1 ? parts.slice(1, i + 1).join(' ') : '';
     let last = lastParts.join(' ');
     return [first, middle, last];
