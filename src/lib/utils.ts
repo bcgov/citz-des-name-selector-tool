@@ -156,12 +156,30 @@ export function splitPersonName(fullName: string): [string, string, string] {
     let lastParts: string[] = [parts[parts.length - 1]];
 
     let i = parts.length - 2;
-    while (i >= 0 && parts[i].toLowerCase() in POLYNYM_PREFIXES) {
+    while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
         lastParts.unshift(parts[i]);
         i--;
     }
 
-    let first = parts[0];
+    //
+    /* Alternative if  put the first prefix as the first name. Look at following
+    * GH issue for any updates
+    * https://github.com/bcgov/inclusive-names-service/issues/19
+    */
+    // let first = parts[0]
+
+    // let index = lastParts.indexOf(parts[0]);
+    // switch (index) {
+    //     case -1:
+    //         break;
+    //     case lastParts.length:
+    //         lastParts.pop();
+    //         break;
+    //     default:
+    //         lastParts.splice(index, 1);
+    // }
+
+    let first = lastParts.includes(parts[0]) ? '.' : parts[0];
     let middle = i >= 1 ? parts.slice(1, i + 1).join(' ') : '';
     let last = lastParts.join(' ');
     return [first, middle, last];
