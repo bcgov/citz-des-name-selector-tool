@@ -163,9 +163,9 @@ export function splitPersonName(fullName: string): [string, string, string] {
 
     //
     /* Alternative if  put the first prefix as the first name. Look at following
-    * GH issue for any updates
-    * https://github.com/bcgov/inclusive-names-service/issues/19
-    */
+     * GH issue for any updates
+     * https://github.com/bcgov/inclusive-names-service/issues/19
+     */
     // let first = parts[0]
 
     // let index = lastParts.indexOf(parts[0]);
