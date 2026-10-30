@@ -25,3 +25,13 @@ export const POLYNYM_PREFIXES = new Set<string>([
     'al',
     'el',
 ]);
+
+/**
+ * `pn_full_name_legal_whole` from Person Name Components table
+ */
+export const LEGAL_WHOLE__LABEL = "Legal (whole) full name";
+
+/**
+ * `pn_full_name_legal_limited` from Person Name Components table
+ */
+export const LEGAL_WHOLE__LIMITED = "Legal (limited) full name";
