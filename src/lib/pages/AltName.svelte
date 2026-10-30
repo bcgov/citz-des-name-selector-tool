@@ -14,7 +14,7 @@
 </script>
 
 <div>
-    <h1>Step 2: Enter an {LEGAL_LIMITED__LABEL}</h1>
+    <h1>Step 2: Enter your {LEGAL_LIMITED__LABEL}</h1>
 
     <Label class="text-lg font-bold">
         Next select an Alternate Spelling version of your name
