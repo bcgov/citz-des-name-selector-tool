@@ -5,10 +5,16 @@
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
+    import {
+        LEGAL_WHOLE__LABEL,
+        LEGAL_WHOLE_FIRST_NAME__LABEL,
+        LEGAL_WHOLE_LAST_NAME__LABEL,
+        LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
+    } from '$lib/constants.ts';
 </script>
 
 <div class="text-sm">
-    <h1>Step 1: First enter your Legal Name</h1>
+    <h1>Step 1: First enter your {LEGAL_WHOLE__LABEL}</h1>
 
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
 
@@ -32,7 +38,7 @@
 
     <InputLabel
         id="first-name"
-        label="Legal First Name:"
+        label={`${LEGAL_WHOLE_FIRST_NAME__LABEL}:`}
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
         handler={checkName}
@@ -42,7 +48,7 @@
 
     <InputLabel
         id="middle-names"
-        label="Legal Middle Name(s):"
+        label={`${LEGAL_WHOLE_MIDDLE_NAMES__LABEL}:`}
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
         handler={checkMiddleName}
@@ -52,7 +58,7 @@
 
     <InputLabel
         id="last-names"
-        label="Legal Last Name:"
+        label={`${LEGAL_WHOLE_LAST_NAME__LABEL}:`}
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
         handler={checkName}

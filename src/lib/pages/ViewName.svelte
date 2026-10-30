@@ -9,6 +9,7 @@
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
     import { checkErrorForMaxLength } from '../utils';
     import { rules } from '../rules-configuration';
+    import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
 
     checkErrorForMaxLength(
         fullName.first.name,
@@ -26,7 +27,7 @@
 
 <div class="page-view-name">
     <h1>
-        Step 3: View your Whole Legal Full Name and the Alternate Spelling
+        Step 3: View your {LEGAL_WHOLE__LABEL} and the {LEGAL_LIMITED__LABEL}
         together
     </h1>
 
@@ -36,7 +37,7 @@
         Statistics Name Support Team
     </p>
 
-    <h2>Full legal name you entered</h2>
+    <h2>{LEGAL_WHOLE__LABEL} you entered</h2>
     <p>
         &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
         below&rpar;
@@ -45,7 +46,7 @@
         {fullNameToString()}
     </p>
 
-    <h2>Alternate Spelling you entered</h2>
+    <h2>{LEGAL_LIMITED__LABEL} you entered</h2>
     <p>
         &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
         below&rpar;
