@@ -37,7 +37,7 @@
         Statistics Name Support Team
     </p>
 
-    <h2>{LEGAL_WHOLE__LABEL} name you entered</h2>
+    <h2>{LEGAL_WHOLE__LABEL} you entered</h2>
     <p>
         &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
         below&rpar;
