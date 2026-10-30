@@ -5,10 +5,16 @@
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils/check-names.ts';
+    import {
+        LEGAL_LIMITED__LABEL,
+        LEGAL_LIMITED_FIRST_NAME__LABEL,
+        LEGAL_LIMITED_LAST_NAME__LABEL,
+        LEGAL_LIMITED_MIDDLE_NAMES__LABEL,
+    } from '$lib/constants.ts';
 </script>
 
 <div>
-    <h1>Step 2: Enter an Alternate Spelling</h1>
+    <h1>Step 2: Enter an {LEGAL_LIMITED__LABEL}</h1>
 
     <Label class="text-lg font-bold">
         Next select an Alternate Spelling version of your name
@@ -24,7 +30,7 @@
 
     <InputLabel
         id="alt-first-name"
-        label="Alternate Spelling of First Name:"
+        label={`${LEGAL_LIMITED_FIRST_NAME__LABEL}:`}
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
         isRequired
@@ -35,7 +41,7 @@
 
     <InputLabel
         id="alt-middle-name"
-        label="Alternate Spelling of Middle Name(s):"
+        label={`${LEGAL_LIMITED_MIDDLE_NAMES__LABEL}:`}
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
         isRequired={false}
@@ -46,7 +52,7 @@
 
     <InputLabel
         id="alt-last-name"
-        label="Alternate Spelling of Last Name:"
+        label={`${LEGAL_LIMITED_LAST_NAME__LABEL}:`}
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
         isRequired

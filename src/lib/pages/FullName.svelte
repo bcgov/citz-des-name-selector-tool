@@ -5,11 +5,16 @@
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
-    import { LEGAL_WHOLE__LABEL, LEGAL_WHOLE_FIRST_NAME__LABEL, LEGAL_WHOLE_LAST_NAME__LABEL, LEGAL_WHOLE_MIDDLE_NAMES__LABEL } from '$lib/constants.ts';
+    import {
+        LEGAL_WHOLE__LABEL,
+        LEGAL_WHOLE_FIRST_NAME__LABEL,
+        LEGAL_WHOLE_LAST_NAME__LABEL,
+        LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
+    } from '$lib/constants.ts';
 </script>
 
 <div class="text-sm">
-    <h1>Step 1: First enter your { LEGAL_WHOLE__LABEL }</h1>
+    <h1>Step 1: First enter your {LEGAL_WHOLE__LABEL}</h1>
 
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
 
