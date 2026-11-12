@@ -1,26 +1,26 @@
 <script>
-    import Callout from '../components/callout/callout.svelte';
+    import Callout from '$lib/components/callout/callout.svelte';
     import {
         AltNameToString,
         errors,
-        fullName,
-        fullNameToString,
-    } from '../shared.svelte';
+        pnFullNameLegalWhole,
+    } from '$lib/state/shared.svelte';
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
-    import { checkErrorForMaxLength } from '../utils';
-    import { rules } from '../rules-configuration';
+    import { checkErrorForMaxLength } from '$lib/utils';
+    import { rules } from '$lib/rules-configuration';
     import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
+    import { legalWholeNameToString } from '$lib/state/utils';
 
     checkErrorForMaxLength(
-        fullName.first.name,
+        pnFullNameLegalWhole.first.name,
         rules.truncationRules.first.length[0].maximum
     );
     checkErrorForMaxLength(
-        fullName.middle.name,
+        pnFullNameLegalWhole.middle.name,
         rules.truncationRules.middle.length[0].maximum
     );
     checkErrorForMaxLength(
-        fullName.last.name,
+        pnFullNameLegalWhole.last.name,
         rules.truncationRules.last.length[0].maximum
     );
 </script>
@@ -43,7 +43,7 @@
         below&rpar;
     </p>
     <p class="name-display">
-        {fullNameToString()}
+        {legalWholeNameToString()}
     </p>
 
     <h2>{LEGAL_LIMITED__LABEL} you entered</h2>

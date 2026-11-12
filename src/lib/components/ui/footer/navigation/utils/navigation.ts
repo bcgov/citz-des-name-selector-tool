@@ -1,4 +1,10 @@
-import { altName, errors, fullName, step } from '$lib/shared.svelte';
+import {
+    altName,
+    errors,
+    pnFullNameLegalWhole,
+    step,
+} from '$lib/state/shared.svelte';
+import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import { STEP, STEP_MAX } from '$lib/constants';
 import { rules } from '$lib/rules-configuration';
 import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
@@ -53,7 +59,7 @@ function initialAltNameCheck() {
 function isDisabled() {
     return (
         (step.isStep(STEP.LEGAL_NAME) &&
-            (!fullName.namesInitialized() || errors.hasErrors())) ||
+            (!pnFullLegalWholeNameInitialized() || errors.hasErrors())) ||
         (step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors())
     );
 }
@@ -90,9 +96,9 @@ function nextStep() {
             break;
         case STEP.ALTERNATIVE_NAME:
             if (!altName.initialized) {
-                altName.first.name = fullName.first.name;
-                altName.middle.name = fullName.middle.name;
-                altName.last.name = fullName.last.name;
+                altName.first.name = pnFullNameLegalWhole.first.name;
+                altName.middle.name = pnFullNameLegalWhole.middle.name;
+                altName.last.name = pnFullNameLegalWhole.last.name;
                 altName.initialized = true;
             }
             initialAltNameCheck();

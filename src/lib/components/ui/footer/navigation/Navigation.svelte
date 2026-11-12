@@ -1,6 +1,6 @@
 <script lang="ts">
     import { STEP_MAX } from '$lib/constants';
-    import { step } from '$lib/shared.svelte';
+    import { step } from '$lib/state/shared.svelte';
     import { nextStep, previousStep, isDisabled } from './utils';
 </script>
 

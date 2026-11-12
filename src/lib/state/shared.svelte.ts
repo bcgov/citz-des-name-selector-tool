@@ -1,5 +1,8 @@
-import { type ErrorRule } from './types';
+import { type ErrorRule } from '../types';
 
+/**
+ * @deprecated
+ */
 export const fullName = $state({
     first: {
         name: '',
@@ -16,10 +19,6 @@ export const fullName = $state({
         return this.first.initialized && this.last.initialized;
     },
 });
-
-export function fullNameToString() {
-    return `${fullName.first.name} ${fullName.middle.name} ${fullName.last.name}`;
-}
 
 export const altName = $state({
     first: {
@@ -109,4 +108,20 @@ class Errors {
     }
 }
 
-export const errors = new Errors();
+const pnFullNameLegalWhole = $state({
+    first: {
+        name: '',
+        initialized: false,
+    },
+    middle: {
+        name: '',
+    },
+    last: {
+        name: '',
+        initialized: false,
+    },
+});
+
+const errors = new Errors();
+
+export { errors, pnFullNameLegalWhole };
