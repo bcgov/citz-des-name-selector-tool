@@ -12,7 +12,6 @@
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
     } from '$lib/constants.ts';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
-
 </script>
 
 <div class="text-sm">

@@ -111,20 +111,17 @@ class Errors {
 const pnFullNameLegalWhole = $state({
     first: {
         name: '',
-        initialized: false
+        initialized: false,
     },
     middle: {
-        name: ''
+        name: '',
     },
     last: {
         name: '',
-        initialized: false
-    }
+        initialized: false,
+    },
 });
 
 const errors = new Errors();
 
-export {
-    errors,
-    pnFullNameLegalWhole,
-}
+export { errors, pnFullNameLegalWhole };

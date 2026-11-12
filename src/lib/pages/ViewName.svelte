@@ -12,7 +12,7 @@
     import { legalWholeNameToString } from '$lib/state/utils';
 
     checkErrorForMaxLength(
-       pnFullNameLegalWhole.first.name,
+        pnFullNameLegalWhole.first.name,
         rules.truncationRules.first.length[0].maximum
     );
     checkErrorForMaxLength(
