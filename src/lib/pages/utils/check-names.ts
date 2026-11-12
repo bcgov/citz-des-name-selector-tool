@@ -1,4 +1,4 @@
-import { errors, pnFullNameLegalWhole } from '$lib/shared.svelte';
+import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
 import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {

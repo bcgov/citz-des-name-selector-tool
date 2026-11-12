@@ -1,4 +1,4 @@
-import { altName, errors, pnFullNameLegalWhole, step } from '$lib/shared.svelte';
+import { altName, errors, pnFullNameLegalWhole, step } from '$lib/state/shared.svelte';
 import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import { STEP, STEP_MAX } from '$lib/constants';
 import { rules } from '$lib/rules-configuration';

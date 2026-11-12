@@ -1,4 +1,4 @@
-import { type ErrorRule } from './types';
+import { type ErrorRule } from '../types';
 
 /**
  * @deprecated

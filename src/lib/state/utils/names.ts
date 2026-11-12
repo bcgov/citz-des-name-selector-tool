@@ -1,7 +1,7 @@
-import { pnFullNameLegalWhole } from "$lib/shared.svelte";
+import { pnFullNameLegalWhole } from "$lib/state/shared.svelte";
 
 function legalWholeNameToString() {
-    return `${pnFullNameLegalWhole.first.name} ${pnFullNameLegalWhole.middle} ${pnFullNameLegalWhole.last.name}`;
+    return `${pnFullNameLegalWhole.first.name} ${pnFullNameLegalWhole.middle.name} ${pnFullNameLegalWhole.last.name}`;
 }
 
 export function pnFullLegalWholeNameInitialized() {

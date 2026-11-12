@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
-import { errors, pnFullNameLegalWhole } from './shared.svelte';
+import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
 import { type ErrorRule } from '$lib/types';
 import { POLYNYM_PREFIXES } from '$lib/constants';
 

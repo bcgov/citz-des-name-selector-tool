@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Label } from '../components/ui/label/index.js';
-    import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, pnFullNameLegalWhole } from '../shared.svelte.ts';
-    import { rules } from '../rules-configuration.ts';
-    import Alert from '../components/ui/alert/alert.svelte';
+    import { Label } from '$lib/components/ui/label/index.js';
+    import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
+    import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte.ts';
+    import { rules } from '$lib/rules-configuration.ts';
+    import Alert from '$lib/components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
     import {
         LEGAL_WHOLE__LABEL,
@@ -11,7 +11,7 @@
         LEGAL_WHOLE_LAST_NAME__LABEL,
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
     } from '$lib/constants.ts';
-    import { pnFullLegalWholeNameInitialized } from '$lib/state/utils/names.ts';
+    import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 
 </script>
 

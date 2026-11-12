@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { Label } from '../components/ui/label/index.js';
-    import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { altName, errors } from '../shared.svelte.ts';
-    import { rules } from '../rules-configuration.ts';
-    import Alert from '../components/ui/alert/alert.svelte';
-    import { checkMiddleName, checkName } from './utils/check-names.ts';
+    import { Label } from '$lib/components/ui/label/index.js';
+    import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
+    import { altName, errors } from '$lib/state/shared.svelte.ts';
+    import { rules } from '$lib/rules-configuration.ts';
+    import Alert from '$lib/components/ui/alert/alert.svelte';
+    import { checkMiddleName, checkName } from './utils';
     import {
         LEGAL_LIMITED__LABEL,
         LEGAL_LIMITED_FIRST_NAME__LABEL,

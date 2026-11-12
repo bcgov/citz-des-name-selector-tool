@@ -12,7 +12,7 @@
     import ViewNameByIdentification from '$lib/pages/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
     import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
-    import { altName, pnFullNameLegalWhole, step } from '$lib/shared.svelte';
+    import { altName, pnFullNameLegalWhole, step } from '$lib/state/shared.svelte';
     import { STEP } from '$lib/constants';
     import {
         getInitialStepFromSearch,

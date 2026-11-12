@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { errors } from '$lib/shared.svelte';
+    import { errors } from '$lib/state/shared.svelte';
     import Alert from '../alert/alert.svelte';
     let {
         id,

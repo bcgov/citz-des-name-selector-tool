@@ -1,13 +1,13 @@
 <script>
-    import Callout from '../components/callout/callout.svelte';
+    import Callout from '$lib/components/callout/callout.svelte';
     import {
         AltNameToString,
         errors,
         pnFullNameLegalWhole,
-    } from '../shared.svelte';
+    } from '$lib/state/shared.svelte';
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
-    import { checkErrorForMaxLength } from '../utils';
-    import { rules } from '../rules-configuration';
+    import { checkErrorForMaxLength } from '$lib/utils';
+    import { rules } from '$lib/rules-configuration';
     import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
     import { legalWholeNameToString } from '$lib/state/utils';
 
