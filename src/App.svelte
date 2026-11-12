@@ -12,7 +12,7 @@
     import ViewNameByIdentification from '$lib/pages/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
     import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
-    import { altName, fullName, step } from '$lib/shared.svelte';
+    import { altName, pnFullNameLegalWhole, step } from '$lib/shared.svelte';
     import { STEP } from '$lib/constants';
     import {
         getInitialStepFromSearch,
@@ -25,9 +25,9 @@
     function applyQueryState(search: string) {
         const hydratedState = parseNameStateFromSearch(search);
 
-        fullName.first.name = hydratedState.fullName.first;
-        fullName.middle.name = hydratedState.fullName.middle;
-        fullName.last.name = hydratedState.fullName.last;
+        pnFullNameLegalWhole.first.name = hydratedState.fullName.first;
+        pnFullNameLegalWhole.middle.name = hydratedState.fullName.middle;
+        pnFullNameLegalWhole.last.name = hydratedState.fullName.last;
 
         altName.first.name = hydratedState.altName.first;
         altName.middle.name = hydratedState.altName.middle;
@@ -53,9 +53,9 @@
 
         const nextSearch = serializeNameStateToSearch(
             {
-                first: fullName.first.name,
-                middle: fullName.middle.name,
-                last: fullName.last.name,
+                first: pnFullNameLegalWhole.first.name,
+                middle: pnFullNameLegalWhole.middle.name,
+                last: pnFullNameLegalWhole.last.name,
             },
             {
                 first: altName.first.name,

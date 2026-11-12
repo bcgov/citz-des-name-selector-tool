@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Label } from '../components/ui/label/index.js';
     import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName } from '../shared.svelte.ts';
+    import { errors, pnFullNameLegalWhole } from '../shared.svelte.ts';
     import { rules } from '../rules-configuration.ts';
     import Alert from '../components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
@@ -11,6 +11,8 @@
         LEGAL_WHOLE_LAST_NAME__LABEL,
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
     } from '$lib/constants.ts';
+    import { pnFullLegalWholeNameInitialized } from '$lib/state/utils/names.ts';
+
 </script>
 
 <div class="text-sm">
@@ -43,7 +45,7 @@
         rules={rules.legalName.first}
         handler={checkName}
         isRequired
-        bind:value={fullName.first}
+        bind:value={pnFullNameLegalWhole.first}
     />
 
     <InputLabel
@@ -53,7 +55,7 @@
         rules={rules.legalName.middle}
         handler={checkMiddleName}
         isRequired={false}
-        bind:value={fullName.middle}
+        bind:value={pnFullNameLegalWhole.middle}
     />
 
     <InputLabel
@@ -63,7 +65,7 @@
         rules={rules.legalName.last}
         handler={checkName}
         isRequired
-        bind:value={fullName.last}
+        bind:value={pnFullNameLegalWhole.last}
     />
 
     <br />
@@ -75,12 +77,12 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {fullName.first.name}
-            {fullName.middle.name}
-            {fullName.last.name}
+            {pnFullNameLegalWhole.first.name}
+            {pnFullNameLegalWhole.middle.name}
+            {pnFullNameLegalWhole.last.name}
         </p>
 
-        {#if errors.hasZeroErrors() && fullName.first.initialized === true && fullName.last.initialized}
+        {#if errors.hasZeroErrors() && pnFullLegalWholeNameInitialized()}
             <Alert message="Everything looks great!" success={true} />
         {:else if errors.hasErrors()}
             <Alert message="Alert: Please adjust highlighted field above" />

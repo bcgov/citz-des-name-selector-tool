@@ -1,4 +1,5 @@
-import { errors, fullName } from '$lib/shared.svelte';
+import { errors, pnFullNameLegalWhole } from '$lib/shared.svelte';
+import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
@@ -12,7 +13,7 @@ function checkErrors() {
     if (errors.hasErrors()) {
         element?.classList.replace('primary', 'disabled');
         return;
-    } else if (!fullName.first.initialized || !fullName.last.initialized) {
+    } else if (!pnFullLegalWholeNameInitialized()) {
         element?.classList.replace('primary', 'disabled');
         return;
     }
