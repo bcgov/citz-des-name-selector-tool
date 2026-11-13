@@ -1,7 +1,10 @@
 <script lang="ts">
     import { Label } from '$lib/components/ui/label/index.js';
     import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
-    import { altName, errors } from '$lib/state/shared.svelte.ts';
+    import {
+        pnFullNameLegalLimited,
+        errors,
+    } from '$lib/state/shared.svelte.ts';
     import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';
@@ -36,7 +39,7 @@
         isRequired
         checkASCII={true}
         handler={checkName}
-        bind:value={altName.first}
+        bind:value={pnFullNameLegalLimited.first}
     />
 
     <InputLabel
@@ -47,7 +50,7 @@
         isRequired={false}
         checkASCII={true}
         handler={checkMiddleName}
-        bind:value={altName.middle}
+        bind:value={pnFullNameLegalLimited.middle}
     />
 
     <InputLabel
@@ -58,7 +61,7 @@
         isRequired
         checkASCII={true}
         handler={checkName}
-        bind:value={altName.last}
+        bind:value={pnFullNameLegalLimited.last}
     />
 
     <br />
@@ -70,9 +73,9 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {altName.first.name}
-            {altName.middle.name}
-            {altName.last.name}
+            {pnFullNameLegalLimited.first.name}
+            {pnFullNameLegalLimited.middle.name}
+            {pnFullNameLegalLimited.last.name}
         </p>
 
         {#if errors.hasZeroErrors()}

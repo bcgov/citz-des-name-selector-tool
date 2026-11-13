@@ -20,6 +20,9 @@ export const fullName = $state({
     },
 });
 
+/**
+ * @deprecated
+ */
 export const altName = $state({
     first: {
         name: '',
@@ -32,10 +35,6 @@ export const altName = $state({
     },
     initialized: false,
 });
-
-export function AltNameToString() {
-    return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
-}
 
 export const step = $state({
     value: 0,
@@ -122,6 +121,19 @@ const pnFullNameLegalWhole = $state({
     },
 });
 
+const pnFullNameLegalLimited = $state({
+    first: {
+        name: '',
+    },
+    middle: {
+        name: '',
+    },
+    last: {
+        name: '',
+    },
+    initialized: false,
+});
+
 const errors = new Errors();
 
-export { errors, pnFullNameLegalWhole };
+export { errors, pnFullNameLegalWhole, pnFullNameLegalLimited };
