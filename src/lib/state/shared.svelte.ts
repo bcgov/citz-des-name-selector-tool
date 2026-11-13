@@ -20,6 +20,9 @@ export const fullName = $state({
     },
 });
 
+/**
+ * @deprecated
+ */
 export const altName = $state({
     first: {
         name: '',
@@ -122,6 +125,19 @@ const pnFullNameLegalWhole = $state({
     },
 });
 
+const pnFullNameLegalLimited = $state({
+    first: {
+        name: '',
+    },
+    middle: {
+        name: '',
+    },
+    last: {
+        name: '',
+    },
+    initialized: false,
+});
+
 const errors = new Errors();
 
-export { errors, pnFullNameLegalWhole };
+export { errors, pnFullNameLegalWhole, pnFullNameLegalLimited };
