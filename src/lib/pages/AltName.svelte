@@ -1,7 +1,10 @@
 <script lang="ts">
     import { Label } from '$lib/components/ui/label/index.js';
     import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
-    import { pnFullNameLegalLimited, errors } from '$lib/state/shared.svelte.ts';
+    import {
+        pnFullNameLegalLimited,
+        errors,
+    } from '$lib/state/shared.svelte.ts';
     import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
     import { checkMiddleName, checkName } from './utils';

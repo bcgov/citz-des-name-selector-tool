@@ -36,7 +36,6 @@ export const altName = $state({
     initialized: false,
 });
 
-
 export const step = $state({
     value: 0,
     isStep(step: number) {

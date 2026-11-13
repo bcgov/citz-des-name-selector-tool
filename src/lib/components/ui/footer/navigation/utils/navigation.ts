@@ -51,9 +51,18 @@ function initialAltNameCheck() {
         pnFullNameLegalLimited.last.name,
         rules.alternateName.last.length[0].maximum
     );
-    checkErrorForASCII(pnFullNameLegalLimited.first.name, rules.alternateName.first.ascii);
-    checkErrorForASCII(pnFullNameLegalLimited.middle.name, rules.alternateName.middle.ascii);
-    checkErrorForASCII(pnFullNameLegalLimited.last.name, rules.alternateName.last.ascii);
+    checkErrorForASCII(
+        pnFullNameLegalLimited.first.name,
+        rules.alternateName.first.ascii
+    );
+    checkErrorForASCII(
+        pnFullNameLegalLimited.middle.name,
+        rules.alternateName.middle.ascii
+    );
+    checkErrorForASCII(
+        pnFullNameLegalLimited.last.name,
+        rules.alternateName.last.ascii
+    );
 }
 
 function isDisabled() {
@@ -96,9 +105,12 @@ function nextStep() {
             break;
         case STEP.ALTERNATIVE_NAME:
             if (!pnFullNameLegalLimited.initialized) {
-                pnFullNameLegalLimited.first.name = pnFullNameLegalWhole.first.name;
-                pnFullNameLegalLimited.middle.name = pnFullNameLegalWhole.middle.name;
-                pnFullNameLegalLimited.last.name = pnFullNameLegalWhole.last.name;
+                pnFullNameLegalLimited.first.name =
+                    pnFullNameLegalWhole.first.name;
+                pnFullNameLegalLimited.middle.name =
+                    pnFullNameLegalWhole.middle.name;
+                pnFullNameLegalLimited.last.name =
+                    pnFullNameLegalWhole.last.name;
                 pnFullNameLegalLimited.initialized = true;
             }
             initialAltNameCheck();
