@@ -8,11 +8,11 @@ function legalLimitedNameToString() {
     return `${pnFullNameLegalLimited.first.name} ${pnFullNameLegalLimited.middle.name} ${pnFullNameLegalLimited.last.name}`;
 }
 
-export function pnFullLegalWholeNameInitialized() {
+function pnFullLegalWholeNameInitialized() {
     return (
         pnFullNameLegalWhole.first.initialized &&
         pnFullNameLegalWhole.last.initialized
     );
 }
 
-export { legalWholeNameToString };
+export { legalWholeNameToString, legalLimitedNameToString, pnFullLegalWholeNameInitialized };
