@@ -1,7 +1,6 @@
 <script>
     import Callout from '$lib/components/callout/callout.svelte';
     import {
-        AltNameToString,
         errors,
         pnFullNameLegalWhole,
     } from '$lib/state/shared.svelte';
@@ -9,7 +8,7 @@
     import { checkErrorForMaxLength } from '$lib/utils';
     import { rules } from '$lib/rules-configuration';
     import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
-    import { legalWholeNameToString } from '$lib/state/utils';
+    import { legalLimitedNameToString, legalWholeNameToString } from '$lib/state/utils';
 
     checkErrorForMaxLength(
         pnFullNameLegalWhole.first.name,
@@ -52,7 +51,7 @@
         below&rpar;
     </p>
     <p class="name-display">
-        {AltNameToString()}
+        {legalLimitedNameToString()}
     </p>
 
     {#if errors.hasErrors()}

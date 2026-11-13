@@ -36,9 +36,6 @@ export const altName = $state({
     initialized: false,
 });
 
-export function AltNameToString() {
-    return `${altName.first.name} ${altName.middle.name} ${altName.last.name}`;
-}
 
 export const step = $state({
     value: 0,
