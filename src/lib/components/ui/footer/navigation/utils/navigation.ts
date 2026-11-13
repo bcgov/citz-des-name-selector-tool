@@ -1,6 +1,6 @@
 import {
-    altName,
     errors,
+    pnFullNameLegalLimited,
     pnFullNameLegalWhole,
     step,
 } from '$lib/state/shared.svelte';
@@ -33,9 +33,9 @@ function removeTruncationErrors() {
 }
 
 function initialAltNameCheck() {
-    const middleNames = altName.middle.name.split(' ');
+    const middleNames = pnFullNameLegalLimited.middle.name.split(' ');
     checkErrorForMaxLength(
-        altName.first.name,
+        pnFullNameLegalLimited.first.name,
         rules.alternateName.first.length[0].maximum
     );
     checkErrorForMaxLength(
@@ -48,12 +48,12 @@ function initialAltNameCheck() {
             rules.alternateName.middle.length[1].maximum
         );
     checkErrorForMaxLength(
-        altName.last.name,
+        pnFullNameLegalLimited.last.name,
         rules.alternateName.last.length[0].maximum
     );
-    checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
-    checkErrorForASCII(altName.middle.name, rules.alternateName.middle.ascii);
-    checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
+    checkErrorForASCII(pnFullNameLegalLimited.first.name, rules.alternateName.first.ascii);
+    checkErrorForASCII(pnFullNameLegalLimited.middle.name, rules.alternateName.middle.ascii);
+    checkErrorForASCII(pnFullNameLegalLimited.last.name, rules.alternateName.last.ascii);
 }
 
 function isDisabled() {
@@ -95,11 +95,11 @@ function nextStep() {
         case STEP_MAX:
             break;
         case STEP.ALTERNATIVE_NAME:
-            if (!altName.initialized) {
-                altName.first.name = pnFullNameLegalWhole.first.name;
-                altName.middle.name = pnFullNameLegalWhole.middle.name;
-                altName.last.name = pnFullNameLegalWhole.last.name;
-                altName.initialized = true;
+            if (!pnFullNameLegalLimited.initialized) {
+                pnFullNameLegalLimited.first.name = pnFullNameLegalWhole.first.name;
+                pnFullNameLegalLimited.middle.name = pnFullNameLegalWhole.middle.name;
+                pnFullNameLegalLimited.last.name = pnFullNameLegalWhole.last.name;
+                pnFullNameLegalLimited.initialized = true;
             }
             initialAltNameCheck();
             break;

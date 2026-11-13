@@ -13,7 +13,7 @@
     import '@bcgov/design-tokens/css/variables.css';
     import Navigation from '$lib/components/ui/footer/navigation/Navigation.svelte';
     import {
-        altName,
+        pnFullNameLegalLimited,
         pnFullNameLegalWhole,
         step,
     } from '$lib/state/shared.svelte';
@@ -33,10 +33,10 @@
         pnFullNameLegalWhole.middle.name = hydratedState.fullName.middle;
         pnFullNameLegalWhole.last.name = hydratedState.fullName.last;
 
-        altName.first.name = hydratedState.altName.first;
-        altName.middle.name = hydratedState.altName.middle;
-        altName.last.name = hydratedState.altName.last;
-        altName.initialized = hydratedState.hasAltNameParams;
+        pnFullNameLegalLimited.first.name = hydratedState.altName.first;
+        pnFullNameLegalLimited.middle.name = hydratedState.altName.middle;
+        pnFullNameLegalLimited.last.name = hydratedState.altName.last;
+        pnFullNameLegalLimited.initialized = hydratedState.hasAltNameParams;
 
         step.value = getInitialStepFromSearch(
             search,
@@ -62,9 +62,9 @@
                 last: pnFullNameLegalWhole.last.name,
             },
             {
-                first: altName.first.name,
-                middle: altName.middle.name,
-                last: altName.last.name,
+                first: pnFullNameLegalLimited.first.name,
+                middle: pnFullNameLegalLimited.middle.name,
+                last: pnFullNameLegalLimited.last.name,
             },
             step.value
         );
