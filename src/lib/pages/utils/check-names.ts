@@ -8,7 +8,6 @@ import {
     checkErrorForASCII,
 } from '$lib/utils.ts';
 
-// TODO: Name change to better represent logic for navigation
 function disableButtonOnErrors() {
     const element = document.getElementById('primary-button');
     if (errors.hasErrors()) {
