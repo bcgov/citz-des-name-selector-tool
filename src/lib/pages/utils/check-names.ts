@@ -9,7 +9,7 @@ import {
 } from '$lib/utils.ts';
 
 // TODO: Name change to better represent logic for navigation
-function checkErrors() {
+function disableButtonOnErrors() {
     const element = document.getElementById('primary-button');
     if (errors.hasErrors()) {
         element?.classList.replace('primary', 'disabled');
@@ -35,7 +35,7 @@ function checkName(
 
     if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
-    checkErrors();
+    disableButtonOnErrors();
 }
 
 function checkMiddleName(
@@ -52,7 +52,7 @@ function checkMiddleName(
     checkErrorForMaxNames(value.name, rules.count);
 
     if (!value.initialized) value.initialized = true;
-    checkErrors();
+    disableButtonOnErrors();
 }
 
 function checkLastName(
@@ -70,7 +70,7 @@ function checkLastName(
     if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
     legalWholeFirstNameToPeriod();
-    checkErrors();
+    disableButtonOnErrors();
 }
 
 export { checkName, checkMiddleName, checkLastName };
