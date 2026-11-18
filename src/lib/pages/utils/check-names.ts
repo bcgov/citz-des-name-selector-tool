@@ -1,5 +1,8 @@
 import { errors } from '$lib/state/shared.svelte';
-import { legalWholeFirstNameToPeriod, pnFullLegalWholeNameInitialized } from '$lib/state/utils';
+import {
+    legalWholeFirstNameToPeriod,
+    pnFullLegalWholeNameInitialized,
+} from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
