@@ -30,7 +30,7 @@ function checkName(
 
     if (!value.initialized) value.initialized = true;
 
-    checkErrorForMaxNames(value.name, rules.count);
+    // checkErrorForMaxNames(value.name, rules.count);
 
     if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
@@ -46,9 +46,9 @@ function checkMiddleName(
     checkErrorForMaxLength(names[0], rules.length[0].maximum);
     if (names[1]) checkErrorForMaxLength(names[1], rules.length[1].maximum);
 
-    if (ascii) checkErrorForASCII(value.name, rules.ascii);
+    // checkErrorForMaxNames(value.name, rules.count);
 
-    checkErrorForMaxNames(value.name, rules.count);
+    if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
     if (!value.initialized) value.initialized = true;
     disableButtonOnErrors();
