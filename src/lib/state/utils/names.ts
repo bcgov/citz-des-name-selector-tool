@@ -1,7 +1,9 @@
+import { rules } from '$lib/rules-configuration';
 import {
     pnFullNameLegalLimited,
     pnFullNameLegalWhole,
 } from '$lib/state/shared.svelte';
+import { checkErrorForMaxLength, checkErrorForMinLength } from '$lib/utils';
 
 function legalWholeFirstNameIsEmpty() {
     return pnFullNameLegalWhole.first.name.length === 0;
@@ -9,15 +11,17 @@ function legalWholeFirstNameIsEmpty() {
 
 // pn_first_name_legal_whole
 function legalWholeFirstNameToPeriod() {
-    if (!pnFullNameLegalWhole.first.initialized) {
+    if (legalWholeFirstNameIsEmpty()) {
+        if (!pnFullNameLegalWhole.first.initialized)
+            pnFullNameLegalWhole.first.initialized = true;
+
         pnFullNameLegalWhole.first.name = '.';
-        pnFullNameLegalWhole.first.initialized = true;
-    } else if (legalWholeFirstNameIsEmpty()) {
-        pnFullNameLegalWhole.first.name = '.';
-        pnFullNameLegalWhole.first.initialized = true;
+        checkErrorForMinLength(
+            pnFullNameLegalWhole.first.name,
+            rules.legalName.first.length[0].minimum
+        );
     }
 }
-
 
 function legalWholeNameToString() {
     return `${pnFullNameLegalWhole.first.name} ${pnFullNameLegalWhole.middle.name} ${pnFullNameLegalWhole.last.name}`;
