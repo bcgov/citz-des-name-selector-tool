@@ -1,5 +1,8 @@
-import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
-import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
+import { errors } from '$lib/state/shared.svelte';
+import {
+    legalWholeFirstNameToPeriod,
+    pnFullLegalWholeNameInitialized,
+} from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
@@ -8,7 +11,7 @@ import {
     checkErrorForASCII,
 } from '$lib/utils.ts';
 
-function checkErrors() {
+function disableButtonOnErrors() {
     const element = document.getElementById('primary-button');
     if (errors.hasErrors()) {
         element?.classList.replace('primary', 'disabled');
@@ -30,11 +33,11 @@ function checkName(
 
     if (!value.initialized) value.initialized = true;
 
-    checkErrorForMaxNames(value.name, rules.count);
+    // checkErrorForMaxNames(value.name, rules.count);
 
     if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
-    checkErrors();
+    disableButtonOnErrors();
 }
 
 function checkMiddleName(
@@ -46,12 +49,21 @@ function checkMiddleName(
     checkErrorForMaxLength(names[0], rules.length[0].maximum);
     if (names[1]) checkErrorForMaxLength(names[1], rules.length[1].maximum);
 
+    // checkErrorForMaxNames(value.name, rules.count);
+
     if (ascii) checkErrorForASCII(value.name, rules.ascii);
 
-    checkErrorForMaxNames(value.name, rules.count);
-
     if (!value.initialized) value.initialized = true;
-    checkErrors();
+    disableButtonOnErrors();
 }
 
-export { checkName, checkMiddleName };
+function checkLastName(
+    value: { name: string; initialized: boolean },
+    rules: ErrorRulesList,
+    ascii: boolean
+) {
+    legalWholeFirstNameToPeriod();
+    checkName(value, rules, ascii);
+}
+
+export { checkName, checkMiddleName, checkLastName };
