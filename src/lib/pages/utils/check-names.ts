@@ -62,9 +62,8 @@ function checkLastName(
     rules: ErrorRulesList,
     ascii: boolean
 ) {
-    checkName(value, rules, ascii);
-
     legalWholeFirstNameToPeriod();
+    checkName(value, rules, ascii);
 }
 
 export { checkName, checkMiddleName, checkLastName };
