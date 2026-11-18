@@ -3,6 +3,15 @@ import {
     pnFullNameLegalWhole,
 } from '$lib/state/shared.svelte';
 
+// pn_first_name_legal_whole
+function legalWholeFirstNameToPeriod() {
+    if (!pnFullNameLegalWhole.first.initialized) {
+        pnFullNameLegalWhole.first.name = '.';
+        pnFullNameLegalWhole.first.initialized = true;
+    }
+}
+
+
 function legalWholeNameToString() {
     return `${pnFullNameLegalWhole.first.name} ${pnFullNameLegalWhole.middle.name} ${pnFullNameLegalWhole.last.name}`;
 }
@@ -19,6 +28,7 @@ function pnFullLegalWholeNameInitialized() {
 }
 
 export {
+    legalWholeFirstNameToPeriod,
     legalWholeNameToString,
     legalLimitedNameToString,
     pnFullLegalWholeNameInitialized,

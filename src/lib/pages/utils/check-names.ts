@@ -1,5 +1,5 @@
 import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
-import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
+import { legalWholeFirstNameToPeriod, pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
@@ -8,6 +8,7 @@ import {
     checkErrorForASCII,
 } from '$lib/utils.ts';
 
+// TODO: Name change to better represent logic for navigation
 function checkErrors() {
     const element = document.getElementById('primary-button');
     if (errors.hasErrors()) {
@@ -54,4 +55,22 @@ function checkMiddleName(
     checkErrors();
 }
 
-export { checkName, checkMiddleName };
+function checkLastName(
+    value: { name: string; initialized: boolean },
+    rules: ErrorRulesList,
+    ascii: boolean
+) {
+    checkErrorForMinLength(value.name, rules.length[0].minimum);
+    checkErrorForMaxLength(value.name, rules.length[0].maximum);
+
+    if (!value.initialized) value.initialized = true;
+
+    checkErrorForMaxNames(value.name, rules.count);
+
+    if (ascii) checkErrorForASCII(value.name, rules.ascii);
+
+    legalWholeFirstNameToPeriod();
+    checkErrors();
+}
+
+export { checkName, checkMiddleName, checkLastName };
