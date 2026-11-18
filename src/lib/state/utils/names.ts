@@ -3,9 +3,16 @@ import {
     pnFullNameLegalWhole,
 } from '$lib/state/shared.svelte';
 
+function legalWholeFirstNameIsEmpty() {
+    return pnFullNameLegalWhole.first.name.length === 0;
+}
+
 // pn_first_name_legal_whole
 function legalWholeFirstNameToPeriod() {
     if (!pnFullNameLegalWhole.first.initialized) {
+        pnFullNameLegalWhole.first.name = '.';
+        pnFullNameLegalWhole.first.initialized = true;
+    } else if (legalWholeFirstNameIsEmpty()) {
         pnFullNameLegalWhole.first.name = '.';
         pnFullNameLegalWhole.first.initialized = true;
     }

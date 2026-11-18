@@ -1,4 +1,4 @@
-import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
+import { errors } from '$lib/state/shared.svelte';
 import { legalWholeFirstNameToPeriod, pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
@@ -59,17 +59,9 @@ function checkLastName(
     rules: ErrorRulesList,
     ascii: boolean
 ) {
-    checkErrorForMinLength(value.name, rules.length[0].minimum);
-    checkErrorForMaxLength(value.name, rules.length[0].maximum);
-
-    if (!value.initialized) value.initialized = true;
-
-    checkErrorForMaxNames(value.name, rules.count);
-
-    if (ascii) checkErrorForASCII(value.name, rules.ascii);
+    checkName(value, rules, ascii);
 
     legalWholeFirstNameToPeriod();
-    disableButtonOnErrors();
 }
 
 export { checkName, checkMiddleName, checkLastName };
