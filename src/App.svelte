@@ -7,7 +7,7 @@
     import Background from '$lib/pages/Background.svelte';
     import Considerations from '$lib/pages/Considerations.svelte';
     import LegalWholeName from '$lib/pages/LegalWholeName.svelte';
-    import LegalLimitedName from '$lib/pages/LegalWholeName.svelte';
+    import LegalLimitedName from '$lib/pages/LegalLimitedName.svelte';
     import ViewName from '$lib/pages/ViewName.svelte';
     import ViewNameByIdentification from '$lib/pages/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
