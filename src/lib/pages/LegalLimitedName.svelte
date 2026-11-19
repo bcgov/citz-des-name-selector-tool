@@ -7,7 +7,7 @@
     } from '$lib/state/shared.svelte.ts';
     import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
-    import { checkMiddleName, checkName } from './utils';
+    import { checkLastName, checkMiddleName, checkName } from './utils';
     import {
         LEGAL_LIMITED__LABEL,
         LEGAL_LIMITED_FIRST_NAME__LABEL,
@@ -60,7 +60,7 @@
         rules={rules.alternateName.last}
         isRequired
         checkASCII={true}
-        handler={checkName}
+        handler={checkLastName}
         bind:value={pnFullNameLegalLimited.last}
     />
 
