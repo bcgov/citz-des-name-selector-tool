@@ -1,7 +1,9 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import '@bcgov/bc-sans/css/BC_Sans.css';
-import { errors, type ErrorRule } from './shared.svelte';
+import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
+import { type ErrorRule } from '$lib/types';
+import { POLYNYM_PREFIXES } from '$lib/constants';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -56,14 +58,9 @@ export function isLessThanOrEqualToMaxNames(str: string, maxNames: number) {
 export function checkErrorForMinLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isGreaterThanMinLength(name, rule.value)) {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
-            if (error.id === rule.id) index = i;
-        });
-
-        if (index > -1) errors.splice(index);
-    } else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>) => {
+    if (isGreaterThanMinLength(name, rule.value)) errors.spliceByID(rule.id);
+    else {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>) => {
             if (error.id === rule.id) index = error.id;
         });
 
@@ -78,14 +75,10 @@ export function checkErrorForMinLength(name: string, rule: ErrorRule) {
 export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isLessThanOrEqualToMaxLength(name, rule.value)) {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
-            if (error.id === rule.id) index = i;
-        });
-
-        if (index > -1) errors.splice(index);
-    } else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+    if (isLessThanOrEqualToMaxLength(name, rule.value))
+        errors.spliceByID(rule.id);
+    else {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 
@@ -100,14 +93,10 @@ export function checkErrorForMaxLength(name: string, rule: ErrorRule) {
 export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
     let index = -1;
 
-    if (isLessThanOrEqualToMaxNames(name, rule.value)) {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
-            if (error.id === rule.id) index = i;
-        });
-
-        if (index > -1) errors.splice(index);
-    } else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+    if (isLessThanOrEqualToMaxNames(name, rule.value))
+        errors.spliceByID(rule.id);
+    else {
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 
@@ -120,16 +109,12 @@ export function checkErrorForMaxNames(name: string, rule: ErrorRule) {
 }
 
 export function checkErrorForASCII(name: string, rule: ErrorRule) {
-    let index = -1;
-
     if (isASCII(name)) {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
-            if (error.id === rule.id) index = i;
-        });
-
-        if (index > -1) errors.splice(index);
+        errors.spliceByID(rule.id);
     } else {
-        errors.value.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
+        let index = -1;
+
+        errors.list.forEach((error: Omit<ErrorRule, 'value'>, i: number) => {
             if (error.id === rule.id) index = i;
         });
 
@@ -139,4 +124,63 @@ export function checkErrorForASCII(name: string, rule: ErrorRule) {
                 errorText: rule.errorText,
             });
     }
+}
+
+/**
+ * Splits a full name according to rules aligned with the Person Name Data
+ * Standard.
+ *
+ * Behaviour:
+ * - Mononyms are placed in Last Name; First Name gets '.' if required.
+ * - Polynym-aware splitting for multi-word names.
+ *
+ * @param {string} fullName - a string of someones full legal name
+ * @return {[string, string, string]} - returns a tuple of the fullName string
+ * that is applying PNDS
+ */
+export function splitPersonName(fullName: string): [string, string, string] {
+    if (!fullName) return ['', '', ''];
+
+    let parts: string[] = fullName.split(' ');
+
+    switch (parts.length) {
+        case 1:
+            let mononym = parts[0];
+            let first = '.';
+
+            return [first, '', mononym];
+        case 2:
+            return [parts[0], '', parts[1]];
+    }
+
+    let lastParts: string[] = [parts[parts.length - 1]];
+
+    let i = parts.length - 2;
+    while (i >= 0 && POLYNYM_PREFIXES.has(parts[i].toLowerCase())) {
+        lastParts.unshift(parts[i]);
+        i--;
+    }
+
+    //
+    /* Alternative if  put the first prefix as the first name. Look at following
+     * GH issue for any updates
+     * https://github.com/bcgov/inclusive-names-service/issues/19
+     */
+    // let first = parts[0]
+
+    // let index = lastParts.indexOf(parts[0]);
+    // switch (index) {
+    //     case -1:
+    //         break;
+    //     case lastParts.length:
+    //         lastParts.pop();
+    //         break;
+    //     default:
+    //         lastParts.splice(index, 1);
+    // }
+
+    let first = i < 0 ? '.' : parts[0];
+    let middle = i >= 1 ? parts.slice(1, i + 1).join(' ') : '';
+    let last = lastParts.join(' ');
+    return [first, middle, last];
 }

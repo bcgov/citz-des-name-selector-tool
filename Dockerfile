@@ -1,5 +1,6 @@
 # Install dependencies and build the application with Bun.
-FROM oven/bun:1.3.5 AS base
+ARG BUN_VERSION
+FROM oven/bun:${BUN_VERSION} AS base
 WORKDIR /usr/src/app
 
 FROM base AS install
@@ -18,7 +19,7 @@ ENV NODE_ENV=production
 RUN bun run build
 
 # Serve static application artifacts with nginx-unprivileged.
-FROM nginxinc/nginx-unprivileged:alpine3.22 AS serve
+FROM nginx/nginx-unprivileged:alpine AS serve
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 8080

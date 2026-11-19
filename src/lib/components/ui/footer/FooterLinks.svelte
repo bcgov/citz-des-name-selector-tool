@@ -1,9 +1,4 @@
 <script lang="ts">
-    interface ILink {
-        label: string;
-        link: string;
-    }
-
     let { title, links } = $props();
 </script>
 
