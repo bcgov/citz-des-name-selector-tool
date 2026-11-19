@@ -148,7 +148,7 @@ export function getFurthestReachableStep(
     }
 
     if (isValidLegalNameState(fullName)) {
-        return STEP.ALTERNATIVE_NAME;
+        return STEP.LEGAL_LIMITED_NAME;
     }
 
     return STEP.WELCOME;

@@ -6,8 +6,8 @@
     import Welcome from '$lib/pages/Welcome.svelte';
     import Background from '$lib/pages/Background.svelte';
     import Considerations from '$lib/pages/Considerations.svelte';
-    import FullName from '$lib/pages/FullName.svelte';
-    import AltName from '$lib/pages/AltName.svelte';
+    import LegalWholeName from '$lib/pages/LegalWholeName.svelte';
+    import LegalLimitedName from '$lib/pages/LegalWholeName.svelte';
     import ViewName from '$lib/pages/ViewName.svelte';
     import ViewNameByIdentification from '$lib/pages/ViewNameByIdentification.svelte';
     import '@bcgov/design-tokens/css/variables.css';
@@ -94,12 +94,12 @@
             <Considerations />
         {/if}
 
-        {#if step.value === STEP.LEGAL_NAME}
-            <FullName />
+        {#if step.value === STEP.LEGAL_WHOLE_NAME}
+            <LegalWholeName />
         {/if}
 
-        {#if step.value === STEP.ALTERNATIVE_NAME}
-            <AltName />
+        {#if step.value === STEP.LEGAL_LIMITED_NAME}
+            <LegalLimitedName />
         {/if}
 
         {#if step.value === STEP.VIEW_NAMES}

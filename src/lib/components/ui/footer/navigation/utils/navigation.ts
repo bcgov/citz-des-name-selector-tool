@@ -67,9 +67,9 @@ function initialAltNameCheck() {
 
 function isDisabled() {
     return (
-        (step.isStep(STEP.LEGAL_NAME) &&
+        (step.isStep(STEP.LEGAL_WHOLE_NAME) &&
             (!pnFullLegalWholeNameInitialized() || errors.hasErrors())) ||
-        (step.isStep(STEP.ALTERNATIVE_NAME) && errors.hasErrors())
+        (step.isStep(STEP.LEGAL_LIMITED_NAME) && errors.hasErrors())
     );
 }
 
@@ -86,10 +86,10 @@ function previousStep() {
     if (step.value > 0) step.value = step.value - 1;
 
     switch (step.value) {
-        case STEP.LEGAL_NAME:
+        case STEP.LEGAL_WHOLE_NAME:
             removeAltErrors();
             break;
-        case STEP.ALTERNATIVE_NAME:
+        case STEP.LEGAL_LIMITED_NAME:
             removeTruncationErrors();
             break;
     }
@@ -103,7 +103,7 @@ function nextStep() {
     switch (step.value) {
         case STEP_MAX:
             break;
-        case STEP.ALTERNATIVE_NAME:
+        case STEP.LEGAL_LIMITED_NAME:
             if (!pnFullNameLegalLimited.initialized) {
                 pnFullNameLegalLimited.first.name =
                     pnFullNameLegalWhole.first.name;
