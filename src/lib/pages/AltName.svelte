@@ -1,88 +1,23 @@
 <script lang="ts">
-    import { Label } from '../components/ui/label/index.js';
-    import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { altName, errors, isDisabled } from '../shared.svelte.ts';
+    import { Label } from '$lib/components/ui/label/index.js';
+    import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
     import {
-        checkErrorForASCII,
-        checkErrorForMaxLength,
-        checkErrorForMaxNames,
-        checkErrorForMinLength,
-        isGreaterThanMinLength,
-    } from '../utils.ts';
-    import { rules } from '../rules-configuration.ts';
-    import Alert from '../components/ui/alert/alert.svelte';
-
-    const checkFirstName = () => {
-        checkErrorForMinLength(
-            altName.first.name,
-            rules.alternateName.first.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            altName.first.name,
-            rules.alternateName.first.length[0].maximum
-        );
-        checkErrorForMaxNames(
-            altName.first.name,
-            rules.alternateName.first.count
-        );
-        checkErrorForASCII(altName.first.name, rules.alternateName.first.ascii);
-    };
-
-    const checkMiddleName = () => {
-        let names = altName.middle.name.split(' ');
-        checkErrorForMaxLength(
-            names[0],
-            rules.alternateName.middle.length[0].maximum
-        );
-        if (names[1])
-            checkErrorForMaxLength(
-                names[1],
-                rules.alternateName.middle.length[1].maximum
-            );
-        checkErrorForMaxNames(
-            altName.middle.name,
-            rules.alternateName.middle.count
-        );
-        checkErrorForASCII(
-            altName.middle.name,
-            rules.alternateName.middle.ascii
-        );
-    };
-
-    const checkLastName = () => {
-        checkErrorForMinLength(
-            altName.last.name,
-            rules.alternateName.last.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            altName.last.name,
-            rules.alternateName.last.length[0].maximum
-        );
-        checkErrorForMaxNames(
-            altName.last.name,
-            rules.alternateName.last.count
-        );
-        checkErrorForASCII(altName.last.name, rules.alternateName.last.ascii);
-    };
-
-    $effect(() => {
-        checkFirstName();
-        checkMiddleName();
-        checkLastName();
-
-        const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        } else {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
-    });
+        pnFullNameLegalLimited,
+        errors,
+    } from '$lib/state/shared.svelte.ts';
+    import { rules } from '$lib/rules-configuration.ts';
+    import Alert from '$lib/components/ui/alert/alert.svelte';
+    import { checkMiddleName, checkName } from './utils';
+    import {
+        LEGAL_LIMITED__LABEL,
+        LEGAL_LIMITED_FIRST_NAME__LABEL,
+        LEGAL_LIMITED_LAST_NAME__LABEL,
+        LEGAL_LIMITED_MIDDLE_NAMES__LABEL,
+    } from '$lib/constants.ts';
 </script>
 
 <div>
-    <h1>Step 2: Enter an Alternate Spelling</h1>
+    <h1>Step 2: Enter your {LEGAL_LIMITED__LABEL}</h1>
 
     <Label class="text-lg font-bold">
         Next select an Alternate Spelling version of your name
@@ -98,29 +33,35 @@
 
     <InputLabel
         id="alt-first-name"
-        label="Alternate Spelling of First Name:"
+        label={`${LEGAL_LIMITED_FIRST_NAME__LABEL}:`}
         placeholder="Max. 12 Characters"
         rules={rules.alternateName.first}
         isRequired
-        bind:value={altName.first}
+        checkASCII={true}
+        handler={checkName}
+        bind:value={pnFullNameLegalLimited.first}
     />
 
     <InputLabel
         id="alt-middle-name"
-        label="Alternate Spelling of Middle Name(s):"
+        label={`${LEGAL_LIMITED_MIDDLE_NAMES__LABEL}:`}
         placeholder="Max. 12 Characters (Max 2 Names)"
         rules={rules.alternateName.middle}
         isRequired={false}
-        bind:value={altName.middle}
+        checkASCII={true}
+        handler={checkMiddleName}
+        bind:value={pnFullNameLegalLimited.middle}
     />
 
     <InputLabel
         id="alt-last-name"
-        label="Alternate Spelling of Last Name:"
+        label={`${LEGAL_LIMITED_LAST_NAME__LABEL}:`}
         placeholder="Max. 18 Characters"
         rules={rules.alternateName.last}
         isRequired
-        bind:value={altName.last}
+        checkASCII={true}
+        handler={checkName}
+        bind:value={pnFullNameLegalLimited.last}
     />
 
     <br />
@@ -132,13 +73,9 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {#if altName.last.name.length > 0}
-                {altName.last.name},
-            {:else}
-                {altName.last.name}
-            {/if}
-            {altName.first.name}
-            {altName.middle.name}
+            {pnFullNameLegalLimited.first.name}
+            {pnFullNameLegalLimited.middle.name}
+            {pnFullNameLegalLimited.last.name}
         </p>
 
         {#if errors.hasZeroErrors()}

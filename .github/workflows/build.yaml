@@ -26,8 +26,8 @@ jobs:
               with:
                   driver-opts: network=host
 
-            - name: Build image with docker build
-              run: docker build . -t name-selector-tool:latest --build-arg GITHUB_SHA=${{ github.sha }}
+            - name: Build image
+              run: bash ./build.sh
 
             - name: Login to OpenShift Silver image registry
               uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0

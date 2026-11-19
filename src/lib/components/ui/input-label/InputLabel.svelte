@@ -1,13 +1,14 @@
 <script lang="ts">
-    import { errors } from '$lib/shared.svelte';
+    import { errors } from '$lib/state/shared.svelte';
     import Alert from '../alert/alert.svelte';
-
     let {
         id,
         label,
         placeholder,
         rules,
+        handler = console.log(`${id} name`),
         isRequired = true,
+        checkASCII = false,
         value = $bindable(),
     } = $props();
 </script>
@@ -23,6 +24,10 @@
             id={`input-${id}`}
             class="bcds-TextField--input"
             required={isRequired}
+            onblur={() => handler(value, rules, checkASCII)}
+            onkeyupcapture={() => handler(value, rules, checkASCII)}
+            oncutcapture={() => handler(value, rules, checkASCII)}
+            onpastecapture={() => handler(value, rules, checkASCII)}
             bind:value={value.name}
         />
     </div>

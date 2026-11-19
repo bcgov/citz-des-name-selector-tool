@@ -1,32 +1,32 @@
 <script>
-    import Callout from '../components/callout/callout.svelte';
-    import {
-        AltNameToString,
-        errors,
-        fullName,
-        fullNameToString,
-    } from '../shared.svelte';
+    import Callout from '$lib/components/callout/callout.svelte';
+    import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
-    import { checkErrorForMaxLength } from '../utils';
-    import { rules } from '../rules-configuration';
+    import { checkErrorForMaxLength } from '$lib/utils';
+    import { rules } from '$lib/rules-configuration';
+    import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
+    import {
+        legalLimitedNameToString,
+        legalWholeNameToString,
+    } from '$lib/state/utils';
 
     checkErrorForMaxLength(
-        fullName.first.name,
+        pnFullNameLegalWhole.first.name,
         rules.truncationRules.first.length[0].maximum
     );
     checkErrorForMaxLength(
-        fullName.middle.name,
+        pnFullNameLegalWhole.middle.name,
         rules.truncationRules.middle.length[0].maximum
     );
     checkErrorForMaxLength(
-        fullName.last.name,
+        pnFullNameLegalWhole.last.name,
         rules.truncationRules.last.length[0].maximum
     );
 </script>
 
 <div class="page-view-name">
     <h1>
-        Step 3: View your Whole Legal Full Name and the Alternate Spelling
+        Step 3: View your {LEGAL_WHOLE__LABEL} and the {LEGAL_LIMITED__LABEL}
         together
     </h1>
 
@@ -36,22 +36,22 @@
         Statistics Name Support Team
     </p>
 
-    <h2>Full legal name you entered</h2>
+    <h2>{LEGAL_WHOLE__LABEL} you entered</h2>
     <p>
         &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
         below&rpar;
     </p>
     <p class="name-display">
-        {fullNameToString()}
+        {legalWholeNameToString()}
     </p>
 
-    <h2>Alternate Spelling you entered</h2>
+    <h2>{LEGAL_LIMITED__LABEL} you entered</h2>
     <p>
         &lpar;if you need to adjust anything, hit the &lsquo;Back&rsquo; button
         below&rpar;
     </p>
     <p class="name-display">
-        {AltNameToString()}
+        {legalLimitedNameToString()}
     </p>
 
     {#if errors.hasErrors()}

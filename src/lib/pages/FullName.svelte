@@ -1,75 +1,21 @@
 <script lang="ts">
-    import { Label } from '../components/ui/label/index.js';
-    import InputLabel from '../components/ui/input-label/InputLabel.svelte';
-    import { errors, fullName, isDisabled, step } from '../shared.svelte.ts';
+    import { Label } from '$lib/components/ui/label/index.js';
+    import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
+    import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte.ts';
+    import { rules } from '$lib/rules-configuration.ts';
+    import Alert from '$lib/components/ui/alert/alert.svelte';
+    import { checkLastName, checkMiddleName, checkName } from './utils';
     import {
-        checkErrorForMaxLength,
-        checkErrorForMaxNames,
-        checkErrorForMinLength,
-        isGreaterThanMinLength,
-    } from '../utils.ts';
-    import { rules } from '../rules-configuration.ts';
-    import Alert from '../components/ui/alert/alert.svelte';
-
-    const checkFirstName = () => {
-        checkErrorForMinLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            fullName.first.name,
-            rules.legalName.first.length[0].maximum
-        );
-        checkErrorForMaxNames(fullName.first.name, rules.legalName.first.count);
-    };
-
-    const checkMiddleName = () => {
-        let names = fullName.middle.name.split(' ');
-        checkErrorForMaxLength(
-            names[0],
-            rules.legalName.middle.length[0].maximum
-        );
-        if (names[1])
-            checkErrorForMaxLength(
-                names[1],
-                rules.legalName.middle.length[1].maximum
-            );
-        checkErrorForMaxNames(
-            fullName.middle.name,
-            rules.legalName.middle.count
-        );
-    };
-
-    const checkLastName = () => {
-        checkErrorForMinLength(
-            fullName.last.name,
-            rules.legalName.last.length[0].minimum
-        );
-        checkErrorForMaxLength(
-            fullName.last.name,
-            rules.legalName.last.length[0].maximum
-        );
-        checkErrorForMaxNames(fullName.last.name, rules.legalName.last.count);
-    };
-
-    $effect(() => {
-        checkFirstName();
-        checkMiddleName();
-        checkLastName();
-
-        const element = document.getElementById('primary-button');
-        if (errors.hasErrors()) {
-            element?.classList.replace('primary', 'disabled');
-            isDisabled.value = true;
-        } else {
-            element?.classList.replace('disabled', 'primary');
-            isDisabled.value = false;
-        }
-    });
+        LEGAL_WHOLE__LABEL,
+        LEGAL_WHOLE_FIRST_NAME__LABEL,
+        LEGAL_WHOLE_LAST_NAME__LABEL,
+        LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
+    } from '$lib/constants.ts';
+    import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 </script>
 
 <div class="text-sm">
-    <h1>Step 1: First enter your Legal Name</h1>
+    <h1>Step 1: First enter your {LEGAL_WHOLE__LABEL}</h1>
 
     <Label class="text-lg font-bold">Enter your Indigenous language Name</Label>
 
@@ -93,29 +39,32 @@
 
     <InputLabel
         id="first-name"
-        label="Legal First Name:"
+        label={`${LEGAL_WHOLE_FIRST_NAME__LABEL}:`}
         placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
         rules={rules.legalName.first}
+        handler={checkName}
         isRequired
-        bind:value={fullName.first}
+        bind:value={pnFullNameLegalWhole.first}
     />
 
     <InputLabel
         id="middle-names"
-        label="Legal Middle Name(s):"
+        label={`${LEGAL_WHOLE_MIDDLE_NAMES__LABEL}:`}
         placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
         rules={rules.legalName.middle}
+        handler={checkMiddleName}
         isRequired={false}
-        bind:value={fullName.middle}
+        bind:value={pnFullNameLegalWhole.middle}
     />
 
     <InputLabel
         id="last-names"
-        label="Legal Last Name:"
+        label={`${LEGAL_WHOLE_LAST_NAME__LABEL}:`}
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
+        handler={checkLastName}
         isRequired
-        bind:value={fullName.last}
+        bind:value={pnFullNameLegalWhole.last}
     />
 
     <br />
@@ -127,16 +76,12 @@
         <i>&lpar;if you need to adjust anything, re-enter above&rpar;</i>
         <br />
         <p>
-            {#if fullName.last.name.length > 0}
-                {fullName.last.name},
-            {:else}
-                {fullName.last.name}
-            {/if}
-            {fullName.first.name}
-            {fullName.middle.name}
+            {pnFullNameLegalWhole.first.name}
+            {pnFullNameLegalWhole.middle.name}
+            {pnFullNameLegalWhole.last.name}
         </p>
 
-        {#if errors.hasZeroErrors()}
+        {#if errors.hasZeroErrors() && pnFullLegalWholeNameInitialized()}
             <Alert message="Everything looks great!" success={true} />
         {:else if errors.hasErrors()}
             <Alert message="Alert: Please adjust highlighted field above" />
