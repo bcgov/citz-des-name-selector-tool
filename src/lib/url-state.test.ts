@@ -100,10 +100,10 @@ describe('step derivation', () => {
         };
 
         expect(getFurthestReachableStep(fullName, altName)).toBe(
-            STEP.ALTERNATIVE_NAME
+            STEP.LEGAL_LIMITED_NAME
         );
         expect(getInitialStepFromSearch('?step=5', fullName, altName)).toBe(
-            STEP.ALTERNATIVE_NAME
+            STEP.LEGAL_LIMITED_NAME
         );
     });
 });

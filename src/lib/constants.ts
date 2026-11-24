@@ -5,8 +5,8 @@ export const STEP = {
     WELCOME: 0,
     BACKGROUND: 1,
     CONSIDERATIONS: 2,
-    LEGAL_NAME: 3,
-    ALTERNATIVE_NAME: 4,
+    LEGAL_WHOLE_NAME: 3,
+    LEGAL_LIMITED_NAME: 4,
     VIEW_NAMES: 5,
     VIEW_IDENTIFICATIONS: 6,
 } as const;
