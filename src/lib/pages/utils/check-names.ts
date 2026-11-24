@@ -9,7 +9,7 @@ import {
 import {
     legalLimitedFirstNameToPeriod,
     legalWholeFirstNameToPeriod,
-    pnFullLegalWholeNameInitialized
+    pnFullLegalWholeNameInitialized,
 } from '$lib/state/utils';
 
 function disableButtonOnErrors() {
