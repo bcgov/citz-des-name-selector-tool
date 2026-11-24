@@ -14,8 +14,8 @@ function legalWholeFirstNameIsEmpty() {
 }
 
 /**
- * Updates the first name based on if the first name is empty and sets it initialized if it hasn't
- * been yet. Does a Minimum name check.
+ * Updates the Legal (whole) first name based on if the first name is empty and
+ * sets it initialized if it hasn't been yet. Does a Minimum name check.
  */
 function legalWholeFirstNameToPeriod() {
     if (legalWholeFirstNameIsEmpty()) {
@@ -26,6 +26,20 @@ function legalWholeFirstNameToPeriod() {
         checkErrorForMinLength(
             pnFullNameLegalWhole.first.name,
             rules.legalName.first.length[0].minimum
+        );
+    }
+}
+
+/**
+ * Updates the Legal (limited) first name based on if the first name is empty
+ * and sets it initialized if it hasn't been yet. Does a Minimum name check.
+ */
+function legalLimitedFirstNameToPeriod() {
+    if (legalWholeFirstNameIsEmpty()) {
+        pnFullNameLegalLimited.first.name = '.';
+        checkErrorForMinLength(
+            pnFullNameLegalLimited.first.name,
+            rules.alternateName.first.length[0].minimum
         );
     }
 }
@@ -59,6 +73,7 @@ function pnFullLegalWholeNameInitialized() {
 
 export {
     legalWholeFirstNameToPeriod,
+    legalLimitedFirstNameToPeriod,
     legalWholeNameToString,
     legalLimitedNameToString,
     pnFullLegalWholeNameInitialized,

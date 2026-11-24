@@ -4,7 +4,7 @@
     import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte.ts';
     import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
-    import { checkLastName, checkMiddleName, checkName } from './utils';
+    import { checkWholeLastName, checkMiddleName, checkName } from './utils';
     import {
         LEGAL_WHOLE__LABEL,
         LEGAL_WHOLE_FIRST_NAME__LABEL,
@@ -62,7 +62,7 @@
         label={`${LEGAL_WHOLE_LAST_NAME__LABEL}:`}
         placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
         rules={rules.legalName.last}
-        handler={checkLastName}
+        handler={checkWholeLastName}
         isRequired
         bind:value={pnFullNameLegalWhole.last}
     />

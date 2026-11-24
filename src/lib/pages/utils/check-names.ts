@@ -1,8 +1,4 @@
 import { errors } from '$lib/state/shared.svelte';
-import {
-    legalWholeFirstNameToPeriod,
-    pnFullLegalWholeNameInitialized,
-} from '$lib/state/utils';
 import type { ErrorRulesList } from '$lib/types';
 import {
     checkErrorForMaxLength,
@@ -10,6 +6,11 @@ import {
     checkErrorForMaxNames,
     checkErrorForASCII,
 } from '$lib/utils.ts';
+import {
+    legalLimitedFirstNameToPeriod,
+    legalWholeFirstNameToPeriod,
+    pnFullLegalWholeNameInitialized
+} from '$lib/state/utils';
 
 function disableButtonOnErrors() {
     const element = document.getElementById('primary-button');
@@ -57,7 +58,7 @@ function checkMiddleName(
     disableButtonOnErrors();
 }
 
-function checkLastName(
+function checkWholeLastName(
     value: { name: string; initialized: boolean },
     rules: ErrorRulesList,
     ascii: boolean
@@ -66,4 +67,13 @@ function checkLastName(
     checkName(value, rules, ascii);
 }
 
-export { checkName, checkMiddleName, checkLastName };
+function checkLimitedLastName(
+    value: { name: string; initialized: boolean },
+    rules: ErrorRulesList,
+    ascii: boolean
+) {
+    legalLimitedFirstNameToPeriod();
+    checkName(value, rules, ascii);
+}
+
+export { checkName, checkMiddleName, checkWholeLastName, checkLimitedLastName };

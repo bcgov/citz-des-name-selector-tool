@@ -6,7 +6,7 @@
         label,
         placeholder,
         rules,
-        handler = console.log(`${id} name`),
+        handler,
         isRequired = true,
         checkASCII = false,
         value = $bindable(),
