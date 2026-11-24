@@ -14,6 +14,15 @@ function legalWholeFirstNameIsEmpty() {
 }
 
 /**
+ * Checks if the first name of the state variable pnFullNameLegalLimited is
+ * empty.
+ * @returns boolean value based on if first name is empty
+ */
+function legalLimitedFirstNameIsEmpty() {
+    return pnFullNameLegalLimited.first.name.length === 0;
+}
+
+/**
  * Updates the Legal (whole) first name based on if the first name is empty and
  * sets it initialized if it hasn't been yet. Does a Minimum name check.
  */
@@ -35,7 +44,7 @@ function legalWholeFirstNameToPeriod() {
  * and sets it initialized if it hasn't been yet. Does a Minimum name check.
  */
 function legalLimitedFirstNameToPeriod() {
-    if (legalWholeFirstNameIsEmpty()) {
+    if (legalLimitedFirstNameIsEmpty()) {
         pnFullNameLegalLimited.first.name = '.';
         checkErrorForMinLength(
             pnFullNameLegalLimited.first.name,
