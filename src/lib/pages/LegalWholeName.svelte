@@ -12,8 +12,6 @@
         RULES,
     } from '$lib/constants';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
-
-    console.log(RULES.legalWhole.middle.length[0].maximum);
 </script>
 
 <div class="text-sm">
