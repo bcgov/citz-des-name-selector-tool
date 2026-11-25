@@ -3,7 +3,11 @@
     import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
     import { checkErrorForMaxLength } from '$lib/utils';
-    import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL, RULES } from '$lib/constants';
+    import {
+        LEGAL_LIMITED__LABEL,
+        LEGAL_WHOLE__LABEL,
+        RULES,
+    } from '$lib/constants';
     import {
         legalLimitedNameToString,
         legalWholeNameToString,
@@ -81,8 +85,7 @@
                     {#if errors.hasError(RULES.truncation.middle.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                RULES.truncation.middle.length[0].maximum
-                                    .id
+                                RULES.truncation.middle.length[0].maximum.id
                             )}
                         </li>
                     {/if}

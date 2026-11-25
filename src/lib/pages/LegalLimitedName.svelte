@@ -12,7 +12,7 @@
         LEGAL_LIMITED_FIRST_NAME__LABEL,
         LEGAL_LIMITED_LAST_NAME__LABEL,
         LEGAL_LIMITED_MIDDLE_NAMES__LABEL,
-        RULES
+        RULES,
     } from '$lib/constants';
 </script>
 

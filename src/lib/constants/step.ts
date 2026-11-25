@@ -11,7 +11,4 @@ const STEP = {
     VIEW_IDENTIFICATIONS: 6,
 } as const;
 
-export {
-    STEP,
-    STEP_MAX
-};
+export { STEP, STEP_MAX };

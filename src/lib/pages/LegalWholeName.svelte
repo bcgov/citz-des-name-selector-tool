@@ -9,7 +9,7 @@
         LEGAL_WHOLE_FIRST_NAME__LABEL,
         LEGAL_WHOLE_LAST_NAME__LABEL,
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
-        RULES
+        RULES,
     } from '$lib/constants';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 

@@ -75,7 +75,9 @@ export function serializeNameStateToSearch(
 }
 
 export function isValidLegalNameState(fullName: NameFields) {
-    const legalMiddleLengthRules = Object.values(RULES.legalWhole.middle.length);
+    const legalMiddleLengthRules = Object.values(
+        RULES.legalWhole.middle.length
+    );
 
     return (
         fullName.first.length > 0 &&
@@ -121,8 +123,7 @@ export function isValidAltNameState(altName: NameFields) {
         ) &&
         getNameCount(altName.first) <= RULES.legalLimited.first.count.value &&
         getNameCount(altName.last) <= RULES.legalLimited.last.count.value &&
-        getNameCount(altName.middle) <=
-            RULES.legalLimited.middle.count.value &&
+        getNameCount(altName.middle) <= RULES.legalLimited.middle.count.value &&
         isASCII(altName.first) &&
         isASCII(altName.middle) &&
         isASCII(altName.last) &&

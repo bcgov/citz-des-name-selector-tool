@@ -46,8 +46,7 @@ const LEGAL_LIMITED_FIRST_NAME__LABEL = 'Legal (limited) first name';
 /**
  * `pn_full_name_legal_middle_names` from Person Name Components table
  */
-const LEGAL_LIMITED_MIDDLE_NAMES__LABEL =
-    'Legal (limited) middle name(s)';
+const LEGAL_LIMITED_MIDDLE_NAMES__LABEL = 'Legal (limited) middle name(s)';
 
 /**
  * `pn_full_name_legal_last_name` from Person Name Components table
@@ -63,5 +62,5 @@ export {
     LEGAL_LIMITED__LABEL,
     LEGAL_LIMITED_FIRST_NAME__LABEL,
     LEGAL_LIMITED_MIDDLE_NAMES__LABEL,
-    LEGAL_LIMITED_LAST_NAME__LABEL
-}
+    LEGAL_LIMITED_LAST_NAME__LABEL,
+};
