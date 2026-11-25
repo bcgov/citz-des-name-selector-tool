@@ -1,4 +1,4 @@
-import { rules } from '$lib/rules-configuration';
+import { RULES } from '$lib/constants';
 import {
     pnFullNameLegalLimited,
     pnFullNameLegalWhole,
@@ -34,7 +34,7 @@ function legalWholeFirstNameToPeriod() {
         pnFullNameLegalWhole.first.name = '.';
         checkErrorForMinLength(
             pnFullNameLegalWhole.first.name,
-            rules.legalWhole.first.length[0].minimum
+            RULES.legalWhole.first.length[0].minimum
         );
     }
 }
@@ -48,7 +48,7 @@ function legalLimitedFirstNameToPeriod() {
         pnFullNameLegalLimited.first.name = '.';
         checkErrorForMinLength(
             pnFullNameLegalLimited.first.name,
-            rules.legalLimited.first.length[0].minimum
+            RULES.legalLimited.first.length[0].minimum
         );
     }
 }

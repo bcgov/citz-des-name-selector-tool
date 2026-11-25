@@ -1,4 +1,4 @@
-export const rules = {
+export const RULES = {
     legalWhole: {
         first: {
             length: {

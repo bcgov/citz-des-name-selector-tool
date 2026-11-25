@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { isASCII } from '$lib/utils';
 import { isLessThanOrEqualToMaxLength } from '$lib/utils';
-import { rules } from '$lib/rules-configuration';
+import { RULES } from '$lib/constants';
 
 import { failsAsciiValidation } from './testData';
 
@@ -15,7 +15,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateFirstName,
-                rules.legalLimited.first.length[0].maximum.value
+                RULES.legalLimited.first.length[0].maximum.value
             )
         ).toBeTruthy();
     });
@@ -28,7 +28,7 @@ describe('Case: failsAsciiValidation', () => {
 
     it('Count of alternate middle names is less than or equal to max number of middle names', () => {
         expect(
-            middleNames.length <= rules.legalLimited.middle.count.value
+            middleNames.length <= RULES.legalLimited.middle.count.value
         ).toBeTruthy();
     });
 
@@ -37,7 +37,7 @@ describe('Case: failsAsciiValidation', () => {
             expect(
                 isLessThanOrEqualToMaxLength(
                     middleName,
-                    rules.legalLimited.first.length[0].maximum.value
+                    RULES.legalLimited.first.length[0].maximum.value
                 )
             ).toBeTruthy();
         });
@@ -51,7 +51,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateLastName,
-                rules.legalLimited.last.length[0].maximum.value
+                RULES.legalLimited.last.length[0].maximum.value
             )
         ).toBeTruthy();
     });

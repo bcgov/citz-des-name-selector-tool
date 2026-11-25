@@ -3,8 +3,7 @@
     import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte';
     import TriangleExclamation from '../../assets/TriangleExclamation.svelte';
     import { checkErrorForMaxLength } from '$lib/utils';
-    import { rules } from '$lib/rules-configuration';
-    import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL } from '$lib/constants';
+    import { LEGAL_LIMITED__LABEL, LEGAL_WHOLE__LABEL, RULES } from '$lib/constants';
     import {
         legalLimitedNameToString,
         legalWholeNameToString,
@@ -12,15 +11,15 @@
 
     checkErrorForMaxLength(
         pnFullNameLegalWhole.first.name,
-        rules.truncation.first.length[0].maximum
+        RULES.truncation.first.length[0].maximum
     );
     checkErrorForMaxLength(
         pnFullNameLegalWhole.middle.name,
-        rules.truncation.middle.length[0].maximum
+        RULES.truncation.middle.length[0].maximum
     );
     checkErrorForMaxLength(
         pnFullNameLegalWhole.last.name,
-        rules.truncation.last.length[0].maximum
+        RULES.truncation.last.length[0].maximum
     );
 </script>
 
@@ -72,25 +71,25 @@
                 </p>
 
                 <ul>
-                    {#if errors.hasError(rules.truncation.first.length[0].maximum.id)}
+                    {#if errors.hasError(RULES.truncation.first.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncation.first.length[0].maximum.id
+                                RULES.truncation.first.length[0].maximum.id
                             )}
                         </li>
                     {/if}
-                    {#if errors.hasError(rules.truncation.middle.length[0].maximum.id)}
+                    {#if errors.hasError(RULES.truncation.middle.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncation.middle.length[0].maximum
+                                RULES.truncation.middle.length[0].maximum
                                     .id
                             )}
                         </li>
                     {/if}
-                    {#if errors.hasError(rules.truncation.last.length[0].maximum.id)}
+                    {#if errors.hasError(RULES.truncation.last.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncation.last.length[0].maximum.id
+                                RULES.truncation.last.length[0].maximum.id
                             )}
                         </li>
                     {/if}
