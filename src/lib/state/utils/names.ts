@@ -34,7 +34,7 @@ function legalWholeFirstNameToPeriod() {
         pnFullNameLegalWhole.first.name = '.';
         checkErrorForMinLength(
             pnFullNameLegalWhole.first.name,
-            rules.legalName.first.length[0].minimum
+            rules.legalWhole.first.length[0].minimum
         );
     }
 }
@@ -48,7 +48,7 @@ function legalLimitedFirstNameToPeriod() {
         pnFullNameLegalLimited.first.name = '.';
         checkErrorForMinLength(
             pnFullNameLegalLimited.first.name,
-            rules.alternateName.first.length[0].minimum
+            rules.legalLimited.first.length[0].minimum
         );
     }
 }

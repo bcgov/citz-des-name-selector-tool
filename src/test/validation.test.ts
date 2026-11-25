@@ -15,7 +15,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateFirstName,
-                rules.alternateName.first.length[0].maximum.value
+                rules.legalLimited.first.length[0].maximum.value
             )
         ).toBeTruthy();
     });
@@ -28,7 +28,7 @@ describe('Case: failsAsciiValidation', () => {
 
     it('Count of alternate middle names is less than or equal to max number of middle names', () => {
         expect(
-            middleNames.length <= rules.alternateName.middle.count.value
+            middleNames.length <= rules.legalLimited.middle.count.value
         ).toBeTruthy();
     });
 
@@ -37,7 +37,7 @@ describe('Case: failsAsciiValidation', () => {
             expect(
                 isLessThanOrEqualToMaxLength(
                     middleName,
-                    rules.alternateName.first.length[0].maximum.value
+                    rules.legalLimited.first.length[0].maximum.value
                 )
             ).toBeTruthy();
         });
@@ -51,7 +51,7 @@ describe('Case: failsAsciiValidation', () => {
         expect(
             isLessThanOrEqualToMaxLength(
                 failsAsciiValidation.alternateLastName,
-                rules.alternateName.last.length[0].maximum.value
+                rules.legalLimited.last.length[0].maximum.value
             )
         ).toBeTruthy();
     });

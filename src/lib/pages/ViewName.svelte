@@ -12,15 +12,15 @@
 
     checkErrorForMaxLength(
         pnFullNameLegalWhole.first.name,
-        rules.truncationRules.first.length[0].maximum
+        rules.truncation.first.length[0].maximum
     );
     checkErrorForMaxLength(
         pnFullNameLegalWhole.middle.name,
-        rules.truncationRules.middle.length[0].maximum
+        rules.truncation.middle.length[0].maximum
     );
     checkErrorForMaxLength(
         pnFullNameLegalWhole.last.name,
-        rules.truncationRules.last.length[0].maximum
+        rules.truncation.last.length[0].maximum
     );
 </script>
 
@@ -72,25 +72,25 @@
                 </p>
 
                 <ul>
-                    {#if errors.hasError(rules.truncationRules.first.length[0].maximum.id)}
+                    {#if errors.hasError(rules.truncation.first.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncationRules.first.length[0].maximum.id
+                                rules.truncation.first.length[0].maximum.id
                             )}
                         </li>
                     {/if}
-                    {#if errors.hasError(rules.truncationRules.middle.length[0].maximum.id)}
+                    {#if errors.hasError(rules.truncation.middle.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncationRules.middle.length[0].maximum
+                                rules.truncation.middle.length[0].maximum
                                     .id
                             )}
                         </li>
                     {/if}
-                    {#if errors.hasError(rules.truncationRules.last.length[0].maximum.id)}
+                    {#if errors.hasError(rules.truncation.last.length[0].maximum.id)}
                         <li>
                             {errors.getMessage(
-                                rules.truncationRules.last.length[0].maximum.id
+                                rules.truncation.last.length[0].maximum.id
                             )}
                         </li>
                     {/if}

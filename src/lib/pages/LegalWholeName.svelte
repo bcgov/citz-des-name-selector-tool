@@ -12,6 +12,8 @@
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
     } from '$lib/constants.ts';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
+
+    console.log(rules.legalWhole.middle.length[0].maximum);
 </script>
 
 <div class="text-sm">
@@ -40,8 +42,8 @@
     <InputLabel
         id="first-name"
         label={`${LEGAL_WHOLE_FIRST_NAME__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
-        rules={rules.legalName.first}
+        placeholder={`Max. ${rules.legalWhole.first.length[0].maximum.value} Characters`}
+        rules={rules.legalWhole.first}
         handler={checkName}
         isRequired
         bind:value={pnFullNameLegalWhole.first}
@@ -50,8 +52,8 @@
     <InputLabel
         id="middle-names"
         label={`${LEGAL_WHOLE_MIDDLE_NAMES__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
-        rules={rules.legalName.middle}
+        placeholder={`Max. ${rules.legalWhole.middle.length[0].maximum.value} Characters (Max ${rules.legalWhole.middle.count.value} Names)`}
+        rules={rules.legalWhole.middle}
         handler={checkMiddleName}
         isRequired={false}
         bind:value={pnFullNameLegalWhole.middle}
@@ -60,8 +62,8 @@
     <InputLabel
         id="last-names"
         label={`${LEGAL_WHOLE_LAST_NAME__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
-        rules={rules.legalName.last}
+        placeholder={`Max. ${rules.legalWhole.last.length[0].maximum.value} Characters`}
+        rules={rules.legalWhole.last}
         handler={checkWholeLastName}
         isRequired
         bind:value={pnFullNameLegalWhole.last}

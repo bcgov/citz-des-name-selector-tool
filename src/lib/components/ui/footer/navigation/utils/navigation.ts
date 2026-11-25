@@ -11,24 +11,24 @@ import { checkErrorForASCII, checkErrorForMaxLength } from '$lib/utils';
 
 function removeAltErrors() {
     // ASCII Check
-    errors.spliceByID(rules.alternateName.first.ascii.id);
-    errors.spliceByID(rules.alternateName.middle.ascii.id);
-    errors.spliceByID(rules.alternateName.last.ascii.id);
+    errors.spliceByID(rules.legalLimited.first.ascii.id);
+    errors.spliceByID(rules.legalLimited.middle.ascii.id);
+    errors.spliceByID(rules.legalLimited.last.ascii.id);
     // Max Length Check
-    errors.spliceByID(rules.alternateName.first.length[0].maximum.id);
-    errors.spliceByID(rules.alternateName.middle.length[0].maximum.id);
-    errors.spliceByID(rules.alternateName.middle.length[1].maximum.id);
-    errors.spliceByID(rules.alternateName.last.length[0].maximum.id);
+    errors.spliceByID(rules.legalLimited.first.length[0].maximum.id);
+    errors.spliceByID(rules.legalLimited.middle.length[0].maximum.id);
+    errors.spliceByID(rules.legalLimited.middle.length[1].maximum.id);
+    errors.spliceByID(rules.legalLimited.last.length[0].maximum.id);
     // Min Length Check
-    errors.spliceByID(rules.alternateName.first.length[0].minimum.id);
-    errors.spliceByID(rules.alternateName.last.length[0].minimum.id);
+    errors.spliceByID(rules.legalLimited.first.length[0].minimum.id);
+    errors.spliceByID(rules.legalLimited.last.length[0].minimum.id);
 }
 
 function removeTruncationErrors() {
     if (step.value < STEP.VIEW_NAMES) {
-        errors.spliceByID(rules.truncationRules.first.length[0].maximum.id);
-        errors.spliceByID(rules.truncationRules.middle.length[0].maximum.id);
-        errors.spliceByID(rules.truncationRules.last.length[0].maximum.id);
+        errors.spliceByID(rules.truncation.first.length[0].maximum.id);
+        errors.spliceByID(rules.truncation.middle.length[0].maximum.id);
+        errors.spliceByID(rules.truncation.last.length[0].maximum.id);
     }
 }
 
@@ -36,32 +36,32 @@ function initialAltNameCheck() {
     const middleNames = pnFullNameLegalLimited.middle.name.split(' ');
     checkErrorForMaxLength(
         pnFullNameLegalLimited.first.name,
-        rules.alternateName.first.length[0].maximum
+        rules.legalLimited.first.length[0].maximum
     );
     checkErrorForMaxLength(
         middleNames[0],
-        rules.alternateName.middle.length[0].maximum
+        rules.legalLimited.middle.length[0].maximum
     );
     if (middleNames[1])
         checkErrorForMaxLength(
             middleNames[1],
-            rules.alternateName.middle.length[1].maximum
+            rules.legalLimited.middle.length[1].maximum
         );
     checkErrorForMaxLength(
         pnFullNameLegalLimited.last.name,
-        rules.alternateName.last.length[0].maximum
+        rules.legalLimited.last.length[0].maximum
     );
     checkErrorForASCII(
         pnFullNameLegalLimited.first.name,
-        rules.alternateName.first.ascii
+        rules.legalLimited.first.ascii
     );
     checkErrorForASCII(
         pnFullNameLegalLimited.middle.name,
-        rules.alternateName.middle.ascii
+        rules.legalLimited.middle.ascii
     );
     checkErrorForASCII(
         pnFullNameLegalLimited.last.name,
-        rules.alternateName.last.ascii
+        rules.legalLimited.last.ascii
     );
 }
 

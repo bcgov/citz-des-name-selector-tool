@@ -1,5 +1,5 @@
 export const rules = {
-    legalName: {
+    legalWhole: {
         first: {
             length: {
                 0: {
@@ -82,7 +82,7 @@ export const rules = {
             },
         },
     },
-    alternateName: {
+    legalLimited: {
         first: {
             length: {
                 0: {
@@ -180,7 +180,7 @@ export const rules = {
             },
         },
     },
-    truncationRules: {
+    truncation: {
         first: {
             length: {
                 0: {

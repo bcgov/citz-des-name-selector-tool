@@ -35,7 +35,7 @@
         id="alt-first-name"
         label={`${LEGAL_LIMITED_FIRST_NAME__LABEL}:`}
         placeholder="Max. 12 Characters"
-        rules={rules.alternateName.first}
+        rules={rules.legalLimited.first}
         isRequired
         checkASCII={true}
         handler={checkName}
@@ -46,7 +46,7 @@
         id="alt-middle-name"
         label={`${LEGAL_LIMITED_MIDDLE_NAMES__LABEL}:`}
         placeholder="Max. 12 Characters (Max 2 Names)"
-        rules={rules.alternateName.middle}
+        rules={rules.legalLimited.middle}
         isRequired={false}
         checkASCII={true}
         handler={checkMiddleName}
@@ -57,7 +57,7 @@
         id="alt-last-name"
         label={`${LEGAL_LIMITED_LAST_NAME__LABEL}:`}
         placeholder="Max. 18 Characters"
-        rules={rules.alternateName.last}
+        rules={rules.legalLimited.last}
         isRequired
         checkASCII={true}
         handler={checkLimitedLastName}

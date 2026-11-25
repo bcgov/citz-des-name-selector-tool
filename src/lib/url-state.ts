@@ -76,22 +76,22 @@ export function serializeNameStateToSearch(
 }
 
 export function isValidLegalNameState(fullName: NameFields) {
-    const legalMiddleLengthRules = Object.values(rules.legalName.middle.length);
+    const legalMiddleLengthRules = Object.values(rules.legalWhole.middle.length);
 
     return (
         fullName.first.length > 0 &&
         fullName.last.length > 0 &&
         isLessThanOrEqualToMaxLength(
             fullName.first,
-            rules.legalName.first.length[0].maximum.value
+            rules.legalWhole.first.length[0].maximum.value
         ) &&
         isLessThanOrEqualToMaxLength(
             fullName.last,
-            rules.legalName.last.length[0].maximum.value
+            rules.legalWhole.last.length[0].maximum.value
         ) &&
-        getNameCount(fullName.first) <= rules.legalName.first.count.value &&
-        getNameCount(fullName.last) <= rules.legalName.last.count.value &&
-        getNameCount(fullName.middle) <= rules.legalName.middle.count.value &&
+        getNameCount(fullName.first) <= rules.legalWhole.first.count.value &&
+        getNameCount(fullName.last) <= rules.legalWhole.last.count.value &&
+        getNameCount(fullName.middle) <= rules.legalWhole.middle.count.value &&
         fullName.middle
             .split(' ')
             .filter(Boolean)
@@ -106,7 +106,7 @@ export function isValidLegalNameState(fullName: NameFields) {
 
 export function isValidAltNameState(altName: NameFields) {
     const alternateMiddleLengthRules = Object.values(
-        rules.alternateName.middle.length
+        rules.legalLimited.middle.length
     );
 
     return (
@@ -114,16 +114,16 @@ export function isValidAltNameState(altName: NameFields) {
         altName.last.length > 0 &&
         isLessThanOrEqualToMaxLength(
             altName.first,
-            rules.alternateName.first.length[0].maximum.value
+            rules.legalLimited.first.length[0].maximum.value
         ) &&
         isLessThanOrEqualToMaxLength(
             altName.last,
-            rules.alternateName.last.length[0].maximum.value
+            rules.legalLimited.last.length[0].maximum.value
         ) &&
-        getNameCount(altName.first) <= rules.alternateName.first.count.value &&
-        getNameCount(altName.last) <= rules.alternateName.last.count.value &&
+        getNameCount(altName.first) <= rules.legalLimited.first.count.value &&
+        getNameCount(altName.last) <= rules.legalLimited.last.count.value &&
         getNameCount(altName.middle) <=
-            rules.alternateName.middle.count.value &&
+            rules.legalLimited.middle.count.value &&
         isASCII(altName.first) &&
         isASCII(altName.middle) &&
         isASCII(altName.last) &&
