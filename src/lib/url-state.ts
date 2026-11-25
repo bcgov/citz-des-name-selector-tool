@@ -1,5 +1,4 @@
-import { STEP } from './constants';
-import { rules } from './rules-configuration';
+import { STEP, RULES } from '$lib/constants';
 import { isASCII, isLessThanOrEqualToMaxLength } from './utils';
 
 export type NameFields = {
@@ -76,22 +75,24 @@ export function serializeNameStateToSearch(
 }
 
 export function isValidLegalNameState(fullName: NameFields) {
-    const legalMiddleLengthRules = Object.values(rules.legalName.middle.length);
+    const legalMiddleLengthRules = Object.values(
+        RULES.legalWhole.middle.length
+    );
 
     return (
         fullName.first.length > 0 &&
         fullName.last.length > 0 &&
         isLessThanOrEqualToMaxLength(
             fullName.first,
-            rules.legalName.first.length[0].maximum.value
+            RULES.legalWhole.first.length[0].maximum.value
         ) &&
         isLessThanOrEqualToMaxLength(
             fullName.last,
-            rules.legalName.last.length[0].maximum.value
+            RULES.legalWhole.last.length[0].maximum.value
         ) &&
-        getNameCount(fullName.first) <= rules.legalName.first.count.value &&
-        getNameCount(fullName.last) <= rules.legalName.last.count.value &&
-        getNameCount(fullName.middle) <= rules.legalName.middle.count.value &&
+        getNameCount(fullName.first) <= RULES.legalWhole.first.count.value &&
+        getNameCount(fullName.last) <= RULES.legalWhole.last.count.value &&
+        getNameCount(fullName.middle) <= RULES.legalWhole.middle.count.value &&
         fullName.middle
             .split(' ')
             .filter(Boolean)
@@ -106,7 +107,7 @@ export function isValidLegalNameState(fullName: NameFields) {
 
 export function isValidAltNameState(altName: NameFields) {
     const alternateMiddleLengthRules = Object.values(
-        rules.alternateName.middle.length
+        RULES.legalLimited.middle.length
     );
 
     return (
@@ -114,16 +115,15 @@ export function isValidAltNameState(altName: NameFields) {
         altName.last.length > 0 &&
         isLessThanOrEqualToMaxLength(
             altName.first,
-            rules.alternateName.first.length[0].maximum.value
+            RULES.legalLimited.first.length[0].maximum.value
         ) &&
         isLessThanOrEqualToMaxLength(
             altName.last,
-            rules.alternateName.last.length[0].maximum.value
+            RULES.legalLimited.last.length[0].maximum.value
         ) &&
-        getNameCount(altName.first) <= rules.alternateName.first.count.value &&
-        getNameCount(altName.last) <= rules.alternateName.last.count.value &&
-        getNameCount(altName.middle) <=
-            rules.alternateName.middle.count.value &&
+        getNameCount(altName.first) <= RULES.legalLimited.first.count.value &&
+        getNameCount(altName.last) <= RULES.legalLimited.last.count.value &&
+        getNameCount(altName.middle) <= RULES.legalLimited.middle.count.value &&
         isASCII(altName.first) &&
         isASCII(altName.middle) &&
         isASCII(altName.last) &&

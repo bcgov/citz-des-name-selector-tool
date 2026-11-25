@@ -2,7 +2,6 @@
     import { Label } from '$lib/components/ui/label/index.js';
     import InputLabel from '$lib/components/ui/input-label/InputLabel.svelte';
     import { errors, pnFullNameLegalWhole } from '$lib/state/shared.svelte.ts';
-    import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
     import { checkWholeLastName, checkMiddleName, checkName } from './utils';
     import {
@@ -10,7 +9,8 @@
         LEGAL_WHOLE_FIRST_NAME__LABEL,
         LEGAL_WHOLE_LAST_NAME__LABEL,
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
-    } from '$lib/constants.ts';
+        RULES,
+    } from '$lib/constants';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 </script>
 
@@ -40,8 +40,8 @@
     <InputLabel
         id="first-name"
         label={`${LEGAL_WHOLE_FIRST_NAME__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.first.length[0].maximum.value} Characters`}
-        rules={rules.legalName.first}
+        placeholder={`Max. ${RULES.legalWhole.first.length[0].maximum.value} Characters`}
+        rules={RULES.legalWhole.first}
         handler={checkName}
         isRequired
         bind:value={pnFullNameLegalWhole.first}
@@ -50,8 +50,8 @@
     <InputLabel
         id="middle-names"
         label={`${LEGAL_WHOLE_MIDDLE_NAMES__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.middle.length[0].maximum.value} Characters (Max ${rules.legalName.middle.count.value} Names)`}
-        rules={rules.legalName.middle}
+        placeholder={`Max. ${RULES.legalWhole.middle.length[0].maximum.value} Characters (Max ${RULES.legalWhole.middle.count.value} Names)`}
+        rules={RULES.legalWhole.middle}
         handler={checkMiddleName}
         isRequired={false}
         bind:value={pnFullNameLegalWhole.middle}
@@ -60,8 +60,8 @@
     <InputLabel
         id="last-names"
         label={`${LEGAL_WHOLE_LAST_NAME__LABEL}:`}
-        placeholder={`Max. ${rules.legalName.last.length[0].maximum.value} Characters`}
-        rules={rules.legalName.last}
+        placeholder={`Max. ${RULES.legalWhole.last.length[0].maximum.value} Characters`}
+        rules={RULES.legalWhole.last}
         handler={checkWholeLastName}
         isRequired
         bind:value={pnFullNameLegalWhole.last}

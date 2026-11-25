@@ -5,7 +5,6 @@
         pnFullNameLegalLimited,
         errors,
     } from '$lib/state/shared.svelte.ts';
-    import { rules } from '$lib/rules-configuration.ts';
     import Alert from '$lib/components/ui/alert/alert.svelte';
     import { checkLimitedLastName, checkMiddleName, checkName } from './utils';
     import {
@@ -13,7 +12,8 @@
         LEGAL_LIMITED_FIRST_NAME__LABEL,
         LEGAL_LIMITED_LAST_NAME__LABEL,
         LEGAL_LIMITED_MIDDLE_NAMES__LABEL,
-    } from '$lib/constants.ts';
+        RULES,
+    } from '$lib/constants';
 </script>
 
 <div>
@@ -35,7 +35,7 @@
         id="alt-first-name"
         label={`${LEGAL_LIMITED_FIRST_NAME__LABEL}:`}
         placeholder="Max. 12 Characters"
-        rules={rules.alternateName.first}
+        rules={RULES.legalLimited.first}
         isRequired
         checkASCII={true}
         handler={checkName}
@@ -46,7 +46,7 @@
         id="alt-middle-name"
         label={`${LEGAL_LIMITED_MIDDLE_NAMES__LABEL}:`}
         placeholder="Max. 12 Characters (Max 2 Names)"
-        rules={rules.alternateName.middle}
+        rules={RULES.legalLimited.middle}
         isRequired={false}
         checkASCII={true}
         handler={checkMiddleName}
@@ -57,7 +57,7 @@
         id="alt-last-name"
         label={`${LEGAL_LIMITED_LAST_NAME__LABEL}:`}
         placeholder="Max. 18 Characters"
-        rules={rules.alternateName.last}
+        rules={RULES.legalLimited.last}
         isRequired
         checkASCII={true}
         handler={checkLimitedLastName}
