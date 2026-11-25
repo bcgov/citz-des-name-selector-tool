@@ -10,7 +10,7 @@
         LEGAL_WHOLE_FIRST_NAME__LABEL,
         LEGAL_WHOLE_LAST_NAME__LABEL,
         LEGAL_WHOLE_MIDDLE_NAMES__LABEL,
-    } from '$lib/constants.ts';
+    } from '$lib/constants';
     import { pnFullLegalWholeNameInitialized } from '$lib/state/utils';
 
     console.log(rules.legalWhole.middle.length[0].maximum);
